@@ -1765,8 +1765,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1957680701}
   - component: {fileID: 1957680698}
-  - component: {fileID: 1957680703}
   - component: {fileID: 1957680702}
+  - component: {fileID: 1957680703}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -1835,9 +1835,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1957680697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e467e507b02b4ff439cf106bb1b522c4, type: 3}
+  m_Script: {fileID: 11500000, guid: d126dd49d9866524ca3a3670fdf04eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numPlayer: 1
 --- !u!1 &2140418091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,8 +1849,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2140418095}
   - component: {fileID: 2140418094}
-  - component: {fileID: 2140418097}
   - component: {fileID: 2140418096}
+  - component: {fileID: 2140418097}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -1918,9 +1919,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2140418091}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9907c0974b7ee4a47b64810274345956, type: 3}
+  m_Script: {fileID: 11500000, guid: d126dd49d9866524ca3a3670fdf04eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numPlayer: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

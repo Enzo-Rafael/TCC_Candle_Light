@@ -1,20 +1,20 @@
 using UnityEngine;
+//Player 1: Move WASD
 
 public class Player1Script : MonoBehaviour
 {
     //Variaveis
-    Player1Muv GetIput;
-    //public Rigidbody rb; 
+    PlayerImputs GetIput; 
     Vector3 playerMuve;
     public float velocity;
-    //teste
     private CharacterController controller;
     private bool groundedPlayer;
     private float gravityValue = -9.81f;
+
     //Metodos
     private void Awake()
     {
-       GetIput = GetComponent<Player1Muv>();
+       GetIput = GetComponent<PlayerImputs>();
     }
     private void Start()
     {
@@ -37,7 +37,7 @@ public class Player1Script : MonoBehaviour
         {
             gameObject.transform.forward = move;
         }
-        playerMuve.y += gravityValue * Time.deltaTime;
+        playerMuve.y += gravityValue * Time.deltaTime;//Gravidade do player 1
         controller.Move(playerMuve * Time.deltaTime);
     }
 }

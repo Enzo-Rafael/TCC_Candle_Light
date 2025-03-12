@@ -15,14 +15,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "ItemEventChannelSO", menuName = "Scriptable Objects/ItemEventChannelSO")]
+[CreateAssetMenu(menuName = "Events/Item Event Channel")]
 public class ItemEventChannelSO : ScriptableObject
 {
-    public UnityAction<ItemSO, List<GameObject>> OnEventRaised;
+    public UnityAction<ItemSO> OnEventRaised;
     
-    public void RaiseEvent(ItemSO item, List<GameObject> itensObserver = null){
+    public void RaiseEvent(ItemSO item){
         if(OnEventRaised != null){
-            OnEventRaised.Invoke(item, itensObserver);
+            OnEventRaised.Invoke(item);
         }
     }
 }

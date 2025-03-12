@@ -54,7 +54,7 @@ public class ItemManager : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void UseItemToggleEventRaised(ItemSO item, List<GameObject> observers){
+    private void UseItemToggleEventRaised(ItemSO item){
 
     }
 
@@ -64,7 +64,7 @@ public class ItemManager : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void UseItemTriggerEventRaised(ItemSO item, List<GameObject> observers){
+    private void UseItemTriggerEventRaised(ItemSO item){
         switch(item.itemType.interactionType){
             case ItemTypeSO.ItemInteractType.Use:
             break;
@@ -79,7 +79,7 @@ public class ItemManager : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void UseItemConsumeEventRaised(ItemSO item, List<GameObject> observers){
+    private void UseItemConsumeEventRaised(ItemSO item){
 
     }
 }

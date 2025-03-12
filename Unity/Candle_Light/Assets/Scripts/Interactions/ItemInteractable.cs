@@ -19,22 +19,14 @@ public class ItemInteractable : MonoBehaviour
 //-------------------------- Variaveis Globais Visiveis --------------------------------
 
 	[SerializeField] private ItemSO item = default;
-	[SerializeField] private List<GameObject> observers = default;    
+	[SerializeField] private ObserverEventChannelSO _observerEvent = default;    
     
-    void Start()
-    {
+  void Start(){
         
+  }
+  void Update(){
+    if(Input.GetKeyDown(KeyCode.Space)){
+      _observerEvent.NotifyObservers(item);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-      if(Input.GetKeyDown(KeyCode.E)){
-        if(observers != null){
-            foreach(GameObject observer in observers){
-                observer.GetComponent<ExecuteItemCommand>().ExecuteCommand(item);
-            }
-        }
-      }  
-    }
+  }
 }

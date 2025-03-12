@@ -13,7 +13,7 @@
 
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ItemTypeSO", menuName = "Scriptable Objects/ItemTypeSO")]
+[CreateAssetMenu(fileName = "ItemType", menuName = "Interactable/ItemType")]
 public class ItemTypeSO : ScriptableObject
 {
     public enum ItemInteractType{
@@ -29,10 +29,10 @@ public class ItemTypeSO : ScriptableObject
 
 //-------------------------- Variaveis Globais Privadas --------------------------------
 
-    [Tooltip("O que o jogador fará com item")]
+    [Tooltip("Qual ação o item faz")]
     [SerializeField] ItemActionType _actionType;
 
-    [Tooltip("Qual ação o item faz")]
+    [Tooltip("O que o jogador fará com item")]
     [SerializeField] ItemInteractType _interactionType;
     
 //-------------------------- Variaveis Globais Visiveis --------------------------------

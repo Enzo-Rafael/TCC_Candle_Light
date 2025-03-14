@@ -1,22 +1,21 @@
 using UnityEngine;
-//Player 2: Move setas direcionais e num1 e num2
 
-public class Player2Scrpt : MonoBehaviour
+//Player 1: Move WASD
+
+public class PlayerOneScript : MonoBehaviour
 {
     //Variaveis
-    PlayerImputs GetIput;
+    POneImputs GetIput; 
     Vector3 playerMuve;
     public float velocity;
-    private CharacterController controller;
+    public CharacterController controller;
     private bool groundedPlayer;
+    private float gravityValue = -9.81f;
+
     //Metodos
     private void Awake()
     {
-       GetIput = GetComponent<PlayerImputs>();
-    }
-    private void Start()
-    {
-        controller = gameObject.AddComponent<CharacterController>();
+       GetIput = GetComponent<POneImputs>();
     }
 
 
@@ -29,13 +28,13 @@ public class Player2Scrpt : MonoBehaviour
         }
 
         Vector3 move = new Vector3(GetIput.MoveImput.x,0,GetIput.MoveImput.y);
-        Vector3 flutuar = new Vector3(0,GetIput.MoveImput.z,0);
         controller.Move(move * Time.deltaTime * velocity);
-        controller.Move(flutuar * Time.deltaTime * velocity);
+    
         if (move != Vector3.zero)
         {
             gameObject.transform.forward = move;
         }
+        playerMuve.y += gravityValue * Time.deltaTime;//Gravidade do player 1
         controller.Move(playerMuve * Time.deltaTime);
     }
 }

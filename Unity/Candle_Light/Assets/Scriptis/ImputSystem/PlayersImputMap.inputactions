@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MenuImput",
-                    "type": "Button",
-                    "id": "a7d27d78-6466-4a28-bdb4-e586ec6df635",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "ActionInput",
                     "type": "Value",
                     "id": "94e0f2a6-eaa4-4a25-8666-9f2b619e66d5",
@@ -190,28 +181,6 @@
                 },
                 {
                     "name": "",
-                    "id": "f359f5dc-3ca2-4350-beee-11fa53582b23",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MenuImput",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "dc995c8e-3b73-4325-9f53-8de84ef5d67b",
-                    "path": "<Gamepad>/{Menu}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MenuImput",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "c91bebcc-8764-4e60-9387-5961d4e19462",
                     "path": "",
                     "interactions": "",
@@ -237,15 +206,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MenuImput",
-                    "type": "Button",
-                    "id": "c95b1f27-7438-470f-a4c3-67cfa33d8b34",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "ActionInput",
                     "type": "Value",
                     "id": "d904301f-7bf8-48b0-a6c1-61bc78bf4971",
@@ -255,10 +215,10 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Mause",
+                    "name": "Mouse",
                     "type": "Value",
                     "id": "ce660c9b-346a-4723-98d8-b7212246267e",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -421,30 +381,8 @@
                 },
                 {
                     "name": "",
-                    "id": "28cffc90-c614-4af6-a19f-d8eaafcd2907",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MenuImput",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fc7eb8e7-5d1d-43f3-841e-bff076095c62",
-                    "path": "<Gamepad>/{Menu}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MenuImput",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "68af8c6f-3173-4e93-8d0e-a0e517947883",
-                    "path": "",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -455,11 +393,39 @@
                 {
                     "name": "",
                     "id": "2d750bc5-d125-4d04-b5ae-79525352ea1b",
-                    "path": "<Mouse>/delta",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Mause",
+                    "action": "Mouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI Imputs",
+            "id": "c54e27f8-16d5-4604-9f47-f9971d3e9449",
+            "actions": [
+                {
+                    "name": "MenuImput",
+                    "type": "Button",
+                    "id": "321f2365-fc4f-4df6-b4b3-542f84bb047d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2de23ff5-c859-4f1c-bbe3-c4cd055b9097",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuImput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

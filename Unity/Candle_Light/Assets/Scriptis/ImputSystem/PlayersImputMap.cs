@@ -101,15 +101,6 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""MenuImput"",
-                    ""type"": ""Button"",
-                    ""id"": ""a7d27d78-6466-4a28-bdb4-e586ec6df635"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""ActionInput"",
                     ""type"": ""Value"",
                     ""id"": ""94e0f2a6-eaa4-4a25-8666-9f2b619e66d5"",
@@ -276,28 +267,6 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f359f5dc-3ca2-4350-beee-11fa53582b23"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MenuImput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""dc995c8e-3b73-4325-9f53-8de84ef5d67b"",
-                    ""path"": ""<Gamepad>/{Menu}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MenuImput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""c91bebcc-8764-4e60-9387-5961d4e19462"",
                     ""path"": """",
                     ""interactions"": """",
@@ -323,15 +292,6 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""MenuImput"",
-                    ""type"": ""Button"",
-                    ""id"": ""c95b1f27-7438-470f-a4c3-67cfa33d8b34"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""ActionInput"",
                     ""type"": ""Value"",
                     ""id"": ""d904301f-7bf8-48b0-a6c1-61bc78bf4971"",
@@ -341,10 +301,10 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Mause"",
+                    ""name"": ""Mouse"",
                     ""type"": ""Value"",
                     ""id"": ""ce660c9b-346a-4723-98d8-b7212246267e"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -507,30 +467,8 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""28cffc90-c614-4af6-a19f-d8eaafcd2907"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MenuImput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fc7eb8e7-5d1d-43f3-841e-bff076095c62"",
-                    ""path"": ""<Gamepad>/{Menu}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MenuImput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""68af8c6f-3173-4e93-8d0e-a0e517947883"",
-                    ""path"": """",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -541,11 +479,39 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2d750bc5-d125-4d04-b5ae-79525352ea1b"",
-                    ""path"": ""<Mouse>/delta"",
+                    ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Mause"",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""UI Imputs"",
+            ""id"": ""c54e27f8-16d5-4604-9f47-f9971d3e9449"",
+            ""actions"": [
+                {
+                    ""name"": ""MenuImput"",
+                    ""type"": ""Button"",
+                    ""id"": ""321f2365-fc4f-4df6-b4b3-542f84bb047d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2de23ff5-c859-4f1c-bbe3-c4cd055b9097"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuImput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -557,20 +523,22 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         // Player1Muve
         m_Player1Muve = asset.FindActionMap("Player1Muve", throwIfNotFound: true);
         m_Player1Muve_MuveImput = m_Player1Muve.FindAction("MuveImput", throwIfNotFound: true);
-        m_Player1Muve_MenuImput = m_Player1Muve.FindAction("MenuImput", throwIfNotFound: true);
         m_Player1Muve_ActionInput = m_Player1Muve.FindAction("ActionInput", throwIfNotFound: true);
         // Player2Muve
         m_Player2Muve = asset.FindActionMap("Player2Muve", throwIfNotFound: true);
         m_Player2Muve_MuveImput = m_Player2Muve.FindAction("MuveImput", throwIfNotFound: true);
-        m_Player2Muve_MenuImput = m_Player2Muve.FindAction("MenuImput", throwIfNotFound: true);
         m_Player2Muve_ActionInput = m_Player2Muve.FindAction("ActionInput", throwIfNotFound: true);
-        m_Player2Muve_Mause = m_Player2Muve.FindAction("Mause", throwIfNotFound: true);
+        m_Player2Muve_Mouse = m_Player2Muve.FindAction("Mouse", throwIfNotFound: true);
+        // UI Imputs
+        m_UIImputs = asset.FindActionMap("UI Imputs", throwIfNotFound: true);
+        m_UIImputs_MenuImput = m_UIImputs.FindAction("MenuImput", throwIfNotFound: true);
     }
 
     ~@PlayersImputMap()
     {
         UnityEngine.Debug.Assert(!m_Player1Muve.enabled, "This will cause a leak and performance issues, PlayersImputMap.Player1Muve.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Player2Muve.enabled, "This will cause a leak and performance issues, PlayersImputMap.Player2Muve.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_UIImputs.enabled, "This will cause a leak and performance issues, PlayersImputMap.UIImputs.Disable() has not been called.");
     }
 
     /// <summary>
@@ -647,7 +615,6 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player1Muve;
     private List<IPlayer1MuveActions> m_Player1MuveActionsCallbackInterfaces = new List<IPlayer1MuveActions>();
     private readonly InputAction m_Player1Muve_MuveImput;
-    private readonly InputAction m_Player1Muve_MenuImput;
     private readonly InputAction m_Player1Muve_ActionInput;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player1Muve".
@@ -664,10 +631,6 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player1Muve/MuveImput".
         /// </summary>
         public InputAction @MuveImput => m_Wrapper.m_Player1Muve_MuveImput;
-        /// <summary>
-        /// Provides access to the underlying input action "Player1Muve/MenuImput".
-        /// </summary>
-        public InputAction @MenuImput => m_Wrapper.m_Player1Muve_MenuImput;
         /// <summary>
         /// Provides access to the underlying input action "Player1Muve/ActionInput".
         /// </summary>
@@ -701,9 +664,6 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
             @MuveImput.started += instance.OnMuveImput;
             @MuveImput.performed += instance.OnMuveImput;
             @MuveImput.canceled += instance.OnMuveImput;
-            @MenuImput.started += instance.OnMenuImput;
-            @MenuImput.performed += instance.OnMenuImput;
-            @MenuImput.canceled += instance.OnMenuImput;
             @ActionInput.started += instance.OnActionInput;
             @ActionInput.performed += instance.OnActionInput;
             @ActionInput.canceled += instance.OnActionInput;
@@ -721,9 +681,6 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
             @MuveImput.started -= instance.OnMuveImput;
             @MuveImput.performed -= instance.OnMuveImput;
             @MuveImput.canceled -= instance.OnMuveImput;
-            @MenuImput.started -= instance.OnMenuImput;
-            @MenuImput.performed -= instance.OnMenuImput;
-            @MenuImput.canceled -= instance.OnMenuImput;
             @ActionInput.started -= instance.OnActionInput;
             @ActionInput.performed -= instance.OnActionInput;
             @ActionInput.canceled -= instance.OnActionInput;
@@ -765,9 +722,8 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player2Muve;
     private List<IPlayer2MuveActions> m_Player2MuveActionsCallbackInterfaces = new List<IPlayer2MuveActions>();
     private readonly InputAction m_Player2Muve_MuveImput;
-    private readonly InputAction m_Player2Muve_MenuImput;
     private readonly InputAction m_Player2Muve_ActionInput;
-    private readonly InputAction m_Player2Muve_Mause;
+    private readonly InputAction m_Player2Muve_Mouse;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player2Muve".
     /// </summary>
@@ -784,17 +740,13 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @MuveImput => m_Wrapper.m_Player2Muve_MuveImput;
         /// <summary>
-        /// Provides access to the underlying input action "Player2Muve/MenuImput".
-        /// </summary>
-        public InputAction @MenuImput => m_Wrapper.m_Player2Muve_MenuImput;
-        /// <summary>
         /// Provides access to the underlying input action "Player2Muve/ActionInput".
         /// </summary>
         public InputAction @ActionInput => m_Wrapper.m_Player2Muve_ActionInput;
         /// <summary>
-        /// Provides access to the underlying input action "Player2Muve/Mause".
+        /// Provides access to the underlying input action "Player2Muve/Mouse".
         /// </summary>
-        public InputAction @Mause => m_Wrapper.m_Player2Muve_Mause;
+        public InputAction @Mouse => m_Wrapper.m_Player2Muve_Mouse;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -824,15 +776,12 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
             @MuveImput.started += instance.OnMuveImput;
             @MuveImput.performed += instance.OnMuveImput;
             @MuveImput.canceled += instance.OnMuveImput;
-            @MenuImput.started += instance.OnMenuImput;
-            @MenuImput.performed += instance.OnMenuImput;
-            @MenuImput.canceled += instance.OnMenuImput;
             @ActionInput.started += instance.OnActionInput;
             @ActionInput.performed += instance.OnActionInput;
             @ActionInput.canceled += instance.OnActionInput;
-            @Mause.started += instance.OnMause;
-            @Mause.performed += instance.OnMause;
-            @Mause.canceled += instance.OnMause;
+            @Mouse.started += instance.OnMouse;
+            @Mouse.performed += instance.OnMouse;
+            @Mouse.canceled += instance.OnMouse;
         }
 
         /// <summary>
@@ -847,15 +796,12 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
             @MuveImput.started -= instance.OnMuveImput;
             @MuveImput.performed -= instance.OnMuveImput;
             @MuveImput.canceled -= instance.OnMuveImput;
-            @MenuImput.started -= instance.OnMenuImput;
-            @MenuImput.performed -= instance.OnMenuImput;
-            @MenuImput.canceled -= instance.OnMenuImput;
             @ActionInput.started -= instance.OnActionInput;
             @ActionInput.performed -= instance.OnActionInput;
             @ActionInput.canceled -= instance.OnActionInput;
-            @Mause.started -= instance.OnMause;
-            @Mause.performed -= instance.OnMause;
-            @Mause.canceled -= instance.OnMause;
+            @Mouse.started -= instance.OnMouse;
+            @Mouse.performed -= instance.OnMouse;
+            @Mouse.canceled -= instance.OnMouse;
         }
 
         /// <summary>
@@ -889,6 +835,102 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="Player2MuveActions" /> instance referencing this action map.
     /// </summary>
     public Player2MuveActions @Player2Muve => new Player2MuveActions(this);
+
+    // UI Imputs
+    private readonly InputActionMap m_UIImputs;
+    private List<IUIImputsActions> m_UIImputsActionsCallbackInterfaces = new List<IUIImputsActions>();
+    private readonly InputAction m_UIImputs_MenuImput;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "UI Imputs".
+    /// </summary>
+    public struct UIImputsActions
+    {
+        private @PlayersImputMap m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public UIImputsActions(@PlayersImputMap wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "UIImputs/MenuImput".
+        /// </summary>
+        public InputAction @MenuImput => m_Wrapper.m_UIImputs_MenuImput;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_UIImputs; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="UIImputsActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(UIImputsActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="UIImputsActions" />
+        public void AddCallbacks(IUIImputsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UIImputsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIImputsActionsCallbackInterfaces.Add(instance);
+            @MenuImput.started += instance.OnMenuImput;
+            @MenuImput.performed += instance.OnMenuImput;
+            @MenuImput.canceled += instance.OnMenuImput;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="UIImputsActions" />
+        private void UnregisterCallbacks(IUIImputsActions instance)
+        {
+            @MenuImput.started -= instance.OnMenuImput;
+            @MenuImput.performed -= instance.OnMenuImput;
+            @MenuImput.canceled -= instance.OnMenuImput;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="UIImputsActions.UnregisterCallbacks(IUIImputsActions)" />.
+        /// </summary>
+        /// <seealso cref="UIImputsActions.UnregisterCallbacks(IUIImputsActions)" />
+        public void RemoveCallbacks(IUIImputsActions instance)
+        {
+            if (m_Wrapper.m_UIImputsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="UIImputsActions.AddCallbacks(IUIImputsActions)" />
+        /// <seealso cref="UIImputsActions.RemoveCallbacks(IUIImputsActions)" />
+        /// <seealso cref="UIImputsActions.UnregisterCallbacks(IUIImputsActions)" />
+        public void SetCallbacks(IUIImputsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UIImputsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UIImputsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="UIImputsActions" /> instance referencing this action map.
+    /// </summary>
+    public UIImputsActions @UIImputs => new UIImputsActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player1Muve" which allows adding and removing callbacks.
     /// </summary>
@@ -903,13 +945,6 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMuveImput(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "MenuImput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMenuImput(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "ActionInput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -933,13 +968,6 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMuveImput(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "MenuImput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMenuImput(InputAction.CallbackContext context);
-        /// <summary>
         /// Method invoked when associated input action "ActionInput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -947,11 +975,26 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnActionInput(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Mause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Mouse" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMause(InputAction.CallbackContext context);
+        void OnMouse(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI Imputs" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="UIImputsActions.AddCallbacks(IUIImputsActions)" />
+    /// <seealso cref="UIImputsActions.RemoveCallbacks(IUIImputsActions)" />
+    public interface IUIImputsActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "MenuImput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMenuImput(InputAction.CallbackContext context);
     }
 }

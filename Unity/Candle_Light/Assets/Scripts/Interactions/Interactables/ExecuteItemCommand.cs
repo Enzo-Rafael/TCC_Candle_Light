@@ -11,6 +11,7 @@
 //----------------------------- Bibliotecas Usadas -------------------------------------
 
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ExecuteItemCommand : MonoBehaviour, IObserver
@@ -22,6 +23,10 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
     [Tooltip("Referência para se inscrever na lista de Observers de determinado item")]
     [SerializeField] 
     private ObserverEventChannelSO _observerEvent = default;
+
+    //-------------------------- Variaveis Globais Privadas --------------------------------
+
+    private bool bolean = false;
 
     /*------------------------------------------------------------------------------
     Função:     OnEnable
@@ -53,6 +58,7 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
         switch(itemCommand.itemType.actionType){
             case ItemTypeSO.ItemActionType.Toggle:
             Debug.Log("Toggle Item");
+            ToggleItem();
             break;
             case ItemTypeSO.ItemActionType.Cosume:
             Debug.Log("Consume Item");
@@ -61,5 +67,10 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
             Debug.Log("Trigger Item");
             break;
         }
+    }
+
+    private void ToggleItem(){
+        bolean = !bolean;
+        this.gameObject.SetActive(bolean);
     }
 }

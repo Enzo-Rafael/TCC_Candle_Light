@@ -13,6 +13,7 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using System.Data;
 
 public class ItemManager : MonoBehaviour
 {	
@@ -59,7 +60,7 @@ public class ItemManager : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     private void UseItemEventRaised(ItemSO item){
-
+        Debug.Log(item.itemName);
     }
 
     /*------------------------------------------------------------------------------
@@ -69,6 +70,6 @@ public class ItemManager : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     private void EquipItemEventRaised(ItemSO item){
-
+        Debug.Log(item.itemName);
     }
 }

@@ -29,12 +29,16 @@ public class InteractionManager : MonoBehaviour
     [SerializeField] 
     private ItemEventChannelSO _equipItemEvent = default;
 
-
-
     //------------------------- Variaveis Globais privadas -------------------------------
 
     private LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
 
+    //Só pra testar enquanto não juntamos as branchs do new inputsystem
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.Space)){
+            UseInteractionType();
+        }
+    }
     /*------------------------------------------------------------------------------
     Função:     OnTriggerDetected
     Descrição:  Designa se o item dentro do range deve ser removido ou adicionado a lista de possiveis interações.
@@ -80,12 +84,14 @@ public class InteractionManager : MonoBehaviour
     Entrada:    GameObject -  Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void UseInteractionType(GameObject itemInteratable){
-        ItemSO item = itemInteratable.GetComponent<ItemInteractable>().GetItem();
-        ObserverEventChannelSO observer = itemInteratable.GetComponent<ItemInteractable>().GetObserver();
+    public void UseInteractionType(){
+        if(potentialInteractions.Count == 0) return;
+        ItemSO item = potentialInteractions.First.Value.GetComponent<ItemInteractable>().GetItem();
+        ObserverEventChannelSO observer = potentialInteractions.First.Value.GetComponent<ItemInteractable>().GetObserver();
         switch(item.itemType.interactionType){
             case ItemTypeSO.ItemInteractType.Use:
             Debug.Log("ItemUse");
+            observer.NotifyObservers(item);
             //chama animação, notifica os observadores... etc
             break;
             case ItemTypeSO.ItemInteractType.Equip:

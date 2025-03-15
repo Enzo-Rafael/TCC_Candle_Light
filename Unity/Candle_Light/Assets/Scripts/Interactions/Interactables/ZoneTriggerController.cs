@@ -1,8 +1,8 @@
 /**************************************************************
     Jogos Digitais SG
-    ItemInteractable
+    ZoneTriggerController
 
-    Descrição: Gerencia as funções do item.
+    Descrição: Verifica qualquer colição com as itens de layers especificas.
 
     Candle Light - Jogos Digitais LURDES –  13/03/2024
     Modificado por: Italo 
@@ -15,7 +15,8 @@ using UnityEngine;
 using UnityEngine.Events;
 [System.Serializable]
 public class BoolEvent : UnityEvent<bool, GameObject> { }
-[RequireComponent(typeof(BoxCollider))]
+
+[RequireComponent(typeof(BoxCollider)), RequireComponent(typeof(Rigidbody))]
 public class ZoneTriggerController : MonoBehaviour
 {
     
@@ -34,8 +35,7 @@ public class ZoneTriggerController : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
 	private void OnTriggerEnter(Collider other){
-		if ((1 << other.gameObject.layer & _layers) != 0)
-		{
+		if ((1 << other.gameObject.layer & _layers) != 0){
 			_enterZone.Invoke(true, other.gameObject);
 		}
 	}
@@ -47,8 +47,8 @@ public class ZoneTriggerController : MonoBehaviour
     ------------------------------------------------------------------------------*/
 	private void OnTriggerExit(Collider other)
 	{
-		if ((1 << other.gameObject.layer & _layers) != 0)
-		{
+		if ((1 << other.gameObject.layer & _layers) != 0){
+            Debug.Log(other.gameObject.name);
 			_enterZone.Invoke(false, other.gameObject);
 		}
 	}

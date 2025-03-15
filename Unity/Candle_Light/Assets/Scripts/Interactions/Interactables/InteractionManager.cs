@@ -37,7 +37,7 @@ public class InteractionManager : MonoBehaviour
 
     /*------------------------------------------------------------------------------
     Função:     OnTriggerDetected
-    Descrição:  Desregistra o Objeto na lista de Observadores do item especifico.
+    Descrição:  Designa se o item dentro do range deve ser removido ou adicionado a lista de possiveis interações.
     Entrada:    bool -  Verifica se o objeto entrou ou saiu do range da interação.
                 GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
@@ -49,24 +49,31 @@ public class InteractionManager : MonoBehaviour
             RemovePotentialInteraction(itemInteratable);
         }
     }
+    /*------------------------------------------------------------------------------
+    Função:     AddPotentialInteraction
+    Descrição:  Adiciona uma possivel interação do player a lista.
+    Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
+    Saída:      -
+    ------------------------------------------------------------------------------*/
 	private void AddPotentialInteraction(GameObject itemInteratable){
         potentialInteractions.AddFirst(itemInteratable);
-        Debug.Log("Adicionei na lista");
     }
+    /*------------------------------------------------------------------------------
+    Função:     RemovePotentialInteraction
+    Descrição:  Remove uma possivel interação do player a lista.
+    Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
+    Saída:      -
+    ------------------------------------------------------------------------------*/
 	private void RemovePotentialInteraction(GameObject itemInteratable){
 		LinkedListNode<GameObject> currentNode = potentialInteractions.First;
-		while (currentNode != null)
-		{
-			if (currentNode.Value == itemInteratable)
-			{
+		while (currentNode != null){
+			if (currentNode.Value == itemInteratable){
 				potentialInteractions.Remove(currentNode);
 				break;
 			}
 			currentNode = currentNode.Next;
-            Debug.Log("Tirei da lista");
 		}
     }
-
     /*------------------------------------------------------------------------------
     Função:     UseInteractionType
     Descrição:  verifica qual a interação do item e executa as ações necessarias.

@@ -4,9 +4,9 @@
 
     Descrição: Canal de comunicação entre para as funções que dizem o que os itens fazem.
 
-    Bloody Gears - Jogos Digitais SG –  09/03/2024
+    Candle Light - Jogos Digitais LURDES –  13/03/2024
     Modificado por: Italo 
-    Referencias: Unity ChopyChopy
+    Referencias: Unity Chop Chop
 ***************************************************************/
 
 //----------------------------- Bibliotecas Usadas -------------------------------------

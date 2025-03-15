@@ -4,9 +4,9 @@
 
     Descrição: Definição do tipo de qual tipo o item é.
 
-    Bloody Gears - Jogos Digitais SG –  09/03/2024
+    Candle Light - Jogos Digitais LURDES –  13/03/2024
     Modificado por: Italo 
-    Referencias: Unity ChopyChopy
+    Referencias: Unity Chop Chop
 ***************************************************************/
 
 //----------------------------- Bibliotecas Usadas -------------------------------------
@@ -20,6 +20,7 @@ public class ItemTypeSO : ScriptableObject
         Use,
         Equip,
     }
+
     public enum ItemActionType{
         Toggle,
         Cosume,
@@ -29,11 +30,13 @@ public class ItemTypeSO : ScriptableObject
 
 //-------------------------- Variaveis Globais Privadas --------------------------------
 
-    [Tooltip("Qual ação o item faz")]
-    [SerializeField] ItemActionType _actionType;
+    [Tooltip("Tipo de ação que o item fará ao interagirem com ele")]
+    [SerializeField] 
+    private ItemActionType _actionType;
 
-    [Tooltip("O que o jogador fará com item")]
-    [SerializeField] ItemInteractType _interactionType;
+    [Tooltip("Tipo de interação que o item é")]
+    [SerializeField] 
+    private ItemInteractType _interactionType;
     
 //-------------------------- Variaveis Globais Visiveis --------------------------------
 

@@ -2,14 +2,15 @@
     Jogos Digitais SG
     ItemManager
 
-    Descrição: Gerencia as funções do item.
+    Descrição: Gerencia as funções que um item pode exercer.
 
-    Bloody Gears - Jogos Digitais SG –  06/03/2024
+    Candle Light - Jogos Digitais LURDES –  13/03/2024
     Modificado por: Italo 
-    Referencias: Unity ChopyChopy
+    Referências: Unity Chop Chop
 ***************************************************************/
 
 //----------------------------- Bibliotecas Usadas -------------------------------------
+
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -19,9 +20,14 @@ public class ItemManager : MonoBehaviour
 //-------------------------- Variaveis Globais Visiveis --------------------------------
 
     [Header("Ouvindo")]
-    [SerializeField] private ItemEventChannelSO _itemToggleEvent = default;
-    [SerializeField] private ItemEventChannelSO _itemTriggerEvent = default;
-    [SerializeField] private ItemEventChannelSO _itemConsumeEvent = default;
+
+    [Tooltip("Referência para associar o que o item fará quando usado/interagido")]
+    [SerializeField] 
+    private ItemEventChannelSO _UseItemEvent = default;
+
+    [Tooltip("Referência para associar o que o item fará quando equipado")]
+    [SerializeField] 
+    private ItemEventChannelSO _equipItemEvent = default;
 
     /*------------------------------------------------------------------------------
     Função:     OnEnable
@@ -31,9 +37,8 @@ public class ItemManager : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     private void OnEnable(){
-        _itemTriggerEvent.OnEventRaised += UseItemToggleEventRaised;
-        _itemTriggerEvent.OnEventRaised += UseItemTriggerEventRaised;
-        _itemTriggerEvent.OnEventRaised += UseItemConsumeEventRaised;
+        _UseItemEvent.OnEventRaised += UseItemEventRaised;
+        _equipItemEvent.OnEventRaised += EquipItemEventRaised;
     }
     /*------------------------------------------------------------------------------
     Função:     OnDisable
@@ -43,43 +48,27 @@ public class ItemManager : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     private void OnDisable(){
-        _itemTriggerEvent.OnEventRaised -= UseItemToggleEventRaised;
-        _itemTriggerEvent.OnEventRaised -= UseItemTriggerEventRaised;
-        _itemTriggerEvent.OnEventRaised -= UseItemConsumeEventRaised;
+        _UseItemEvent.OnEventRaised -= UseItemEventRaised;
+        _equipItemEvent.OnEventRaised -= EquipItemEventRaised;
     }
 
     /*------------------------------------------------------------------------------
-    Função:     UseItemToggleEventRaised
-    Descrição:  .
-    Entrada:    -
+    Função:     UseItemEventRaised
+    Descrição:  O que o item/interagivel fara quando usado.
+    Entrada:    ItemSO - Guarda as informações basicas de cada item.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void UseItemToggleEventRaised(ItemSO item){
+    private void UseItemEventRaised(ItemSO item){
 
     }
 
     /*------------------------------------------------------------------------------
-    Função:     UseItemToggleEventRaised
-    Descrição:  
-    Entrada:    -
+    Função:     EquipItemEventRaised
+    Descrição:  O que o item/interagivel fara quando equipado.
+    Entrada:    ItemSO - Guarda as informações basicas de cada item.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void UseItemTriggerEventRaised(ItemSO item){
-        switch(item.itemType.interactionType){
-            case ItemTypeSO.ItemInteractType.Use:
-            break;
-            case ItemTypeSO.ItemInteractType.Equip:
-            break;
-        }
-    }
-
-    /*------------------------------------------------------------------------------
-    Função:     UseItemToggleEventRaised
-    Descrição:  .
-    Entrada:    -
-    Saída:      -
-    ------------------------------------------------------------------------------*/
-    private void UseItemConsumeEventRaised(ItemSO item){
+    private void EquipItemEventRaised(ItemSO item){
 
     }
 }

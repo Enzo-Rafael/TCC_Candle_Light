@@ -1,0 +1,57 @@
+/**************************************************************
+    Jogos Digitais SG
+    ObserverEventChannelSO
+
+    Descrição: Associa um item a um observador especifico que queira ser noficiado.
+
+    Candle Light - Jogos Digitais LURDES –  13/03/2024
+    Modificado por: Italo 
+    Referências: https://refactoring.guru/pt-br/design-patterns/observer
+***************************************************************/
+
+//----------------------------- Bibliotecas Usadas -------------------------------------
+
+using UnityEngine;
+using System.Collections.Generic;
+
+[CreateAssetMenu(menuName = "Events/Observer Event Channel")]
+public class ObserverEventChannelSO : ScriptableObject
+{
+    private List<IObserver> observers = new List<IObserver>();
+
+    /*------------------------------------------------------------------------------
+    Função:     RegisterObserver
+    Descrição:  Registra qualquer Oberservador que queira receber informações sobre um interagivel especifico.
+    Entrada:    IObserver - Qual Objeto quer ser adicionado na lista.
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void RegisterObserver(IObserver observer){
+        if (!observers.Contains(observer)) observers.Add(observer);
+    }
+    /*------------------------------------------------------------------------------
+    Função:     UnregisterObserver
+    Descrição:  Desregistra qualquer Oberservador que queira receber informações sobre um interagivel especifico.
+    Entrada:    IObserver - Qual Objeto quer ser retirado da lista.
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void UnregisterObserver(IObserver observer){
+        if (observers.Contains(observer)) observers.Remove(observer);
+    }
+    /*------------------------------------------------------------------------------
+    Função:     NotifyObservers
+    Descrição:  Notifica todos os Observadores que se registraram para executarem uma função.
+    Entrada:    ItemSO - item que ditará qual ação o Observador fará.
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void NotifyObservers(ItemSO item)
+    {
+        if(observers != null){
+            foreach (var observer in observers){
+                observer.OnEventRaised(item);
+            }
+        }
+    }
+}
+
+
+

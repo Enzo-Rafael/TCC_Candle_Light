@@ -4,9 +4,9 @@
 
     Descrição: Caracteristicas bases dos interagiveis.
 
-    Bloody Gears - Jogos Digitais SG –  09/03/2024
+    Candle Light - Jogos Digitais LURDES –  13/03/2024
     Modificado por: Italo 
-    Referencias: Unity ChopyChopy
+    Referencias: Unity Chop Chop
 ***************************************************************/
 
 //----------------------------- Bibliotecas Usadas -------------------------------------
@@ -30,7 +30,7 @@ public class ItemSO : ScriptableObject
 
     [Tooltip("O prefab do item")]
     [SerializeField] 
-    GameObject _prefab = default;
+    private GameObject _prefab = default;
 
     [Tooltip("Animação do item")]
     [SerializeField] 

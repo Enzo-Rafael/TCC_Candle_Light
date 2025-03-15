@@ -102,7 +102,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""ActionInput"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""94e0f2a6-eaa4-4a25-8666-9f2b619e66d5"",
                     ""expectedControlType"": """",
                     ""processors"": """",
@@ -268,7 +268,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c91bebcc-8764-4e60-9387-5961d4e19462"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -293,7 +293,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""ActionInput"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""d904301f-7bf8-48b0-a6c1-61bc78bf4971"",
                     ""expectedControlType"": """",
                     ""processors"": """",

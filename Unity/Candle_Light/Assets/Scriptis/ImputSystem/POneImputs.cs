@@ -4,34 +4,34 @@ using UnityEngine.InputSystem;
 public class POneImputs : MonoBehaviour
 {
     //
-    public Vector3 MoveImput {get; private set;} = Vector3.zero;
-    public bool MenuImput {get; private set;} = false;
-    public bool ActionImput {get; private set;} = false;
+    public Vector3 MoveInput {get; private set;} = Vector3.zero;
+    public bool MenuInput {get; private set;} = false;
+    public bool ActionInput {get; private set;} = false;
 
-    PlayersImputMap _Input = null;
+    PlayersInputMap _Input = null;
     //Puxa os imputs do imput manager para codigo 
     private void OnEnable()
     {
-        _Input = new PlayersImputMap();
-        _Input.Player1Muve.Enable();
-        _Input.Player1Muve.MuveImput.performed += SetMuve;
-        _Input.Player1Muve.ActionInput.performed += SetBtn;
-        _Input.Player1Muve.MuveImput.canceled += SetMuve;
-        _Input.Player1Muve.ActionInput.canceled += SetBtn;
+        _Input = new PlayersInputMap();
+        _Input.Player1Move.Enable();
+        _Input.Player1Move.MoveInput.performed += SetMove;
+        _Input.Player1Move.ActionInput.performed += SetBtn;
+        _Input.Player1Move.MoveInput.canceled += SetMove;
+        _Input.Player1Move.ActionInput.canceled += SetBtn;
         
     }
     private void OnDisable()//Desativa os imputs
     {
-        _Input.Player1Muve.MuveImput.performed -= SetMuve;
-        _Input.Player1Muve.MuveImput.canceled -= SetMuve;
-        _Input.Player1Muve.ActionInput.performed -= SetBtn;
-        _Input.Player1Muve.ActionInput.canceled -= SetBtn;
-        _Input.Player1Muve.Disable();
+        _Input.Player1Move.MoveInput.performed -= SetMove;
+        _Input.Player1Move.MoveInput.canceled -= SetMove;
+        _Input.Player1Move.ActionInput.performed -= SetBtn;
+        _Input.Player1Move.ActionInput.canceled -= SetBtn;
+        _Input.Player1Move.Disable();
     }
-    void SetMuve(InputAction.CallbackContext ctx){
-        MoveImput = ctx.ReadValue<Vector3>();
+    void SetMove(InputAction.CallbackContext ctx){
+        MoveInput = ctx.ReadValue<Vector3>();
     }
     void SetBtn(InputAction.CallbackContext ctx){
-        ActionImput = ctx.ReadValue<bool>();
+        ActionInput = ctx.ReadValue<bool>();
     }
 }

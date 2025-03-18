@@ -1,16 +1,24 @@
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class FirstPersonCam : MonoBehaviour
 {
     //Variaveis
-    PTwoImputs GetIput;
+    PTwoImputs GetImput;
+    [Header("Tranforms de referencia")]
     public Transform playerBody;//vai dar a posição do player
     public Transform playerHead;//onde a camera deve ficar
-
+    [Header("Sencibilidade")][Range(0f,1f)]
+    public float sensibility = 0.5f;
+    [Header("Limite de Rotação Camera")]
+    public float rotationX = 0;//Para limita a rotação da camera em X e Y
+    public float rotationY = 0;
+    public float angleYmax =  90;
+    public float angleYmin = -90;
     //Metodos
     private void Awake()
     {
-       GetIput = playerBody.GetComponent<PTwoImputs>();
+       GetImput = playerBody.GetComponent<PTwoImputs>();
     }
     //Metodos
     private void LateUpdate()
@@ -20,9 +28,14 @@ public class FirstPersonCam : MonoBehaviour
 
     void Update()
     {
-        playerBody.localEulerAngles = new Vector3(0,GetIput.MouseImput.x,0);
+        
+        rotationX = GetImput.MouseImput.x;
+        rotationY = GetImput.MouseImput.y;
+        rotationY = Mathf.Clamp(rotationY, angleYmin, angleYmax);
 
-        transform.localEulerAngles = new Vector3(-GetIput.MouseImput.y, GetIput.MouseImput.x, 0);
+        playerBody.localEulerAngles = new Vector3(0,rotationX,0);
+
+        transform.localEulerAngles = new Vector3(-rotationY , rotationX, 0)* sensibility;
     }
 
 }

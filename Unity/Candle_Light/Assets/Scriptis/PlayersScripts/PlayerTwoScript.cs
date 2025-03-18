@@ -6,24 +6,29 @@ public class PlayerTwoScript : MonoBehaviour
 {
     //Variaveis
     PTwoImputs GetIput;
+    OthersImputs GetOthersImpus;
     Vector3 playerMuve;
     public float velocity;
     public CharacterController controller;
     private bool groundedPlayer;
 
-    //test
+    //Orientação para o movimento
     private Vector3 forward;
     private Vector3 strafe;
     private Vector3 vetical;
+
+    
     //Metodos
     private void Awake()
     {
        GetIput = GetComponent<PTwoImputs>();
+       GetOthersImpus = GetComponent<OthersImputs>();
     }
 
 
     void Update()
     {
+        
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerMuve.y < 0)
         {

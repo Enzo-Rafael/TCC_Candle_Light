@@ -88,11 +88,11 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
     ""name"": ""PlayersImputMap"",
     ""maps"": [
         {
-            ""name"": ""Player1Muve"",
+            ""name"": ""Player1Move"",
             ""id"": ""2a7db825-d0b2-4f2a-b1d6-e0acc4a7a319"",
             ""actions"": [
                 {
-                    ""name"": ""MuveImput"",
+                    ""name"": ""MoveInput"",
                     ""type"": ""Value"",
                     ""id"": ""01f684e2-3a81-4f0d-a104-0d02fff954d6"",
                     ""expectedControlType"": ""Vector3"",
@@ -118,7 +118,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -129,7 +129,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -140,7 +140,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -151,7 +151,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -162,7 +162,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -173,7 +173,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -184,7 +184,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -195,7 +195,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -206,7 +206,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -217,7 +217,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -228,7 +228,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -239,7 +239,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -250,7 +250,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -261,7 +261,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -279,11 +279,11 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Player2Muve"",
+            ""name"": ""Player2Move"",
             ""id"": ""42ad252d-9f22-4616-a64d-47dcafee263c"",
             ""actions"": [
                 {
-                    ""name"": ""MuveImput"",
+                    ""name"": ""MoveInput"",
                     ""type"": ""Value"",
                     ""id"": ""7e704e03-cc5b-4ccc-8662-84af1d2f49dd"",
                     ""expectedControlType"": ""Vector3"",
@@ -318,7 +318,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -329,7 +329,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -340,7 +340,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -351,7 +351,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -362,7 +362,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -373,7 +373,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -384,7 +384,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -395,7 +395,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -406,7 +406,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -417,7 +417,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -428,7 +428,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -439,7 +439,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -450,7 +450,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -461,7 +461,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MuveImput"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -490,11 +490,11 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""UI Imputs"",
+            ""name"": ""UI Inputs"",
             ""id"": ""c54e27f8-16d5-4604-9f47-f9971d3e9449"",
             ""actions"": [
                 {
-                    ""name"": ""MenuImput"",
+                    ""name"": ""MenuInput"",
                     ""type"": ""Button"",
                     ""id"": ""321f2365-fc4f-4df6-b4b3-542f84bb047d"",
                     ""expectedControlType"": """",
@@ -511,7 +511,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MenuImput"",
+                    ""action"": ""MenuInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -520,25 +520,25 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Player1Muve
-        m_Player1Muve = asset.FindActionMap("Player1Muve", throwIfNotFound: true);
-        m_Player1Muve_MuveImput = m_Player1Muve.FindAction("MuveImput", throwIfNotFound: true);
-        m_Player1Muve_ActionInput = m_Player1Muve.FindAction("ActionInput", throwIfNotFound: true);
-        // Player2Muve
-        m_Player2Muve = asset.FindActionMap("Player2Muve", throwIfNotFound: true);
-        m_Player2Muve_MuveImput = m_Player2Muve.FindAction("MuveImput", throwIfNotFound: true);
-        m_Player2Muve_ActionInput = m_Player2Muve.FindAction("ActionInput", throwIfNotFound: true);
-        m_Player2Muve_Mouse = m_Player2Muve.FindAction("Mouse", throwIfNotFound: true);
-        // UI Imputs
-        m_UIImputs = asset.FindActionMap("UI Imputs", throwIfNotFound: true);
-        m_UIImputs_MenuImput = m_UIImputs.FindAction("MenuImput", throwIfNotFound: true);
+        // Player1Move
+        m_Player1Move = asset.FindActionMap("Player1Move", throwIfNotFound: true);
+        m_Player1Move_MoveInput = m_Player1Move.FindAction("MoveInput", throwIfNotFound: true);
+        m_Player1Move_ActionInput = m_Player1Move.FindAction("ActionInput", throwIfNotFound: true);
+        // Player2Move
+        m_Player2Move = asset.FindActionMap("Player2Move", throwIfNotFound: true);
+        m_Player2Move_MoveInput = m_Player2Move.FindAction("MoveInput", throwIfNotFound: true);
+        m_Player2Move_ActionInput = m_Player2Move.FindAction("ActionInput", throwIfNotFound: true);
+        m_Player2Move_Mouse = m_Player2Move.FindAction("Mouse", throwIfNotFound: true);
+        // UI Inputs
+        m_UIInputs = asset.FindActionMap("UI Inputs", throwIfNotFound: true);
+        m_UIInputs_MenuInput = m_UIInputs.FindAction("MenuInput", throwIfNotFound: true);
     }
 
     ~@PlayersImputMap()
     {
-        UnityEngine.Debug.Assert(!m_Player1Muve.enabled, "This will cause a leak and performance issues, PlayersImputMap.Player1Muve.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Player2Muve.enabled, "This will cause a leak and performance issues, PlayersImputMap.Player2Muve.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_UIImputs.enabled, "This will cause a leak and performance issues, PlayersImputMap.UIImputs.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Player1Move.enabled, "This will cause a leak and performance issues, PlayersImputMap.Player1Move.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Player2Move.enabled, "This will cause a leak and performance issues, PlayersImputMap.Player2Move.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_UIInputs.enabled, "This will cause a leak and performance issues, PlayersImputMap.UIInputs.Disable() has not been called.");
     }
 
     /// <summary>
@@ -611,34 +611,34 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Player1Muve
-    private readonly InputActionMap m_Player1Muve;
-    private List<IPlayer1MuveActions> m_Player1MuveActionsCallbackInterfaces = new List<IPlayer1MuveActions>();
-    private readonly InputAction m_Player1Muve_MuveImput;
-    private readonly InputAction m_Player1Muve_ActionInput;
+    // Player1Move
+    private readonly InputActionMap m_Player1Move;
+    private List<IPlayer1MoveActions> m_Player1MoveActionsCallbackInterfaces = new List<IPlayer1MoveActions>();
+    private readonly InputAction m_Player1Move_MoveInput;
+    private readonly InputAction m_Player1Move_ActionInput;
     /// <summary>
-    /// Provides access to input actions defined in input action map "Player1Muve".
+    /// Provides access to input actions defined in input action map "Player1Move".
     /// </summary>
-    public struct Player1MuveActions
+    public struct Player1MoveActions
     {
         private @PlayersImputMap m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public Player1MuveActions(@PlayersImputMap wrapper) { m_Wrapper = wrapper; }
+        public Player1MoveActions(@PlayersImputMap wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Player1Muve/MuveImput".
+        /// Provides access to the underlying input action "Player1Move/MoveInput".
         /// </summary>
-        public InputAction @MuveImput => m_Wrapper.m_Player1Muve_MuveImput;
+        public InputAction @MoveInput => m_Wrapper.m_Player1Move_MoveInput;
         /// <summary>
-        /// Provides access to the underlying input action "Player1Muve/ActionInput".
+        /// Provides access to the underlying input action "Player1Move/ActionInput".
         /// </summary>
-        public InputAction @ActionInput => m_Wrapper.m_Player1Muve_ActionInput;
+        public InputAction @ActionInput => m_Wrapper.m_Player1Move_ActionInput;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Player1Muve; }
+        public InputActionMap Get() { return m_Wrapper.m_Player1Move; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -646,9 +646,9 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="Player1MuveActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="Player1MoveActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(Player1MuveActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(Player1MoveActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -656,14 +656,14 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="Player1MuveActions" />
-        public void AddCallbacks(IPlayer1MuveActions instance)
+        /// <seealso cref="Player1MoveActions" />
+        public void AddCallbacks(IPlayer1MoveActions instance)
         {
-            if (instance == null || m_Wrapper.m_Player1MuveActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_Player1MuveActionsCallbackInterfaces.Add(instance);
-            @MuveImput.started += instance.OnMuveImput;
-            @MuveImput.performed += instance.OnMuveImput;
-            @MuveImput.canceled += instance.OnMuveImput;
+            if (instance == null || m_Wrapper.m_Player1MoveActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Player1MoveActionsCallbackInterfaces.Add(instance);
+            @MoveInput.started += instance.OnMoveInput;
+            @MoveInput.performed += instance.OnMoveInput;
+            @MoveInput.canceled += instance.OnMoveInput;
             @ActionInput.started += instance.OnActionInput;
             @ActionInput.performed += instance.OnActionInput;
             @ActionInput.canceled += instance.OnActionInput;
@@ -675,24 +675,24 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="Player1MuveActions" />
-        private void UnregisterCallbacks(IPlayer1MuveActions instance)
+        /// <seealso cref="Player1MoveActions" />
+        private void UnregisterCallbacks(IPlayer1MoveActions instance)
         {
-            @MuveImput.started -= instance.OnMuveImput;
-            @MuveImput.performed -= instance.OnMuveImput;
-            @MuveImput.canceled -= instance.OnMuveImput;
+            @MoveInput.started -= instance.OnMoveInput;
+            @MoveInput.performed -= instance.OnMoveInput;
+            @MoveInput.canceled -= instance.OnMoveInput;
             @ActionInput.started -= instance.OnActionInput;
             @ActionInput.performed -= instance.OnActionInput;
             @ActionInput.canceled -= instance.OnActionInput;
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="Player1MuveActions.UnregisterCallbacks(IPlayer1MuveActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="Player1MoveActions.UnregisterCallbacks(IPlayer1MoveActions)" />.
         /// </summary>
-        /// <seealso cref="Player1MuveActions.UnregisterCallbacks(IPlayer1MuveActions)" />
-        public void RemoveCallbacks(IPlayer1MuveActions instance)
+        /// <seealso cref="Player1MoveActions.UnregisterCallbacks(IPlayer1MoveActions)" />
+        public void RemoveCallbacks(IPlayer1MoveActions instance)
         {
-            if (m_Wrapper.m_Player1MuveActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_Player1MoveActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -702,55 +702,55 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="Player1MuveActions.AddCallbacks(IPlayer1MuveActions)" />
-        /// <seealso cref="Player1MuveActions.RemoveCallbacks(IPlayer1MuveActions)" />
-        /// <seealso cref="Player1MuveActions.UnregisterCallbacks(IPlayer1MuveActions)" />
-        public void SetCallbacks(IPlayer1MuveActions instance)
+        /// <seealso cref="Player1MoveActions.AddCallbacks(IPlayer1MoveActions)" />
+        /// <seealso cref="Player1MoveActions.RemoveCallbacks(IPlayer1MoveActions)" />
+        /// <seealso cref="Player1MoveActions.UnregisterCallbacks(IPlayer1MoveActions)" />
+        public void SetCallbacks(IPlayer1MoveActions instance)
         {
-            foreach (var item in m_Wrapper.m_Player1MuveActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_Player1MoveActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_Player1MuveActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_Player1MoveActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="Player1MuveActions" /> instance referencing this action map.
+    /// Provides a new <see cref="Player1MoveActions" /> instance referencing this action map.
     /// </summary>
-    public Player1MuveActions @Player1Muve => new Player1MuveActions(this);
+    public Player1MoveActions @Player1Move => new Player1MoveActions(this);
 
-    // Player2Muve
-    private readonly InputActionMap m_Player2Muve;
-    private List<IPlayer2MuveActions> m_Player2MuveActionsCallbackInterfaces = new List<IPlayer2MuveActions>();
-    private readonly InputAction m_Player2Muve_MuveImput;
-    private readonly InputAction m_Player2Muve_ActionInput;
-    private readonly InputAction m_Player2Muve_Mouse;
+    // Player2Move
+    private readonly InputActionMap m_Player2Move;
+    private List<IPlayer2MoveActions> m_Player2MoveActionsCallbackInterfaces = new List<IPlayer2MoveActions>();
+    private readonly InputAction m_Player2Move_MoveInput;
+    private readonly InputAction m_Player2Move_ActionInput;
+    private readonly InputAction m_Player2Move_Mouse;
     /// <summary>
-    /// Provides access to input actions defined in input action map "Player2Muve".
+    /// Provides access to input actions defined in input action map "Player2Move".
     /// </summary>
-    public struct Player2MuveActions
+    public struct Player2MoveActions
     {
         private @PlayersImputMap m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public Player2MuveActions(@PlayersImputMap wrapper) { m_Wrapper = wrapper; }
+        public Player2MoveActions(@PlayersImputMap wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Player2Muve/MuveImput".
+        /// Provides access to the underlying input action "Player2Move/MoveInput".
         /// </summary>
-        public InputAction @MuveImput => m_Wrapper.m_Player2Muve_MuveImput;
+        public InputAction @MoveInput => m_Wrapper.m_Player2Move_MoveInput;
         /// <summary>
-        /// Provides access to the underlying input action "Player2Muve/ActionInput".
+        /// Provides access to the underlying input action "Player2Move/ActionInput".
         /// </summary>
-        public InputAction @ActionInput => m_Wrapper.m_Player2Muve_ActionInput;
+        public InputAction @ActionInput => m_Wrapper.m_Player2Move_ActionInput;
         /// <summary>
-        /// Provides access to the underlying input action "Player2Muve/Mouse".
+        /// Provides access to the underlying input action "Player2Move/Mouse".
         /// </summary>
-        public InputAction @Mouse => m_Wrapper.m_Player2Muve_Mouse;
+        public InputAction @Mouse => m_Wrapper.m_Player2Move_Mouse;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Player2Muve; }
+        public InputActionMap Get() { return m_Wrapper.m_Player2Move; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -758,9 +758,9 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="Player2MuveActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="Player2MoveActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(Player2MuveActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(Player2MoveActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -768,14 +768,14 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="Player2MuveActions" />
-        public void AddCallbacks(IPlayer2MuveActions instance)
+        /// <seealso cref="Player2MoveActions" />
+        public void AddCallbacks(IPlayer2MoveActions instance)
         {
-            if (instance == null || m_Wrapper.m_Player2MuveActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_Player2MuveActionsCallbackInterfaces.Add(instance);
-            @MuveImput.started += instance.OnMuveImput;
-            @MuveImput.performed += instance.OnMuveImput;
-            @MuveImput.canceled += instance.OnMuveImput;
+            if (instance == null || m_Wrapper.m_Player2MoveActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Player2MoveActionsCallbackInterfaces.Add(instance);
+            @MoveInput.started += instance.OnMoveInput;
+            @MoveInput.performed += instance.OnMoveInput;
+            @MoveInput.canceled += instance.OnMoveInput;
             @ActionInput.started += instance.OnActionInput;
             @ActionInput.performed += instance.OnActionInput;
             @ActionInput.canceled += instance.OnActionInput;
@@ -790,12 +790,12 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="Player2MuveActions" />
-        private void UnregisterCallbacks(IPlayer2MuveActions instance)
+        /// <seealso cref="Player2MoveActions" />
+        private void UnregisterCallbacks(IPlayer2MoveActions instance)
         {
-            @MuveImput.started -= instance.OnMuveImput;
-            @MuveImput.performed -= instance.OnMuveImput;
-            @MuveImput.canceled -= instance.OnMuveImput;
+            @MoveInput.started -= instance.OnMoveInput;
+            @MoveInput.performed -= instance.OnMoveInput;
+            @MoveInput.canceled -= instance.OnMoveInput;
             @ActionInput.started -= instance.OnActionInput;
             @ActionInput.performed -= instance.OnActionInput;
             @ActionInput.canceled -= instance.OnActionInput;
@@ -805,12 +805,12 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="Player2MuveActions.UnregisterCallbacks(IPlayer2MuveActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="Player2MoveActions.UnregisterCallbacks(IPlayer2MoveActions)" />.
         /// </summary>
-        /// <seealso cref="Player2MuveActions.UnregisterCallbacks(IPlayer2MuveActions)" />
-        public void RemoveCallbacks(IPlayer2MuveActions instance)
+        /// <seealso cref="Player2MoveActions.UnregisterCallbacks(IPlayer2MoveActions)" />
+        public void RemoveCallbacks(IPlayer2MoveActions instance)
         {
-            if (m_Wrapper.m_Player2MuveActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_Player2MoveActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -820,45 +820,45 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="Player2MuveActions.AddCallbacks(IPlayer2MuveActions)" />
-        /// <seealso cref="Player2MuveActions.RemoveCallbacks(IPlayer2MuveActions)" />
-        /// <seealso cref="Player2MuveActions.UnregisterCallbacks(IPlayer2MuveActions)" />
-        public void SetCallbacks(IPlayer2MuveActions instance)
+        /// <seealso cref="Player2MoveActions.AddCallbacks(IPlayer2MoveActions)" />
+        /// <seealso cref="Player2MoveActions.RemoveCallbacks(IPlayer2MoveActions)" />
+        /// <seealso cref="Player2MoveActions.UnregisterCallbacks(IPlayer2MoveActions)" />
+        public void SetCallbacks(IPlayer2MoveActions instance)
         {
-            foreach (var item in m_Wrapper.m_Player2MuveActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_Player2MoveActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_Player2MuveActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_Player2MoveActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="Player2MuveActions" /> instance referencing this action map.
+    /// Provides a new <see cref="Player2MoveActions" /> instance referencing this action map.
     /// </summary>
-    public Player2MuveActions @Player2Muve => new Player2MuveActions(this);
+    public Player2MoveActions @Player2Move => new Player2MoveActions(this);
 
-    // UI Imputs
-    private readonly InputActionMap m_UIImputs;
-    private List<IUIImputsActions> m_UIImputsActionsCallbackInterfaces = new List<IUIImputsActions>();
-    private readonly InputAction m_UIImputs_MenuImput;
+    // UI Inputs
+    private readonly InputActionMap m_UIInputs;
+    private List<IUIInputsActions> m_UIInputsActionsCallbackInterfaces = new List<IUIInputsActions>();
+    private readonly InputAction m_UIInputs_MenuInput;
     /// <summary>
-    /// Provides access to input actions defined in input action map "UI Imputs".
+    /// Provides access to input actions defined in input action map "UI Inputs".
     /// </summary>
-    public struct UIImputsActions
+    public struct UIInputsActions
     {
         private @PlayersImputMap m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public UIImputsActions(@PlayersImputMap wrapper) { m_Wrapper = wrapper; }
+        public UIInputsActions(@PlayersImputMap wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "UIImputs/MenuImput".
+        /// Provides access to the underlying input action "UIInputs/MenuInput".
         /// </summary>
-        public InputAction @MenuImput => m_Wrapper.m_UIImputs_MenuImput;
+        public InputAction @MenuInput => m_Wrapper.m_UIInputs_MenuInput;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_UIImputs; }
+        public InputActionMap Get() { return m_Wrapper.m_UIInputs; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -866,9 +866,9 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="UIImputsActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="UIInputsActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(UIImputsActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(UIInputsActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -876,14 +876,14 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="UIImputsActions" />
-        public void AddCallbacks(IUIImputsActions instance)
+        /// <seealso cref="UIInputsActions" />
+        public void AddCallbacks(IUIInputsActions instance)
         {
-            if (instance == null || m_Wrapper.m_UIImputsActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_UIImputsActionsCallbackInterfaces.Add(instance);
-            @MenuImput.started += instance.OnMenuImput;
-            @MenuImput.performed += instance.OnMenuImput;
-            @MenuImput.canceled += instance.OnMenuImput;
+            if (instance == null || m_Wrapper.m_UIInputsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIInputsActionsCallbackInterfaces.Add(instance);
+            @MenuInput.started += instance.OnMenuInput;
+            @MenuInput.performed += instance.OnMenuInput;
+            @MenuInput.canceled += instance.OnMenuInput;
         }
 
         /// <summary>
@@ -892,21 +892,21 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="UIImputsActions" />
-        private void UnregisterCallbacks(IUIImputsActions instance)
+        /// <seealso cref="UIInputsActions" />
+        private void UnregisterCallbacks(IUIInputsActions instance)
         {
-            @MenuImput.started -= instance.OnMenuImput;
-            @MenuImput.performed -= instance.OnMenuImput;
-            @MenuImput.canceled -= instance.OnMenuImput;
+            @MenuInput.started -= instance.OnMenuInput;
+            @MenuInput.performed -= instance.OnMenuInput;
+            @MenuInput.canceled -= instance.OnMenuInput;
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="UIImputsActions.UnregisterCallbacks(IUIImputsActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="UIInputsActions.UnregisterCallbacks(IUIInputsActions)" />.
         /// </summary>
-        /// <seealso cref="UIImputsActions.UnregisterCallbacks(IUIImputsActions)" />
-        public void RemoveCallbacks(IUIImputsActions instance)
+        /// <seealso cref="UIInputsActions.UnregisterCallbacks(IUIInputsActions)" />
+        public void RemoveCallbacks(IUIInputsActions instance)
         {
-            if (m_Wrapper.m_UIImputsActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_UIInputsActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -916,35 +916,35 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="UIImputsActions.AddCallbacks(IUIImputsActions)" />
-        /// <seealso cref="UIImputsActions.RemoveCallbacks(IUIImputsActions)" />
-        /// <seealso cref="UIImputsActions.UnregisterCallbacks(IUIImputsActions)" />
-        public void SetCallbacks(IUIImputsActions instance)
+        /// <seealso cref="UIInputsActions.AddCallbacks(IUIInputsActions)" />
+        /// <seealso cref="UIInputsActions.RemoveCallbacks(IUIInputsActions)" />
+        /// <seealso cref="UIInputsActions.UnregisterCallbacks(IUIInputsActions)" />
+        public void SetCallbacks(IUIInputsActions instance)
         {
-            foreach (var item in m_Wrapper.m_UIImputsActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_UIInputsActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_UIImputsActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_UIInputsActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="UIImputsActions" /> instance referencing this action map.
+    /// Provides a new <see cref="UIInputsActions" /> instance referencing this action map.
     /// </summary>
-    public UIImputsActions @UIImputs => new UIImputsActions(this);
+    public UIInputsActions @UIInputs => new UIInputsActions(this);
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player1Muve" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player1Move" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="Player1MuveActions.AddCallbacks(IPlayer1MuveActions)" />
-    /// <seealso cref="Player1MuveActions.RemoveCallbacks(IPlayer1MuveActions)" />
-    public interface IPlayer1MuveActions
+    /// <seealso cref="Player1MoveActions.AddCallbacks(IPlayer1MoveActions)" />
+    /// <seealso cref="Player1MoveActions.RemoveCallbacks(IPlayer1MoveActions)" />
+    public interface IPlayer1MoveActions
     {
         /// <summary>
-        /// Method invoked when associated input action "MuveImput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "MoveInput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMuveImput(InputAction.CallbackContext context);
+        void OnMoveInput(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "ActionInput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -954,19 +954,19 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         void OnActionInput(InputAction.CallbackContext context);
     }
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player2Muve" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player2Move" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="Player2MuveActions.AddCallbacks(IPlayer2MuveActions)" />
-    /// <seealso cref="Player2MuveActions.RemoveCallbacks(IPlayer2MuveActions)" />
-    public interface IPlayer2MuveActions
+    /// <seealso cref="Player2MoveActions.AddCallbacks(IPlayer2MoveActions)" />
+    /// <seealso cref="Player2MoveActions.RemoveCallbacks(IPlayer2MoveActions)" />
+    public interface IPlayer2MoveActions
     {
         /// <summary>
-        /// Method invoked when associated input action "MuveImput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "MoveInput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMuveImput(InputAction.CallbackContext context);
+        void OnMoveInput(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "ActionInput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -983,18 +983,18 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         void OnMouse(InputAction.CallbackContext context);
     }
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI Imputs" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI Inputs" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="UIImputsActions.AddCallbacks(IUIImputsActions)" />
-    /// <seealso cref="UIImputsActions.RemoveCallbacks(IUIImputsActions)" />
-    public interface IUIImputsActions
+    /// <seealso cref="UIInputsActions.AddCallbacks(IUIInputsActions)" />
+    /// <seealso cref="UIInputsActions.RemoveCallbacks(IUIInputsActions)" />
+    public interface IUIInputsActions
     {
         /// <summary>
-        /// Method invoked when associated input action "MenuImput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "MenuInput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMenuImput(InputAction.CallbackContext context);
+        void OnMenuInput(InputAction.CallbackContext context);
     }
 }

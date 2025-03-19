@@ -17,19 +17,19 @@ public class PTwoImputs : MonoBehaviour
     private void OnEnable()
     {
         _Input = new PlayersImputMap();
-        _Input.Player2Muve.Enable();
-        _Input.Player2Muve.MuveImput.performed += SetMuve;
-        _Input.Player2Muve.Mouse.performed += SetMouse;
-        _Input.Player2Muve.MuveImput.canceled += SetMuve;
-        _Input.Player2Muve.Mouse.canceled += SetMouse;
+        _Input.Player2Move.Enable();
+        _Input.Player2Move.MoveInput.performed += SetMuve;
+        _Input.Player2Move.Mouse.performed += SetMouse;
+        _Input.Player2Move.MoveInput.canceled += SetMuve;
+        _Input.Player2Move.Mouse.canceled += SetMouse;
     }
     private void OnDisable()//Desativa os imputs
     {
-        _Input.Player2Muve.MuveImput.performed -= SetMuve;
-        _Input.Player2Muve.Mouse.performed -= SetMouse;
-        _Input.Player2Muve.MuveImput.canceled -= SetMuve;
-        _Input.Player2Muve.Mouse.canceled -= SetMouse;
-        _Input.Player2Muve.Disable();  
+        _Input.Player2Move.MoveInput.performed -= SetMuve;
+        _Input.Player2Move.Mouse.performed -= SetMouse;
+        _Input.Player2Move.MoveInput.canceled -= SetMuve;
+        _Input.Player2Move.Mouse.canceled -= SetMouse;
+        _Input.Player2Move.Disable();  
     }
     void SetMuve(InputAction.CallbackContext ctx){
         MoveImput = ctx.ReadValue<Vector3>();

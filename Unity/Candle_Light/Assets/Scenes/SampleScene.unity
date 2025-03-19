@@ -151,7 +151,7 @@ Transform:
   m_LocalScale: {x: 0.15608282, y: 0.21408, z: 0.63246}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1656715020}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &19165117
 MonoBehaviour:
@@ -168,7 +168,7 @@ MonoBehaviour:
   _enterZone:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1656715019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InteractionManager, Assembly-CSharp
         m_MethodName: OnTriggerDetected
         m_Mode: 0
@@ -617,7 +617,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1656715020}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &380823831
 CapsuleCollider:
@@ -1130,7 +1130,7 @@ Transform:
   m_LocalScale: {x: 2.3412, y: 4.2369, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1092405322}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &741566675
 BoxCollider:
@@ -1586,6 +1586,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 2140418095}
   playerHead: {fileID: 1909441239}
+  sensibility: 0.5
+  rotationX: 0
+  rotationY: 0
+  angleYmax: 90
+  angleYmin: -90
 --- !u!114 &1162382468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,6 +1807,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1712046699}
+  - component: {fileID: 1712046700}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1824,6 +1830,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1712046700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712046698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b9a4fd68a9e862489f675cb52993c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1733914444
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,6 +2058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 5
   controller: {fileID: 1957680704}
+  mainCam: {fileID: 330585543}
 --- !u!114 &1957680706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2174,9 +2193,11 @@ SceneRoots:
   - {fileID: 406000996}
   - {fileID: 745505819}
   - {fileID: 930571901}
-  - {fileID: 252402976}
   - {fileID: 187110876}
   - {fileID: 1712046699}
   - {fileID: 285303800}
   - {fileID: 1957680701}
   - {fileID: 2140418095}
+  - {fileID: 19165116}
+  - {fileID: 380823830}
+  - {fileID: 741566674}

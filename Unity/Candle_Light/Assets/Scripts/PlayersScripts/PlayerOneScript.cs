@@ -11,6 +11,11 @@ public class PlayerOneScript : MonoBehaviour
     public CharacterController controller;
     private bool groundedPlayer;
     private float gravityValue = -9.81f;
+    public GameObject mainCam;// referencia para a o andar do player a partir da camera
+
+    //Orientação para o movimento
+    private Vector3 forward;
+    private Vector3 strafe;
 
     //Metodos
     private void Awake()
@@ -27,12 +32,13 @@ public class PlayerOneScript : MonoBehaviour
             playerMuve.y = 0f;
         }
 
-        Vector3 move = new Vector3(GetIput.MoveImput.x,0,GetIput.MoveImput.y);
-        controller.Move(move * Time.deltaTime * velocity);
-    
-        if (move != Vector3.zero)
+        forward = GetIput.MoveInput.y * velocity * mainCam.transform.forward;
+        strafe = GetIput.MoveInput.x * velocity * mainCam.transform.right;
+        playerMuve = forward + strafe;
+
+        if (playerMuve != Vector3.zero)
         {
-            gameObject.transform.forward = move;
+            gameObject.transform.forward = playerMuve;
         }
         playerMuve.y += gravityValue * Time.deltaTime;//Gravidade do player 1
         controller.Move(playerMuve * Time.deltaTime);

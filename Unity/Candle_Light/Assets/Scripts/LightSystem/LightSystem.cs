@@ -26,8 +26,16 @@ public class LightSystem : Singleton<LightSystem>
         public Action<bool> detectCallback;
 
         public byte id;
+
+        public Detector(Vector3 globalPos, Action<bool> detectCallback, byte id)
+        {
+            this.globalPos = globalPos;
+            this.detectCallback = detectCallback;
+            this.id = id;
+        }
     }
     
+
     /// <summary>
     /// Luz em ponto, providencia luz a detectores em distancia raio.
     /// </summary>
@@ -44,6 +52,13 @@ public class LightSystem : Singleton<LightSystem>
         public float radius;
         
         public byte id;
+
+        public PointLight(Vector3 globalPos, float radius, byte id)
+        {
+            this.globalPos = globalPos;
+            this.radius = radius;
+            this.id = id;
+        }
     }
 
 #endregion
@@ -81,11 +96,17 @@ public class LightSystem : Singleton<LightSystem>
     public Vector3 mainLightDir;
 
     /// <summary>
-    /// IDs sao gerados simplesmente somando 1 ao id mais recente, pra nao ocorrer duplicatas. Isso assume que nao terao mais de 256 luzes/detectores no sistema.
+    /// IDs sao gerados simplesmente somando 1 ao id mais recente, pra nao ocorrer duplicatas. Isso assume que nao terao mais de 256 detectores no sistema.
     /// </summary>
-    private byte nextID = 0;
+    private byte nextDetectID = 0;
+
+    /// <summary>
+    /// IDs sao gerados simplesmente somando 1 ao id mais recente, pra nao ocorrer duplicatas. Isso assume que nao terao mais de 256 luzes no sistema.
+    /// </summary>
+    private byte nextLightID = 0;
 #endregion
 
+#region FUNCTIONS
 
     /// <summary>
     /// GameLoop que atualiza o status de iluminaçcao de todos os detectores.
@@ -164,13 +185,128 @@ public class LightSystem : Singleton<LightSystem>
         dynamicDetectors.Clear();
     }
 
+
+    /// <summary>
+    /// Cria um detector e o adiciona no sistema
+    /// </summary>
+    /// <param name="position"> Posicao em worldspace para calculos de LOS e distancia </param>
+    /// <param name="callback"> Funcao que recebera updates do status de iluminacao </param>
     public void AddDetector(Vector3 position, Action<bool> callback)
     {
         Detector detector = new Detector();
         detector.globalPos = position;
         detector.detectCallback = callback;
-        detector.id = nextID;
-        nextID++;
+        detector.id = nextDetectID;
+        nextDetectID++;
+        if(nextDetectID>=255)
+            Debug.LogError("=== 255 detectores ou mais registradas no sistema de luz, corrige esse treco @Alu ===");
         staticDetectors.Add(detector);
     }
+
+
+    /// <summary>
+    /// Remove um detector de id tal do sistema de luz
+    /// </summary>
+    /// <param name="id"> id do detector a ser removido </param>
+    public void RemoveDetector(byte id)
+    {
+        if(staticDetectors.Remove(staticDetectors.Find(x => x.id == id))) return;
+        dynamicDetectors.Remove(dynamicDetectors.Find(x => x.id == id));
+    }
+
+
+    /// <summary>
+    /// Cria uma luz radial e o adiciona no sistema
+    /// </summary>
+    /// <param name="position"> Posicao em worldspace para calculos de LOS e distancia </param>
+    /// <param name="radius"> Raio de alcance da luz </param>
+    public void AddPointLight(Vector3 position, float radius)
+    {
+        PointLight light = new PointLight();
+        light.globalPos = position;
+        light.radius = radius;
+        light.id = nextLightID;
+        nextLightID++;
+        if(nextLightID>=255)
+            Debug.LogError("=== 255 luzes ou mais registradas no sistema de luz, corrige esse treco @Alu ===");
+        staticPointLights.Add(light);
+    }
+
+
+    /// <summary>
+    /// Remove uma luz radial de id tal do sistema de luz
+    /// </summary>
+    /// <param name="id"> id da luz a ser removida </param>
+    public void RemovePointLight(byte id)
+    {
+        if(staticDetectors.Remove(staticDetectors.Find(x => x.id == id))) return;
+        dynamicDetectors.Remove(dynamicDetectors.Find(x => x.id == id));
+    }
+
+
+    /// <summary>
+    /// Atualiza a posicao de um detector e move para a lista de detectores dinamicos.
+    /// </summary>
+    /// <param name="id"> Identificador do detector no sistema de luz. </param>
+    /// <param name="pos"> Nova posicao do detector. </param>
+    public void UpdateDetectorPos(byte id, Vector3 pos)
+    {
+        Detector old = FindLightSysDetector(id);
+        RemoveDetector(id);
+        dynamicDetectors.Add(new Detector(pos, old.detectCallback, old.id));
+    }
+
+
+    /// <summary>
+    /// Atualiza a posicao de uma luz radial e move para a lista de detectores dinamicos.
+    /// </summary>
+    /// <param name="id"> Identificador da luz radial no sistema de luz. </param>
+    /// <param name="pos"> Nova posicao da luz radial. </param>
+    public void UpdatePointLightPos(byte id, Vector3 pos)
+    {
+        PointLight old = FindLightSysPointLight(id);
+        RemovePointLight(id);
+        dynamicPointLights.Add(new PointLight(pos, old.radius, old.id));
+    }
+
+
+    /// <summary>
+    /// Acha um detector de luz ativo com o id especificado
+    /// </summary>
+    /// <param name="id"> id do detector a ser procurado</param>
+    protected Detector FindLightSysDetector(byte id)
+    {
+        foreach(Detector detector in dynamicDetectors)
+        {
+            if(detector.id == id) return detector;
+        }
+
+        foreach(Detector detector in staticDetectors)
+        {
+            if(detector.id == id) return detector;
+        }
+        throw new ArgumentException($"Detector com ID [{id}] nao encontrado no sistema de luz");
+    }
+
+
+    /// <summary>
+    /// Acha uma fonte de luz radial ativa com o id especificado
+    /// </summary>
+    /// <param name="id"> id da luz a ser procurada</param>
+    protected PointLight FindLightSysPointLight(byte id)
+    {
+        foreach(PointLight light in dynamicPointLights)
+        {
+            if(light.id == id) return light;
+        }
+
+        foreach(PointLight light in staticPointLights)
+        {
+            if(light.id == id) return light;
+        }
+        throw new ArgumentException($"Luz radial com ID [{id}] nao encontrado no sistema de luz. A tipagem da luz pode estar incorreta.");
+    }
+
+
+    #endregion
 }

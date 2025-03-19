@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+
 /// <summary>
 /// Sistema que roda os calculos de deteccao de luz
 /// </summary>
@@ -13,7 +14,7 @@ public class LightSystem : Singleton<LightSystem>
     /// <summary>
     /// Alvo dos calculos de deteccao de luz.
     /// </summary>
-    public struct Detector
+    public class Detector
     {
         /// <summary>
         /// Posicao para calculos de LOS e distancia.
@@ -25,9 +26,9 @@ public class LightSystem : Singleton<LightSystem>
         /// </summary>
         public Action<bool> detectCallback;
 
-        public byte id;
+        public int id;
 
-        public Detector(Vector3 globalPos, Action<bool> detectCallback, byte id)
+        public Detector(Vector3 globalPos, Action<bool> detectCallback, int id)
         {
             this.globalPos = globalPos;
             this.detectCallback = detectCallback;
@@ -39,7 +40,7 @@ public class LightSystem : Singleton<LightSystem>
     /// <summary>
     /// Luz em ponto, providencia luz a detectores em distancia raio.
     /// </summary>
-    public struct PointLight
+    public class PointLight
     {
         /// <summary>
         /// Posicao para calculos de LOS e distancia.
@@ -51,9 +52,9 @@ public class LightSystem : Singleton<LightSystem>
         /// </summary>
         public float radius;
         
-        public byte id;
+        public int id;
 
-        public PointLight(Vector3 globalPos, float radius, byte id)
+        public PointLight(Vector3 globalPos, float radius, int id)
         {
             this.globalPos = globalPos;
             this.radius = radius;
@@ -77,33 +78,33 @@ public class LightSystem : Singleton<LightSystem>
     /// <para/>Eles retornam a lista estatica depois do calculo.
     /// </summary>
     private List<Detector> dynamicDetectors;
+    /// <summary>
+    /// Detectores desabilitados.
+    /// </summary>
+    private List<Detector> disabledDetectors;
 
     /// <summary>
-    /// Luzes ativas.
+    /// Luzes radiais ativas.
     /// <para/>Essa lista e das que nao se moveram desde a ultima deteccao.
     /// </summary>
     private List<PointLight> staticPointLights;
+
     /// <summary>
-    /// Luzes ativas.
+    /// Luzes radiais ativas.
     /// <para/>Essa lista e das que se moveram desde a ultima deteccao.
     /// <para/>Elas retornam a lista estatica depois do calculo.
     /// </summary>
     private List<PointLight> dynamicPointLights;
 
     /// <summary>
+    /// Luzes radiais desabilitadas
+    /// </summary>
+    private List<PointLight> disabledPointLights;
+
+    /// <summary>
     /// Direcao da luz principal.
     /// </summary>
     public Vector3 mainLightDir;
-
-    /// <summary>
-    /// IDs sao gerados simplesmente somando 1 ao id mais recente, pra nao ocorrer duplicatas. Isso assume que nao terao mais de 256 detectores no sistema.
-    /// </summary>
-    private byte nextDetectID = 0;
-
-    /// <summary>
-    /// IDs sao gerados simplesmente somando 1 ao id mais recente, pra nao ocorrer duplicatas. Isso assume que nao terao mais de 256 luzes no sistema.
-    /// </summary>
-    private byte nextLightID = 0;
 #endregion
 
 #region FUNCTIONS
@@ -135,9 +136,10 @@ public class LightSystem : Singleton<LightSystem>
             }
 
             // Checa as luzes radiais estaticas
-            foreach(PointLight light in staticPointLights)
+            for (int j = 0; j < staticPointLights.Count; j++)
             {
-                if((dynamicDetectors[i].globalPos - light.globalPos).magnitude < light.radius){
+                PointLight light = staticPointLights[j];
+                if ((dynamicDetectors[i].globalPos - light.globalPos).magnitude < light.radius){
                     goto lit;
                 }
             }
@@ -156,12 +158,14 @@ public class LightSystem : Singleton<LightSystem>
         }
 
         // Tratamento de detectores contra luzes que se moveram
-        foreach(Detector detector in staticDetectors)
+        for (int i = 0; i < staticDetectors.Count; i++)
         {
+            Detector detector = staticDetectors[i];
             // Checa as luzes radiais dinamicas
-            foreach(PointLight light in dynamicPointLights)
+            for (int j = 0; j < dynamicPointLights.Count; j++)
             {
-                if((light.globalPos - detector.globalPos).magnitude < light.radius)
+                PointLight light = dynamicPointLights[j];
+                if ((light.globalPos - detector.globalPos).magnitude < light.radius)
                 {
                     goto lit;
                 }
@@ -191,16 +195,11 @@ public class LightSystem : Singleton<LightSystem>
     /// </summary>
     /// <param name="position"> Posicao em worldspace para calculos de LOS e distancia </param>
     /// <param name="callback"> Funcao que recebera updates do status de iluminacao </param>
-    public void AddDetector(Vector3 position, Action<bool> callback)
+    public void AddDetector(Vector3 position, Action<bool> callback, int id)
     {
-        Detector detector = new Detector();
-        detector.globalPos = position;
-        detector.detectCallback = callback;
-        detector.id = nextDetectID;
-        nextDetectID++;
-        if(nextDetectID>=255)
-            Debug.LogError("=== 255 detectores ou mais registradas no sistema de luz, corrige esse treco @Alu ===");
+        Detector detector = new Detector(position, callback, id);
         staticDetectors.Add(detector);
+
     }
 
 
@@ -208,10 +207,36 @@ public class LightSystem : Singleton<LightSystem>
     /// Remove um detector de id tal do sistema de luz
     /// </summary>
     /// <param name="id"> id do detector a ser removido </param>
-    public void RemoveDetector(byte id)
+    public void RemoveDetector(int id)
     {
         if(staticDetectors.Remove(staticDetectors.Find(x => x.id == id))) return;
         dynamicDetectors.Remove(dynamicDetectors.Find(x => x.id == id));
+    }
+
+
+    /// <summary>
+    /// Ativa ou desativa o detector de ID especifico
+    /// </summary>
+    /// <param name="id"> ID do detector especificado </param>
+    /// <param name="active"> true: ativa; false: desativa </param>
+    public void DetectorSetActive(int id, bool active)
+    {
+        Detector detector;
+
+        if(active)
+        {
+            detector = disabledDetectors.Find(x => x.id == id);
+            disabledDetectors.Remove(detector);
+            staticDetectors.Add(detector);
+
+        }else
+        {
+            detector = FindLightSysDetector(id);
+            if(!staticDetectors.Remove(detector))
+                dynamicDetectors.Remove(detector);
+            disabledDetectors.Add(detector);
+
+        }
     }
 
 
@@ -220,15 +245,9 @@ public class LightSystem : Singleton<LightSystem>
     /// </summary>
     /// <param name="position"> Posicao em worldspace para calculos de LOS e distancia </param>
     /// <param name="radius"> Raio de alcance da luz </param>
-    public void AddPointLight(Vector3 position, float radius)
+    public void AddPointLight(Vector3 position, float radius, int id)
     {
-        PointLight light = new PointLight();
-        light.globalPos = position;
-        light.radius = radius;
-        light.id = nextLightID;
-        nextLightID++;
-        if(nextLightID>=255)
-            Debug.LogError("=== 255 luzes ou mais registradas no sistema de luz, corrige esse treco @Alu ===");
+        PointLight light = new PointLight(position, radius, id);
         staticPointLights.Add(light);
     }
 
@@ -237,10 +256,37 @@ public class LightSystem : Singleton<LightSystem>
     /// Remove uma luz radial de id tal do sistema de luz
     /// </summary>
     /// <param name="id"> id da luz a ser removida </param>
-    public void RemovePointLight(byte id)
+    public void RemovePointLight(int id)
     {
         if(staticDetectors.Remove(staticDetectors.Find(x => x.id == id))) return;
-        dynamicDetectors.Remove(dynamicDetectors.Find(x => x.id == id));
+        if(dynamicDetectors.Remove(dynamicDetectors.Find(x => x.id == id))) return;
+        Debug.LogWarning("Nao removeu a luz?");
+    }
+
+
+    /// <summary>
+    /// Ativa ou desativa o detector de ID especifico
+    /// </summary>
+    /// <param name="id"> ID do detector especificado </param>
+    /// <param name="active"> true: ativa; false: desativa </param>
+    public void PointLightSetActive(int id, bool active)
+    {
+        PointLight light;
+
+        if(active)
+        {
+            light = disabledPointLights.Find(x => x.id == id);
+            disabledPointLights.Remove(light);
+            staticPointLights.Add(light);
+
+        }else
+        {
+            light = FindLightSysPointLight(id);
+            if(!staticPointLights.Remove(light))
+                dynamicPointLights.Remove(light);
+            disabledPointLights.Add(light);
+
+        }
     }
 
 
@@ -249,11 +295,11 @@ public class LightSystem : Singleton<LightSystem>
     /// </summary>
     /// <param name="id"> Identificador do detector no sistema de luz. </param>
     /// <param name="pos"> Nova posicao do detector. </param>
-    public void UpdateDetectorPos(byte id, Vector3 pos)
+    public void UpdateDetectorPos(int id, Vector3 pos)
     {
-        Detector old = FindLightSysDetector(id);
-        RemoveDetector(id);
-        dynamicDetectors.Add(new Detector(pos, old.detectCallback, old.id));
+        Detector detector = FindLightSysDetector(id);
+        if(detector.globalPos == pos) return;
+        detector.globalPos = pos;
     }
 
 
@@ -262,11 +308,11 @@ public class LightSystem : Singleton<LightSystem>
     /// </summary>
     /// <param name="id"> Identificador da luz radial no sistema de luz. </param>
     /// <param name="pos"> Nova posicao da luz radial. </param>
-    public void UpdatePointLightPos(byte id, Vector3 pos)
+    public void UpdatePointLightPos(int id, Vector3 pos)
     {
-        PointLight old = FindLightSysPointLight(id);
-        RemovePointLight(id);
-        dynamicPointLights.Add(new PointLight(pos, old.radius, old.id));
+        PointLight light = FindLightSysPointLight(id);
+        if(light.globalPos == pos) return;
+        light.globalPos = pos;
     }
 
 
@@ -274,16 +320,18 @@ public class LightSystem : Singleton<LightSystem>
     /// Acha um detector de luz ativo com o id especificado
     /// </summary>
     /// <param name="id"> id do detector a ser procurado</param>
-    protected Detector FindLightSysDetector(byte id)
+    protected Detector FindLightSysDetector(int id)
     {
-        foreach(Detector detector in dynamicDetectors)
+        for (int i = 0; i < dynamicDetectors.Count; i++)
         {
-            if(detector.id == id) return detector;
+            Detector detector = dynamicDetectors[i];
+            if (detector.id == id) return detector;
         }
 
-        foreach(Detector detector in staticDetectors)
+        for (int i = 0; i < staticDetectors.Count; i++)
         {
-            if(detector.id == id) return detector;
+            Detector detector = staticDetectors[i];
+            if (detector.id == id) return detector;
         }
         throw new ArgumentException($"Detector com ID [{id}] nao encontrado no sistema de luz");
     }
@@ -293,20 +341,46 @@ public class LightSystem : Singleton<LightSystem>
     /// Acha uma fonte de luz radial ativa com o id especificado
     /// </summary>
     /// <param name="id"> id da luz a ser procurada</param>
-    protected PointLight FindLightSysPointLight(byte id)
+    protected PointLight FindLightSysPointLight(int id)
     {
-        foreach(PointLight light in dynamicPointLights)
+        for (int i = 0; i < dynamicPointLights.Count; i++)
         {
-            if(light.id == id) return light;
+            PointLight light = dynamicPointLights[i];
+            if (light.id == id) return light;
         }
 
-        foreach(PointLight light in staticPointLights)
+        for (int i = 0; i < staticPointLights.Count; i++)
         {
-            if(light.id == id) return light;
+            PointLight light = staticPointLights[i];
+            if (light.id == id) return light;
         }
         throw new ArgumentException($"Luz radial com ID [{id}] nao encontrado no sistema de luz. A tipagem da luz pode estar incorreta.");
     }
 
-
     #endregion
+
+    void Start()
+    {
+        staticDetectors = new List<Detector>();
+        dynamicDetectors = new List<Detector>();
+        disabledDetectors = new List<Detector>();
+
+        staticPointLights = new List<PointLight>();
+        dynamicPointLights = new List<PointLight>();
+        disabledPointLights = new List<PointLight>();
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(1.000f, 1.000f, 0.000f, 0.200f);
+        foreach(PointLight light in staticPointLights)
+        {
+            Gizmos.DrawSphere(light.globalPos, light.radius);
+        }
+        Gizmos.color = new Color(1.000f, 0.651f, 0.000f, 0.200f);
+        foreach(PointLight light in dynamicPointLights)
+        {
+            Gizmos.DrawSphere(light.globalPos, light.radius);
+        }
+    }
 }

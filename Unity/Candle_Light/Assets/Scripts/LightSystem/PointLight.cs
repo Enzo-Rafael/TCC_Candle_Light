@@ -6,7 +6,6 @@ using UnityEngine;
 /// </summary>
 /*
 *   Registra uma luz no sistema de luz no Awake e remove no OnDestroy
-*   Habilita/desabilita do sistema no enable/disable do componente
 */
 public class PointLight : MonoBehaviour
 {
@@ -33,23 +32,15 @@ public class PointLight : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        LightSystem.Instance.AddPointLight(transform.position, radius, GetInstanceID());
-    }
-
-    void OnDisable()
-    {
-        LightSystem.Instance.PointLightSetActive(GetInstanceID(), false);
-    }
 
     void OnEnable()
     {
-        LightSystem.Instance.PointLightSetActive(GetInstanceID(), true);
+        LightSystem.Instance.AddPointLight(transform.position, radius, GetInstanceID());
     }
-
-    void OnDestroy()
+    
+    void OnDisable()
     {
         LightSystem.Instance.RemovePointLight(GetInstanceID());
     }
+
 }

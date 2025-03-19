@@ -6,7 +6,7 @@ using UnityEngine;
 /// <para/>Para aplicar o design pattern, herde a classe de Singleton como o exemplo: 
 /// <para/><![CDATA[public class Exemplo : Singleton&LT;Exemplo&GT;]]>
 /// </summary>
-public class Singleton<T> : MonoBehaviour where T: Singleton<T>
+public class Singleton<T> : MonoBehaviour where T: MonoBehaviour
 {
     /// <summary>
     /// Instancia unica da classe com padrao singleton
@@ -16,8 +16,12 @@ public class Singleton<T> : MonoBehaviour where T: Singleton<T>
         get
         {
             // Se a instancia nao existir, cria uma e atribui
-            if(instance == null) instance = new GameObject($"{typeof(T)} Singleton").AddComponent<T>();
-            
+            if(instance == null)
+            {
+                GameObject obj = new GameObject($"{typeof(T)} Singleton");
+                instance = obj.AddComponent<T>();
+                DontDestroyOnLoad(instance);
+            }
             return instance;
         }
     }

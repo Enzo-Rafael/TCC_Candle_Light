@@ -132,7 +132,7 @@ public class LightSystem : Singleton<LightSystem>
             // Checa inobstrucao para a luz principal
             if(!Physics.Raycast(dynamicDetectors[i].globalPos, -mainLightDir, 10000f))
             {
-                goto lit;
+                //goto lit;
             }
 
             // Checa as luzes radiais estaticas
@@ -221,14 +221,17 @@ public class LightSystem : Singleton<LightSystem>
     /// <param name="active"> true: ativa; false: desativa </param>
     public void DetectorSetActive(int id, bool active)
     {
-        Detector detector;
+        Detector detector = null;
 
         if(active)
         {
-            detector = disabledDetectors.Find(x => x.id == id);
-            disabledDetectors.Remove(detector);
-            staticDetectors.Add(detector);
-
+            try{
+                detector = disabledDetectors.Find(x => x.id == id);
+                disabledDetectors.Remove(detector);
+                staticDetectors.Add(detector);
+            }catch{
+                Debug.LogWarning($"Detector [{id}] nao encontrada entre detectores desabilitados");
+            }
         }else
         {
             detector = FindLightSysDetector(id);
@@ -271,14 +274,18 @@ public class LightSystem : Singleton<LightSystem>
     /// <param name="active"> true: ativa; false: desativa </param>
     public void PointLightSetActive(int id, bool active)
     {
-        PointLight light;
+        PointLight light = null;
 
         if(active)
         {
-            light = disabledPointLights.Find(x => x.id == id);
-            disabledPointLights.Remove(light);
-            staticPointLights.Add(light);
-
+            try{
+                light = disabledPointLights.Find(x => x.id == id);
+                disabledPointLights.Remove(light);
+                staticPointLights.Add(light);
+            }catch{
+                Debug.LogWarning($"Luz radial [{id}] nao encontrada entre luzes desabilitadas");
+            }
+            
         }else
         {
             light = FindLightSysPointLight(id);
@@ -359,7 +366,7 @@ public class LightSystem : Singleton<LightSystem>
 
     #endregion
 
-    void Start()
+    void Awake()
     {
         staticDetectors = new List<Detector>();
         dynamicDetectors = new List<Detector>();
@@ -382,5 +389,10 @@ public class LightSystem : Singleton<LightSystem>
         {
             Gizmos.DrawSphere(light.globalPos, light.radius);
         }
+    }
+
+    void FixedUpdate()
+    {
+        LightUpdate();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -5,7 +6,6 @@ using UnityEngine;
 /// </summary>
 /*
 *   Registra um detector no sistema de luz no Awake e remove no OnDestroy
-*   Habilita/desabilita do sistema no enable/disable do componente
 */
 public class LightDetector : MonoBehaviour
 {
@@ -25,6 +25,8 @@ public class LightDetector : MonoBehaviour
     [Header("Habilite para sincronizar a posicao no update de fisica")]
     [SerializeField] private bool doPositionSync;
 
+    public Action<bool> LightChangeEvent;
+
     void FixedUpdate()
     {
         // Sincroniza posicao com o sistema de luz
@@ -34,22 +36,14 @@ public class LightDetector : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        LightSystem.Instance.AddDetector(transform.position, (lit)=> _isLit = lit, GetInstanceID());
-    }
-
-    void OnDisable()
-    {
-        LightSystem.Instance.DetectorSetActive(GetInstanceID(), false);
-    }
 
     void OnEnable()
     {
-        LightSystem.Instance.DetectorSetActive(GetInstanceID(), true);
+        LightSystem.Instance.AddDetector(transform.position, (lit)=> {if(_isLit!=lit) _isLit = lit; LightChangeEvent(lit);}, GetInstanceID());
     }
 
-    void OnDestroy()
+
+    void OnDisable()
     {
         LightSystem.Instance.RemoveDetector(GetInstanceID());
     }

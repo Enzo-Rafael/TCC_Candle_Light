@@ -14,6 +14,7 @@ public class LightSystem : Singleton<LightSystem>
     /// <summary>
     /// Alvo dos calculos de deteccao de luz.
     /// </summary>
+    [Serializable]
     public class Detector
     {
         /// <summary>
@@ -40,6 +41,7 @@ public class LightSystem : Singleton<LightSystem>
     /// <summary>
     /// Luz em ponto, providencia luz a detectores em distancia raio.
     /// </summary>
+    [Serializable]
     public class PointLight
     {
         /// <summary>
@@ -78,10 +80,6 @@ public class LightSystem : Singleton<LightSystem>
     /// <para/>Eles retornam a lista estatica depois do calculo.
     /// </summary>
     private List<Detector> dynamicDetectors;
-    /// <summary>
-    /// Detectores desabilitados.
-    /// </summary>
-    private List<Detector> disabledDetectors;
 
     /// <summary>
     /// Luzes radiais ativas.
@@ -95,11 +93,6 @@ public class LightSystem : Singleton<LightSystem>
     /// <para/>Elas retornam a lista estatica depois do calculo.
     /// </summary>
     private List<PointLight> dynamicPointLights;
-
-    /// <summary>
-    /// Luzes radiais desabilitadas
-    /// </summary>
-    private List<PointLight> disabledPointLights;
 
     /// <summary>
     /// Direcao da luz principal.
@@ -215,35 +208,6 @@ public class LightSystem : Singleton<LightSystem>
 
 
     /// <summary>
-    /// Ativa ou desativa o detector de ID especifico
-    /// </summary>
-    /// <param name="id"> ID do detector especificado </param>
-    /// <param name="active"> true: ativa; false: desativa </param>
-    public void DetectorSetActive(int id, bool active)
-    {
-        Detector detector = null;
-
-        if(active)
-        {
-            try{
-                detector = disabledDetectors.Find(x => x.id == id);
-                disabledDetectors.Remove(detector);
-                staticDetectors.Add(detector);
-            }catch{
-                Debug.LogWarning($"Detector [{id}] nao encontrada entre detectores desabilitados");
-            }
-        }else
-        {
-            detector = FindLightSysDetector(id);
-            if(!staticDetectors.Remove(detector))
-                dynamicDetectors.Remove(detector);
-            disabledDetectors.Add(detector);
-
-        }
-    }
-
-
-    /// <summary>
     /// Cria uma luz radial e o adiciona no sistema
     /// </summary>
     /// <param name="position"> Posicao em worldspace para calculos de LOS e distancia </param>
@@ -268,43 +232,40 @@ public class LightSystem : Singleton<LightSystem>
 
 
     /// <summary>
-    /// Ativa ou desativa o detector de ID especifico
-    /// </summary>
-    /// <param name="id"> ID do detector especificado </param>
-    /// <param name="active"> true: ativa; false: desativa </param>
-    public void PointLightSetActive(int id, bool active)
-    {
-        PointLight light = null;
-
-        if(active)
-        {
-            try{
-                light = disabledPointLights.Find(x => x.id == id);
-                disabledPointLights.Remove(light);
-                staticPointLights.Add(light);
-            }catch{
-                Debug.LogWarning($"Luz radial [{id}] nao encontrada entre luzes desabilitadas");
-            }
-            
-        }else
-        {
-            light = FindLightSysPointLight(id);
-            if(!staticPointLights.Remove(light))
-                dynamicPointLights.Remove(light);
-            disabledPointLights.Add(light);
-
-        }
-    }
-
-
-    /// <summary>
     /// Atualiza a posicao de um detector e move para a lista de detectores dinamicos.
     /// </summary>
     /// <param name="id"> Identificador do detector no sistema de luz. </param>
     /// <param name="pos"> Nova posicao do detector. </param>
     public void UpdateDetectorPos(int id, Vector3 pos)
     {
-        Detector detector = FindLightSysDetector(id);
+        Detector detector = null;
+
+        //busca na lista dinamica
+        for (int i = 0; i < dynamicDetectors.Count; i++)
+        {
+            if (dynamicDetectors[i].id == id) 
+            {
+                detector = dynamicDetectors[i];
+                goto found_detector;
+            }
+        }
+
+        //busca na lista estatica
+        for (int i = 0; i < staticDetectors.Count; i++)
+        {
+            if (staticDetectors[i].id == id) 
+            {
+                detector = staticDetectors[i];
+                staticDetectors.Remove(detector);
+                dynamicDetectors.Add(detector);
+                goto found_detector;
+            }
+        }
+        //se nao achou, retorna
+        return;
+
+        //se achou, manda bala
+        found_detector:
         if(detector.globalPos == pos) return;
         detector.globalPos = pos;
     }
@@ -329,11 +290,7 @@ public class LightSystem : Singleton<LightSystem>
     /// <param name="id"> id do detector a ser procurado</param>
     protected Detector FindLightSysDetector(int id)
     {
-        for (int i = 0; i < dynamicDetectors.Count; i++)
-        {
-            Detector detector = dynamicDetectors[i];
-            if (detector.id == id) return detector;
-        }
+        
 
         for (int i = 0; i < staticDetectors.Count; i++)
         {
@@ -370,11 +327,9 @@ public class LightSystem : Singleton<LightSystem>
     {
         staticDetectors = new List<Detector>();
         dynamicDetectors = new List<Detector>();
-        disabledDetectors = new List<Detector>();
 
         staticPointLights = new List<PointLight>();
         dynamicPointLights = new List<PointLight>();
-        disabledPointLights = new List<PointLight>();
     }
 
     void OnDrawGizmosSelected()

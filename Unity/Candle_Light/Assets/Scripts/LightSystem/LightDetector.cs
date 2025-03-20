@@ -39,7 +39,17 @@ public class LightDetector : MonoBehaviour
 
     void OnEnable()
     {
-        LightSystem.Instance.AddDetector(transform.position, (lit)=> {if(_isLit!=lit) _isLit = lit; LightChangeEvent(lit);}, GetInstanceID());
+        LightSystem.Instance.AddDetector(
+                transform.position, 
+                (lit)=> 
+                {
+                    if(_isLit != lit)
+                    { 
+                        _isLit = lit; 
+                        LightChangeEvent(lit);
+                    }; 
+                }, 
+                GetInstanceID());
     }
 
 

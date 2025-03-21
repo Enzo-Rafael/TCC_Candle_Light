@@ -29,15 +29,32 @@ public class InteractionManager : MonoBehaviour
     [SerializeField] 
     private ItemEventChannelSO _equipItemEvent = default;
 
+    private InputReader _inputReader = default;
+
     //------------------------- Variaveis Globais privadas -------------------------------
 
     private LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
 
-    //Só pra testar enquanto não juntamos as branchs do new inputsystem
-    void Update(){
-        if(Input.GetKeyDown(KeyCode.Space)){
-            UseInteractionType();
-        }
+    /*------------------------------------------------------------------------------
+    Função:     OnEnable
+    Descrição:  Associa todas as funções utilizadas ao canal de comunicação para que 
+                qualquer script que utilize o canal possa utilizar a função.
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    private void OnEnable(){
+        _inputReader.ActionEventOne += UseInteractionType;
+        _inputReader.ActionEventTwo += UseInteractionType;      
+    }
+    /*------------------------------------------------------------------------------
+    Função:     OnDisable
+    Descrição:  Desassocia todas as funções utilizadas ao canal de comunicação.
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    private void OnDisable(){
+        _inputReader.ActionEventOne -= UseInteractionType;
+        _inputReader.ActionEventTwo -= UseInteractionType;
     }
     /*------------------------------------------------------------------------------
     Função:     OnTriggerDetected

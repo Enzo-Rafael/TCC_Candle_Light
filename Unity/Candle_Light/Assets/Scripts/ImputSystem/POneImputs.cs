@@ -14,18 +14,18 @@ public class POneImputs : MonoBehaviour
     {
         _Input = new PlayersImputMap();
         _Input.Player1Move.Enable();
-        _Input.Player1Move.MoveInput.performed += SetMove;
-        _Input.Player1Move.ActionInput.performed += SetBtn;
-        _Input.Player1Move.MoveInput.canceled += SetMove;
-        _Input.Player1Move.ActionInput.canceled += SetBtn;
+        _Input.Player1Move.MoveInputOne.performed += SetMove;
+        _Input.Player1Move.ActionInputOne.performed += SetBtn;
+        _Input.Player1Move.MoveInputOne.canceled += SetMove;
+        _Input.Player1Move.ActionInputOne.canceled += SetBtn;
 
     }
     private void OnDisable()//Desativa os imputs
     {
-        _Input.Player1Move.MoveInput.performed -= SetMove;
-        _Input.Player1Move.MoveInput.canceled -= SetMove;
-        _Input.Player1Move.ActionInput.performed -= SetBtn;
-        _Input.Player1Move.ActionInput.canceled -= SetBtn;
+        _Input.Player1Move.MoveInputOne.performed -= SetMove;
+        _Input.Player1Move.MoveInputOne.canceled -= SetMove;
+        _Input.Player1Move.ActionInputOne.performed -= SetBtn;
+        _Input.Player1Move.ActionInputOne.canceled -= SetBtn;
         _Input.Player1Move.Disable();
     }
     void SetMove(InputAction.CallbackContext ctx){

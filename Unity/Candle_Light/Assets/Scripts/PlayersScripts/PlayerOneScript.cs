@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerOneScript : MonoBehaviour
 {
     //Variaveis
-    POneImputs GetIput; 
+	[SerializeField] private InputReader _inputReader = default;
+    private Vector2 _inputVector;
     Vector3 playerMuve;
     public float velocity;
     public CharacterController controller;
@@ -18,12 +19,17 @@ public class PlayerOneScript : MonoBehaviour
     private Vector3 strafe;
 
     //Metodos
-    private void Awake()
-    {
-       GetIput = GetComponent<POneImputs>();
+	private void OnEnable(){
+        _inputReader.MoveEventOne += OnMove;
+	}
+	private void OnDisable(){
+        _inputReader.MoveEventOne -= OnMove;
+	}
+
+    private void OnMove(Vector3 movement){
+        _inputVector = movement;
     }
-
-
+    
     void Update()
     {
         groundedPlayer = controller.isGrounded;
@@ -32,8 +38,8 @@ public class PlayerOneScript : MonoBehaviour
             playerMuve.y = 0f;
         }
 
-        forward = GetIput.MoveInput.y * velocity * mainCam.transform.forward;
-        strafe = GetIput.MoveInput.x * velocity * mainCam.transform.right;
+        forward = _inputVector.y * velocity * mainCam.transform.forward;
+        strafe = _inputVector.x * velocity * mainCam.transform.right;
         playerMuve = forward + strafe;
 
         if (playerMuve != Vector3.zero)

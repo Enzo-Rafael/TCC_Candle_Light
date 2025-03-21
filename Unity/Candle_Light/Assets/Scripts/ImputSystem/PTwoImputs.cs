@@ -18,16 +18,16 @@ public class PTwoImputs : MonoBehaviour
     {
         _Input = new PlayersImputMap();
         _Input.Player2Move.Enable();
-        _Input.Player2Move.MoveInput.performed += SetMuve;
+        _Input.Player2Move.MoveInputTwo.performed += SetMuve;
         _Input.Player2Move.Mouse.performed += SetMouse;
-        _Input.Player2Move.MoveInput.canceled += SetMuve;
+        _Input.Player2Move.MoveInputTwo.canceled += SetMuve;
         _Input.Player2Move.Mouse.canceled += SetMouse;
     }
     private void OnDisable()//Desativa os imputs
     {
-        _Input.Player2Move.MoveInput.performed -= SetMuve;
+        _Input.Player2Move.MoveInputTwo.performed -= SetMuve;
         _Input.Player2Move.Mouse.performed -= SetMouse;
-        _Input.Player2Move.MoveInput.canceled -= SetMuve;
+        _Input.Player2Move.MoveInputTwo.canceled -= SetMuve;
         _Input.Player2Move.Mouse.canceled -= SetMouse;
         _Input.Player2Move.Disable();  
     }

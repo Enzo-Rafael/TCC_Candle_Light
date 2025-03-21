@@ -1,5 +1,5 @@
 /**************************************************************
-    Jogos Digitais SG
+    Jogos Digitais LOURDES
     ItemManager
 
     Descrição: Gerencia as funções que um item pode exercer.
@@ -43,8 +43,7 @@ public class ItemManager : MonoBehaviour
     }
     /*------------------------------------------------------------------------------
     Função:     OnDisable
-    Descrição:  Desassocia todas as funções utilizadas ao canal de comunicação para que 
-                qualquer script que utilize o canal possa utilizar a função.
+    Descrição:  Desassocia todas as funções utilizadas ao canal de comunicação.
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/

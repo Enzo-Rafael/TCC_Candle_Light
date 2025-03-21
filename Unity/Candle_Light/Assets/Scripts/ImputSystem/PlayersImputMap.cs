@@ -92,7 +92,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
             ""id"": ""2a7db825-d0b2-4f2a-b1d6-e0acc4a7a319"",
             ""actions"": [
                 {
-                    ""name"": ""MoveInput"",
+                    ""name"": ""MoveInputOne"",
                     ""type"": ""Value"",
                     ""id"": ""01f684e2-3a81-4f0d-a104-0d02fff954d6"",
                     ""expectedControlType"": ""Vector3"",
@@ -101,7 +101,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ActionInput"",
+                    ""name"": ""ActionInputOne"",
                     ""type"": ""Button"",
                     ""id"": ""94e0f2a6-eaa4-4a25-8666-9f2b619e66d5"",
                     ""expectedControlType"": """",
@@ -118,7 +118,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputOne"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -129,7 +129,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputOne"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -140,7 +140,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputOne"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -151,7 +151,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputOne"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -162,7 +162,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputOne"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -173,7 +173,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputOne"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -184,7 +184,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputOne"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -195,7 +195,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputOne"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -206,7 +206,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputOne"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -217,7 +217,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputOne"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -228,7 +228,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputOne"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -239,7 +239,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputOne"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -250,7 +250,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputOne"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -261,7 +261,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputOne"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -272,7 +272,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ActionInput"",
+                    ""action"": ""ActionInputOne"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -283,7 +283,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
             ""id"": ""42ad252d-9f22-4616-a64d-47dcafee263c"",
             ""actions"": [
                 {
-                    ""name"": ""MoveInput"",
+                    ""name"": ""MoveInputTwo"",
                     ""type"": ""Value"",
                     ""id"": ""7e704e03-cc5b-4ccc-8662-84af1d2f49dd"",
                     ""expectedControlType"": ""Vector3"",
@@ -292,7 +292,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ActionInput"",
+                    ""name"": ""ActionInputTwo"",
                     ""type"": ""Button"",
                     ""id"": ""d904301f-7bf8-48b0-a6c1-61bc78bf4971"",
                     ""expectedControlType"": """",
@@ -318,7 +318,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputTwo"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -329,7 +329,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -340,7 +340,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -351,7 +351,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -362,7 +362,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -373,7 +373,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -384,7 +384,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -395,7 +395,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputTwo"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -406,7 +406,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -417,7 +417,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -428,7 +428,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -439,7 +439,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -450,7 +450,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -461,7 +461,7 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveInput"",
+                    ""action"": ""MoveInputTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -472,14 +472,14 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ActionInput"",
+                    ""action"": ""ActionInputTwo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""2d750bc5-d125-4d04-b5ae-79525352ea1b"",
-                    ""path"": ""<Mouse>/position"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -522,12 +522,12 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
 }");
         // Player1Move
         m_Player1Move = asset.FindActionMap("Player1Move", throwIfNotFound: true);
-        m_Player1Move_MoveInput = m_Player1Move.FindAction("MoveInput", throwIfNotFound: true);
-        m_Player1Move_ActionInput = m_Player1Move.FindAction("ActionInput", throwIfNotFound: true);
+        m_Player1Move_MoveInputOne = m_Player1Move.FindAction("MoveInputOne", throwIfNotFound: true);
+        m_Player1Move_ActionInputOne = m_Player1Move.FindAction("ActionInputOne", throwIfNotFound: true);
         // Player2Move
         m_Player2Move = asset.FindActionMap("Player2Move", throwIfNotFound: true);
-        m_Player2Move_MoveInput = m_Player2Move.FindAction("MoveInput", throwIfNotFound: true);
-        m_Player2Move_ActionInput = m_Player2Move.FindAction("ActionInput", throwIfNotFound: true);
+        m_Player2Move_MoveInputTwo = m_Player2Move.FindAction("MoveInputTwo", throwIfNotFound: true);
+        m_Player2Move_ActionInputTwo = m_Player2Move.FindAction("ActionInputTwo", throwIfNotFound: true);
         m_Player2Move_Mouse = m_Player2Move.FindAction("Mouse", throwIfNotFound: true);
         // UI Inputs
         m_UIInputs = asset.FindActionMap("UI Inputs", throwIfNotFound: true);
@@ -614,8 +614,8 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
     // Player1Move
     private readonly InputActionMap m_Player1Move;
     private List<IPlayer1MoveActions> m_Player1MoveActionsCallbackInterfaces = new List<IPlayer1MoveActions>();
-    private readonly InputAction m_Player1Move_MoveInput;
-    private readonly InputAction m_Player1Move_ActionInput;
+    private readonly InputAction m_Player1Move_MoveInputOne;
+    private readonly InputAction m_Player1Move_ActionInputOne;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player1Move".
     /// </summary>
@@ -628,13 +628,13 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// </summary>
         public Player1MoveActions(@PlayersImputMap wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Player1Move/MoveInput".
+        /// Provides access to the underlying input action "Player1Move/MoveInputOne".
         /// </summary>
-        public InputAction @MoveInput => m_Wrapper.m_Player1Move_MoveInput;
+        public InputAction @MoveInputOne => m_Wrapper.m_Player1Move_MoveInputOne;
         /// <summary>
-        /// Provides access to the underlying input action "Player1Move/ActionInput".
+        /// Provides access to the underlying input action "Player1Move/ActionInputOne".
         /// </summary>
-        public InputAction @ActionInput => m_Wrapper.m_Player1Move_ActionInput;
+        public InputAction @ActionInputOne => m_Wrapper.m_Player1Move_ActionInputOne;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -661,12 +661,12 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_Player1MoveActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_Player1MoveActionsCallbackInterfaces.Add(instance);
-            @MoveInput.started += instance.OnMoveInput;
-            @MoveInput.performed += instance.OnMoveInput;
-            @MoveInput.canceled += instance.OnMoveInput;
-            @ActionInput.started += instance.OnActionInput;
-            @ActionInput.performed += instance.OnActionInput;
-            @ActionInput.canceled += instance.OnActionInput;
+            @MoveInputOne.started += instance.OnMoveInputOne;
+            @MoveInputOne.performed += instance.OnMoveInputOne;
+            @MoveInputOne.canceled += instance.OnMoveInputOne;
+            @ActionInputOne.started += instance.OnActionInputOne;
+            @ActionInputOne.performed += instance.OnActionInputOne;
+            @ActionInputOne.canceled += instance.OnActionInputOne;
         }
 
         /// <summary>
@@ -678,12 +678,12 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <seealso cref="Player1MoveActions" />
         private void UnregisterCallbacks(IPlayer1MoveActions instance)
         {
-            @MoveInput.started -= instance.OnMoveInput;
-            @MoveInput.performed -= instance.OnMoveInput;
-            @MoveInput.canceled -= instance.OnMoveInput;
-            @ActionInput.started -= instance.OnActionInput;
-            @ActionInput.performed -= instance.OnActionInput;
-            @ActionInput.canceled -= instance.OnActionInput;
+            @MoveInputOne.started -= instance.OnMoveInputOne;
+            @MoveInputOne.performed -= instance.OnMoveInputOne;
+            @MoveInputOne.canceled -= instance.OnMoveInputOne;
+            @ActionInputOne.started -= instance.OnActionInputOne;
+            @ActionInputOne.performed -= instance.OnActionInputOne;
+            @ActionInputOne.canceled -= instance.OnActionInputOne;
         }
 
         /// <summary>
@@ -721,8 +721,8 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
     // Player2Move
     private readonly InputActionMap m_Player2Move;
     private List<IPlayer2MoveActions> m_Player2MoveActionsCallbackInterfaces = new List<IPlayer2MoveActions>();
-    private readonly InputAction m_Player2Move_MoveInput;
-    private readonly InputAction m_Player2Move_ActionInput;
+    private readonly InputAction m_Player2Move_MoveInputTwo;
+    private readonly InputAction m_Player2Move_ActionInputTwo;
     private readonly InputAction m_Player2Move_Mouse;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player2Move".
@@ -736,13 +736,13 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// </summary>
         public Player2MoveActions(@PlayersImputMap wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Player2Move/MoveInput".
+        /// Provides access to the underlying input action "Player2Move/MoveInputTwo".
         /// </summary>
-        public InputAction @MoveInput => m_Wrapper.m_Player2Move_MoveInput;
+        public InputAction @MoveInputTwo => m_Wrapper.m_Player2Move_MoveInputTwo;
         /// <summary>
-        /// Provides access to the underlying input action "Player2Move/ActionInput".
+        /// Provides access to the underlying input action "Player2Move/ActionInputTwo".
         /// </summary>
-        public InputAction @ActionInput => m_Wrapper.m_Player2Move_ActionInput;
+        public InputAction @ActionInputTwo => m_Wrapper.m_Player2Move_ActionInputTwo;
         /// <summary>
         /// Provides access to the underlying input action "Player2Move/Mouse".
         /// </summary>
@@ -773,12 +773,12 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_Player2MoveActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_Player2MoveActionsCallbackInterfaces.Add(instance);
-            @MoveInput.started += instance.OnMoveInput;
-            @MoveInput.performed += instance.OnMoveInput;
-            @MoveInput.canceled += instance.OnMoveInput;
-            @ActionInput.started += instance.OnActionInput;
-            @ActionInput.performed += instance.OnActionInput;
-            @ActionInput.canceled += instance.OnActionInput;
+            @MoveInputTwo.started += instance.OnMoveInputTwo;
+            @MoveInputTwo.performed += instance.OnMoveInputTwo;
+            @MoveInputTwo.canceled += instance.OnMoveInputTwo;
+            @ActionInputTwo.started += instance.OnActionInputTwo;
+            @ActionInputTwo.performed += instance.OnActionInputTwo;
+            @ActionInputTwo.canceled += instance.OnActionInputTwo;
             @Mouse.started += instance.OnMouse;
             @Mouse.performed += instance.OnMouse;
             @Mouse.canceled += instance.OnMouse;
@@ -793,12 +793,12 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
         /// <seealso cref="Player2MoveActions" />
         private void UnregisterCallbacks(IPlayer2MoveActions instance)
         {
-            @MoveInput.started -= instance.OnMoveInput;
-            @MoveInput.performed -= instance.OnMoveInput;
-            @MoveInput.canceled -= instance.OnMoveInput;
-            @ActionInput.started -= instance.OnActionInput;
-            @ActionInput.performed -= instance.OnActionInput;
-            @ActionInput.canceled -= instance.OnActionInput;
+            @MoveInputTwo.started -= instance.OnMoveInputTwo;
+            @MoveInputTwo.performed -= instance.OnMoveInputTwo;
+            @MoveInputTwo.canceled -= instance.OnMoveInputTwo;
+            @ActionInputTwo.started -= instance.OnActionInputTwo;
+            @ActionInputTwo.performed -= instance.OnActionInputTwo;
+            @ActionInputTwo.canceled -= instance.OnActionInputTwo;
             @Mouse.started -= instance.OnMouse;
             @Mouse.performed -= instance.OnMouse;
             @Mouse.canceled -= instance.OnMouse;
@@ -939,19 +939,19 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
     public interface IPlayer1MoveActions
     {
         /// <summary>
-        /// Method invoked when associated input action "MoveInput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "MoveInputOne" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMoveInput(InputAction.CallbackContext context);
+        void OnMoveInputOne(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "ActionInput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ActionInputOne" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnActionInput(InputAction.CallbackContext context);
+        void OnActionInputOne(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player2Move" which allows adding and removing callbacks.
@@ -961,19 +961,19 @@ public partial class @PlayersImputMap: IInputActionCollection2, IDisposable
     public interface IPlayer2MoveActions
     {
         /// <summary>
-        /// Method invoked when associated input action "MoveInput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "MoveInputTwo" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMoveInput(InputAction.CallbackContext context);
+        void OnMoveInputTwo(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "ActionInput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ActionInputTwo" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnActionInput(InputAction.CallbackContext context);
+        void OnActionInputTwo(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Mouse" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

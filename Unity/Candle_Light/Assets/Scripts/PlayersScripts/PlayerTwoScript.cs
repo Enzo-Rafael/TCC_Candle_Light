@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerTwoScript : MonoBehaviour
 {
     //Variaveis
-    PTwoImputs GetIput;
-    Vector3 playerMove;
+	[SerializeField] private InputReader _inputReader = default;
+    private Vector3 _inputVector;
+
+    private Vector3 playerMove;
     public float velocity;
     public CharacterController controller;
     private bool groundedPlayer;
@@ -15,23 +17,28 @@ public class PlayerTwoScript : MonoBehaviour
     private Vector3 forward;
     private Vector3 strafe;
     private Vector3 vetical;
+
     //Metodos
-    private void Awake()
-    {
-       GetIput = GetComponent<PTwoImputs>();
+
+	private void OnEnable(){
+        _inputReader.MoveEventTwo+= OnMove;
+	}
+	private void OnDisable(){
+        _inputReader.MoveEventTwo -= OnMove;
+	}
+    
+    private void OnMove(Vector3 movement){
+        _inputVector = movement;
     }
 
-
-    void Update()
-    {
+    void Update(){
         groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerMove.y < 0)
-        {
-            playerMove.y = 0f;
+        if (groundedPlayer && _inputVector.y < 0){
+           _inputVector.y = 0f;
         }
-        forward = GetIput.MoveImput.y * velocity * transform.forward;
-        strafe = GetIput.MoveImput.x * velocity * transform.right;
-        vetical = GetIput.MoveImput.z * velocity * transform.up;
+        forward = _inputVector.y * velocity * transform.forward;
+        strafe = _inputVector.x * velocity * transform.right;
+        vetical = _inputVector.z * velocity * transform.up;
         playerMove = forward + strafe + vetical;
         controller.Move(playerMove * Time.deltaTime);
     }

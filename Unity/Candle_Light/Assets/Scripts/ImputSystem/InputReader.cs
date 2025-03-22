@@ -29,6 +29,8 @@ public class InputReader : ScriptableObject, PlayersImputMap.IPlayer2MoveActions
     public event UnityAction ActionEventTwo = delegate { };
     public event UnityAction<Vector2> MouseEvent = delegate { };
 
+    public event UnityAction<bool> EscEvent = delegate { };
+
     /*------------------------------------------------------------------------------
     Função:     OnEnable
     Descrição:  Assosia os inputs a o controlador desse script permitindo que 
@@ -75,6 +77,7 @@ public class InputReader : ScriptableObject, PlayersImputMap.IPlayer2MoveActions
 		_playersInput.Player1Move.Disable();
 		_playersInput.Player2Move.Disable();
         _playersInput.UIInputs.Disable();
+
 	}
     /*------------------------------------------------------------------------------
     Função:     EnableGameplayInput
@@ -101,18 +104,19 @@ public class InputReader : ScriptableObject, PlayersImputMap.IPlayer2MoveActions
     public void OnMoveInputOne(InputAction.CallbackContext context){
         MoveEventOne.Invoke(context.ReadValue<Vector3>());
     }
-    public void OnActionInputOne(InputAction.CallbackContext context){
-        if (context.phase == InputActionPhase.Performed) ActionEventOne.Invoke();
-    }
     public void OnMoveInputTwo(InputAction.CallbackContext context){
 		MoveEventTwo.Invoke(context.ReadValue<Vector3>());
     }
+    public void OnActionInputOne(InputAction.CallbackContext context){
+        if (context.phase == InputActionPhase.Performed) ActionEventOne.Invoke();
+    }
+
     public void OnActionInputTwo(InputAction.CallbackContext context){
         if (context.phase == InputActionPhase.Performed) ActionEventTwo.Invoke();
 
     }
     public void OnMouse(InputAction.CallbackContext context){
-
+        MouseEvent.Invoke(context.ReadValue<Vector2>());
     }
 
     public void OnMenuInput(InputAction.CallbackContext context){

@@ -21,14 +21,16 @@ public class InteractionManager : MonoBehaviour
     //-------------------------- Variaveis Globais Visiveis --------------------------------
 
 	[Header("Transmitindo em")]  
-    [Tooltip("Referência para usar a função associada ao ScrpitableObject")]
+    [Tooltip("Referência para usar a função associada ao ScrptableObject")]
     [SerializeField] 
     private ItemEventChannelSO _UseItemEvent = default;
 
-    [Tooltip("Referência para usar a função associada ao ScrpitableObject")]
+    [Tooltip("Referência para usar a função associada ao ScriptableObject")]
     [SerializeField] 
     private ItemEventChannelSO _equipItemEvent = default;
 
+    [Tooltip("Referência para usar a função associada ao ScriptableObject")]
+    [SerializeField] 
     private InputReader _inputReader = default;
 
     //------------------------- Variaveis Globais privadas -------------------------------
@@ -108,6 +110,9 @@ public class InteractionManager : MonoBehaviour
         switch(item.itemType.interactionType){
             case ItemTypeSO.ItemInteractType.Use:
             Debug.Log("ItemUse");
+            potentialInteractions.First.Value.gameObject.GetComponent<Animation>().clip = item.animationClip[0];
+            potentialInteractions.First.Value.gameObject.GetComponent<Animation>().Play();
+            potentialInteractions.First.Value.gameObject.GetComponent<Animation>().Play();
             observer.NotifyObservers(item);
             //chama animação, notifica os observadores... etc
             break;

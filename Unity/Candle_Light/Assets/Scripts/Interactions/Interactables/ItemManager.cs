@@ -14,6 +14,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Data;
+using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
 {	

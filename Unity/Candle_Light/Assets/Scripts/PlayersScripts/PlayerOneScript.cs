@@ -38,15 +38,15 @@ public class PlayerOneScript : MonoBehaviour
             playerMuve.y = 0f;
         }
 
-        forward = _inputVector.y * velocity * mainCam.transform.forward;
-        strafe = _inputVector.x * velocity * mainCam.transform.right;
-        playerMuve = forward + strafe;
+        forward = _inputVector.y * velocity * new Vector3(0, 0,mainCam.transform.position.y);
+        strafe = _inputVector.x * velocity * new Vector3(mainCam.transform.position.y,0,0);
+        playerMuve = (forward + strafe) * Time.deltaTime;
 
         if (playerMuve != Vector3.zero)
         {
             gameObject.transform.forward = playerMuve;
         }
         playerMuve.y += gravityValue * Time.deltaTime;//Gravidade do player 1
-        controller.Move(playerMuve * Time.deltaTime);
+        controller.Move(playerMuve);
     }
 }

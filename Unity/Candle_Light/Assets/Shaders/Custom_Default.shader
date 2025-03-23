@@ -3,13 +3,15 @@ Shader "Custom/Custom_Default"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _ShadowHardness ("Shadow Hardness", Float) = 1
+        _ShadowTint ("Shadow Tint", Color) = (0.5,0.5,0.5)
         _VertEffectSize ("Vert Snap Strength", Float) = 128
     }
     SubShader
     {
         Pass
         {
+            Name "ForwardPass"
+
             Tags {
                 "Queue"="Geometry"
                 "RenderPipeline"="UniversalPipeline"
@@ -23,12 +25,15 @@ Shader "Custom/Custom_Default"
             #pragma fragment frag
             
             #pragma multi_compile_instancing
+            #pragma multi_compile _ _FORWARD_PLUS
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS_SCREEN
+            #pragma multi_complie _ _ADITIONAL_LIGHTS
             
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/RealTimeLights.hlsl"
             
             struct appdata
             {
@@ -41,18 +46,21 @@ Shader "Custom/Custom_Default"
             struct v2f
             {
                 float4 vertex : SV_POSITION;
-                float4 normal : NORMAL;
+                float3 normalWS : NORMAL;
                 float4 color : COLOR;
                 float2 uv : TEXCOORD0;
-                float4 worldPos : TEXCOORD1;
+                float3 worldPos : TEXCOORD1;
             };
             
             #define VERT_EFFECT_SIZE 128.0
+            #define SHADOW_HARDNESS 10
+            #define LIGHT_ATTENUATION 50
 
             sampler2D _MainTex;
             
             CBUFFER_START(UnityPerMaterial)
             float4 _MainTex_ST;
+            half3 _ShadowTint;
             float _ShadowHardness;
             CBUFFER_END
             
@@ -60,66 +68,81 @@ Shader "Custom/Custom_Default"
             v2f vert (appdata IN)
             {
                 v2f o;
-                
-                //vertice afetado pela matriz MVP normal
+                 
+                // Vertice afetado pela matriz MVP normal
                 float4 transfVertex = mul(UNITY_MATRIX_MVP, IN.vertex);
                 o.vertex = transfVertex;      
 
-                //aplica perspectiva  
+                // Aplica perspectiva  
                 o.vertex.xyz = transfVertex.xyz / transfVertex.w;    
 
-                //snap das posicoes x e y de acordo com a aspect ratio (0.5625 pra 16/9)
+                // Snap das posicoes x e y de acordo com a aspect ratio (0.5625 pra 16/9)
                 o.vertex.x = floor(o.vertex.x * VERT_EFFECT_SIZE) / VERT_EFFECT_SIZE;   
                 o.vertex.y = floor(o.vertex.y * (VERT_EFFECT_SIZE*0.5625)) / (VERT_EFFECT_SIZE*0.5625);
 
-                //desaplica perspectiva (pq se nao acontece 2x kk)
+                // Desaplica perspectiva (pq se nao acontece 2x kk)
                 o.vertex.xyz *= transfVertex.w; 
 
                 o.vertex = mul(UNITY_MATRIX_I_VP, o.vertex);
                 o.worldPos = o.vertex;
                 o.vertex = mul(UNITY_MATRIX_VP, o.vertex);
 
-                o.normal = IN.normal;
+                o.normalWS = TransformObjectToWorldNormal(IN.normal);
 
                 o.uv = TRANSFORM_TEX(IN.uv, _MainTex);
                 
+
+
                 return o;
             }
 
-            //calculo de incidencia da luz
-            float3 CalculateLight(Light light, float4 normal)
+            // Calculo de incidencia da luz
+            half CalculateLight(Light light, float3 normal)
             {
-                float diffuse = saturate(dot(normal, light.direction)*_ShadowHardness);
+                half diffuse = saturate(dot(normal, light.direction) * SHADOW_HARDNESS);
 
-                return light.color * diffuse * light.shadowAttenuation;
+                return diffuse * light.shadowAttenuation;
             }
 
-            float4 frag (v2f IN) : SV_Target
+            // Calculo de luz sem normal
+            half CalculateSecondLight(Light light)
             {
-                float4 col = 0;
+                half diffuse = (light.distanceAttenuation * LIGHT_ATTENUATION);
 
-                //Sampling sombras
-                float4 shadowCoord = TransformWorldToShadowCoord(IN.worldPos);
+                return diffuse;
+            }
 
-                //Calculo de luz principal
-                Light mainLight = GetMainLight(shadowCoord);
-                col.rgb = tex2D(_MainTex, IN.uv).rgb * CalculateLight(mainLight, IN.normal);
+            half4 frag (v2f IN) : SV_Target
+            {
+                half4 col = 0;
+                half lightVal = 0;
+
+                // Sampling sombras
+                half4 shadowCoord = TransformWorldToShadowCoord(IN.worldPos);
+
+                // Calculo de luz principal
+                Light light = GetMainLight(shadowCoord);
+                lightVal = CalculateLight(light, IN.normalWS);
+
+                // Preparacao para loop de luz
+                InputData inputData = (InputData)0;
+                inputData.positionWS = IN.worldPos;
+                inputData.positionCS = IN.vertex;
+                inputData.normalWS = IN.normalWS;
+                inputData.viewDirectionWS = GetWorldSpaceNormalizeViewDir(IN.worldPos);
+
+                // Calculo de luzes secundarias
                 uint pixelLightCount = GetAdditionalLightsCount();
-
-                //Loop de luz
                 LIGHT_LOOP_BEGIN(pixelLightCount)
-
-                //pega a luz
-                lightIndex = GetPerObjectLightIndex(lightIndex);
-                Light light = GetAdditionalPerObjectLight(lightIndex, IN.worldPos);
-
-                //pega a sombra
-                light.shadowAttenuation = AdditionalLightRealtimeShadow(lightIndex, IN.worldPos, light.direction);
-                float atten = light.distanceAttenuation * light.shadowAttenuation;
-                
-                col.rgb += light.color;// * atten;
-
+                    Light additionalLight = GetAdditionalLight(lightIndex, inputData.positionWS, 1);
+                    lightVal += CalculateSecondLight(additionalLight);
                 LIGHT_LOOP_END
+
+                lightVal = saturate(lightVal);
+                col = tex2D(_MainTex, IN.uv);
+
+                col.rgb = (col * lightVal) + (col * _ShadowTint * (1-lightVal));
+                
 
                 return col;
             }
@@ -130,7 +153,7 @@ Shader "Custom/Custom_Default"
         }
 
 
-        //ShadowCaster
+        // ShadowCaster
         Pass
         {
             Tags{"Lightmode"="ShadowCaster"}
@@ -150,7 +173,7 @@ Shader "Custom/Custom_Default"
                 float4 vertex : SV_POSITION;
             };
             
-            #define VERT_EFFECT_SIZE 128.0
+            #define VERT_EFFECT_SIZE 256.0
 
             sampler2D _MainTex;
             
@@ -163,25 +186,36 @@ Shader "Custom/Custom_Default"
             v2f vert (appdata IN)
             {
                 v2f o;
-                
-                //vertice afetado pela matriz MVP normal
-                float4 transfVertex = mul(UNITY_MATRIX_MVP, IN.vertex);
-                o.vertex = transfVertex;      
 
-                o.vertex.xyz = transfVertex.xyz / transfVertex.w; //aplica perspectiva      
+                // Nao ta dando certo essa parte, deixa o shadowcaster normal por enquanto
 
-                //snap das posicoes x e y de acordo com a aspect ratio (0.5625 pra 16/9)
-                o.vertex.x = floor(o.vertex.x * VERT_EFFECT_SIZE) / VERT_EFFECT_SIZE;   
-                o.vertex.y = floor(o.vertex.y * (VERT_EFFECT_SIZE*0.5625)) / (VERT_EFFECT_SIZE*0.5625);
-                
-                o.vertex.xyz *= transfVertex.w; //desaplica perspectiva (pq se nao acontece 2x kk)
-                
+                //// Vertice afetado pela matriz MVP da camera
+                //float4 transfVertex = mul(UNITY_MATRIX_M, IN.vertex);
+                //transfVertex = mul(unity_WorldToCamera, IN.vertex);
+                //transfVertex = mul(unity_CameraProjection, transfVertex);
+
+                //o.vertex = transfVertex;      
+
+                ////o.vertex.xyz = transfVertex.xyz / transfVertex.w; //aplica perspectiva      
+
+                //// Snap das posicoes x e y de acordo com a aspect ratio (0.5625 pra 16/9)
+                //o.vertex.x = floor(o.vertex.x * VERT_EFFECT_SIZE) / VERT_EFFECT_SIZE;   
+                //o.vertex.y = floor(o.vertex.y * (VERT_EFFECT_SIZE*0.5625)) / (VERT_EFFECT_SIZE*0.5625);
+                //
+                ////o.vertex.xyz *= transfVertex.w; // Desaplica perspectiva (pq se nao acontece 2x kk)
+
+                //// Desaplica a perspectiva da camera
+                //o.vertex = mul(unity_CameraInvProjection, o.vertex);
+                //o.vertex = mul(unity_CameraToWorld, o.vertex);
+
+                o.vertex = mul(UNITY_MATRIX_MVP, IN.vertex);
+
                 return o;
             }
 
             float4 frag (v2f IN) : SV_Target
             {
-                return 0;
+                return 1;
             }
             ENDHLSL
         }

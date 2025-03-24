@@ -19,6 +19,7 @@ public class ItemTypeSO : ScriptableObject
     public enum ItemInteractType{
         Use,
         Equip,
+        DoNothing
     }
 
     public enum ItemActionType{

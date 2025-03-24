@@ -12,6 +12,8 @@
 //----------------------------- Bibliotecas Usadas -------------------------------------
 
 using UnityEngine;
+using System.Collections.Generic;
+
 
 [CreateAssetMenu(fileName = "Item", menuName = "Interactable/Item")]
 public class ItemSO : ScriptableObject
@@ -34,13 +36,13 @@ public class ItemSO : ScriptableObject
 
     [Tooltip("Animação do item")]
     [SerializeField] 
-    private AnimationClip _animationClip = default;
+    private List<AnimationClip> _animationClip = default;
 
 //-------------------------- Variaveis Globais Visiveis --------------------------------
 
     public string itemName => _itemName;
     public ItemTypeSO itemType => _itemType;
     public GameObject prefab => _prefab;
-    public AnimationClip animationClip => _animationClip;
+    public List<AnimationClip> animationClip => _animationClip;
 
 }

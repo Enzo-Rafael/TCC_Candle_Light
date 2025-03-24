@@ -43,11 +43,10 @@ public class ObserverEventChannelSO : ScriptableObject
     Entrada:    ItemSO - item que ditará qual ação o Observador fará.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void NotifyObservers(ItemSO item)
-    {
+    public void NotifyObservers(bool action){
         if(observers != null){
             foreach (var observer in observers){
-                observer.OnEventRaised(item);
+                observer.OnEventRaised(action);
             }
         }
     }

@@ -14,20 +14,32 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(Animation))]
 public class ExecuteItemCommand : MonoBehaviour, IObserver
 {
 
     //-------------------------- Variaveis Globais Visiveis --------------------------------
+
+    [Tooltip("Referência para as informações basicas do item")]
+	[SerializeField] 
+    private ItemSO _item = default;
 
     [Header("Transmitindo em:")] 
     [Tooltip("Referência para se inscrever na lista de Observers de determinado item")]
     [SerializeField] 
     private ObserverEventChannelSO _observerEvent = default;
 
-    //-------------------------- Variaveis Globais Privadas --------------------------------
+    [Header("Ouvindo:")] 
+    [Tooltip("Referência para usar a função do atuador")]
+    [SerializeField] 
+    private ActuatorEventChannelSO _ActuatorEvent = default;
 
-    private bool bolean = false;
+    private Animation animation; 
 
+    //Pega referência do animation
+    private void Start(){
+        animation = transform.GetComponent<Animation>();
+    }
     /*------------------------------------------------------------------------------
     Função:     OnEnable
     Descrição:  Registra o Objeto na lista de Observadores do item especifico.
@@ -37,7 +49,6 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
     private void OnEnable(){
         _observerEvent.RegisterObserver(this);
     }
-
     /*------------------------------------------------------------------------------
     Função:     OnDisable
     Descrição:  Desregistra o Objeto na lista de Observadores do item especifico.
@@ -47,30 +58,23 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
     private void OnDisable(){
         _observerEvent.UnregisterObserver(this);
     }
-
     /*------------------------------------------------------------------------------
     Função:     OnEventRaised
-    Descrição:  Desregistra o Objeto na lista de Observadores do item especifico.
-    Entrada:    ItemSO -  Utlizado para saber o tipo de interação que o item quer que seja feita.
+    Descrição:  Chama a função respectiva do Atuador, para que ele possa executar sua função.
+    Entrada:    bool - indentificação para dizer qual ação o atuador fará.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void OnEventRaised(ItemSO itemCommand){
-        switch(itemCommand.itemType.actionType){
-            case ItemTypeSO.ItemActionType.Toggle:
-            Debug.Log("Toggle Item");
-            ToggleItem();
-            break;
-            case ItemTypeSO.ItemActionType.Cosume:
-            Debug.Log("Consume Item");
-            break;
-            case ItemTypeSO.ItemActionType.Trigger:
-            Debug.Log("Trigger Item");
-            break;
-        }
+    public void OnEventRaised(bool action){
+        _ActuatorEvent.RaiseEvent(action, this);
     }
-
-    private void ToggleItem(){
-        bolean = !bolean;
-        this.gameObject.SetActive(bolean);
+    /*------------------------------------------------------------------------------
+    Função:     AnimationActive
+    Descrição:  Toca a animação do Atuador
+    Entrada:    int - indentificação para dizer qual o clip de animação deve tocar.
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void AnimationActive(int clipPosition){
+        animation.clip = _item.animationClip[clipPosition];
+        animation.Play();
     }
 }

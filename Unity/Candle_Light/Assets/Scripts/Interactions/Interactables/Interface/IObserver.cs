@@ -1,5 +1,5 @@
 
 public interface IObserver
 {
-   void OnEventRaised(ItemSO item);
+   void OnEventRaised(bool action);
 }

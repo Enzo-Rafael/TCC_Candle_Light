@@ -21,23 +21,42 @@ public class InteractionManager : MonoBehaviour
     //-------------------------- Variaveis Globais Visiveis --------------------------------
 
 	[Header("Transmitindo em")]  
-    [Tooltip("Referência para usar a função associada ao ScrpitableObject")]
+    [Tooltip("Referência para usar a função associada ao ScrptableObject")]
     [SerializeField] 
     private ItemEventChannelSO _UseItemEvent = default;
 
-    [Tooltip("Referência para usar a função associada ao ScrpitableObject")]
+    [Tooltip("Referência para usar a função associada ao ScriptableObject")]
     [SerializeField] 
     private ItemEventChannelSO _equipItemEvent = default;
+
+    [Tooltip("Referência para usar a função associada ao ScriptableObject")]
+    [SerializeField] 
+    private InputReader _inputReader = default;
 
     //------------------------- Variaveis Globais privadas -------------------------------
 
     private LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
 
-    //Só pra testar enquanto não juntamos as branchs do new inputsystem
-    void Update(){
-        if(Input.GetKeyDown(KeyCode.Space)){
-            UseInteractionType();
-        }
+    /*------------------------------------------------------------------------------
+    Função:     OnEnable
+    Descrição:  Associa todas as funções utilizadas ao canal de comunicação para que 
+                qualquer script que utilize o canal possa utilizar a função.
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    private void OnEnable(){
+        _inputReader.ActionEventOne += UseInteractionType;
+        _inputReader.ActionEventTwo += UseInteractionType;      
+    }
+    /*------------------------------------------------------------------------------
+    Função:     OnDisable
+    Descrição:  Desassocia todas as funções utilizadas ao canal de comunicação.
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    private void OnDisable(){
+        _inputReader.ActionEventOne -= UseInteractionType;
+        _inputReader.ActionEventTwo -= UseInteractionType;
     }
     /*------------------------------------------------------------------------------
     Função:     OnTriggerDetected
@@ -86,17 +105,6 @@ public class InteractionManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     public void UseInteractionType(){
         if(potentialInteractions.Count == 0) return;
-        ItemSO item = potentialInteractions.First.Value.GetComponent<ItemInteractable>().GetItem();
-        ObserverEventChannelSO observer = potentialInteractions.First.Value.GetComponent<ItemInteractable>().GetObserver();
-        switch(item.itemType.interactionType){
-            case ItemTypeSO.ItemInteractType.Use:
-            Debug.Log("ItemUse");
-            observer.NotifyObservers(item);
-            //chama animação, notifica os observadores... etc
-            break;
-            case ItemTypeSO.ItemInteractType.Equip:
-            Debug.Log("ItemEquip");
-            break;
-        }
+        potentialInteractions.First.Value.GetComponent<ItemInteractable>().BaseAction();
     }
 }

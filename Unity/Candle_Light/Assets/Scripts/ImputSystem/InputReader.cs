@@ -28,7 +28,6 @@ public class InputReader : ScriptableObject, PlayersImputMap.IPlayer2MoveActions
     public event UnityAction ActionEventOne= delegate { };
     public event UnityAction ActionEventTwo = delegate { };
     public event UnityAction<Vector2> MouseEvent = delegate { };
-
     public event UnityAction<bool> EscEvent = delegate { };
 
     /*------------------------------------------------------------------------------

@@ -30,18 +30,16 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
     private ObserverEventChannelSO _observerEvent = default;
 
     [Header("Ouvindo:")] 
-    [Tooltip("Referência para usar a função Toggle escolhida")]
+    [Tooltip("Referência para usar a função do atuador")]
     [SerializeField] 
-    private ItemEventChannelSO _toggleEvent = default;
-
-
+    private ActuatorEventChannelSO _ActuatorEvent = default;
 
     private Animation animation; 
 
+    //Pega referência do animation
     private void Start(){
         animation = transform.GetComponent<Animation>();
     }
-
     /*------------------------------------------------------------------------------
     Função:     OnEnable
     Descrição:  Registra o Objeto na lista de Observadores do item especifico.
@@ -51,7 +49,6 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
     private void OnEnable(){
         _observerEvent.RegisterObserver(this);
     }
-
     /*------------------------------------------------------------------------------
     Função:     OnDisable
     Descrição:  Desregistra o Objeto na lista de Observadores do item especifico.
@@ -61,25 +58,23 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
     private void OnDisable(){
         _observerEvent.UnregisterObserver(this);
     }
-
     /*------------------------------------------------------------------------------
     Função:     OnEventRaised
-    Descrição:  Desregistra o Objeto na lista de Observadores do item especifico.
-    Entrada:    ItemSO -  Utlizado para saber o tipo de interação que o item quer que seja feita.
+    Descrição:  Chama a função respectiva do Atuador, para que ele possa executar sua função.
+    Entrada:    bool - indentificação para dizer qual ação o atuador fará.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void OnEventRaised(ItemSO itemCommand){
-        switch(itemCommand.itemType.actionType){
-            case ItemTypeSO.ItemActionType.Toggle:
-            animation.clip = _item.animationClip[0];
-            animation.Play();
-            break;
-            case ItemTypeSO.ItemActionType.Cosume:
-            Debug.Log("Consume Item");
-            break;
-            case ItemTypeSO.ItemActionType.Trigger:
-            Debug.Log("Trigger Item");
-            break;
-        }
+    public void OnEventRaised(bool action){
+        _ActuatorEvent.RaiseEvent(action, this);
+    }
+    /*------------------------------------------------------------------------------
+    Função:     AnimationActive
+    Descrição:  Toca a animação do Atuador
+    Entrada:    int - indentificação para dizer qual o clip de animação deve tocar.
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void AnimationActive(int clipPosition){
+        animation.clip = _item.animationClip[clipPosition];
+        animation.Play();
     }
 }

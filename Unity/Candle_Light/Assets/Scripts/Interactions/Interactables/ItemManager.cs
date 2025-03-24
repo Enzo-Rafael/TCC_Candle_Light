@@ -31,6 +31,10 @@ public class ItemManager : MonoBehaviour
     [SerializeField] 
     private ItemEventChannelSO _equipItemEvent = default;
 
+    [Tooltip("Referência para associar o que um atuador Toggle fará")]
+    [SerializeField] 
+    private ActuatorEventChannelSO _toggleAtuactorEvent = default;
+
     /*------------------------------------------------------------------------------
     Função:     OnEnable
     Descrição:  Associa todas as funções utilizadas ao canal de comunicação para que 
@@ -41,6 +45,7 @@ public class ItemManager : MonoBehaviour
     private void OnEnable(){
         _UseItemEvent.OnEventRaised += UseItemEventRaised;
         _equipItemEvent.OnEventRaised += EquipItemEventRaised;
+        _toggleAtuactorEvent.OnEventRaised += ToggleAtuactorEventRaised;
     }
     /*------------------------------------------------------------------------------
     Função:     OnDisable
@@ -51,8 +56,8 @@ public class ItemManager : MonoBehaviour
     private void OnDisable(){
         _UseItemEvent.OnEventRaised -= UseItemEventRaised;
         _equipItemEvent.OnEventRaised -= EquipItemEventRaised;
+        _toggleAtuactorEvent.OnEventRaised -= ToggleAtuactorEventRaised;
     }
-
     /*------------------------------------------------------------------------------
     Função:     UseItemEventRaised
     Descrição:  O que o item/interagivel fara quando usado.
@@ -62,7 +67,6 @@ public class ItemManager : MonoBehaviour
     private void UseItemEventRaised(ItemSO item){
         Debug.Log(item.itemName);
     }
-
     /*------------------------------------------------------------------------------
     Função:     EquipItemEventRaised
     Descrição:  O que o item/interagivel fara quando equipado.
@@ -71,5 +75,19 @@ public class ItemManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     private void EquipItemEventRaised(ItemSO item){
         Debug.Log(item.itemName);
+    }
+    /*------------------------------------------------------------------------------
+    Função:     ToggleAtuactorEventRaised
+    Descrição:  O que o item/interagivel fara quando equipado.
+    Entrada:    bool - indentificação para dizer qual ação o atuador fará.
+                ExecuteItemCommand - Referência para usar as funções do atuador.
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    private void ToggleAtuactorEventRaised(bool action, ExecuteItemCommand atuactor){
+        if(action == true){
+            atuactor.AnimationActive(0);
+        }else{
+            atuactor.AnimationActive(1);
+        }
     }
 }

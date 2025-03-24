@@ -33,8 +33,7 @@ public class PlayerOneScript : MonoBehaviour
     void Update()
     {
         groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerMuve.y < 0)
-        {
+        if (groundedPlayer && playerMuve.y < 0){
             playerMuve.y = 0f;
         }
 

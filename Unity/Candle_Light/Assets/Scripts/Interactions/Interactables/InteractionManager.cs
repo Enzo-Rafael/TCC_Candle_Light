@@ -105,20 +105,6 @@ public class InteractionManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     public void UseInteractionType(){
         if(potentialInteractions.Count == 0) return;
-        ItemSO item = potentialInteractions.First.Value.GetComponent<ItemInteractable>().GetItem();
-        ObserverEventChannelSO observer = potentialInteractions.First.Value.GetComponent<ItemInteractable>().GetObserver();
-        switch(item.itemType.interactionType){
-            case ItemTypeSO.ItemInteractType.Use:
-            Debug.Log("ItemUse");
-            potentialInteractions.First.Value.gameObject.GetComponent<Animation>().clip = item.animationClip[0];
-            potentialInteractions.First.Value.gameObject.GetComponent<Animation>().Play();
-            potentialInteractions.First.Value.gameObject.GetComponent<Animation>().Play();
-            observer.NotifyObservers(item);
-            //chama animação, notifica os observadores... etc
-            break;
-            case ItemTypeSO.ItemInteractType.Equip:
-            Debug.Log("ItemEquip");
-            break;
-        }
+        potentialInteractions.First.Value.GetComponent<ItemInteractable>().BaseAction();
     }
 }

@@ -54,7 +54,7 @@ public class PlayerTwoScript : MonoBehaviour
         forward = _inputVector.y * velocity * camPlayerTwo.transform.forward;
         strafe = _inputVector.x * velocity * camPlayerTwo.transform.right;
         vetical = _inputVector.z * velocity * transform.up;
-        //transform.localEulerAngles = new Vector3(0f,_mouseVector.x * Time.deltaTime, 0f);
+        //transform.localEulerAngles += new Vector3(0f,_mouseVector.x * Time.deltaTime, 0f);
         playerMove = forward + strafe + vetical;
 
         controller.Move(playerMove * Time.deltaTime);

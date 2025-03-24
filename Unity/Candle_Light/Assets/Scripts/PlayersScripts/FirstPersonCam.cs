@@ -3,7 +3,6 @@ using UnityEngine;
 public class FirstPersonCam : MonoBehaviour
 {
     //Variaveis
-    PTwoImputs GetImput;
     [Header("Tranforms de referencia")]
     public Transform playerBody;//vai dar a posição do player
     public Transform playerHead;//onde a camera deve ficar
@@ -17,7 +16,7 @@ public class FirstPersonCam : MonoBehaviour
     //Metodos
     private void Awake()
     {
-       GetImput = playerBody.GetComponent<PTwoImputs>();
+       //GetImput = playerBody.GetComponent<PTwoImputs>();
     }
     //Metodos
     private void LateUpdate()
@@ -28,8 +27,8 @@ public class FirstPersonCam : MonoBehaviour
     void Update()
     {
 
-        rotationX = GetImput.MouseImput.x * sensibility;
-        rotationY = GetImput.MouseImput.y * sensibility;
+        //rotationX = GetImput.MouseImput.x * sensibility;
+        //rotationY = GetImput.MouseImput.y * sensibility;
         rotationY = Mathf.Clamp(rotationY, angleYmin, angleYmax);
 
         playerBody.localEulerAngles = new Vector3(0,rotationX,0);

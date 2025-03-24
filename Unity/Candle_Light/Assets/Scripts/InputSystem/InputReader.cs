@@ -16,13 +16,13 @@ using UnityEngine.Events;
 
 
 [CreateAssetMenu(fileName = "InputReader", menuName = "Game/Input Reader")]
-public class InputReader : ScriptableObject, PlayersImputMap.IPlayer2MoveActions, PlayersImputMap.IPlayer1MoveActions, PlayersImputMap.IUIInputsActions 
+public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions, PlayersInputMap.IPlayer1MoveActions, PlayersInputMap.IUIInputsActions 
 {
 
 //-------------------------- Variaveis Globais Visiveis --------------------------------
 
     //Delegates usados para definir as funçõoes que serão chamadas quando um botão for apertado
-    private PlayersImputMap _playersInput;      
+    private PlayersInputMap _playersInput;      
 	public event UnityAction<Vector3> MoveEventOne = delegate { };
 	public event UnityAction<Vector3> MoveEventTwo = delegate { };    
     public event UnityAction ActionEventOne= delegate { };
@@ -39,7 +39,7 @@ public class InputReader : ScriptableObject, PlayersImputMap.IPlayer2MoveActions
     ------------------------------------------------------------------------------*/
     private void OnEnable(){
 		if (_playersInput == null){
-			_playersInput = new PlayersImputMap();
+			_playersInput = new PlayersInputMap();
             _playersInput.Player1Move.SetCallbacks(this);
 			_playersInput.Player2Move.SetCallbacks(this);
             _playersInput.UIInputs.SetCallbacks(this);

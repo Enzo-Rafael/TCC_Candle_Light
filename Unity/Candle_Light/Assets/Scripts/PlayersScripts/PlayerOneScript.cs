@@ -7,7 +7,7 @@ public class PlayerOneScript : MonoBehaviour
     //Variaveis
 	[SerializeField] private InputReader _inputReader = default;
     private Vector2 _inputVector;
-    Vector3 playerMuve;
+    Vector3 playerMove;
     public float velocity;
     public CharacterController controller;
     private bool groundedPlayer;
@@ -33,19 +33,19 @@ public class PlayerOneScript : MonoBehaviour
     void Update()
     {
         groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerMuve.y < 0){
-            playerMuve.y = 0f;
+        if (groundedPlayer && playerMove.y < 0){
+            playerMove.y = 0f;
         }
 
         forward = _inputVector.y * velocity * new Vector3(0, 0,mainCam.transform.position.y);
         strafe = _inputVector.x * velocity * new Vector3(mainCam.transform.position.y,0,0);
-        playerMuve = (forward + strafe) * Time.deltaTime;
+        playerMove = (forward + strafe) * Time.deltaTime;
 
-        if (playerMuve != Vector3.zero)
+        if (playerMove != Vector3.zero)
         {
-            gameObject.transform.forward = playerMuve;
+            gameObject.transform.forward = playerMove;
         }
-        playerMuve.y += gravityValue * Time.deltaTime;//Gravidade do player 1
-        controller.Move(playerMuve);
+        playerMove.y += gravityValue * Time.deltaTime;//Gravidade do player 1
+        controller.Move(playerMove);
     }
 }

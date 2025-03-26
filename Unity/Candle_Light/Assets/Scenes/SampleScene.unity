@@ -535,8 +535,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.448745, y: 0.2761585, z: -0.14807197, w: 0.8369224}
-  m_LocalPosition: {x: -3.3656023, y: 3.6754959, z: -1.236346}
+  m_LocalRotation: {x: 0.00003119139, y: -0.46908018, z: 0.000016567026, w: 0.8831556}
+  m_LocalPosition: {x: 5.9099846, y: 1.360713, z: -5.649669}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1082,8 +1082,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551674610}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.44874498, y: 0.2761585, z: -0.14807199, w: 0.83692247}
-  m_LocalPosition: {x: -5.7731757, y: 9.764083, z: -4.4873133}
+  m_LocalRotation: {x: -0.10236125, y: 0.86601365, z: -0.19806394, w: -0.44756374}
+  m_LocalPosition: {x: 4.962561, y: 5.745906, z: 5.2560296}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1257,7 +1257,7 @@ GameObject:
   - component: {fileID: 680703812}
   - component: {fileID: 680703811}
   m_Layer: 7
-  m_Name: P1 Follow Cam
+  m_Name: P1 Follow Cam (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1774,7 +1774,7 @@ GameObject:
   - component: {fileID: 836090460}
   - component: {fileID: 836090459}
   m_Layer: 7
-  m_Name: P1 Follow Cam 2
+  m_Name: P1 Follow Cam (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1891,8 +1891,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836090458}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.44874498, y: 0.2761585, z: -0.14807199, w: 0.83692247}
-  m_LocalPosition: {x: -5.7731757, y: 9.764083, z: -4.4873133}
+  m_LocalRotation: {x: 0.17163487, y: 0.8102688, z: -0.4794459, w: 0.2900648}
+  m_LocalPosition: {x: -5.532309, y: 10.204193, z: 3.753359}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3002,7 +3002,7 @@ GameObject:
   - component: {fileID: 1852708027}
   - component: {fileID: 1852708026}
   m_Layer: 7
-  m_Name: P1 Follow Cam (1)
+  m_Name: P1 Follow Cam (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3049,7 +3049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraDistance: 2.78
+  CameraDistance: 10.09
   DeadZoneDepth: 0
   Composition:
     ScreenPosition: {x: 0, y: 0}
@@ -3119,8 +3119,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852708025}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.44874498, y: 0.2761585, z: -0.14807199, w: 0.83692247}
-  m_LocalPosition: {x: -3.3656025, y: 3.6754959, z: -1.236346}
+  m_LocalRotation: {x: 0.00003119139, y: -0.46908015, z: 0.000016567024, w: 0.8831556}
+  m_LocalPosition: {x: 5.909984, y: 1.360713, z: -5.64967}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3170,6 +3170,7 @@ GameObject:
   - component: {fileID: 1957680704}
   - component: {fileID: 1957680705}
   - component: {fileID: 1957680706}
+  - component: {fileID: 1957680707}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -3273,6 +3274,18 @@ MonoBehaviour:
   _UseItemEvent: {fileID: 11400000, guid: 322cd9b7723cd5a43ac67e9e3ed46700, type: 2}
   _equipItemEvent: {fileID: 11400000, guid: 12204ab7a76b3814ea0f644296d79050, type: 2}
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
+--- !u!114 &1957680707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957680697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31be371cabe7124ab665809a5ce27c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2140418091
 GameObject:
   m_ObjectHideFlags: 0

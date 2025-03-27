@@ -26,8 +26,9 @@ MonoBehaviour:
     probeVolumeBlendStatesCS: {fileID: 7200000, guid: b9a23f869c4fd45f19c5ada54dd82176, type: 3}
   m_RendererFeatures:
   - {fileID: 7833122117494664109}
+  - {fileID: 4926405860361910284}
   - {fileID: 4055060848086942558}
-  m_RendererFeatureMap: ad6b866f10d7b46c5e03d1505b784638
+  m_RendererFeatureMap: ad6b866f10d7b46c0c38465e071c5e445e03d1505b784638
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -73,6 +74,21 @@ MonoBehaviour:
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1
+--- !u!114 &4926405860361910284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12234c596a0451e4b921bba2474243a6, type: 3}
+  m_Name: DarknessEffectRendererFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  injectionPoint: 550
+  material: {fileID: 2100000, guid: ae1abe7132bc98d4590eaaf43f54b225, type: 2}
 --- !u!114 &7833122117494664109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +110,7 @@ MonoBehaviour:
     NormalSamples: 1
     Intensity: 0.4
     DirectLightingStrength: 0.25
-    Radius: 0.3
+    Radius: 0.2
     Samples: 1
     BlurQuality: 0
     Falloff: 100

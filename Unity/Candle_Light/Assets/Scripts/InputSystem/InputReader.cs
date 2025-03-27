@@ -123,9 +123,9 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
 
     }
     public void OnChangeCamLeft(InputAction.CallbackContext context){
-       //ChangeCamEvent.Invoke(context.);
+       if (context.phase == InputActionPhase.Performed) ChangeCamLeftEvent.Invoke();
     }
     public void OnChangeCamRight(InputAction.CallbackContext context){
-       //ChangeCamEvent.Invoke(context.);
+       if (context.phase == InputActionPhase.Performed) ChangeCamRightEvent.Invoke();
     }
 }

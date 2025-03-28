@@ -30,13 +30,13 @@ public class ChangeCam : MonoBehaviour
     }
     public void OnChangeCamLeft(){
       currentCam.Priority = 0;
-       if(currentCam.name == "P1 Follow Cam (1)"){
+       if(currentCam == camRef[0]){
            currentCam = camRef[1];
            currentCam.Priority = 1;
-       }else if(currentCam.name == "P1 Follow Cam (2)"){
+       }else if(currentCam == camRef[1]){
            currentCam = camRef[2];
            currentCam.Priority = 1;
-       }else if(currentCam.name == "P1 Follow Cam (3)"){
+       }else if(currentCam == camRef[2]){
            currentCam = camRef[3];
            currentCam.Priority = 1;
        }else{
@@ -46,18 +46,21 @@ public class ChangeCam : MonoBehaviour
     }
     public void OnChangeCamRight(){
        currentCam.Priority = 0;
-       if(currentCam.name == "P1 Follow Cam (1)"){
+       if(currentCam == camRef[0]){
            currentCam = camRef[3];
            currentCam.Priority = 1;
-       }else if(currentCam.name == "P1 Follow Cam (4)"){
+       }else if(currentCam == camRef[3]){
            currentCam = camRef[2];
            currentCam.Priority = 1;
-       }else if(currentCam.name == "P1 Follow Cam (3)"){
+       }else if(currentCam == camRef[2]){
            currentCam = camRef[1];
            currentCam.Priority = 1;
        }else{
            currentCam = camRef[0];
            currentCam.Priority = 1;
        }
+    }
+    public void GetCams(){
+      
     }
 }

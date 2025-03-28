@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using Unity.Cinemachine;
 //Player 1: Move WASD
 
 public class PlayerOneScript : MonoBehaviour
@@ -12,7 +12,7 @@ public class PlayerOneScript : MonoBehaviour
     public CharacterController controller;
     private bool groundedPlayer;
     private float gravityValue = -9.81f;
-    public GameObject mainCam;// referencia para a o andar do player a partir da camera
+    public CinemachineCamera mainCam;// referencia para a o andar do player a partir da camera
 
     //Orientação para o movimento
     private Vector3 forward;
@@ -32,6 +32,7 @@ public class PlayerOneScript : MonoBehaviour
     
     void Update()
     {
+        mainCam = GetComponent<ChangeCam>().currentCam;
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerMove.y < 0){
             playerMove.y = 0f;
@@ -49,3 +50,5 @@ public class PlayerOneScript : MonoBehaviour
         controller.Move(playerMove);
     }
 }
+/* forward = _inputVector.y * velocity * new Vector3(0, 0,mainCam.transform.position.y);
+        strafe = _inputVector.x * velocity * new Vector3(mainCam.transform.position.y,0,0);*/

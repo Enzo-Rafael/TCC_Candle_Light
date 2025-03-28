@@ -38,8 +38,8 @@ public class PlayerOneScript : MonoBehaviour
             playerMove.y = 0f;
         }
 
-        forward = _inputVector.y * velocity * new Vector3(0, 0,mainCam.transform.position.y);
-        strafe = _inputVector.x * velocity * new Vector3(mainCam.transform.position.y,0,0);
+        forward = _inputVector.y * velocity * new Vector3(0, 0,-mainCam.transform.position.z);
+        strafe = _inputVector.x * velocity * new Vector3(-mainCam.transform.position.z,0,0);
         playerMove = (forward + strafe) * Time.deltaTime;
 
         if (playerMove != Vector3.zero)

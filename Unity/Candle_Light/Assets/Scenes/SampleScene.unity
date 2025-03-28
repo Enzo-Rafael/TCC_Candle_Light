@@ -2053,7 +2053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowDebugText: 0
   ShowCameraFrustum: 1
-  IgnoreTimeScale: 0
+  IgnoreTimeScale: 1
   WorldUpOverride: {fileID: 0}
   ChannelMask: 2
   UpdateMethod: 2
@@ -2163,7 +2163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScanRecursively: 0
   SuppressInputWhileBlending: 0
-  IgnoreTimeScale: 1
+  IgnoreTimeScale: 0
   m_ControllerManager:
     Controllers:
     - Name: Look X (Pan)
@@ -2171,7 +2171,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         InputAction: {fileID: 821114015532985589, guid: d4449bb62c05a264da564427bf497394, type: 3}
-        Gain: 1.5
+        Gain: 30
         LegacyInput: 
         LegacyGain: 1
         CancelDeltaTime: 0
@@ -2184,7 +2184,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         InputAction: {fileID: 821114015532985589, guid: d4449bb62c05a264da564427bf497394, type: 3}
-        Gain: -1.5
+        Gain: -30
         LegacyInput: 
         LegacyGain: 1
         CancelDeltaTime: 0
@@ -2207,7 +2207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReferenceFrame: 0
-  RecenterTarget: 2
+  RecenterTarget: 1
   PanAxis:
     Value: 0
     Center: 0
@@ -2237,23 +2237,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1397504210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 625c14eee3ad46c99df7c7c891ef668a, type: 3}
+  m_Script: {fileID: 11500000, guid: 36d1163fa822e8b418a0a603ec078d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: {x: 0, y: 0, z: 0}
-  ShoulderOffset: {x: 0, y: 0, z: 0}
-  VerticalArmLength: 0
-  CameraSide: 1
-  CameraDistance: 0
-  AvoidObstacles:
-    Enabled: 0
-    CollisionFilter:
-      serializedVersion: 2
-      m_Bits: 1
-    IgnoreTag: 
-    CameraRadius: 0.2
-    DampingIntoCollision: 0
-    DampingFromCollision: 0.5
+  Damping: 0
 --- !u!1 &1446462517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3247,7 +3234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
-  camPlayerTwo: {fileID: 1162382462}
+  camPlayerTwo: {fileID: 1397504210}
   velocity: 2
   controller: {fileID: 2140418098}
 --- !u!114 &2140418100

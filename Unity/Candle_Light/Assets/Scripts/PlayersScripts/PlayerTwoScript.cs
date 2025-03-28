@@ -51,12 +51,16 @@ public class PlayerTwoScript : MonoBehaviour
         if (groundedPlayer && _inputVector.y < 0){
            _inputVector.y = 0f;
         }
-        forward = _inputVector.y * velocity * camPlayerTwo.transform.forward;
-        strafe = _inputVector.x * velocity * camPlayerTwo.transform.right;
-        vetical = _inputVector.z * velocity * transform.up;
+        forward = _inputVector.y * camPlayerTwo.transform.forward;
+        strafe = _inputVector.x * camPlayerTwo.transform.right;
+        vetical = _inputVector.z * camPlayerTwo.transform.up;
         //transform.localEulerAngles += new Vector3(0f,_mouseVector.x * Time.deltaTime, 0f);
         playerMove = forward + strafe + vetical;
+        if (playerMove != Vector3.zero)
+        {
+            gameObject.transform.forward = playerMove;
+        }
 
-        controller.Move(playerMove * Time.deltaTime);
+        controller.Move(playerMove * velocity * Time.deltaTime);
     }
 }

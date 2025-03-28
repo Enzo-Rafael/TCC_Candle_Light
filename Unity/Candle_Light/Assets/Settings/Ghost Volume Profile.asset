@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
   m_Name: ColorAdjustments
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   postExposure:
     m_OverrideState: 0
     m_Value: 0
@@ -20,14 +20,14 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   colorFilter:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.8983083, b: 0.2028302, a: 1}
   hueShift:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 165
   saturation:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 100
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,8 +42,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   components:
   - {fileID: 6249096492305442940}
-  - {fileID: 3081293342492804694}
   - {fileID: -3794584328591017572}
+  - {fileID: 3081293342492804694}
 --- !u!114 &3081293342492804694
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -59,7 +59,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
 --- !u!114 &6249096492305442940
 MonoBehaviour:
   m_ObjectHideFlags: 3

@@ -121,6 +121,8 @@ GameObject:
   - component: {fileID: 2439669967701740958}
   - component: {fileID: 5061557446704673241}
   - component: {fileID: 5703467674756799526}
+  - component: {fileID: 5970005580199222380}
+  - component: {fileID: 5532617458173819546}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -223,6 +225,34 @@ MonoBehaviour:
   _UseItemEvent: {fileID: 11400000, guid: 322cd9b7723cd5a43ac67e9e3ed46700, type: 2}
   _equipItemEvent: {fileID: 11400000, guid: 12204ab7a76b3814ea0f644296d79050, type: 2}
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
+--- !u!114 &5970005580199222380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006832363215773459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe72e2d9badc0234eb902e424fe56a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doPositionSync: 1
+--- !u!114 &5532617458173819546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006832363215773459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 631b087b68cd06a4f94aa46b8e48aeff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  postProcessingVolume: {fileID: 0}
+  darkTime: 3
+  lightTime: 0.5
 --- !u!1 &8167933245002136969
 GameObject:
   m_ObjectHideFlags: 0

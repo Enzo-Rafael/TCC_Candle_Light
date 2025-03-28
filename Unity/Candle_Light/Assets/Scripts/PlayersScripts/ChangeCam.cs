@@ -5,8 +5,8 @@ using System;
 public class ChangeCam : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader = default;
-    public CinemachineCamera[] camRef;
-    public CinemachineCamera currentCam;
+    [SerializeField] private CinemachineCamera[] camRef;
+    private CinemachineCamera currentCam;
 
     void Start(){
         currentCam = camRef[0];
@@ -60,7 +60,8 @@ public class ChangeCam : MonoBehaviour
            currentCam.Priority = 1;
        }
     }
-    public void GetCams(){
-      
+    public CinemachineCamera GetCam(){
+        CinemachineCamera cam = currentCam;
+       return cam;
     }
 }

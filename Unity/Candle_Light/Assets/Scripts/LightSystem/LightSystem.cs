@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 /// <summary>
 /// Sistema que roda os calculos de deteccao de luz
@@ -8,8 +9,11 @@ using UnityEngine;
 [AddComponentMenu(menuName:"/")]
 public class LightSystem : Singleton<LightSystem>
 {
+//===============================================================
+// TODO: Concertar ou descartar a logica de economizar checagem.
+//===============================================================
 
-#region STRUCTS
+#region CLASSES
 
     /// <summary>
     /// Alvo dos calculos de deteccao de luz.
@@ -95,9 +99,9 @@ public class LightSystem : Singleton<LightSystem>
     private List<PointLight> dynamicPointLights;
 
     /// <summary>
-    /// Direcao da luz principal.
+    /// Luz principal (direcional)
     /// </summary>
-    public Vector3 mainLightDir;
+    public Light mainLight;
 #endregion
 
 #region FUNCTIONS
@@ -123,9 +127,9 @@ public class LightSystem : Singleton<LightSystem>
         {
 
             // Checa inobstrucao para a luz principal
-            if(!Physics.Raycast(dynamicDetectors[i].globalPos, -mainLightDir, 10000f))
+            if(!Physics.Raycast(dynamicDetectors[i].globalPos, -mainLight.transform.forward, 10000f))
             {
-                //goto lit;
+                goto lit;
             }
 
             // Checa as luzes radiais estaticas
@@ -330,6 +334,14 @@ public class LightSystem : Singleton<LightSystem>
 
         staticPointLights = new List<PointLight>();
         dynamicPointLights = new List<PointLight>();
+
+        foreach(Light light in FindObjectsByType<Light>(FindObjectsSortMode.None))
+        {
+            if(light.type == UnityEngine.LightType.Directional)
+            {
+                mainLight = light;
+            }
+        }
     }
 
     void OnDrawGizmosSelected()

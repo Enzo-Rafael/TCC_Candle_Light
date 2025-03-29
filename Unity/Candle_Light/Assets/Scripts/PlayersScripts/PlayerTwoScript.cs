@@ -18,7 +18,7 @@ public class PlayerTwoScript : MonoBehaviour
 
     private Vector2 startingRotation;
 
-    public float velocity;
+    [SerializeField] private float velocity;
     public CharacterController controller;
     private bool groundedPlayer;
 
@@ -63,4 +63,9 @@ public class PlayerTwoScript : MonoBehaviour
 
         controller.Move(playerMove * velocity * Time.deltaTime);
     }
+
+    /// <summary>
+    /// Leitor publico para a velocidade do fantasma.
+    /// </summary>
+    public float GetVelocity(){ return velocity; }
 }

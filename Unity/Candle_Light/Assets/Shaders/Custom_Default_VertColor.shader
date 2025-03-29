@@ -1,8 +1,7 @@
-Shader "Custom/Custom_Default"
+Shader "Custom/Custom_Default_VertColor"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
         _ShadowTint ("Shadow Tint", Color) = (0.5,0.5,0.5)
         _VertEffectSize ("Vert Snap Strength", Float) = 128
     }
@@ -11,7 +10,6 @@ Shader "Custom/Custom_Default"
         Pass
         {
             Name "ForwardPass"
-            ZWrite ON
 
             Tags {
                 "Queue"="Geometry"
@@ -29,7 +27,6 @@ Shader "Custom/Custom_Default"
             #pragma multi_compile _ _FORWARD_PLUS
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
-            #pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW
             #pragma multi_complie _ _ADITIONAL_LIGHTS
             
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -41,7 +38,6 @@ Shader "Custom/Custom_Default"
                 float4 vertex : POSITION;
                 float4 normal : NORMAL;
                 float4 color : COLOR;
-                float2 uv : TEXCOORD0;
             };
             
             struct v2f
@@ -49,18 +45,14 @@ Shader "Custom/Custom_Default"
                 float4 vertex : SV_POSITION;
                 float3 normalWS : NORMAL;
                 float4 color : COLOR;
-                float2 uv : TEXCOORD0;
                 float3 worldPos : TEXCOORD1;
             };
             
             #define VERT_EFFECT_SIZE 128.0
             #define SHADOW_HARDNESS 10
             #define LIGHT_ATTENUATION 50
-
-            sampler2D _MainTex;
             
             CBUFFER_START(UnityPerMaterial)
-            float4 _MainTex_ST;
             half3 _ShadowTint;
             float _ShadowHardness;
             CBUFFER_END
@@ -89,10 +81,8 @@ Shader "Custom/Custom_Default"
                 o.vertex = mul(UNITY_MATRIX_VP, o.vertex);
 
                 o.normalWS = TransformObjectToWorldNormal(IN.normal);
-
-                o.uv = TRANSFORM_TEX(IN.uv, _MainTex);
                 
-
+                o.color = IN.color;
 
                 return o;
             }
@@ -140,7 +130,7 @@ Shader "Custom/Custom_Default"
                 LIGHT_LOOP_END
 
                 lightVal = saturate(lightVal);
-                col = tex2D(_MainTex, IN.uv);
+                col = IN.color;
 
                 col.rgb = (col * lightVal) + (col * _ShadowTint * (1-lightVal));
                 
@@ -205,5 +195,4 @@ Shader "Custom/Custom_Default"
             ENDHLSL
         }
     }
-    Fallback "Diffuse"
 }

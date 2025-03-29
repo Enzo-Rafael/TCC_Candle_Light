@@ -1,3 +1,4 @@
+using UnityEditor.Animations;
 using UnityEngine;
 using Unity.Cinemachine;
 //Player 1: MoveR: WASD InteragIr: J Rocionar camera:Q/K e E/L 
@@ -10,6 +11,7 @@ public class PlayerOneScript : MonoBehaviour
     Vector3 playerMove;
     public float velocity;
     public CharacterController controller;
+    public Animator animator;
     private bool groundedPlayer;
     private float gravityValue = -9.81f;
     private CinemachineCamera mainCam;// referencia para a o andar do player a partir da camera
@@ -49,6 +51,7 @@ public class PlayerOneScript : MonoBehaviour
         {
             gameObject.transform.forward = playerMove;
         }
+        animator.SetFloat("WalkSpeed", playerMove.magnitude);
         playerMove.y += gravityValue * Time.deltaTime;//Gravidade do player 1
         controller.Move(playerMove* velocity * Time.deltaTime );
     }

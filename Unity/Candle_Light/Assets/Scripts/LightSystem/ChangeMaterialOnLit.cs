@@ -11,7 +11,7 @@ public class ChangeMaterialOnLit : MonoBehaviour
     /// <summary>
     /// Renderer alvo da mudanca de material.
     /// </summary>
-    [SerializeField] private Renderer renderer;
+    [SerializeField] private Renderer meshRenderer;
 
     /// <summary>
     /// Material enquanto na sombra.
@@ -27,12 +27,12 @@ public class ChangeMaterialOnLit : MonoBehaviour
     {
         detector = GetComponent<LightDetector>();
 
-        originalMaterial = renderer.material;
+        originalMaterial = meshRenderer.material;
         detector.LightChangeEvent += SetMaterial;
     }
 
     private void SetMaterial(bool value)
     {
-        renderer.material = value? originalMaterial:material;
+        meshRenderer.material = value? originalMaterial:material;
     }
 }

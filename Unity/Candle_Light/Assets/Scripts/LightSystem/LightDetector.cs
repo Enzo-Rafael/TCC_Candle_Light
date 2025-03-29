@@ -27,6 +27,11 @@ public class LightDetector : MonoBehaviour
 
     public Action<bool> LightChangeEvent;
 
+    void Awake()
+    {
+        LightChangeEvent = (x) => {};
+    }
+
     void FixedUpdate()
     {
         // Sincroniza posicao com o sistema de luz

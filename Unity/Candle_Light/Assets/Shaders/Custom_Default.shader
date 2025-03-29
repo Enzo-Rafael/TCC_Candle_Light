@@ -11,6 +11,7 @@ Shader "Custom/Custom_Default"
         Pass
         {
             Name "ForwardPass"
+            ZWrite ON
 
             Tags {
                 "Queue"="Geometry"
@@ -28,7 +29,7 @@ Shader "Custom/Custom_Default"
             #pragma multi_compile _ _FORWARD_PLUS
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
-            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS_SCREEN
+            #pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW
             #pragma multi_complie _ _ADITIONAL_LIGHTS
             
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -156,68 +157,53 @@ Shader "Custom/Custom_Default"
         // ShadowCaster
         Pass
         {
-            Tags{"Lightmode"="ShadowCaster"}
+            Name "ShadowCaster"
+            Tags
+            {
+                "LightMode" = "ShadowCaster"
+            }
+
+            // -------------------------------------
+            // Render State Commands
+            ZWrite On
+            ZTest LEqual
+            ColorMask 0
+            Cull[_Cull]
+
             HLSLPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-            #pragma multi_compile_shadowcaster
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-            
-            struct appdata
-            {
-                float4 vertex : POSITION;
-            };
-            
-            struct v2f
-            {
-                float4 vertex : SV_POSITION;
-            };
-            
-            #define VERT_EFFECT_SIZE 256.0
+            #pragma target 2.0
 
-            sampler2D _MainTex;
-            
-            CBUFFER_START(UnityPerMaterial)
-            float4 _MainTex_ST;
+            // -------------------------------------
+            // Shader Stages
+            #pragma vertex ShadowPassVertex
+            #pragma fragment ShadowPassFragment
 
-            CBUFFER_END
-            
+            // -------------------------------------
+            // Material Keywords
+            #pragma shader_feature_local _ALPHATEST_ON
+            #pragma shader_feature_local_fragment _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
 
-            v2f vert (appdata IN)
-            {
-                v2f o;
+            //--------------------------------------
+            // GPU Instancing
+            #pragma multi_compile_instancing
+            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
 
-                // Nao ta dando certo essa parte, deixa o shadowcaster normal por enquanto
+            // -------------------------------------
+            // Universal Pipeline keywords
 
-                //// Vertice afetado pela matriz MVP da camera
-                //float4 transfVertex = mul(UNITY_MATRIX_M, IN.vertex);
-                //transfVertex = mul(unity_WorldToCamera, IN.vertex);
-                //transfVertex = mul(unity_CameraProjection, transfVertex);
+            // -------------------------------------
+            // Unity defined keywords
+            #pragma multi_compile _ LOD_FADE_CROSSFADE
 
-                //o.vertex = transfVertex;      
+            // This is used during shadow map generation to differentiate between directional and punctual light shadows, as they use different formulas to apply Normal Bias
+            #pragma multi_compile_vertex _ _CASTING_PUNCTUAL_LIGHT_SHADOW
 
-                ////o.vertex.xyz = transfVertex.xyz / transfVertex.w; //aplica perspectiva      
-
-                //// Snap das posicoes x e y de acordo com a aspect ratio (0.5625 pra 16/9)
-                //o.vertex.x = floor(o.vertex.x * VERT_EFFECT_SIZE) / VERT_EFFECT_SIZE;   
-                //o.vertex.y = floor(o.vertex.y * (VERT_EFFECT_SIZE*0.5625)) / (VERT_EFFECT_SIZE*0.5625);
-                //
-                ////o.vertex.xyz *= transfVertex.w; // Desaplica perspectiva (pq se nao acontece 2x kk)
-
-                //// Desaplica a perspectiva da camera
-                //o.vertex = mul(unity_CameraInvProjection, o.vertex);
-                //o.vertex = mul(unity_CameraToWorld, o.vertex);
-
-                o.vertex = mul(UNITY_MATRIX_MVP, IN.vertex);
-
-                return o;
-            }
-
-            float4 frag (v2f IN) : SV_Target
-            {
-                return 1;
-            }
+            // -------------------------------------
+            // Includes
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitInput.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/ShadowCasterPass.hlsl"
             ENDHLSL
         }
     }
+    Fallback "Diffuse"
 }

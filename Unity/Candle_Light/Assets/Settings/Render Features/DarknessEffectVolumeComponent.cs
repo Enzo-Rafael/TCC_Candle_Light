@@ -18,6 +18,9 @@ public sealed class DarknessEffectVolumeComponent : VolumeComponent, IPostProces
     [Tooltip("Forca do efeito.")]
     public ClampedFloatParameter intensity = new ClampedFloatParameter(1f, 0f, 1f);
 
+    [Tooltip("Distancia maxima de visao.")]
+    public MinFloatParameter distance = new MinFloatParameter(10, 0, true);
+
     public bool IsActive()
     {
         return intensity.GetValue<float>() > 0.0f;

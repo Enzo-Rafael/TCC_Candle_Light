@@ -13,7 +13,7 @@ public class DarknessEffectRendererFeature : ScriptableRendererFeature
 
         // Propriedades de shader
         private static readonly int intensityID = Shader.PropertyToID("_Intensity");
-
+        private static readonly int distanceID = Shader.PropertyToID("_MaxDistance");
 
         public void Setup(Material mat)
         {
@@ -32,6 +32,7 @@ public class DarknessEffectRendererFeature : ScriptableRendererFeature
                 return;
 
             m_BlitMaterial.SetFloat(intensityID, (float)customEffect.intensity);
+            m_BlitMaterial.SetFloat(distanceID, (float)customEffect.distance);
 
             var resourceData = frameData.Get<UniversalResourceData>();
 

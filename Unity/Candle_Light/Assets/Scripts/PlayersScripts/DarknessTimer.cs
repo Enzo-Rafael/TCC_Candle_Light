@@ -5,14 +5,17 @@ using UnityEngine.Rendering;
 /// Comunica o efeito de consumo da escuridao com o fantasma e UI
 /// </summary>
 [RequireComponent(typeof(LightDetector))]
+[RequireComponent(typeof(PlayerTwoScript))]
 public class DarknessTimer : MonoBehaviour
 {
     private LightDetector detector;
+
+    private PlayerTwoScript playerScript;
+
+    private DarknessEffectVolumeComponent darknessEffect;
     
     [Tooltip("Volume contendo o componente DarknessEffect para a tela correta.")]
     [SerializeField] private Volume postProcessingVolume;
-
-    private DarknessEffectVolumeComponent darknessEffect;
 
     [Tooltip("Tempo que leva para o objeto ir de iluminado para completamente tomado por trevas.")]
     [SerializeField] private float darkTime;
@@ -25,6 +28,7 @@ public class DarknessTimer : MonoBehaviour
     void Awake()
     {
         detector = GetComponent<LightDetector>();
+        playerScript = GetComponent<PlayerTwoScript>();
         postProcessingVolume.profile.TryGet(out darknessEffect);
         timer = 0;
     }
@@ -44,5 +48,6 @@ public class DarknessTimer : MonoBehaviour
         }
 
         darknessEffect.intensity.value = timer;
+        darknessEffect.distance.value = darkTime*(1-timer)*playerScript.GetVelocity();
     }
 }

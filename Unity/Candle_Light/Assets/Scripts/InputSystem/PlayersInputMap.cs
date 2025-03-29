@@ -108,6 +108,24 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChangeCamLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""3838a966-135f-4a5d-8bbb-da515a5e22a4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeCamRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""0013c44a-da7f-45a8-ac7e-d473212e9eab"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -267,12 +285,67 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c91bebcc-8764-4e60-9387-5961d4e19462"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""id"": ""42ea2c2b-3387-4357-b83c-1a3098fcf87e"",
+                    ""path"": ""<Keyboard>/j"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ActionInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd7804f7-d79b-4f00-9028-a21325c78893"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ActionInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3d9b5a3-e648-42b5-bfac-7b1deb69a51a"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeCamLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35151bd2-72b6-435b-9617-498aef4ab244"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeCamLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35f8326d-1035-4de8-b1c3-fb7f4bec3b63"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeCamRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f9dd8812-c9e1-44fe-98a7-6fff1f02a7eb"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeCamRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -524,6 +597,8 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         m_Player1Move = asset.FindActionMap("Player1Move", throwIfNotFound: true);
         m_Player1Move_MoveInputOne = m_Player1Move.FindAction("MoveInputOne", throwIfNotFound: true);
         m_Player1Move_ActionInputOne = m_Player1Move.FindAction("ActionInputOne", throwIfNotFound: true);
+        m_Player1Move_ChangeCamLeft = m_Player1Move.FindAction("ChangeCamLeft", throwIfNotFound: true);
+        m_Player1Move_ChangeCamRight = m_Player1Move.FindAction("ChangeCamRight", throwIfNotFound: true);
         // Player2Move
         m_Player2Move = asset.FindActionMap("Player2Move", throwIfNotFound: true);
         m_Player2Move_MoveInputTwo = m_Player2Move.FindAction("MoveInputTwo", throwIfNotFound: true);
@@ -616,6 +691,8 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
     private List<IPlayer1MoveActions> m_Player1MoveActionsCallbackInterfaces = new List<IPlayer1MoveActions>();
     private readonly InputAction m_Player1Move_MoveInputOne;
     private readonly InputAction m_Player1Move_ActionInputOne;
+    private readonly InputAction m_Player1Move_ChangeCamLeft;
+    private readonly InputAction m_Player1Move_ChangeCamRight;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player1Move".
     /// </summary>
@@ -635,6 +712,14 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player1Move/ActionInputOne".
         /// </summary>
         public InputAction @ActionInputOne => m_Wrapper.m_Player1Move_ActionInputOne;
+        /// <summary>
+        /// Provides access to the underlying input action "Player1Move/ChangeCamLeft".
+        /// </summary>
+        public InputAction @ChangeCamLeft => m_Wrapper.m_Player1Move_ChangeCamLeft;
+        /// <summary>
+        /// Provides access to the underlying input action "Player1Move/ChangeCamRight".
+        /// </summary>
+        public InputAction @ChangeCamRight => m_Wrapper.m_Player1Move_ChangeCamRight;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -667,6 +752,12 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
             @ActionInputOne.started += instance.OnActionInputOne;
             @ActionInputOne.performed += instance.OnActionInputOne;
             @ActionInputOne.canceled += instance.OnActionInputOne;
+            @ChangeCamLeft.started += instance.OnChangeCamLeft;
+            @ChangeCamLeft.performed += instance.OnChangeCamLeft;
+            @ChangeCamLeft.canceled += instance.OnChangeCamLeft;
+            @ChangeCamRight.started += instance.OnChangeCamRight;
+            @ChangeCamRight.performed += instance.OnChangeCamRight;
+            @ChangeCamRight.canceled += instance.OnChangeCamRight;
         }
 
         /// <summary>
@@ -684,6 +775,12 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
             @ActionInputOne.started -= instance.OnActionInputOne;
             @ActionInputOne.performed -= instance.OnActionInputOne;
             @ActionInputOne.canceled -= instance.OnActionInputOne;
+            @ChangeCamLeft.started -= instance.OnChangeCamLeft;
+            @ChangeCamLeft.performed -= instance.OnChangeCamLeft;
+            @ChangeCamLeft.canceled -= instance.OnChangeCamLeft;
+            @ChangeCamRight.started -= instance.OnChangeCamRight;
+            @ChangeCamRight.performed -= instance.OnChangeCamRight;
+            @ChangeCamRight.canceled -= instance.OnChangeCamRight;
         }
 
         /// <summary>
@@ -952,6 +1049,20 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnActionInputOne(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ChangeCamLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChangeCamLeft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ChangeCamRight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChangeCamRight(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player2Move" which allows adding and removing callbacks.

@@ -515,7 +515,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 247
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 3295e137448a85d43bb9f34087aaf2fb, type: 2}
   m_TargetDisplay: 0
@@ -535,13 +535,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.448745, y: 0.2761585, z: -0.14807197, w: 0.8369224}
-  m_LocalPosition: {x: -3.3656023, y: 3.6754959, z: -1.236346}
+  m_LocalRotation: {x: 0.31898478, y: -0.21339191, z: 0.07395094, w: 0.92045856}
+  m_LocalPosition: {x: 0, y: 5.745906, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -0.3, y: 74.975, z: 0}
+  m_LocalEulerAnglesHint: {x: 23.494, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,11 +962,10 @@ GameObject:
   m_Component:
   - component: {fileID: 551674614}
   - component: {fileID: 551674613}
-  - component: {fileID: 551674612}
   - component: {fileID: 551674611}
   m_Layer: 7
   m_Name: P1 Follow Cam (3)
-  m_TagString: Untagged
+  m_TagString: CamsRef
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -995,37 +994,6 @@ MonoBehaviour:
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
   Damping: {x: 0.5, y: 0.5}
-  Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
-    IgnoreY: 0
---- !u!114 &551674612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 551674610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraDistance: 10.09
-  DeadZoneDepth: 0
-  Composition:
-    ScreenPosition: {x: 0, y: 0}
-    DeadZone:
-      Enabled: 1
-      Size: {x: 0.2, y: 0.2}
-    HardLimits:
-      Enabled: 1
-      Size: {x: 0.8, y: 0.8}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 1, y: 1, z: 1}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -1082,13 +1050,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551674610}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.44874498, y: 0.2761585, z: -0.14807199, w: 0.83692247}
-  m_LocalPosition: {x: -5.7731757, y: 9.764083, z: -4.4873133}
+  m_LocalRotation: {x: -0.07395094, y: 0.9204585, z: -0.3189848, w: -0.2133919}
+  m_LocalPosition: {x: 0, y: 5.745906, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 38.228, y: -155.4, z: 0}
 --- !u!1 &581517266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,11 +1222,10 @@ GameObject:
   m_Component:
   - component: {fileID: 680703810}
   - component: {fileID: 680703809}
-  - component: {fileID: 680703812}
   - component: {fileID: 680703811}
   m_Layer: 7
-  m_Name: P1 Follow Cam
-  m_TagString: Untagged
+  m_Name: P1 Follow Cam (1)
+  m_TagString: CamsRef
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1277,7 +1244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Priority:
     Enabled: 1
-    m_Value: 0
+    m_Value: 1
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -1314,8 +1281,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680703806}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.44874498, y: 0.2761585, z: -0.14807199, w: 0.83692247}
-  m_LocalPosition: {x: -5.7731757, y: 9.764083, z: -4.4873133}
+  m_LocalRotation: {x: 0.3189848, y: -0.2133919, z: 0.07395095, w: 0.9204585}
+  m_LocalPosition: {x: 0, y: 5.745906, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1345,37 +1312,6 @@ MonoBehaviour:
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
   Damping: {x: 0.5, y: 0.5}
-  Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
-    IgnoreY: 0
---- !u!114 &680703812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680703806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraDistance: 10.09
-  DeadZoneDepth: 0
-  Composition:
-    ScreenPosition: {x: 0, y: 0}
-    DeadZone:
-      Enabled: 1
-      Size: {x: 0.2, y: 0.2}
-    HardLimits:
-      Enabled: 1
-      Size: {x: 0.8, y: 0.8}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 1, y: 1, z: 1}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -1771,11 +1707,10 @@ GameObject:
   m_Component:
   - component: {fileID: 836090462}
   - component: {fileID: 836090461}
-  - component: {fileID: 836090460}
   - component: {fileID: 836090459}
   m_Layer: 7
-  m_Name: P1 Follow Cam 2
-  m_TagString: Untagged
+  m_Name: P1 Follow Cam (2)
+  m_TagString: CamsRef
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1804,37 +1739,6 @@ MonoBehaviour:
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
   Damping: {x: 0.5, y: 0.5}
-  Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
-    IgnoreY: 0
---- !u!114 &836090460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 836090458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraDistance: 10.09
-  DeadZoneDepth: 0
-  Composition:
-    ScreenPosition: {x: 0, y: 0}
-    DeadZone:
-      Enabled: 1
-      Size: {x: 0.2, y: 0.2}
-    HardLimits:
-      Enabled: 1
-      Size: {x: 0.8, y: 0.8}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 1, y: 1, z: 1}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -1891,8 +1795,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836090458}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.44874498, y: 0.2761585, z: -0.14807199, w: 0.83692247}
-  m_LocalPosition: {x: -5.7731757, y: 9.764083, z: -4.4873133}
+  m_LocalRotation: {x: 0.35262284, y: 0.6129088, z: -0.35262284, w: 0.6129088}
+  m_LocalPosition: {x: -5, y: 5.745906, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2149,7 +2053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowDebugText: 0
   ShowCameraFrustum: 1
-  IgnoreTimeScale: 0
+  IgnoreTimeScale: 1
   WorldUpOverride: {fileID: 0}
   ChannelMask: 2
   UpdateMethod: 2
@@ -2259,7 +2163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScanRecursively: 0
   SuppressInputWhileBlending: 0
-  IgnoreTimeScale: 1
+  IgnoreTimeScale: 0
   m_ControllerManager:
     Controllers:
     - Name: Look X (Pan)
@@ -2267,7 +2171,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         InputAction: {fileID: 821114015532985589, guid: d4449bb62c05a264da564427bf497394, type: 3}
-        Gain: 1.5
+        Gain: 30
         LegacyInput: 
         LegacyGain: 1
         CancelDeltaTime: 0
@@ -2280,7 +2184,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         InputAction: {fileID: 821114015532985589, guid: d4449bb62c05a264da564427bf497394, type: 3}
-        Gain: -1.5
+        Gain: -30
         LegacyInput: 
         LegacyGain: 1
         CancelDeltaTime: 0
@@ -2303,7 +2207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReferenceFrame: 0
-  RecenterTarget: 2
+  RecenterTarget: 1
   PanAxis:
     Value: 0
     Center: 0
@@ -2333,23 +2237,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1397504210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 625c14eee3ad46c99df7c7c891ef668a, type: 3}
+  m_Script: {fileID: 11500000, guid: 36d1163fa822e8b418a0a603ec078d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: {x: 0, y: 0, z: 0}
-  ShoulderOffset: {x: 0, y: 0, z: 0}
-  VerticalArmLength: 0
-  CameraSide: 1
-  CameraDistance: 0
-  AvoidObstacles:
-    Enabled: 0
-    CollisionFilter:
-      serializedVersion: 2
-      m_Bits: 1
-    IgnoreTag: 
-    CameraRadius: 0.2
-    DampingIntoCollision: 0
-    DampingFromCollision: 0.5
+  Damping: 0
 --- !u!1 &1446462517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2866,7 +2757,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1712046699}
-  - component: {fileID: 1712046700}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2889,18 +2779,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1712046700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712046698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b9a4fd68a9e862489f675cb52993c5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1733914444
 GameObject:
   m_ObjectHideFlags: 0
@@ -2999,11 +2877,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1852708029}
   - component: {fileID: 1852708028}
-  - component: {fileID: 1852708027}
   - component: {fileID: 1852708026}
   m_Layer: 7
-  m_Name: P1 Follow Cam (1)
-  m_TagString: Untagged
+  m_Name: P1 Follow Cam (4)
+  m_TagString: CamsRef
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3032,37 +2909,6 @@ MonoBehaviour:
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
   Damping: {x: 0.5, y: 0.5}
-  Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
-    IgnoreY: 0
---- !u!114 &1852708027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852708025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraDistance: 2.78
-  DeadZoneDepth: 0
-  Composition:
-    ScreenPosition: {x: 0, y: 0}
-    DeadZone:
-      Enabled: 1
-      Size: {x: 0.2, y: 0.2}
-    HardLimits:
-      Enabled: 1
-      Size: {x: 0.8, y: 0.8}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 1, y: 1, z: 1}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -3119,8 +2965,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852708025}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.44874498, y: 0.2761585, z: -0.14807199, w: 0.83692247}
-  m_LocalPosition: {x: -3.3656025, y: 3.6754959, z: -1.236346}
+  m_LocalRotation: {x: 0.18590686, y: -0.68223065, z: 0.18590686, w: 0.68223065}
+  m_LocalPosition: {x: 5, y: 5.745906, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3170,6 +3016,7 @@ GameObject:
   - component: {fileID: 1957680704}
   - component: {fileID: 1957680705}
   - component: {fileID: 1957680706}
+  - component: {fileID: 1957680707}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -3255,9 +3102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
-  velocity: 2
+  velocity: 5
   controller: {fileID: 1957680704}
-  mainCam: {fileID: 330585543}
 --- !u!114 &1957680706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3273,6 +3119,24 @@ MonoBehaviour:
   _UseItemEvent: {fileID: 11400000, guid: 322cd9b7723cd5a43ac67e9e3ed46700, type: 2}
   _equipItemEvent: {fileID: 11400000, guid: 12204ab7a76b3814ea0f644296d79050, type: 2}
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
+--- !u!114 &1957680707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957680697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31be371cabe7124ab665809a5ce27c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
+  camRef:
+  - {fileID: 680703809}
+  - {fileID: 836090461}
+  - {fileID: 551674613}
+  - {fileID: 1852708028}
 --- !u!1 &2140418091
 GameObject:
   m_ObjectHideFlags: 0
@@ -3370,7 +3234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
-  camPlayerTwo: {fileID: 1162382462}
+  camPlayerTwo: {fileID: 1397504210}
   velocity: 2
   controller: {fileID: 2140418098}
 --- !u!114 &2140418100

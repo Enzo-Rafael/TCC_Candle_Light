@@ -29,7 +29,8 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     public event UnityAction ActionEventTwo = delegate { };
     public event UnityAction<Vector2> MouseEvent = delegate { };
     public event UnityAction<bool> EscEvent = delegate { };
-
+    public event UnityAction ChangeCamLeftEvent = delegate { };
+    public event UnityAction ChangeCamRightEvent = delegate { };
     /*------------------------------------------------------------------------------
     Função:     OnEnable
     Descrição:  Assosia os inputs a o controlador desse script permitindo que 
@@ -120,5 +121,11 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
 
     public void OnMenuInput(InputAction.CallbackContext context){
 
+    }
+    public void OnChangeCamLeft(InputAction.CallbackContext context){
+       if (context.phase == InputActionPhase.Performed) ChangeCamLeftEvent.Invoke();
+    }
+    public void OnChangeCamRight(InputAction.CallbackContext context){
+       if (context.phase == InputActionPhase.Performed) ChangeCamRightEvent.Invoke();
     }
 }

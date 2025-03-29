@@ -13,6 +13,11 @@ public class UIMainMenu : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
+    public void MainMenu()
+    {
+
+    }
+
     public void OpenSettings()
     {
         settingsPanel.SetActive(true);

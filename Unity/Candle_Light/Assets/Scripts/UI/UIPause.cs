@@ -1,21 +1,22 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-
+using UnityEngine.Events;
 
 public class UIPause : MonoBehaviour
 {
-    public GameObject pausePanel;
-    public void MainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
+    public UnityAction ResumedAction;
+    public UnityAction BackToMenuAction;
 
+    [SerializeField] private InputReader _inputReader = default;
+    void OnEnable(){
+        _inputReader.MenuCloseEvent += Resume;
     }
-
-    public void Close()
-    {
-        pausePanel.SetActive(false);
+    void OnDisable(){
+        _inputReader.MenuCloseEvent -= Resume;
     }
-
-
+    public void Resume(){
+        ResumedAction.Invoke();
+    }
+    public void BackToMenu(){
+        BackToMenuAction.Invoke();
+    }
 }

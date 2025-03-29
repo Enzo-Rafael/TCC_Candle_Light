@@ -1,10 +1,8 @@
 /**************************************************************
     Jogos Digitais LOURDES
-    ItemManager
-
-    Descrição: Gerencia as funções que um item pode exercer.
-
-    Candle Light - Jogos Digitais LURDES –  21/03/2024
+    InputReader
+    Descrição: Gerencia os Inputs do jogo.
+    Candle Light - Jogos Digitais LURDES –  29/03/2024
     Modificado por: Italo 
 ***************************************************************/
 
@@ -26,6 +24,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
 	public event UnityAction<Vector3> MoveEventOne = delegate { };
 	public event UnityAction<Vector3> MoveEventTwo = delegate { };    
     public event UnityAction ActionEventOne= delegate { };
+    public event UnityAction MenuPauseEvent = delegate { };
     public event UnityAction ActionEventTwo = delegate { };
     public event UnityAction<Vector2> MouseEvent = delegate { };
     public event UnityAction MenuCloseEvent = delegate { };
@@ -43,7 +42,6 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
             _playersInput.Player1Move.SetCallbacks(this);
 			_playersInput.Player2Move.SetCallbacks(this);
             _playersInput.UIInputs.SetCallbacks(this);
-            EnableAllInput();
 		}
     }
     /*------------------------------------------------------------------------------
@@ -109,7 +107,9 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     public void OnActionInputOne(InputAction.CallbackContext context){
         if (context.phase == InputActionPhase.Performed) ActionEventOne.Invoke();
     }
-
+    public void OnPause(InputAction.CallbackContext context){
+        if (context.phase == InputActionPhase.Performed) MenuPauseEvent.Invoke();
+    }
     public void OnActionInputTwo(InputAction.CallbackContext context){
         if (context.phase == InputActionPhase.Performed) ActionEventTwo.Invoke();
 
@@ -121,4 +121,5 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     public void OnClose(InputAction.CallbackContext context){
         if (context.phase == InputActionPhase.Performed) MenuCloseEvent.Invoke();
     }
+
 }

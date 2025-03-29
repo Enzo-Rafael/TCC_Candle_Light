@@ -108,6 +108,15 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""60b805c7-a2ea-43f2-9b0d-17dcd852ea65"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -273,6 +282,17 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ActionInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da5cbbc5-0d52-4b77-8b96-2a5e3e3af7b7"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -524,6 +544,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         m_Player1Move = asset.FindActionMap("Player1Move", throwIfNotFound: true);
         m_Player1Move_MoveInputOne = m_Player1Move.FindAction("MoveInputOne", throwIfNotFound: true);
         m_Player1Move_ActionInputOne = m_Player1Move.FindAction("ActionInputOne", throwIfNotFound: true);
+        m_Player1Move_Pause = m_Player1Move.FindAction("Pause", throwIfNotFound: true);
         // Player2Move
         m_Player2Move = asset.FindActionMap("Player2Move", throwIfNotFound: true);
         m_Player2Move_MoveInputTwo = m_Player2Move.FindAction("MoveInputTwo", throwIfNotFound: true);
@@ -616,6 +637,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
     private List<IPlayer1MoveActions> m_Player1MoveActionsCallbackInterfaces = new List<IPlayer1MoveActions>();
     private readonly InputAction m_Player1Move_MoveInputOne;
     private readonly InputAction m_Player1Move_ActionInputOne;
+    private readonly InputAction m_Player1Move_Pause;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player1Move".
     /// </summary>
@@ -635,6 +657,10 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player1Move/ActionInputOne".
         /// </summary>
         public InputAction @ActionInputOne => m_Wrapper.m_Player1Move_ActionInputOne;
+        /// <summary>
+        /// Provides access to the underlying input action "Player1Move/Pause".
+        /// </summary>
+        public InputAction @Pause => m_Wrapper.m_Player1Move_Pause;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -667,6 +693,9 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
             @ActionInputOne.started += instance.OnActionInputOne;
             @ActionInputOne.performed += instance.OnActionInputOne;
             @ActionInputOne.canceled += instance.OnActionInputOne;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         /// <summary>
@@ -684,6 +713,9 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
             @ActionInputOne.started -= instance.OnActionInputOne;
             @ActionInputOne.performed -= instance.OnActionInputOne;
             @ActionInputOne.canceled -= instance.OnActionInputOne;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         /// <summary>
@@ -952,6 +984,13 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnActionInputOne(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player2Move" which allows adding and removing callbacks.

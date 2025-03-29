@@ -28,7 +28,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     public event UnityAction ActionEventOne= delegate { };
     public event UnityAction ActionEventTwo = delegate { };
     public event UnityAction<Vector2> MouseEvent = delegate { };
-    public event UnityAction<bool> EscEvent = delegate { };
+    public event UnityAction MenuCloseEvent = delegate { };
 
     /*------------------------------------------------------------------------------
     Função:     OnEnable
@@ -118,7 +118,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
         MouseEvent.Invoke(context.ReadValue<Vector2>());
     }
 
-    public void OnMenuInput(InputAction.CallbackContext context){
-
+    public void OnClose(InputAction.CallbackContext context){
+        if (context.phase == InputActionPhase.Performed) MenuCloseEvent.Invoke();
     }
 }

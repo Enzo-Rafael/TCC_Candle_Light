@@ -1,55 +1,29 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+
 
 public class UIMainMenu : MonoBehaviour
 {
-    public GameObject settingsPanel;
-    public GameObject creditsPanel;
-    public GameObject exitPanel;
+	public UnityAction NewGameButtonAction;
+	public UnityAction ContinueButtonAction;
+	public UnityAction SettingsButtonAction;
+	public UnityAction CreditsButtonAction;
+	public UnityAction ExitButtonAction;
 
-    public void LoadScene()
-    {
-        SceneManager.LoadScene("SampleScene");
+    public void ContinueButton(){
+        ContinueButtonAction.Invoke();
     }
-
-    public void MainMenu()
-    {
-
+    public void NewGameButton(){
+        NewGameButtonAction.Invoke();
     }
-
-    public void OpenSettings()
-    {
-        settingsPanel.SetActive(true);
+    public void SettingsButton(){
+        SettingsButtonAction.Invoke();
     }
-
-    public void OpenCredits()
-    {
-        creditsPanel.SetActive(true);
+    public void CreditsButton(){
+        CreditsButtonAction.Invoke();
     }
-
-    public void Exit()
-    {
-        Application.Quit();
-    }
-
-    public void ReturnSettings()
-    {
-        settingsPanel.SetActive(false);
-    }
-
-    public void ReturnCredits()
-    {
-        creditsPanel.SetActive(false);
-    }
-
-    public void OpenExit()
-    {
-        exitPanel.SetActive(true);
-    }
-
-    public void ReturnExit()
-    {
-        exitPanel.SetActive(false);
+    public void ExitButton(){
+        ExitButtonAction.Invoke();
     }
 }

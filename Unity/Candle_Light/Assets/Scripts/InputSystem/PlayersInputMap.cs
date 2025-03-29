@@ -494,13 +494,13 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
             ""id"": ""c54e27f8-16d5-4604-9f47-f9971d3e9449"",
             ""actions"": [
                 {
-                    ""name"": ""MenuInput"",
+                    ""name"": ""Close"",
                     ""type"": ""Button"",
                     ""id"": ""321f2365-fc4f-4df6-b4b3-542f84bb047d"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -511,7 +511,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MenuInput"",
+                    ""action"": ""Close"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -531,7 +531,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         m_Player2Move_Mouse = m_Player2Move.FindAction("Mouse", throwIfNotFound: true);
         // UI Inputs
         m_UIInputs = asset.FindActionMap("UI Inputs", throwIfNotFound: true);
-        m_UIInputs_MenuInput = m_UIInputs.FindAction("MenuInput", throwIfNotFound: true);
+        m_UIInputs_Close = m_UIInputs.FindAction("Close", throwIfNotFound: true);
     }
 
     ~@PlayersInputMap()
@@ -839,7 +839,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
     // UI Inputs
     private readonly InputActionMap m_UIInputs;
     private List<IUIInputsActions> m_UIInputsActionsCallbackInterfaces = new List<IUIInputsActions>();
-    private readonly InputAction m_UIInputs_MenuInput;
+    private readonly InputAction m_UIInputs_Close;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI Inputs".
     /// </summary>
@@ -852,9 +852,9 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// </summary>
         public UIInputsActions(@PlayersInputMap wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "UIInputs/MenuInput".
+        /// Provides access to the underlying input action "UIInputs/Close".
         /// </summary>
-        public InputAction @MenuInput => m_Wrapper.m_UIInputs_MenuInput;
+        public InputAction @Close => m_Wrapper.m_UIInputs_Close;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -881,9 +881,9 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_UIInputsActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_UIInputsActionsCallbackInterfaces.Add(instance);
-            @MenuInput.started += instance.OnMenuInput;
-            @MenuInput.performed += instance.OnMenuInput;
-            @MenuInput.canceled += instance.OnMenuInput;
+            @Close.started += instance.OnClose;
+            @Close.performed += instance.OnClose;
+            @Close.canceled += instance.OnClose;
         }
 
         /// <summary>
@@ -895,9 +895,9 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <seealso cref="UIInputsActions" />
         private void UnregisterCallbacks(IUIInputsActions instance)
         {
-            @MenuInput.started -= instance.OnMenuInput;
-            @MenuInput.performed -= instance.OnMenuInput;
-            @MenuInput.canceled -= instance.OnMenuInput;
+            @Close.started -= instance.OnClose;
+            @Close.performed -= instance.OnClose;
+            @Close.canceled -= instance.OnClose;
         }
 
         /// <summary>
@@ -990,11 +990,11 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
     public interface IUIInputsActions
     {
         /// <summary>
-        /// Method invoked when associated input action "MenuInput" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Close" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMenuInput(InputAction.CallbackContext context);
+        void OnClose(InputAction.CallbackContext context);
     }
 }

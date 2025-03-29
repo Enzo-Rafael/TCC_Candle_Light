@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 32352167}
   - component: {fileID: 32352169}
   - component: {fileID: 32352168}
-  - component: {fileID: 32352170}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -150,6 +149,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1733092612}
+  - {fileID: 1123593840}
   - {fileID: 973442834}
   - {fileID: 535533500}
   - {fileID: 577975324}
@@ -200,21 +201,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32352166}
   m_CullTransparentMesh: 1
---- !u!114 &32352170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 32352166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2864d8aa3617bc34896b1b5d8aba1977, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settingsPanel: {fileID: 1712878236}
-  creditsPanel: {fileID: 147201984}
-  exitPanel: {fileID: 1573900439}
 --- !u!1 &54227659
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,8 +692,9 @@ GameObject:
   - component: {fileID: 147201985}
   - component: {fileID: 147201987}
   - component: {fileID: 147201986}
+  - component: {fileID: 147201988}
   m_Layer: 5
-  m_Name: Credits
+  m_Name: CreditsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -772,6 +759,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147201984}
   m_CullTransparentMesh: 1
+--- !u!114 &147201988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147201984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2881647d69eef9f4db9ea0120c9bc623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
 --- !u!1 &173234425
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 173234428}
   - component: {fileID: 173234427}
   m_Layer: 5
-  m_Name: BtnNo
+  m_Name: ButtonNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -855,9 +855,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 32352170}
-        m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
-        m_MethodName: ReturnExit
+      - m_Target: {fileID: 1573900443}
+        m_TargetAssemblyTypeName: UIPopup, Assembly-CSharp
+        m_MethodName: CancelButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2513,7 +2513,7 @@ GameObject:
   - component: {fileID: 535533502}
   - component: {fileID: 535533501}
   m_Layer: 5
-  m_Name: BtnNewGame
+  m_Name: ButtonNewGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2583,9 +2583,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 32352170}
+      - m_Target: {fileID: 1906807808}
         m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
-        m_MethodName: LoadScene
+        m_MethodName: NewGameButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2757,7 +2757,7 @@ GameObject:
   - component: {fileID: 577975326}
   - component: {fileID: 577975325}
   m_Layer: 5
-  m_Name: BtnSettings
+  m_Name: ButtonSettings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2827,9 +2827,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 32352170}
+      - m_Target: {fileID: 1906807808}
         m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
-        m_MethodName: OpenSettings
+        m_MethodName: SettingsButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3136,6 +3136,7 @@ GameObject:
   - component: {fileID: 676624737}
   - component: {fileID: 676624736}
   - component: {fileID: 676624735}
+  - component: {fileID: 676624739}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3226,6 +3227,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &676624739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676624734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01aa2bea3a841e24a9bdb6d058cf853e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuPainel: {fileID: 1906807808}
+  _settingPanel: {fileID: 1712878240}
+  _creditsPanel: {fileID: 147201988}
+  _popupPanel: {fileID: 1573900443}
+  _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
 --- !u!1 &723727528
 GameObject:
   m_ObjectHideFlags: 0
@@ -4008,7 +4026,7 @@ GameObject:
   - component: {fileID: 923426266}
   - component: {fileID: 923426265}
   m_Layer: 5
-  m_Name: BtnExit
+  m_Name: ButtonExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4078,9 +4096,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 32352170}
+      - m_Target: {fileID: 1906807808}
         m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
-        m_MethodName: OpenExit
+        m_MethodName: ExitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4141,7 +4159,7 @@ GameObject:
   - component: {fileID: 973442836}
   - component: {fileID: 973442835}
   m_Layer: 5
-  m_Name: BtnContinue
+  m_Name: ButtonContinue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5751,12 +5769,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123593839}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1906807805}
+  m_Father: {fileID: 32352167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6115,7 +6133,7 @@ GameObject:
   - component: {fileID: 1254803975}
   - component: {fileID: 1254803974}
   m_Layer: 5
-  m_Name: BtnReturn
+  m_Name: ButtonClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6185,9 +6203,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 32352170}
-        m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
-        m_MethodName: ReturnSettings
+      - m_Target: {fileID: 1712878240}
+        m_TargetAssemblyTypeName: UISettingsController, Assembly-CSharp
+        m_MethodName: ClosePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6873,7 +6891,7 @@ GameObject:
   - component: {fileID: 1373411543}
   - component: {fileID: 1373411542}
   m_Layer: 5
-  m_Name: BtnReturn
+  m_Name: ButtonClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6943,9 +6961,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 32352170}
-        m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
-        m_MethodName: ReturnCredits
+      - m_Target: {fileID: 147201988}
+        m_TargetAssemblyTypeName: UICredits, Assembly-CSharp
+        m_MethodName: ClosePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7846,8 +7864,9 @@ GameObject:
   - component: {fileID: 1573900440}
   - component: {fileID: 1573900442}
   - component: {fileID: 1573900441}
+  - component: {fileID: 1573900443}
   m_Layer: 5
-  m_Name: Exit
+  m_Name: ExitPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7913,6 +7932,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573900439}
   m_CullTransparentMesh: 1
+--- !u!114 &1573900443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573900439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d90f21f0fa396c4bafd382c7aa559de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
 --- !u!1 &1574845292
 GameObject:
   m_ObjectHideFlags: 0
@@ -7926,7 +7958,7 @@ GameObject:
   - component: {fileID: 1574845295}
   - component: {fileID: 1574845294}
   m_Layer: 5
-  m_Name: BtnCredits
+  m_Name: ButtonCredits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7996,9 +8028,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 32352170}
+      - m_Target: {fileID: 1906807808}
         m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
-        m_MethodName: OpenCredits
+        m_MethodName: CreditsButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8309,8 +8341,9 @@ GameObject:
   - component: {fileID: 1712878237}
   - component: {fileID: 1712878239}
   - component: {fileID: 1712878238}
+  - component: {fileID: 1712878240}
   m_Layer: 5
-  m_Name: Settings
+  m_Name: SettingsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8375,6 +8408,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712878236}
   m_CullTransparentMesh: 1
+--- !u!114 &1712878240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712878236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afba80eb19dd3a14496163c367273e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
 --- !u!1 &1728475917
 GameObject:
   m_ObjectHideFlags: 0
@@ -8481,7 +8527,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 286061306}
-  m_Father: {fileID: 1906807805}
+  m_Father: {fileID: 32352167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9118,6 +9164,7 @@ GameObject:
   - component: {fileID: 1906807805}
   - component: {fileID: 1906807807}
   - component: {fileID: 1906807806}
+  - component: {fileID: 1906807808}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -9137,8 +9184,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1733092612}
-  - {fileID: 1123593840}
   - {fileID: 32352167}
   - {fileID: 1712878237}
   - {fileID: 147201985}
@@ -9188,6 +9233,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906807804}
   m_CullTransparentMesh: 1
+--- !u!114 &1906807808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906807804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2864d8aa3617bc34896b1b5d8aba1977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1946457261
 GameObject:
   m_ObjectHideFlags: 0
@@ -9701,7 +9758,7 @@ GameObject:
   - component: {fileID: 2125582912}
   - component: {fileID: 2125582911}
   m_Layer: 5
-  m_Name: BtnYes
+  m_Name: ButtonYes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9771,9 +9828,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 32352170}
-        m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
-        m_MethodName: Exit
+      - m_Target: {fileID: 1573900443}
+        m_TargetAssemblyTypeName: UIPopup, Assembly-CSharp
+        m_MethodName: ConfirmButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -123,7 +123,7 @@ Shader "Custom/Custom_Default"
 
                 // Calculo de luz principal
                 Light light = GetMainLight(shadowCoord);
-                lightVal = CalculateLight(light, IN.normalWS);
+                //lightVal = CalculateLight(light, IN.normalWS);
 
                 // Preparacao para loop de luz
                 InputData inputData = (InputData)0;

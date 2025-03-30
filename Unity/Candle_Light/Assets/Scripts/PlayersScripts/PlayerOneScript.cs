@@ -39,8 +39,8 @@ public class PlayerOneScript : MonoBehaviour
         if (groundedPlayer && playerMove.y < 0){
             playerMove.y = 0f;
         }
-        Vector3 camForward = Vector3.Scale(mainCam.transform.forward, new Vector3(1, 0, 1).normalized);
-        Vector3 camStrafe = Vector3.Scale(mainCam.transform.right, new Vector3(1, 0, 1).normalized);
+        Vector3 camForward = Vector3.Scale(mainCam.transform.forward, new Vector3(1, 0, 1)).normalized;
+        Vector3 camStrafe = Vector3.Scale(mainCam.transform.right, new Vector3(1, 0, 1)).normalized;
         forward = _inputVector.y * camForward;
         strafe = _inputVector.x * camStrafe;
         playerMove = forward + strafe;

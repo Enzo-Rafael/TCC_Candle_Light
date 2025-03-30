@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
         _inputReader.MenuPauseEvent -= OpenPause;
     }
     private void OpenPause(){
+        Debug.Log("OpenPause");
         _inputReader.MenuPauseEvent -= OpenPause;
         Time.timeScale = 0;
         _pausePainel.ResumedAction += ClosePause;
@@ -22,6 +23,8 @@ public class UIManager : MonoBehaviour
         //_inputReader.EnableMenuInput();
     } 
     private void ClosePause(){
+        Debug.Log("ClosePause");
+        
         _inputReader.MenuPauseEvent += OpenPause;
         Time.timeScale = 1;
         _pausePainel.ResumedAction -= ClosePause;

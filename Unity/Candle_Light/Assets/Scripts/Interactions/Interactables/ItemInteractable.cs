@@ -23,7 +23,7 @@ public class ItemInteractable : MonoBehaviour
 
   [Tooltip("Referência para os objetos que receberão os comandos da interação")]
 	[SerializeField] 
-  private ObserverEventChannelSO _observerEvent = default;    
+  private ObserverEventChannel _observerEvent = default;    
 
   private bool action = false;
     
@@ -31,11 +31,11 @@ public class ItemInteractable : MonoBehaviour
 		return _item;
 	}
 
-  public ObserverEventChannelSO GetObserver(){
+  public ObserverEventChannel GetObserver(){
     return _observerEvent;
   }
 
-  public void SetObserver(ObserverEventChannelSO observerEvent){
+  public void SetObserver(ObserverEventChannel observerEvent){
     _observerEvent = observerEvent;
   }
 
@@ -45,6 +45,6 @@ public class ItemInteractable : MonoBehaviour
 
   public void BaseAction(){
     action = !action;
-    _observerEvent.NotifyObservers(action);
+    _observerEvent.NotifyObservers(action? 1:0);
   }
 }

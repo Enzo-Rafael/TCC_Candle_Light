@@ -27,7 +27,7 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
     [Header("Transmitindo em:")] 
     [Tooltip("Referência para se inscrever na lista de Observers de determinado item")]
     [SerializeField] 
-    private ObserverEventChannelSO _observerEvent = default;
+    private ObserverEventChannel _observerEvent = default;
 
     [Header("Ouvindo:")] 
     [Tooltip("Referência para usar a função do atuador")]
@@ -61,10 +61,10 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
     /*------------------------------------------------------------------------------
     Função:     OnEventRaised
     Descrição:  Chama a função respectiva do Atuador, para que ele possa executar sua função.
-    Entrada:    bool - indentificação para dizer qual ação o atuador fará.
+    Entrada:    int - indentificação para dizer qual ação o atuador fará.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void OnEventRaised(bool action){
+    public void OnEventRaised(int action){
         _ActuatorEvent.RaiseEvent(action, this);
     }
     /*------------------------------------------------------------------------------

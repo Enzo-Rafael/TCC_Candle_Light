@@ -83,8 +83,8 @@ public class ItemManager : MonoBehaviour
                 ExecuteItemCommand - Referência para usar as funções do atuador.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void ToggleAtuactorEventRaised(bool action, ExecuteItemCommand atuactor){
-        if(action == true){
+    private void ToggleAtuactorEventRaised(int action, ExecuteItemCommand atuactor){
+        if(action != 0){
             atuactor.AnimationActive(0);
         }else{
             atuactor.AnimationActive(1);

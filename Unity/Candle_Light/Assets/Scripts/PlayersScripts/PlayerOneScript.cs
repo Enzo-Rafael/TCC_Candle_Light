@@ -1,4 +1,3 @@
-using UnityEditor.Animations;
 using UnityEngine;
 using Unity.Cinemachine;
 //Player 1: MoveR: WASD InteragIr: J Rocionar camera:Q/K e E/L 

@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
         _pausePainel.ResumedAction += ClosePause;
         _pausePainel.BackToMenuAction += OpenMenu;
         _pausePainel.gameObject.SetActive(true);
-        //_inputReader.EnableMenuInput();
+        _inputReader.EnableMenuInput();
     } 
     private void ClosePause(){
         Debug.Log("ClosePause");

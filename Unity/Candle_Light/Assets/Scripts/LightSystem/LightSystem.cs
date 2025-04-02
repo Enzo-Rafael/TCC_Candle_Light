@@ -101,7 +101,7 @@ public class LightSystem : Singleton<LightSystem>
     /// <summary>
     /// Luz principal (direcional)
     /// </summary>
-    public Light mainLight;
+    //public Light mainLight;
 #endregion
 
 #region FUNCTIONS
@@ -127,10 +127,10 @@ public class LightSystem : Singleton<LightSystem>
         {
 
             // Checa inobstrucao para a luz principal
-            if(!Physics.Raycast(dynamicDetectors[i].globalPos, -mainLight.transform.forward, 10000f))
-            {
-                goto lit;
-            }
+            //if(!Physics.Raycast(dynamicDetectors[i].globalPos, -mainLight.transform.forward, 10000f))
+            //{
+            //    goto lit;
+            //}
 
             // Checa as luzes radiais estaticas
             for (int j = 0; j < staticPointLights.Count; j++)
@@ -335,13 +335,13 @@ public class LightSystem : Singleton<LightSystem>
         staticPointLights = new List<PointLight>();
         dynamicPointLights = new List<PointLight>();
 
-        foreach(Light light in FindObjectsByType<Light>(FindObjectsSortMode.None))
-        {
-            if(light.type == UnityEngine.LightType.Directional)
-            {
-                mainLight = light;
-            }
-        }
+        //foreach(Light light in FindObjectsByType<Light>(FindObjectsSortMode.None))
+        //{
+        //    if(light.type == UnityEngine.LightType.Directional)
+        //    {
+        //        mainLight = light;
+        //    }
+        //}
     }
 
     void OnDrawGizmosSelected()

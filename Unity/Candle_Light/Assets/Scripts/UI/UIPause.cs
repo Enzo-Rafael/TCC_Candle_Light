@@ -18,5 +18,6 @@ public class UIPause : MonoBehaviour
     }
     public void BackToMenu(){
         BackToMenuAction.Invoke();
+        Time.timeScale = 1;
     }
 }

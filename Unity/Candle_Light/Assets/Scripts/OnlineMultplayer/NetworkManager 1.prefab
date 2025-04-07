@@ -56,9 +56,9 @@ MonoBehaviour:
   offlineScene: 
   onlineScene: Assets/Scenes/MainHall.unity
   offlineSceneLoadDelay: 10
-  transport: {fileID: 7384665904608862589}
+  transport: {fileID: 0}
   networkAddress: localhost
-  maxConnections: 100
+  maxConnections: 2
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
@@ -94,8 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetX: 0
-  offsetY: 0
+  offsetX: 800
+  offsetY: 800
 --- !u!114 &7384665904608862589
 MonoBehaviour:
   m_ObjectHideFlags: 0

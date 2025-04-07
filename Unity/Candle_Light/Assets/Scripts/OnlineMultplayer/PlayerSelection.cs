@@ -9,6 +9,7 @@ public class PlayerSelection : MonoBehaviour
     public void SelectedPlayer(int indice){
 
         Player = selectedPlayerPrefab[indice];
+        Debug.Log(selectedPlayerPrefab[indice]);
 
     }
 }

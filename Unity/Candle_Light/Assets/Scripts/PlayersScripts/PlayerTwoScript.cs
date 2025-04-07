@@ -1,4 +1,5 @@
 using System;
+using NUnit.Framework.Constraints;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class PlayerTwoScript : MonoBehaviour
     private Vector3 _inputVector;
 
     [SerializeField] private GameObject camPlayerTwo;
+    [SerializeField] private CinemachineCamera virCamPlayerTwo;
 
     private Vector3 playerMove;
 
@@ -31,6 +33,8 @@ public class PlayerTwoScript : MonoBehaviour
     void Awake()
     {
         camPlayerTwo = GameObject.FindGameObjectWithTag("CamP2");
+        virCamPlayerTwo = GameObject.FindGameObjectWithTag("Player").GetComponent<CinemachineCamera>();
+        virCamPlayerTwo.Follow = gameObject.transform;
     }
     private void OnEnable(){
         _inputReader.MoveEventTwo += OnMove;

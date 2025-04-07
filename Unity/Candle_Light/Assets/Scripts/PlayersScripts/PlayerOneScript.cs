@@ -15,13 +15,20 @@ public class PlayerOneScript : MonoBehaviour
     private bool groundedPlayer;
     private float gravityValue = -9.81f;
     private CinemachineCamera mainCam;// referencia para a o andar do player a partir da camera
-
+    [SerializeField] private CinemachineCamera[] camRef;
     //Orientação para o movimento
     private Vector3 forward;
     private Vector3 strafe;
 
     //Metodos
-	private void OnEnable(){
+    public void Awake()
+    {
+        camRef = GameObject.FindGameObjectWithTag("CamsRef").GetComponentsInChildren<CinemachineCamera>();
+        foreach(CinemachineCamera cam in camRef){
+            cam.Follow = gameObject.transform;
+        }
+    }
+    private void OnEnable(){
         _inputReader.MoveEventOne += OnMove;
 	}
 	private void OnDisable(){

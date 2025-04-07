@@ -7,9 +7,12 @@ public class ChangeCam : MonoBehaviour
     [SerializeField] private InputReader _inputReader = default;
     [SerializeField] private CinemachineCamera[] camRef;
     private CinemachineCamera currentCam;
-
-    void Start(){
+    void Awake()
+    {
         camRef = GameObject.FindGameObjectWithTag("CamsRef").GetComponentsInChildren<CinemachineCamera>();
+    }
+    void Start(){
+        
         currentCam = camRef[0];
         foreach(CinemachineCamera cam in camRef){
             if(cam == currentCam){

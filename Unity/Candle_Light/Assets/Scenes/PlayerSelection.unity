@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &91779107 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3664673722592366157, guid: c1bb7bddd9150ca42bd7bb31dd7dfda7, type: 3}
+  m_PrefabInstance: {fileID: 491291418}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &124282278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,6 +1005,10 @@ PrefabInstance:
       value: NetworkManager 1
       objectReference: {fileID: 0}
     - target: {fileID: 4083957814988140864, guid: c1bb7bddd9150ca42bd7bb31dd7dfda7, type: 3}
+      propertyPath: p2
+      value: 
+      objectReference: {fileID: 6006832363215773459, guid: 4e435c14f900a18439cfb84317a4a339, type: 3}
+    - target: {fileID: 4083957814988140864, guid: c1bb7bddd9150ca42bd7bb31dd7dfda7, type: 3}
       propertyPath: transport
       value: 
       objectReference: {fileID: 1837839968}
@@ -1011,6 +1020,30 @@ PrefabInstance:
       propertyPath: evaluationMethod
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4083957814988140864, guid: c1bb7bddd9150ca42bd7bb31dd7dfda7, type: 3}
+      propertyPath: replacePlayerOptions
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083957814988140864, guid: c1bb7bddd9150ca42bd7bb31dd7dfda7, type: 3}
+      propertyPath: spawnPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083957814988140864, guid: c1bb7bddd9150ca42bd7bb31dd7dfda7, type: 3}
+      propertyPath: 'spawnPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8610839994233553927, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
+    - target: {fileID: 4083957814988140864, guid: c1bb7bddd9150ca42bd7bb31dd7dfda7, type: 3}
+      propertyPath: 'spawnPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6006832363215773459, guid: 4e435c14f900a18439cfb84317a4a339, type: 3}
+    - target: {fileID: 8207761024595334231, guid: c1bb7bddd9150ca42bd7bb31dd7dfda7, type: 3}
+      propertyPath: p2
+      value: 
+      objectReference: {fileID: 91779107}
+    - target: {fileID: 8207761024595334231, guid: c1bb7bddd9150ca42bd7bb31dd7dfda7, type: 3}
+      propertyPath: replacePlayerOptions
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1021,7 +1054,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9054232734135915393, guid: c1bb7bddd9150ca42bd7bb31dd7dfda7, type: 3}
   m_PrefabInstance: {fileID: 491291418}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 91779107}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25eb389ed85e45c41834e85af9e17c62, type: 3}
@@ -2569,7 +2602,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7384665904608862589, guid: c1bb7bddd9150ca42bd7bb31dd7dfda7, type: 3}
   m_PrefabInstance: {fileID: 491291418}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 91779107}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b0fecffa3f624585964b0d0eb21b18e, type: 3}

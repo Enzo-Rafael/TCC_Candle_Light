@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5970005580199222380}
   - component: {fileID: 4843380957931801773}
   - component: {fileID: 7400843098256044109}
-  - component: {fileID: -1328402972776537506}
+  - component: {fileID: -4093453835257690924}
   m_Layer: 11
   m_Name: Player2
   m_TagString: Player2
@@ -142,7 +142,7 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
---- !u!114 &-1328402972776537506
+--- !u!114 &-4093453835257690924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6006832363215773459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
+  m_Script: {fileID: 11500000, guid: a553cb17010b2403e8523b558bffbc14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 1
@@ -171,11 +171,11 @@ MonoBehaviour:
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  onlySyncOnChangeCorrectionMultiplier: 2
+  bufferResetMultiplier: 3
   useFixedUpdate: 0
+  positionSensitivity: 0.01
   rotationSensitivity: 0.01
-  positionPrecision: 0.61
-  scalePrecision: 0.01
+  scaleSensitivity: 0.01
 --- !u!1 &8167933245002136969
 GameObject:
   m_ObjectHideFlags: 0

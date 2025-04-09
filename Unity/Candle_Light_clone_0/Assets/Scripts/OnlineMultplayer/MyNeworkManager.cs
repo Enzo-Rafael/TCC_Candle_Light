@@ -3,7 +3,7 @@ using Mirror;
 public class MyNetworkManager : NetworkManager
 {
     public PlayerSelection PlayerSelection;
-
+    
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {
         GameObject playerPrefab = PlayerSelection.Player;

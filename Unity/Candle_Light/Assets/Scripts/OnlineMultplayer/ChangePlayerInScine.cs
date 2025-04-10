@@ -5,6 +5,8 @@ public class ChangePlayerInScine : MonoBehaviour
     public ReplacePlayerOptions replacePlayerOptions;
     public NetworkConnectionToClient client;
     public GameObject p2;
+
+
     public void ReplacePlayer(NetworkConnectionToClient conn, GameObject newPrefab)
 {
     
@@ -19,6 +21,7 @@ public class ChangePlayerInScine : MonoBehaviour
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1)){
+            //client = MyNetworkManager.singleton.
             ReplacePlayer(client, p2.GetComponent<MyNetworkManager>().spawnPrefabs[1]);
         }
     }

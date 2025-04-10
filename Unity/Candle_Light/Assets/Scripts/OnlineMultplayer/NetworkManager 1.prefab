@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4083957814988140864}
   - component: {fileID: 8449423803679309645}
   - component: {fileID: 7384665904608862589}
-  - component: {fileID: 6598679338593376589}
   - component: {fileID: 9054232734135915393}
   - component: {fileID: 8207761024595334231}
   m_Layer: 0
@@ -57,16 +56,18 @@ MonoBehaviour:
   offlineScene: 
   onlineScene: Assets/Scenes/MainHall.unity
   offlineSceneLoadDelay: 10
-  transport: {fileID: 0}
+  transport: {fileID: 7384665904608862589}
   networkAddress: localhost
-  maxConnections: 2
+  maxConnections: 100
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 7430472194031904030, guid: 143142de128accb41ad8a9ccfc15457a, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 8610839994233553927, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
+  - {fileID: 6006832363215773459, guid: 4e435c14f900a18439cfb84317a4a339, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
@@ -82,9 +83,7 @@ MonoBehaviour:
   evaluationMethod: 0
   evaluationInterval: 3
   timeInterpolationGui: 0
-  PlayerSelection: {fileID: 6598679338593376589}
-  replacePlayerOptions: 0
-  p2: {fileID: 0}
+  SpawnAsCharacter: 1
 --- !u!114 &8449423803679309645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,22 +127,6 @@ MonoBehaviour:
   debugLog: 0
   statisticsGUI: 0
   statisticsLog: 0
---- !u!114 &6598679338593376589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3664673722592366157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b16ddae73797c234c90c3502053ca458, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  selectedPlayerPrefab:
-  - {fileID: 8610839994233553927, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
-  - {fileID: 6006832363215773459, guid: 4e435c14f900a18439cfb84317a4a339, type: 3}
 --- !u!114 &9054232734135915393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25eb389ed85e45c41834e85af9e17c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSelection: {fileID: 6598679338593376589}
+  playerSelection: {fileID: 0}
 --- !u!114 &8207761024595334231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,3 +152,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ab926102e125d428d2e654c08c7f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  replacePlayerOptions: 3
+  p2: {fileID: 3664673722592366157}

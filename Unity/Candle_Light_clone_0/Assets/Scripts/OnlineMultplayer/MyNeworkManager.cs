@@ -19,6 +19,25 @@ public class MyNetworkManager : NetworkManager
         player.name = $"{playerPrefab.name} [connId={conn.connectionId}]";
         NetworkServer.AddPlayerForConnection(conn, player);
     }
+
+    public ReplacePlayerOptions replacePlayerOptions;
+    public NetworkConnectionToClient client;
+    public GameObject p2;
+
+    public void ReplacePlayer(NetworkConnectionToClient conn, GameObject newPrefab)
+{
+    
+    GameObject oldPlayer = conn.identity.gameObject;
+
+  
+    NetworkServer.ReplacePlayerForConnection(conn, Instantiate(newPrefab),  replacePlayerOptions);
+
+   
+    Destroy(oldPlayer, 0.1f);
+}
+    
+
+
 }
 
 /*public class MyNetworkManager : NetworkManager

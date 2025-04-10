@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8207761024595334231}
   m_Layer: 0
   m_Name: NetworkManager 1
-  m_TagString: Untagged
+  m_TagString: NetworkManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,16 +57,18 @@ MonoBehaviour:
   offlineScene: 
   onlineScene: Assets/Scenes/MainHall.unity
   offlineSceneLoadDelay: 10
-  transport: {fileID: 0}
+  transport: {fileID: 7384665904608862589}
   networkAddress: localhost
-  maxConnections: 2
+  maxConnections: 100
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 7430472194031904030, guid: 143142de128accb41ad8a9ccfc15457a, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 8610839994233553927, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
+  - {fileID: 6006832363215773459, guid: 4e435c14f900a18439cfb84317a4a339, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
@@ -83,8 +85,6 @@ MonoBehaviour:
   evaluationInterval: 3
   timeInterpolationGui: 0
   PlayerSelection: {fileID: 6598679338593376589}
-  replacePlayerOptions: 0
-  p2: {fileID: 0}
 --- !u!114 &8449423803679309645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,3 +169,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ab926102e125d428d2e654c08c7f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  replacePlayerOptions: 3
+  p2: {fileID: 6006832363215773459, guid: 4e435c14f900a18439cfb84317a4a339, type: 3}

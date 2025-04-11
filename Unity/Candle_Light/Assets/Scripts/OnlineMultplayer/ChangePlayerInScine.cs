@@ -22,7 +22,8 @@ public class ChangePlayerInScine : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1)){
             
-            ReplacePlayer(client, p2.GetComponent<MyNetworkManager>().spawnPrefabs[1]);
+            //ReplacePlayer(client, p2.GetComponent<MyNetworkManager>().spawnPrefabs[1]);
+            //MyNetworkManager.ReplacePlayer(Get,p2);
         }
     }
 }

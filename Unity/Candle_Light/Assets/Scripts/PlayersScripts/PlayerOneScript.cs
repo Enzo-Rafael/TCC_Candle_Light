@@ -52,7 +52,7 @@ public class PlayerOneScript : MonoBehaviour
         }
         animator.SetFloat("WalkSpeed", playerMove.magnitude);
         playerMove.y += gravityValue * Time.deltaTime;//Gravidade do player 1
-        controller.Move(playerMove* velocity * Time.deltaTime );
+        controller.Move(playerMove * velocity * Time.deltaTime );
     }
 }
 /* forward = _inputVector.y * velocity * new Vector3(0, 0,-mainCam.transform.position.z);

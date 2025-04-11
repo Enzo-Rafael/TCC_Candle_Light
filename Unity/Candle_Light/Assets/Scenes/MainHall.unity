@@ -12049,8 +12049,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 573079175}
-  - component: {fileID: 573079176}
-  - component: {fileID: 573079177}
+  - component: {fileID: 573079180}
+  - component: {fileID: 573079179}
   - component: {fileID: 573079178}
   m_Layer: 6
   m_Name: Alavanca
@@ -12077,34 +12077,6 @@ Transform:
   - {fileID: 295212888}
   m_Father: {fileID: 398046258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &573079176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573079174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6bfd65d5ea897246b5abf611e7e2008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &573079177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573079174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c86021bfc9b94344a6f5f02ed7aee85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _observerEvent: {fileID: 398046259}
-  animator: {fileID: 1400751582}
-  parameterType: 4
-  parameterName: State
 --- !u!65 &573079178
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12126,6 +12098,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.65, y: 1.0555768, z: 0.21062922}
   m_Center: {x: 0, y: 0.5727495, z: -0.012845397}
+--- !u!114 &573079179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573079174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6205c0372cd4348a5b488fffee29eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _observerEvent: {fileID: 398046259}
+  animator: {fileID: 1400751582}
+  _actionType: 0
+  parameterName: State
+--- !u!114 &573079180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573079174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dfcdacb986fe834a9a16eaa46b2365c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _observerEvent: {fileID: 398046259}
 --- !u!1 &574085386
 GameObject:
   m_ObjectHideFlags: 0
@@ -19801,12 +19802,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1108781755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c86021bfc9b94344a6f5f02ed7aee85, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a6205c0372cd4348a5b488fffee29eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _observerEvent: {fileID: 398046259}
   animator: {fileID: 1108781758}
-  parameterType: 9
+  _actionType: 2
   parameterName: Activate
 --- !u!1001 &1109254975
 PrefabInstance:

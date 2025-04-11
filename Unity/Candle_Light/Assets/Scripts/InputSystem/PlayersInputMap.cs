@@ -126,15 +126,6 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""60b805c7-a2ea-43f2-9b0d-17dcd852ea65"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -357,17 +348,6 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                     ""action"": ""ChangeCamRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""da5cbbc5-0d52-4b77-8b96-2a5e3e3af7b7"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -583,7 +563,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""UI Inputs"",
+            ""name"": ""InComumInputs"",
             ""id"": ""c54e27f8-16d5-4604-9f47-f9971d3e9449"",
             ""actions"": [
                 {
@@ -619,22 +599,21 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         m_Player1Move_ActionInputOne = m_Player1Move.FindAction("ActionInputOne", throwIfNotFound: true);
         m_Player1Move_ChangeCamLeft = m_Player1Move.FindAction("ChangeCamLeft", throwIfNotFound: true);
         m_Player1Move_ChangeCamRight = m_Player1Move.FindAction("ChangeCamRight", throwIfNotFound: true);
-        m_Player1Move_Pause = m_Player1Move.FindAction("Pause", throwIfNotFound: true);
         // Player2Move
         m_Player2Move = asset.FindActionMap("Player2Move", throwIfNotFound: true);
         m_Player2Move_MoveInputTwo = m_Player2Move.FindAction("MoveInputTwo", throwIfNotFound: true);
         m_Player2Move_ActionInputTwo = m_Player2Move.FindAction("ActionInputTwo", throwIfNotFound: true);
         m_Player2Move_Mouse = m_Player2Move.FindAction("Mouse", throwIfNotFound: true);
-        // UI Inputs
-        m_UIInputs = asset.FindActionMap("UI Inputs", throwIfNotFound: true);
-        m_UIInputs_Close = m_UIInputs.FindAction("Close", throwIfNotFound: true);
+        // InComumInputs
+        m_InComumInputs = asset.FindActionMap("InComumInputs", throwIfNotFound: true);
+        m_InComumInputs_Close = m_InComumInputs.FindAction("Close", throwIfNotFound: true);
     }
 
     ~@PlayersInputMap()
     {
         UnityEngine.Debug.Assert(!m_Player1Move.enabled, "This will cause a leak and performance issues, PlayersInputMap.Player1Move.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Player2Move.enabled, "This will cause a leak and performance issues, PlayersInputMap.Player2Move.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_UIInputs.enabled, "This will cause a leak and performance issues, PlayersInputMap.UIInputs.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_InComumInputs.enabled, "This will cause a leak and performance issues, PlayersInputMap.InComumInputs.Disable() has not been called.");
     }
 
     /// <summary>
@@ -714,7 +693,6 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player1Move_ActionInputOne;
     private readonly InputAction m_Player1Move_ChangeCamLeft;
     private readonly InputAction m_Player1Move_ChangeCamRight;
-    private readonly InputAction m_Player1Move_Pause;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player1Move".
     /// </summary>
@@ -742,10 +720,6 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player1Move/ChangeCamRight".
         /// </summary>
         public InputAction @ChangeCamRight => m_Wrapper.m_Player1Move_ChangeCamRight;
-        /// <summary>
-        /// Provides access to the underlying input action "Player1Move/Pause".
-        /// </summary>
-        public InputAction @Pause => m_Wrapper.m_Player1Move_Pause;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -784,9 +758,6 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
             @ChangeCamRight.started += instance.OnChangeCamRight;
             @ChangeCamRight.performed += instance.OnChangeCamRight;
             @ChangeCamRight.canceled += instance.OnChangeCamRight;
-            @Pause.started += instance.OnPause;
-            @Pause.performed += instance.OnPause;
-            @Pause.canceled += instance.OnPause;
         }
 
         /// <summary>
@@ -810,9 +781,6 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
             @ChangeCamRight.started -= instance.OnChangeCamRight;
             @ChangeCamRight.performed -= instance.OnChangeCamRight;
             @ChangeCamRight.canceled -= instance.OnChangeCamRight;
-            @Pause.started -= instance.OnPause;
-            @Pause.performed -= instance.OnPause;
-            @Pause.canceled -= instance.OnPause;
         }
 
         /// <summary>
@@ -965,29 +933,29 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
     /// </summary>
     public Player2MoveActions @Player2Move => new Player2MoveActions(this);
 
-    // UI Inputs
-    private readonly InputActionMap m_UIInputs;
-    private List<IUIInputsActions> m_UIInputsActionsCallbackInterfaces = new List<IUIInputsActions>();
-    private readonly InputAction m_UIInputs_Close;
+    // InComumInputs
+    private readonly InputActionMap m_InComumInputs;
+    private List<IInComumInputsActions> m_InComumInputsActionsCallbackInterfaces = new List<IInComumInputsActions>();
+    private readonly InputAction m_InComumInputs_Close;
     /// <summary>
-    /// Provides access to input actions defined in input action map "UI Inputs".
+    /// Provides access to input actions defined in input action map "InComumInputs".
     /// </summary>
-    public struct UIInputsActions
+    public struct InComumInputsActions
     {
         private @PlayersInputMap m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public UIInputsActions(@PlayersInputMap wrapper) { m_Wrapper = wrapper; }
+        public InComumInputsActions(@PlayersInputMap wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "UIInputs/Close".
+        /// Provides access to the underlying input action "InComumInputs/Close".
         /// </summary>
-        public InputAction @Close => m_Wrapper.m_UIInputs_Close;
+        public InputAction @Close => m_Wrapper.m_InComumInputs_Close;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_UIInputs; }
+        public InputActionMap Get() { return m_Wrapper.m_InComumInputs; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -995,9 +963,9 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="UIInputsActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="InComumInputsActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(UIInputsActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(InComumInputsActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -1005,11 +973,11 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="UIInputsActions" />
-        public void AddCallbacks(IUIInputsActions instance)
+        /// <seealso cref="InComumInputsActions" />
+        public void AddCallbacks(IInComumInputsActions instance)
         {
-            if (instance == null || m_Wrapper.m_UIInputsActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_UIInputsActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_InComumInputsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_InComumInputsActionsCallbackInterfaces.Add(instance);
             @Close.started += instance.OnClose;
             @Close.performed += instance.OnClose;
             @Close.canceled += instance.OnClose;
@@ -1021,8 +989,8 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="UIInputsActions" />
-        private void UnregisterCallbacks(IUIInputsActions instance)
+        /// <seealso cref="InComumInputsActions" />
+        private void UnregisterCallbacks(IInComumInputsActions instance)
         {
             @Close.started -= instance.OnClose;
             @Close.performed -= instance.OnClose;
@@ -1030,12 +998,12 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="UIInputsActions.UnregisterCallbacks(IUIInputsActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="InComumInputsActions.UnregisterCallbacks(IInComumInputsActions)" />.
         /// </summary>
-        /// <seealso cref="UIInputsActions.UnregisterCallbacks(IUIInputsActions)" />
-        public void RemoveCallbacks(IUIInputsActions instance)
+        /// <seealso cref="InComumInputsActions.UnregisterCallbacks(IInComumInputsActions)" />
+        public void RemoveCallbacks(IInComumInputsActions instance)
         {
-            if (m_Wrapper.m_UIInputsActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_InComumInputsActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -1045,21 +1013,21 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="UIInputsActions.AddCallbacks(IUIInputsActions)" />
-        /// <seealso cref="UIInputsActions.RemoveCallbacks(IUIInputsActions)" />
-        /// <seealso cref="UIInputsActions.UnregisterCallbacks(IUIInputsActions)" />
-        public void SetCallbacks(IUIInputsActions instance)
+        /// <seealso cref="InComumInputsActions.AddCallbacks(IInComumInputsActions)" />
+        /// <seealso cref="InComumInputsActions.RemoveCallbacks(IInComumInputsActions)" />
+        /// <seealso cref="InComumInputsActions.UnregisterCallbacks(IInComumInputsActions)" />
+        public void SetCallbacks(IInComumInputsActions instance)
         {
-            foreach (var item in m_Wrapper.m_UIInputsActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_InComumInputsActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_UIInputsActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_InComumInputsActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="UIInputsActions" /> instance referencing this action map.
+    /// Provides a new <see cref="InComumInputsActions" /> instance referencing this action map.
     /// </summary>
-    public UIInputsActions @UIInputs => new UIInputsActions(this);
+    public InComumInputsActions @InComumInputs => new InComumInputsActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player1Move" which allows adding and removing callbacks.
     /// </summary>
@@ -1095,13 +1063,6 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnChangeCamRight(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnPause(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player2Move" which allows adding and removing callbacks.
@@ -1133,11 +1094,11 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         void OnMouse(InputAction.CallbackContext context);
     }
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI Inputs" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "InComumInputs" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="UIInputsActions.AddCallbacks(IUIInputsActions)" />
-    /// <seealso cref="UIInputsActions.RemoveCallbacks(IUIInputsActions)" />
-    public interface IUIInputsActions
+    /// <seealso cref="InComumInputsActions.AddCallbacks(IInComumInputsActions)" />
+    /// <seealso cref="InComumInputsActions.RemoveCallbacks(IInComumInputsActions)" />
+    public interface IInComumInputsActions
     {
         /// <summary>
         /// Method invoked when associated input action "Close" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.

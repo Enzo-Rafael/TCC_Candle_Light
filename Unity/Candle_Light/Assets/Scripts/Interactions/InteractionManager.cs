@@ -20,15 +20,6 @@ public class InteractionManager : MonoBehaviour
 
     //-------------------------- Variaveis Globais Visiveis --------------------------------
 
-	[Header("Transmitindo em")]  
-    [Tooltip("Referência para usar a função associada ao ScrptableObject")]
-    [SerializeField] 
-    private ItemEventChannelSO _UseItemEvent = default;
-
-    [Tooltip("Referência para usar a função associada ao ScriptableObject")]
-    [SerializeField] 
-    private ItemEventChannelSO _equipItemEvent = default;
-
     [Tooltip("Referência para usar a função associada ao ScriptableObject")]
     [SerializeField] 
     private InputReader _inputReader = default;
@@ -105,6 +96,6 @@ public class InteractionManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     public void UseInteractionType(){
         if(potentialInteractions.Count == 0) return;
-        potentialInteractions.First.Value.GetComponent<ItemInteractable>().BaseAction();
+        potentialInteractions.First.Value.GetComponent<UseItemInteractable>().BaseAction();
     }
 }

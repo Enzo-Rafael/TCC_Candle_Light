@@ -7,15 +7,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private InputReader _inputReader = default;
 
     private void OnEnable(){
-        _inputReader.MenuPauseEvent += OpenPause;
-        _inputReader.EnableGameplayInput();
+        _inputReader.MenuCloseEvent += OpenPause;
     }
     private void OnDisable() {
-        _inputReader.MenuPauseEvent -= OpenPause;
+        _inputReader.MenuCloseEvent -= OpenPause;
     }
     private void OpenPause(){
-        Debug.Log("OpenPause");
-        _inputReader.MenuPauseEvent -= OpenPause;
+        _inputReader.MenuCloseEvent -= OpenPause;
         Time.timeScale = 0;
         _pausePainel.ResumedAction += ClosePause;
         _pausePainel.BackToMenuAction += OpenMenu;
@@ -23,9 +21,7 @@ public class UIManager : MonoBehaviour
         _inputReader.EnableMenuInput();
     } 
     private void ClosePause(){
-        Debug.Log("ClosePause");
-        
-        _inputReader.MenuPauseEvent += OpenPause;
+        _inputReader.MenuCloseEvent += OpenPause;
         Time.timeScale = 1;
         _pausePainel.ResumedAction -= ClosePause;
         _pausePainel.BackToMenuAction -= OpenMenu;

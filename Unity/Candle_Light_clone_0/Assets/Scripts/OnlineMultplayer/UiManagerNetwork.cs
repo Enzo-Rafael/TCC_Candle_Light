@@ -13,7 +13,7 @@ public class UiManagerNetwork : MonoBehaviour
     private PlayerData characterData;
     private GameObject currentInstantiatedCharacter;
     private PlayerSelection characterSelection;  
-    public SceneRef sceneReferencer;
+    public SceneRef sceneRef;
 
     private void Start()
         {
@@ -28,7 +28,7 @@ public class UiManagerNetwork : MonoBehaviour
             buttonP2.onClick.AddListener(ButtonP2);
             buttonGo.onClick.AddListener(ButtonGo);
             //Adds a listener to the main input field and invokes a method when the value changes.
-            //inputFieldPlayerName.onValueChanged.AddListener(delegate { InputFieldChangedPlayerName(); });
+            inputFieldPlayerName.onValueChanged.AddListener(delegate { InputFieldChangedPlayerName(); });
 
             LoadData();
             SetupCharacters();
@@ -39,12 +39,8 @@ public class UiManagerNetwork : MonoBehaviour
             //Debug.Log("ButtonGo");
 
             // presumes we're already in-game
-            if (sceneReferencer && NetworkClient.active)
+            if (sceneRef && NetworkClient.active)
             {
-
-                // You could check if prefab (character number) has not changed, and if so just update the sync vars and hooks of current prefab, this would call a command from your player.
-                // this is not fully setup for this example, but provides a minor template to follow if needed
-                //NetworkClient.localPlayer.GetComponent<CharacterSelection>().CmdSetupCharacter(StaticVariables.playerName, StaticVariables.characterColour);
 
                 CreateCharacterMessage _characterMessage = new CreateCharacterMessage
                 {
@@ -57,12 +53,12 @@ public class UiManagerNetwork : MonoBehaviour
                     createCharacterMessage = _characterMessage
                 };
                 MyNetworkManager.singleton.ReplaceCharacter(replaceCharacterMessage);
-                sceneReferencer.CloseCharacterSelection();
+                sceneRef.CloseCharacterSelection();
             }
             else
             {
                 // not in-game
-                SceneManager.LoadScene("MirrorCharacterSelection");
+                SceneManager.LoadScene("MainHall");
             }
         }
 

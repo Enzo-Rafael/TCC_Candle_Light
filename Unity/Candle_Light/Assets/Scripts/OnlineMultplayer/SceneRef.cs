@@ -4,11 +4,12 @@ using Mirror;
 
 public class SceneRef : MonoBehaviour
 {
-    public Button buttonCharacterSelection;
+    //public Button buttonCharacterSelection;
     private PlayerData characterData;
     public GameObject characterSelectionObject;
     public GameObject sceneObjects;
-    public GameObject cameraObject;
+    public GameObject fakeCam;
+    public GameObject[] cameraObjects;
     
     private void Start()
     {
@@ -18,26 +19,36 @@ public class SceneRef : MonoBehaviour
             Debug.Log("Add CharacterData prefab singleton into the scene.");
             return;
         }
-        buttonCharacterSelection.onClick.AddListener(ButtonCharacterSelection);
+        //buttonCharacterSelection.onClick.AddListener(ButtonCharacterSelection);
+        ButtonCharacterSelection();
     }
+    /*void Awake()
+    {
+        
+    }*/
 
     public void ButtonCharacterSelection()
     {
         // server-only mode should not press this button
         //Debug.Log("ButtonCharacterSelection");
-        cameraObject.SetActive(false);
+        
+        cameraObjects[0].SetActive(false);
+        cameraObjects[1].SetActive(false);
+        fakeCam.SetActive(true);
         sceneObjects.SetActive(false);
         characterSelectionObject.SetActive(true);
-        this.GetComponent<Canvas>().enabled = false;
+        //this.GetComponent<Canvas>().enabled = false;
     }
 
     public void CloseCharacterSelection()
     {
         //Debug.Log("CloseCharacterSelection");
-        cameraObject.SetActive(true);
+        cameraObjects[0].SetActive(true);
+        cameraObjects[1].SetActive(true);
+        fakeCam.SetActive(false);
         characterSelectionObject.SetActive(false);
         sceneObjects.SetActive(true);
-        this.GetComponent<Canvas>().enabled = true;
+        //this.GetComponent<Canvas>().enabled = true;
     }
 }
 

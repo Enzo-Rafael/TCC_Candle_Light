@@ -3,6 +3,7 @@ using System;
 using TMPro;
 using System.Collections.Generic;
 using Mirror;
+using Unity.Cinemachine;
 
 public class CreateSelection : NetworkBehaviour
     {
@@ -18,6 +19,9 @@ public class CreateSelection : NetworkBehaviour
         [NonSerialized]public bool P1Selecte = false , P2Selected = false;//checar se o personagem foi escolhiido
         private int currentCharacterIndex = 0;//Index dos persongens
         private List<GameObject> characterInstances = new List<GameObject>();//Lista da preview dos personagens
+
+        private CinemachineInputAxisController cam2;
+
 
         public override void OnStartClient()
         {
@@ -52,6 +56,10 @@ public class CreateSelection : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void CmdSelect(int characterIndex, NetworkConnectionToClient sender = null){
         GameObject characterInstance = Instantiate(characters[characterIndex].GameplayCharacterPrefab);
+        if(characterIndex == 0){
+            cam2 = GameObject.FindGameObjectWithTag("CamP2Template").GetComponent<CinemachineInputAxisController>();
+            cam2.enabled = false;
+        }
         NetworkServer.Spawn(characterInstance, sender);
     }
 

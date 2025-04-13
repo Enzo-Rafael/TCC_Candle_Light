@@ -66,6 +66,8 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
         _playersInput.Player1Move.Enable();
 		_playersInput.Player2Move.Enable();
         _playersInput.UIInputs.Enable();
+        Debug.Log("Enable All");
+
     }
     /*------------------------------------------------------------------------------
     Função:     DisableAllInput
@@ -77,6 +79,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
 		_playersInput.Player1Move.Disable();
 		_playersInput.Player2Move.Disable();
         _playersInput.UIInputs.Disable();
+        Debug.Log("Disable All");
 
 	}
     /*------------------------------------------------------------------------------
@@ -89,6 +92,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
 		_playersInput.Player1Move.Enable();
 		_playersInput.Player2Move.Enable();
         _playersInput.UIInputs.Disable();
+        Debug.Log("Enable Gameplay");
 	}
     /*------------------------------------------------------------------------------
     Função:     EnableMenuInput
@@ -100,6 +104,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
 		_playersInput.Player1Move.Disable();
 		_playersInput.Player2Move.Disable();
         _playersInput.UIInputs.Enable();
+        Debug.Log("Enable Menu");
 	}
     public void OnMoveInputOne(InputAction.CallbackContext context){
         MoveEventOne.Invoke(context.ReadValue<Vector3>());

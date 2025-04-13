@@ -2,10 +2,10 @@ using System;
 using NUnit.Framework.Constraints;
 using Unity.Cinemachine;
 using UnityEngine;
-
+using Mirror;
 //Player 2: Move setas direcionais e num1 e num2
 
-public class PlayerTwoScript : MonoBehaviour
+public class PlayerTwoScript : NetworkBehaviour
 {
     //Variaveis
 	[SerializeField] private InputReader _inputReader = default;
@@ -13,6 +13,7 @@ public class PlayerTwoScript : MonoBehaviour
 
     [SerializeField] private GameObject camPlayerTwo;
     [SerializeField] private CinemachineCamera virCamPlayerTwo;
+    [SerializeField] private CreateSelection cS;
 
     private Vector3 playerMove;
 
@@ -32,8 +33,10 @@ public class PlayerTwoScript : MonoBehaviour
     //Metodos
     void Awake()
     {
+        cS = GameObject.FindAnyObjectByType<CreateSelection>();
+        //if(CreateSelection.n)
         camPlayerTwo = GameObject.FindGameObjectWithTag("CamP2");
-        virCamPlayerTwo = GameObject.FindGameObjectWithTag("Player").GetComponent<CinemachineCamera>();
+        virCamPlayerTwo = GameObject.FindGameObjectWithTag("CamP2Template").GetComponent<CinemachineCamera>();
         virCamPlayerTwo.Follow = gameObject.transform;
     }
     private void OnEnable(){
@@ -54,6 +57,10 @@ public class PlayerTwoScript : MonoBehaviour
     }
 
     void Update(){
+        if(!isOwned){return;}
+        if(camPlayerTwo != null){
+
+        
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && _inputVector.y < 0){
            _inputVector.y = 0f;
@@ -69,6 +76,7 @@ public class PlayerTwoScript : MonoBehaviour
         }
 
         controller.Move(playerMove * velocity * Time.deltaTime);
+        }
     }
 
     /// <summary>

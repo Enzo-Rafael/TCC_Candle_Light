@@ -1,9 +1,10 @@
 using UnityEditor.Animations;
 using UnityEngine;
 using Unity.Cinemachine;
+using Mirror;
 //Player 1: MoveR: WASD InteragIr: J Rocionar camera:Q/K e E/L 
 
-public class PlayerOneScript : MonoBehaviour
+public class PlayerOneScript : NetworkBehaviour
 {
     //Variaveis
 	[SerializeField] private InputReader _inputReader = default;
@@ -41,6 +42,7 @@ public class PlayerOneScript : MonoBehaviour
     
     void Update()
     {
+        if(!isOwned){return;}
         mainCam = GetComponent<ChangeCam>().GetCam();
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerMove.y < 0){

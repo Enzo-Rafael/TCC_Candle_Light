@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
 
+
+
+
 namespace Mirror.Examples.Common
 {
     // Note: EventSystem is needed in your scene for Unitys UI Canvas
@@ -24,6 +27,7 @@ namespace Mirror.Examples.Common
         [SerializeField] private InputField inputNetworkAddress;
         [SerializeField] private InputField inputPort;
 
+
         private void Start()
         {
             // Init the input field with Network Manager's network address.
@@ -35,6 +39,7 @@ namespace Mirror.Examples.Common
             //RegisterClientEvents();
 
             CheckWebGLPlayer();
+
         }
 
         private void RegisterListeners()

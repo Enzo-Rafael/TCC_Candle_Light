@@ -22,7 +22,9 @@ public class CreateSelection : NetworkBehaviour
 
         private CinemachineInputAxisController cam2;
 
-
+        private void Start(){
+            cam2 = GameObject.FindGameObjectWithTag("CamP2Template").GetComponent<CinemachineInputAxisController>();
+        }
         public override void OnStartClient()
         {
             if (characterPreviewParent.childCount == 0)
@@ -56,12 +58,7 @@ public class CreateSelection : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void CmdSelect(int characterIndex, NetworkConnectionToClient sender = null){
         GameObject characterInstance = Instantiate(characters[characterIndex].GameplayCharacterPrefab);
-        cam2 = GameObject.FindGameObjectWithTag("CamP2Template").GetComponent<CinemachineInputAxisController>();
-        if(characterIndex == 0){
-            cam2.enabled = false;
-        }else{
-            cam2.enabled = true;
-        }
+        if(characterIndex == 1) cam2.enabled = true;
         NetworkServer.Spawn(characterInstance, sender);
     }
 

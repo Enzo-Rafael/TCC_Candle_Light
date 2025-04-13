@@ -24510,6 +24510,7 @@ GameObject:
   - component: {fileID: 1332364391}
   - component: {fileID: 1332364390}
   - component: {fileID: 1332364389}
+  - component: {fileID: 1332364394}
   m_Layer: 8
   m_Name: P2 Follow Cam
   m_TagString: CamP2Template
@@ -24667,6 +24668,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1332364394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332364388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ca4f86baa56c545a51050dbcf684e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1332762646
 GameObject:
   m_ObjectHideFlags: 0
@@ -31087,7 +31100,7 @@ MonoBehaviour:
   statusLabelsGroup: {fileID: 1653312372}
   startHostButton: {fileID: 404185962}
   startServerOnlyButton: {fileID: 424032009}
-  startClientButton: {fileID: 424032009}
+  startClientButton: {fileID: 706880895}
   mainStopButton: {fileID: 1176169675}
   mainStopButtonText: {fileID: 1509940068}
   secondaryStopButton: {fileID: 2001497738}

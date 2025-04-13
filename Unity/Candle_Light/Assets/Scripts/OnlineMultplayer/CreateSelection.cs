@@ -56,9 +56,11 @@ public class CreateSelection : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void CmdSelect(int characterIndex, NetworkConnectionToClient sender = null){
         GameObject characterInstance = Instantiate(characters[characterIndex].GameplayCharacterPrefab);
+        cam2 = GameObject.FindGameObjectWithTag("CamP2Template").GetComponent<CinemachineInputAxisController>();
         if(characterIndex == 0){
-            cam2 = GameObject.FindGameObjectWithTag("CamP2Template").GetComponent<CinemachineInputAxisController>();
             cam2.enabled = false;
+        }else{
+            cam2.enabled = true;
         }
         NetworkServer.Spawn(characterInstance, sender);
     }

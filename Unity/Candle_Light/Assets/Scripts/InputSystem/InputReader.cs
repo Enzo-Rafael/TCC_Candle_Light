@@ -89,6 +89,8 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
 		_playersInput.Player1Move.Enable();
 		_playersInput.Player2Move.Enable();
         _playersInput.UIInputs.Disable();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 	}
     /*------------------------------------------------------------------------------
     Função:     EnableMenuInput
@@ -97,9 +99,11 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     Saída:      -
     ------------------------------------------------------------------------------*/
 	public void EnableMenuInput(){
-		_playersInput.Player1Move.Disable();
-		_playersInput.Player2Move.Disable();
-        _playersInput.UIInputs.Enable();
+		//_playersInput.Player1Move.Disable();
+		//_playersInput.Player2Move.Disable();
+        //_playersInput.UIInputs.Enable();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 	}
     public void OnMoveInputOne(InputAction.CallbackContext context){
         MoveEventOne.Invoke(context.ReadValue<Vector3>());
@@ -122,7 +126,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     }
 
     public void OnClose(InputAction.CallbackContext context){
-        if (context.phase == InputActionPhase.Performed) MenuCloseEvent.Invoke();
+        //if (context.phase == InputActionPhase.Performed) MenuCloseEvent.Invoke();
     }
     public void OnChangeCamLeft(InputAction.CallbackContext context){
        if (context.phase == InputActionPhase.Performed) ChangeCamLeftEvent.Invoke();

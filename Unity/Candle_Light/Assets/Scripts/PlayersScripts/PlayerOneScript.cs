@@ -1,4 +1,3 @@
-using UnityEditor.Animations;
 using UnityEngine;
 using Unity.Cinemachine;
 //Player 1: MoveR: WASD InteragIr: J Rocionar camera:Q/K e E/L 
@@ -39,8 +38,8 @@ public class PlayerOneScript : MonoBehaviour
         if (groundedPlayer && playerMove.y < 0){
             playerMove.y = 0f;
         }
-        Vector3 camForward = Vector3.Scale(mainCam.transform.forward, new Vector3(1, 0, 1).normalized);
-        Vector3 camStrafe = Vector3.Scale(mainCam.transform.right, new Vector3(1, 0, 1).normalized);
+        Vector3 camForward = Vector3.Scale(mainCam.transform.forward, new Vector3(1, 0, 1)).normalized;
+        Vector3 camStrafe = Vector3.Scale(mainCam.transform.right, new Vector3(1, 0, 1)).normalized;
         forward = _inputVector.y * camForward;
         strafe = _inputVector.x * camStrafe;
         playerMove = forward + strafe;
@@ -53,7 +52,7 @@ public class PlayerOneScript : MonoBehaviour
         }
         animator.SetFloat("WalkSpeed", playerMove.magnitude);
         playerMove.y += gravityValue * Time.deltaTime;//Gravidade do player 1
-        controller.Move(playerMove* velocity * Time.deltaTime );
+        controller.Move(playerMove * velocity * Time.deltaTime );
     }
 }
 /* forward = _inputVector.y * velocity * new Vector3(0, 0,-mainCam.transform.position.z);

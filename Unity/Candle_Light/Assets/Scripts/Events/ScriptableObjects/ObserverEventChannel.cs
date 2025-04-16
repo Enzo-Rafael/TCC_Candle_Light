@@ -15,7 +15,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Events/Observer Event Channel")]
-public class ObserverEventChannelSO : ScriptableObject
+public class ObserverEventChannel : MonoBehaviour
 {
     private List<IObserver> observers = new List<IObserver>();
 
@@ -43,10 +43,10 @@ public class ObserverEventChannelSO : ScriptableObject
     Entrada:    ItemSO - item que ditará qual ação o Observador fará.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void NotifyObservers(bool action){
+    public void NotifyObservers(int message){
         if(observers != null){
             foreach (var observer in observers){
-                observer.OnEventRaised(action);
+                observer.OnEventRaised(message);
             }
         }
     }

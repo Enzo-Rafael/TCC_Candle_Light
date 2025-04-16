@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-//classe para metodos que extendem funcionalidade do MonoBehaviour.
-
+/// <summary>
+/// classe para metodos que extendem funcionalidade do MonoBehaviour.
+/// </summary>
 public static class MonoBehaviourExtensions
 {
 
-    //chama metodo depois de um tempo usando corotina (tipo invoke so que pode passar parametros)
+    /// <summary>
+    /// Chama [method] apos [delay] segundos, atraves de corotina.
+    /// <para> Para uso em MonoBehaviours atraves de: this.CallWithDelay(method, delay);</para>
+    /// </summary>
+    /// <param name="method"> metodo a ser chamado. </param>
+    /// <param name="delay"> tempo que a corotina espera </param>
     public static void CallWithDelay(this MonoBehaviour monoBehaviour, Action method, float delay)
     {
         monoBehaviour.StartCoroutine(CallWithDelayCoroutine(method, delay));

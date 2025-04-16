@@ -14,7 +14,7 @@ using UnityEngine.Events;
 
 
 [CreateAssetMenu(fileName = "InputReader", menuName = "Game/Input Reader")]
-public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions, PlayersInputMap.IPlayer1MoveActions, PlayersInputMap.IUIInputsActions 
+public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions, PlayersInputMap.IPlayer1MoveActions, PlayersInputMap.IInComumInputsActions
 {
 
 //-------------------------- Variaveis Globais Visiveis --------------------------------
@@ -24,7 +24,6 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
 	public event UnityAction<Vector3> MoveEventOne = delegate { };
 	public event UnityAction<Vector3> MoveEventTwo = delegate { };    
     public event UnityAction ActionEventOne= delegate { };
-    public event UnityAction MenuPauseEvent = delegate { };
     public event UnityAction ActionEventTwo = delegate { };
     public event UnityAction<Vector2> MouseEvent = delegate { };
     public event UnityAction<bool> EscEvent = delegate { };
@@ -44,7 +43,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
 			_playersInput = new PlayersInputMap();
             _playersInput.Player1Move.SetCallbacks(this);
 			_playersInput.Player2Move.SetCallbacks(this);
-            _playersInput.UIInputs.SetCallbacks(this);
+            _playersInput.InComumInputs.SetCallbacks(this);
 		}
     }
     /*------------------------------------------------------------------------------
@@ -65,7 +64,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     public void EnableAllInput(){
         _playersInput.Player1Move.Enable();
 		_playersInput.Player2Move.Enable();
-        _playersInput.UIInputs.Enable();
+        _playersInput.InComumInputs.Enable();
     }
     /*------------------------------------------------------------------------------
     Função:     DisableAllInput
@@ -76,7 +75,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
 	public void DisableAllInput(){
 		_playersInput.Player1Move.Disable();
 		_playersInput.Player2Move.Disable();
-        _playersInput.UIInputs.Disable();
+        _playersInput.InComumInputs.Disable();
 
 	}
     /*------------------------------------------------------------------------------
@@ -88,7 +87,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
 	public void EnableGameplayInput(){
 		_playersInput.Player1Move.Enable();
 		_playersInput.Player2Move.Enable();
-        _playersInput.UIInputs.Disable();
+        _playersInput.InComumInputs.Enable();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 	}
@@ -99,9 +98,9 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     Saída:      -
     ------------------------------------------------------------------------------*/
 	public void EnableMenuInput(){
-		//_playersInput.Player1Move.Disable();
-		//_playersInput.Player2Move.Disable();
-        //_playersInput.UIInputs.Enable();
+		_playersInput.Player1Move.Disable();
+		_playersInput.Player2Move.Disable();
+        _playersInput.InComumInputs.Enable();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 	}
@@ -114,9 +113,6 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     public void OnActionInputOne(InputAction.CallbackContext context){
         if (context.phase == InputActionPhase.Performed) ActionEventOne.Invoke();
     }
-    public void OnPause(InputAction.CallbackContext context){
-        if (context.phase == InputActionPhase.Performed) MenuPauseEvent.Invoke();
-    }
     public void OnActionInputTwo(InputAction.CallbackContext context){
         if (context.phase == InputActionPhase.Performed) ActionEventTwo.Invoke();
 
@@ -126,7 +122,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     }
 
     public void OnClose(InputAction.CallbackContext context){
-        //if (context.phase == InputActionPhase.Performed) MenuCloseEvent.Invoke();
+        if (context.phase == InputActionPhase.Performed) MenuCloseEvent.Invoke();
     }
     public void OnChangeCamLeft(InputAction.CallbackContext context){
        if (context.phase == InputActionPhase.Performed) ChangeCamLeftEvent.Invoke();

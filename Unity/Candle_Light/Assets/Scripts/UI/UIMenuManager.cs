@@ -51,7 +51,7 @@ public class UIMenuManager : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     private void StartNewGame(){
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("MainHaill");
     }
     /*------------------------------------------------------------------------------
     Função:     OpenSettings

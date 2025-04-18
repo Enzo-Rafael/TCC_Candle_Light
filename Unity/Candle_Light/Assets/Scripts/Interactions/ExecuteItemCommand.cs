@@ -11,15 +11,43 @@
 //----------------------------- Bibliotecas Usadas -------------------------------------
 
 using System;
+using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEditor;
 
-    public enum ItemActionType{Toggle, Cosume, Trigger}
+public enum ItemActionType{Toggle, Cosume, Trigger, Multiple}
+
+[CustomEditor(typeof(ExecuteItemCommand))]
+public class ExecuteCommand_Editor: Editor{
+
+    public override void OnInspectorGUI(){
+
+        serializedObject.Update();
+
+        SerializedProperty actionTypeProp = serializedObject.FindProperty("_actionType");
+        SerializedProperty multipleProp = serializedObject.FindProperty("multiple");
+
+        EditorGUILayout.PropertyField(actionTypeProp);
+
+        if ((ItemActionType)actionTypeProp.enumValueIndex == ItemActionType.Multiple){
+           EditorGUILayout.PropertyField(multipleProp);
+        }
+        DrawPropertiesExcluding(serializedObject, "_actionType", "multiple");
+
+        serializedObject.ApplyModifiedProperties();
+    }
+}
 
 public class ExecuteItemCommand : MonoBehaviour, IObserver
 {
 
     //-------------------------- Variaveis Globais Visiveis --------------------------------
+
+    [HideInInspector]
+    public int multiple;
+
+    private int _message;
 
     [Tooltip("Referência para o evento sendo escutado.")]
 	[SerializeField] 
@@ -79,6 +107,10 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
             case ItemActionType.Cosume:
             animator.SetTrigger(parameterName);
             UnregisterEvent();
+            break;
+            case ItemActionType.Multiple:
+            _message += message > 0 ? 1 : -1;
+            if(_message == multiple) animator.SetBool(parameterName, message != 0);
             break;
         }
     }

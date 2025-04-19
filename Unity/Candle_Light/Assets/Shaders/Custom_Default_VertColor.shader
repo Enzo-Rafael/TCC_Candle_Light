@@ -3,7 +3,7 @@ Shader "Custom/Custom_Default_VertColor"
     Properties
     {
         _ShadowTint ("Shadow Tint", Color) = (0.5,0.5,0.5)
-        _VertEffectSize ("Vert Snap Strength", Float) = 128
+        //_VertEffectSize ("Vert Snap Strength", Float) = 128
     }
     SubShader
     {
@@ -31,7 +31,9 @@ Shader "Custom/Custom_Default_VertColor"
             
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+#if (UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN)
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/RealTimeLights.hlsl"
+#endif
             
             struct appdata
             {
@@ -113,7 +115,7 @@ Shader "Custom/Custom_Default_VertColor"
 
                 // Calculo de luz principal
                 Light light = GetMainLight(shadowCoord);
-                //lightVal = CalculateLight(light, IN.normalWS);
+                lightVal = CalculateLight(light, IN.normalWS);
 
                 // Preparacao para loop de luz
                 InputData inputData = (InputData)0;

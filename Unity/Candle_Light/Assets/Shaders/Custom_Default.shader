@@ -4,7 +4,7 @@ Shader "Custom/Custom_Default"
     {
         _MainTex ("Texture", 2D) = "white" {}
         _ShadowTint ("Shadow Tint", Color) = (0.5,0.5,0.5)
-        _VertEffectSize ("Vert Snap Strength", Float) = 128
+        //_VertEffectSize ("Vert Snap Strength", Float) = 128
     }
     SubShader
     {
@@ -34,8 +34,9 @@ Shader "Custom/Custom_Default"
             
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+#if (UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN)
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/RealTimeLights.hlsl"
-            
+#endif
             struct appdata
             {
                 float4 vertex : POSITION;
@@ -54,8 +55,8 @@ Shader "Custom/Custom_Default"
             };
             
             #define VERT_EFFECT_SIZE 128.0
-            #define SHADOW_HARDNESS 10
-            #define LIGHT_ATTENUATION 50
+            #define SHADOW_HARDNESS 2
+            #define LIGHT_ATTENUATION 3
 
             sampler2D _MainTex;
             
@@ -123,7 +124,7 @@ Shader "Custom/Custom_Default"
 
                 // Calculo de luz principal
                 Light light = GetMainLight(shadowCoord);
-                //lightVal = CalculateLight(light, IN.normalWS);
+                lightVal = CalculateLight(light, IN.normalWS);
 
                 // Preparacao para loop de luz
                 InputData inputData = (InputData)0;

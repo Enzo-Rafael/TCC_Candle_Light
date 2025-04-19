@@ -102,6 +102,7 @@ Shader "Custom/Custom_Transparent"
                 col = tex2D(_MainTex, IN.uv);
 
                 col.rgb = col * _Tint;
+                
                 col.a = _Alpha - IN.vertex.z * _FadeStrength;
                 
 

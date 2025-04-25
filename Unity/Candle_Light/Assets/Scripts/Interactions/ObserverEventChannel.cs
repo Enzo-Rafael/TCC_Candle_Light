@@ -43,14 +43,14 @@ public class ObserverEventChannel : MonoBehaviour
     Entrada:    ItemSO - item que ditará qual ação o Observador fará.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void NotifyObservers(int message){
+    public void NotifyObservers(int message, object additionalInformation = null){
         if(observers != null){
             foreach (var observer in observers){
-                observer.OnEventRaised(message);
+                observer.OnEventRaised(message, additionalInformation);
             }
         }
     }
 }
-
+  
 
 

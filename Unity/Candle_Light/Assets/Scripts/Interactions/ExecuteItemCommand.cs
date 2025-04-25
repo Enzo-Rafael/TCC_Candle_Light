@@ -16,7 +16,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor;
 
-public enum ItemActionType{Toggle, Cosume, Trigger, Multiple}
+public enum ItemType{Single, Multiple}
+public enum ItemActionType{Toggle, Cosume, Trigger}
 
 [CustomEditor(typeof(ExecuteItemCommand))]
 public class ExecuteCommand_Editor: Editor{
@@ -25,15 +26,24 @@ public class ExecuteCommand_Editor: Editor{
 
         serializedObject.Update();
 
+        SerializedProperty itemTypeProp = serializedObject.FindProperty("_itemType");
+        SerializedProperty multipleCodeProp = serializedObject.FindProperty("_multipleCode");
         SerializedProperty actionTypeProp = serializedObject.FindProperty("_actionType");
-        SerializedProperty multipleProp = serializedObject.FindProperty("multiple");
 
+        // Mostra o tipo do item (Single / Multiple)
+        EditorGUILayout.PropertyField(itemTypeProp);
+
+        // Se for do tipo Multiple, mostra o campo do script
+        if ((ItemType)itemTypeProp.enumValueIndex == ItemType.Multiple)
+        {
+            EditorGUILayout.PropertyField(multipleCodeProp, new GUIContent("Código de Múltiplas Interações"));
+        }
+
+        // Mostra o tipo de ação (Trigger, Toggle, Cosume)
         EditorGUILayout.PropertyField(actionTypeProp);
 
-        if ((ItemActionType)actionTypeProp.enumValueIndex == ItemActionType.Multiple){
-           EditorGUILayout.PropertyField(multipleProp);
-        }
-        DrawPropertiesExcluding(serializedObject, "_actionType", "multiple");
+        // Mostra todas as outras propriedades, exceto as que já manipulamos
+        DrawPropertiesExcluding(serializedObject, "_itemType", "_multipleCode", "_actionType");
 
         serializedObject.ApplyModifiedProperties();
     }
@@ -43,11 +53,11 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
 {
 
     //-------------------------- Variaveis Globais Visiveis --------------------------------
-
+    [Tooltip("Referência para codigo que terá como esse item funciona")]
     [HideInInspector]
-    public int multiple;
-
-    private int _message;
+    [SerializeField]
+    private MonoBehaviour _multipleCode;
+    private IMultiple _multiple => _multipleCode as IMultiple;
 
     [Tooltip("Referência para o evento sendo escutado.")]
 	[SerializeField] 
@@ -60,6 +70,10 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
     [Tooltip("Tipo de ação que o item fará ao interagirem com ele")]
     [SerializeField] 
     private ItemActionType _actionType;
+
+    [Tooltip("Tipo do item")]
+    [SerializeField] 
+    private ItemType _itemType;
 
     [Tooltip("Nome do parametro de animador a ser modificado.")]
     [SerializeField]
@@ -94,7 +108,9 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
     Entrada:    int - indentificação para dizer qual ação o atuador fará.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void OnEventRaised(int message){
+    public void OnEventRaised(int message, object additionalInformation){
+        
+        if(_multipleCode != null && !_multiple.Validator(additionalInformation)) return;
         switch(_actionType){
             case ItemActionType.Trigger:
                 animator.SetTrigger(parameterName);
@@ -107,10 +123,6 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
             case ItemActionType.Cosume:
             animator.SetTrigger(parameterName);
             UnregisterEvent();
-            break;
-            case ItemActionType.Multiple:
-            _message += message > 0 ? 1 : -1;
-            if(_message == multiple) animator.SetBool(parameterName, message != 0);
             break;
         }
     }

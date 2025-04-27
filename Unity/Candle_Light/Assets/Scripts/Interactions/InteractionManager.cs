@@ -96,6 +96,6 @@ public class InteractionManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     public void UseInteractionType(){
         if(potentialInteractions.Count == 0) return;
-        potentialInteractions.First.Value.GetComponent<UseItemInteractable>().BaseAction();
+        potentialInteractions.First.Value.GetComponent<IInteractable>().BaseAction();
     }
 }

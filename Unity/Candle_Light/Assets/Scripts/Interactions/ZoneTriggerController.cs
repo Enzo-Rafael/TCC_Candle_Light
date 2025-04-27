@@ -48,7 +48,6 @@ public class ZoneTriggerController : MonoBehaviour
 	private void OnTriggerExit(Collider other)
 	{
 		if ((1 << other.gameObject.layer & _layers) != 0){
-            Debug.Log(other.gameObject.name);
 			_enterZone.Invoke(false, other.gameObject);
 		}
 	}

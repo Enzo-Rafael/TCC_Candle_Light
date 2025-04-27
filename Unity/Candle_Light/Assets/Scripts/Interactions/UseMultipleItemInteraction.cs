@@ -37,6 +37,7 @@ public class UseMultipleItemInteraction : MonoBehaviour, IInteractable
   public void BaseAction(){
     action = !action;
     _observerEvent.NotifyObservers(action? 1:0, orderID);
+    Debug.Log("Uepa");
   }
 }
 

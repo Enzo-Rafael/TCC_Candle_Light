@@ -6,6 +6,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UIPause _pausePainel;
     [SerializeField] private InputReader _inputReader = default;
 
+    void Start()
+    {
+        _inputReader.EnableGameplayInput();
+    }
+
     private void OnEnable(){
         _inputReader.MenuCloseEvent += OpenPause;
     }

@@ -40,8 +40,8 @@ public class PlayerOneScript : MonoBehaviour
         }
         Vector3 camForward = Vector3.Scale(mainCam.transform.forward, new Vector3(1, 0, 1)).normalized;
         Vector3 camStrafe = Vector3.Scale(mainCam.transform.right, new Vector3(1, 0, 1)).normalized;
-        forward = _inputVector.y * camForward;
-        strafe = _inputVector.x * camStrafe;
+        forward = Vector3.Lerp(forward, _inputVector.y * camForward, Time.deltaTime*5);
+        strafe = Vector3.Lerp(strafe, _inputVector.x * camStrafe, Time.deltaTime*5);
         playerMove = forward + strafe;
 
         
@@ -52,8 +52,8 @@ public class PlayerOneScript : MonoBehaviour
         }
         animator.SetFloat("WalkSpeed", playerMove.magnitude);
         playerMove.y += gravityValue * Time.deltaTime;//Gravidade do player 1
-        controller.Move(playerMove * velocity * Time.deltaTime );
+        controller.Move(playerMove * velocity * Time.deltaTime);
     }
 }
-/* forward = _inputVector.y * velocity * new Vector3(0, 0,-mainCam.transform.position.z);
+/*      forward = _inputVector.y * velocity * new Vector3(0, 0,-mainCam.transform.position.z);
         strafe = _inputVector.x * velocity * new Vector3(-mainCam.transform.position.z,0,0);*/

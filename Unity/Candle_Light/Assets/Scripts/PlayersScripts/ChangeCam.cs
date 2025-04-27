@@ -17,7 +17,6 @@ public class ChangeCam : MonoBehaviour
             }else{
                 cam.Priority = 0;
             }
-            
         }
     }
     void OnEnable()
@@ -46,10 +45,35 @@ public class ChangeCam : MonoBehaviour
         currentCam.Priority = 1;
     }
     public CinemachineCamera GetCam(){
-        CinemachineCamera cam = currentCam;
-        return cam;
+        return currentCam;
     }
+
     public void ClearCams(){
         Array.Clear(camRef,0,camRef.Length);
+    }
+
+    /// <summary>
+    /// Troca de cameras, desativando as anteriores e ativa a primeira da lista.
+    /// </summary>
+    /// <param name="nextRoomsCams"> Conjunto de cameras a ser ativado. </param>
+    internal void SetCams(CinemachineCamera[] nextRoomsCams)
+    {
+        currentCam.Priority = 0;
+
+        foreach(CinemachineCamera camera in camRef)
+        {
+            camera.gameObject.SetActive(false);
+        }
+
+        camRef = nextRoomsCams;
+
+        foreach(CinemachineCamera camera in camRef)
+        {
+            camera.gameObject.SetActive(true);
+        }
+
+        currentCamIndex = 0;
+        currentCam = camRef[0];
+        currentCam.Priority = 1;
     }
 }

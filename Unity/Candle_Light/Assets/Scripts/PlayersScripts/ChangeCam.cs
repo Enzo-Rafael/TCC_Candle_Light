@@ -5,7 +5,8 @@ using System;
 public class ChangeCam : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader = default;
-    [SerializeField] private CinemachineCamera[] camRef;
+    [SerializeField] public CinemachineCamera[] camRef;
+    [SerializeField] private int currentCamIndex = 0;
     private CinemachineCamera currentCam;
 
     void Start(){
@@ -29,39 +30,50 @@ public class ChangeCam : MonoBehaviour
         _inputReader.ChangeCamRightEvent -= OnChangeCamRight;
     }
     public void OnChangeCamLeft(){
-      currentCam.Priority = 0;
-       if(currentCam == camRef[0]){
-           currentCam = camRef[1];
-           currentCam.Priority = 1;
-       }else if(currentCam == camRef[1]){
-           currentCam = camRef[2];
-           currentCam.Priority = 1;
-       }else if(currentCam == camRef[2]){
-           currentCam = camRef[3];
-           currentCam.Priority = 1;
-       }else{
-           currentCam = camRef[0];
-           currentCam.Priority = 1;
-       }
+        currentCam.Priority = 0;
+        currentCamIndex--;
+        if(currentCamIndex < 0){
+            currentCamIndex += camRef.Length;
+        }
+        currentCam = camRef[currentCamIndex];
+        currentCam.Priority = 1;
     }
     public void OnChangeCamRight(){
-       currentCam.Priority = 0;
-       if(currentCam == camRef[0]){
-           currentCam = camRef[3];
-           currentCam.Priority = 1;
-       }else if(currentCam == camRef[3]){
-           currentCam = camRef[2];
-           currentCam.Priority = 1;
-       }else if(currentCam == camRef[2]){
-           currentCam = camRef[1];
-           currentCam.Priority = 1;
-       }else{
-           currentCam = camRef[0];
-           currentCam.Priority = 1;
-       }
+        currentCam.Priority = 0;
+        currentCamIndex = (currentCamIndex + 1) % camRef.Length;
+        currentCam = camRef[currentCamIndex];
+        currentCam.Priority = 1;
     }
     public CinemachineCamera GetCam(){
-        CinemachineCamera cam = currentCam;
-       return cam;
+        return currentCam;
+    }
+
+    public void ClearCams(){
+        Array.Clear(camRef,0,camRef.Length);
+    }
+
+    /// <summary>
+    /// Troca de cameras, desativando as anteriores e ativa a primeira da lista.
+    /// </summary>
+    /// <param name="nextRoomsCams"> Conjunto de cameras a ser ativado. </param>
+    internal void SetCams(CinemachineCamera[] nextRoomsCams)
+    {
+        currentCam.Priority = 0;
+
+        foreach(CinemachineCamera camera in camRef)
+        {
+            camera.gameObject.SetActive(false);
+        }
+
+        camRef = nextRoomsCams;
+
+        foreach(CinemachineCamera camera in camRef)
+        {
+            camera.gameObject.SetActive(true);
+        }
+
+        currentCamIndex = 0;
+        currentCam = camRef[0];
+        currentCam.Priority = 1;
     }
 }

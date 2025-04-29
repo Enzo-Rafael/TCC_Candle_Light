@@ -37,7 +37,7 @@ public class InteractionManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     private void OnEnable(){
         _inputReader.ActionEventOne += UseInteractionType;
-        _inputReader.ActionEventTwo += UseInteractionType;      
+        // _inputReader.ActionEventTwo += UseInteractionType;      
     }
     /*------------------------------------------------------------------------------
     Função:     OnDisable
@@ -47,7 +47,7 @@ public class InteractionManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     private void OnDisable(){
         _inputReader.ActionEventOne -= UseInteractionType;
-        _inputReader.ActionEventTwo -= UseInteractionType;
+       // _inputReader.ActionEventTwo -= UseInteractionType;
     }
     /*------------------------------------------------------------------------------
     Função:     OnTriggerDetected

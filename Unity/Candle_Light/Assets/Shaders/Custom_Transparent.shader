@@ -48,9 +48,7 @@ Shader "Custom/Custom_Transparent"
                 float3 worldPos : TEXCOORD1;
             };
             
-            #define VERT_EFFECT_SIZE 128.0
-            #define SHADOW_HARDNESS 10
-            #define LIGHT_ATTENUATION 50
+            #include "Assets/Shaders/CustomShaderConfigs.hlsl"
 
             sampler2D _MainTex;
             

@@ -42,7 +42,7 @@ MonoBehaviour:
     m_Bits: 2039
   m_DefaultStencilState:
     overrideStencilState: 0
-    stencilReference: 1
+    stencilReference: 0
     stencilCompareFunction: 3
     passOperation: 2
     failOperation: 0
@@ -146,14 +146,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   m_Settings:
-    AOMethod: 0
+    AOMethod: 1
     Downsample: 0
-    AfterOpaque: 0
-    Source: 1
-    NormalSamples: 1
-    Intensity: 0.4
-    DirectLightingStrength: 0.25
-    Radius: 0.2
+    AfterOpaque: 1
+    Source: 0
+    NormalSamples: 2
+    Intensity: 1.3
+    DirectLightingStrength: 1
+    Radius: 0.4
     Samples: 1
     BlurQuality: 0
     Falloff: 100

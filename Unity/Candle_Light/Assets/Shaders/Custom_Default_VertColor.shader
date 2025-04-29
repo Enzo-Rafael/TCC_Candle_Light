@@ -50,9 +50,7 @@ Shader "Custom/Custom_Default_VertColor"
                 float3 worldPos : TEXCOORD1;
             };
             
-            #define VERT_EFFECT_SIZE 128.0
-            #define SHADOW_HARDNESS 10
-            #define LIGHT_ATTENUATION 50
+            #include "Assets/Shaders/CustomShaderConfigs.hlsl"
             
             CBUFFER_START(UnityPerMaterial)
             half3 _ShadowTint;

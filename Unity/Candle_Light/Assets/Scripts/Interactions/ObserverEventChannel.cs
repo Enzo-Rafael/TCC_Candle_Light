@@ -14,7 +14,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(menuName = "Events/Observer Event Channel")]
 public class ObserverEventChannel : MonoBehaviour
 {
     private List<IObserver> observers = new List<IObserver>();

@@ -27,22 +27,17 @@ public class InteractionManager : MonoBehaviour
     [SerializeField] 
     private InputReader _inputReader = default;
 
-    [Tooltip("Referência para o Transform de Origem do RayCast para verificar algo na frente")]
-    [SerializeField]
-    private Transform rayDrop;
-
-    [Tooltip("Tamanho da distancia que o raycast irá verificar")]
+    [Tooltip("Tamanho da distancia que o raycast irá verificar para verificar se há chão")]
     [SerializeField]
     private float deploymentHeight;
 
-    [Tooltip("Tamanho da distancia que o raycast irá verificar")]
-    [SerializeField]
-    private float deploymentForward;
-
-
     [Tooltip("Referência para o Transform de Origem do RayCast para verificar se há chão")]
     [SerializeField]
-    private Transform rayFloor;
+    private Transform rayFloor = null;
+    
+    [Tooltip("Layer do detector é ignorada")]
+    [SerializeField]
+    private LayerMask groundLayer;
 
     //null quando não há item equipado
     private GameObject equipItem = null;
@@ -52,7 +47,10 @@ public class InteractionManager : MonoBehaviour
     //------------------------- Variaveis Globais privadas -------------------------------
 
     private LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
-
+    void Update()
+    {
+        Debug.DrawRay(rayFloor.position, Vector3.down * deploymentHeight);
+    }
     /*------------------------------------------------------------------------------
     Função:     OnEnable
     Descrição:  Associa todas as funções utilizadas ao canal de comunicação para que 
@@ -62,6 +60,7 @@ public class InteractionManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     private void OnEnable(){
         _inputReader.ActionEventOne += UseInteractionType;
+        Debug.Log(rayFloor.name);
         // _inputReader.ActionEventTwo += UseInteractionType;      
     }
     /*------------------------------------------------------------------------------
@@ -121,35 +120,27 @@ public class InteractionManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     public void UseInteractionType(){
         if(potentialInteractions.Count == 0){
-            if(equipItem != null){
-                if(DropVerification() && FloorVerification()){
-                  // equipItem.GetComponent<EquipItemInteractable>().DropItem(hitFloor.point);
+            if(equipItem != null && FloorVerification()){
+                var equipScript = equipItem.GetComponent<EquipItemInteractable>();
+                if(equipScript != null){
+                    equipScript.DropItem(hitFloor.point);
+                    equipItem.layer = 12;
+                    equipItem = null;
                 }
-            }
+            } 
             return;
-        } 
-            potentialInteractions.First.Value.GetComponent<IInteractable>().BaseAction();
-        if(potentialInteractions.First.Value.layer == LayerMask.NameToLayer("EquipInteratable")){
+        }
+        potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
+        if(potentialInteractions.First.Value.layer == LayerMask.NameToLayer("EquipInteractable")){
             equipItem = potentialInteractions.First.Value;
+            potentialInteractions.First.Value.layer = 0;
             RemovePotentialInteraction(potentialInteractions.First.Value);
         }
     }
 
-    private bool DropVerification(){
-        RaycastHit hitDrop;
-        if(Physics.Raycast(rayDrop.position, Vector3.down, out hitDrop, deploymentHeight)){
-            return false;
-        }
-        return true;
-
-    }
-
     private bool FloorVerification(){
-        if(Physics.Raycast(rayFloor.position, Vector3.forward, out hitFloor, deploymentHeight)){
-            if(hitFloor.collider.tag == "Floor"){
-                return true;
-            }
-            return false;
+        if(Physics.Raycast(rayFloor.position, Vector3.down, out hitFloor, deploymentHeight)){
+            return hitFloor.collider.gameObject.layer == 13;
         }
         return false;
     }

@@ -63,6 +63,37 @@ Transform:
   - {fileID: 7756243506260387085}
   m_Father: {fileID: 4092588130826592032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &228685575658608958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1379459251215976561}
+  m_Layer: 0
+  m_Name: FloorDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1379459251215976561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228685575658608958}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.7, z: 0.995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2771374243806646055}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &273152499338125921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1716,7 +1747,7 @@ GameObject:
   - component: {fileID: 9214219417429163465}
   - component: {fileID: 8338911887323015202}
   - component: {fileID: 2102400550411697456}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: InteractionDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1757,8 +1788,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.7, y: 2, z: 0.7}
-  m_Center: {x: 0, y: 1, z: 0.4}
+  m_Size: {x: 0.7, y: 1.8742417, z: 0.5907385}
+  m_Center: {x: 0, y: 0.93712085, z: 0.34536925}
 --- !u!114 &8338911887323015202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1788,7 +1819,7 @@ MonoBehaviour:
         m_CallState: 2
   _layers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4160
 --- !u!54 &2102400550411697456
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3550,7 +3581,7 @@ MonoBehaviour:
     Enabled: 0
     DefaultMode: 2
   DefaultBlend:
-    Style: 2
+    Style: 0
     Time: 1
     CustomCurve:
       serializedVersion: 2
@@ -4794,6 +4825,7 @@ Transform:
   - {fileID: 7810553939760222945}
   - {fileID: 4135097544244111326}
   - {fileID: 1628542811053939712}
+  - {fileID: 1379459251215976561}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &1977109826562393239
@@ -4850,6 +4882,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
+  deploymentHeight: 2
+  rayFloor: {fileID: 1379459251215976561}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!114 &1122050933420117676
 MonoBehaviour:
   m_ObjectHideFlags: 0

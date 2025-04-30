@@ -9,14 +9,15 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
 
     private void PickUpItem(){
         transform.SetParent(holdPosition);
-        transform.localPosition = Vector3.zero;
+        transform.localPosition = new Vector3(0, 0.45f, 0);
         transform.localRotation = Quaternion.identity;
     }
     
     public void DropItem(Vector3 position){
-        transform.SetParent(null);
-        transform.position = position;
-        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        Debug.Log(position);
+        this.transform.SetParent(null);
+        this.transform.position = position + new Vector3(0,1.2f,0);
+        this.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
     }
 
     public void BaseAction(){

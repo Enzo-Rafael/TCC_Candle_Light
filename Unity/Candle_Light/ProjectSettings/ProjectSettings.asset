@@ -16,13 +16,13 @@ PlayerSettings:
   productName: Candle_Light
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.023529412, g: 0.0627451, b: 0.10980392, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
-  m_SplashScreenAnimation: 1
+  m_SplashScreenAnimation: 0
   m_SplashScreenLogoStyle: 1
-  m_SplashScreenDrawMode: 0
+  m_SplashScreenDrawMode: 1
   m_SplashScreenBackgroundAnimationZoom: 1
   m_SplashScreenLogoAnimationZoom: 1
   m_SplashScreenBackgroundLandscapeAspect: 1
@@ -39,7 +39,13 @@ PlayerSettings:
     y: 0
     width: 1
     height: 1
-  m_SplashScreenLogos: []
+  m_SplashScreenLogos:
+  - logo: {fileID: 10404, guid: 0000000000000000f000000000000000, type: 0}
+    duration: 2
+  - logo: {fileID: 21300000, guid: e767d190bf229b34e82eafdd4040c7be, type: 3}
+    duration: 5
+  - logo: {fileID: 21300000, guid: c8d4c87d6bca35245925dcbfaf366429, type: 3}
+    duration: 4
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
@@ -848,8 +854,8 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Candle_Light
-  metroPackageVersion: 
+  metroPackageName: CandleLight
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -857,7 +863,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Candle_Light
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Candle_Light
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

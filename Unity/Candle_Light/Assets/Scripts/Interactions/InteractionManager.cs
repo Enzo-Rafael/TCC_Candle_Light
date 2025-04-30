@@ -13,7 +13,10 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
+
+
 
 public class InteractionManager : MonoBehaviour
 {
@@ -23,6 +26,26 @@ public class InteractionManager : MonoBehaviour
     [Tooltip("Referência para usar a função associada ao ScriptableObject")]
     [SerializeField] 
     private InputReader _inputReader = default;
+
+    [Tooltip("Referência para o Transform de Origem do RayCast para verificar algo na frente")]
+    [SerializeField]
+    private Transform rayDrop;
+
+    [Tooltip("Tamanho da distancia que o raycast irá verificar")]
+    [SerializeField]
+    private float deploymentHeight;
+
+    [Tooltip("Tamanho da distancia que o raycast irá verificar")]
+    [SerializeField]
+    private float deploymentForward;
+
+
+    [Tooltip("Referência para o Transform de Origem do RayCast para verificar se há chão")]
+    [SerializeField]
+    private Transform rayFloor;
+
+    //null quando não há item equipado
+    private GameObject equipItem = null;
 
     //------------------------- Variaveis Globais privadas -------------------------------
 
@@ -95,7 +118,38 @@ public class InteractionManager : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void UseInteractionType(){
-        if(potentialInteractions.Count == 0) return;
-        potentialInteractions.First.Value.GetComponent<IInteractable>().BaseAction();
+        if(potentialInteractions.Count == 0){
+            if(equipItem != null){
+                if(DropVerification() && FloorVerification()){
+                   equipItem.GetComponent<EquipItemInteractable>().DropItem();
+                }
+            }
+            return;
+        } 
+            potentialInteractions.First.Value.GetComponent<IInteractable>().BaseAction();
+        if(potentialInteractions.First.Value.layer == LayerMask.NameToLayer("EquipInteratable")){
+            equipItem = potentialInteractions.First.Value;
+            RemovePotentialInteraction(potentialInteractions.First.Value);
+        }
+    }
+
+    private bool DropVerification(){
+        RaycastHit hit;
+       if(Physics.Raycast(rayDrop.position, Vector3.down, out hit, deploymentHeight)){
+        return false;
+       }
+       return true;
+
+    }
+
+    private bool FloorVerification(){
+       RaycastHit hit;
+       if(Physics.Raycast(rayFloor.position, Vector3.forward, out hit, deploymentHeight)){
+        if(hit.collider.tag == "Floor"){
+            return true;
+        }
+        return false;
+       }
+       return false;
     }
 }

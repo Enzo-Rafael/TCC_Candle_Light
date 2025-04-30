@@ -7,25 +7,18 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     [SerializeField]
     private Transform holdPosition;
 
-    private bool action = false;
-
     private void PickUpItem(){
         transform.SetParent(holdPosition);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
     }
     
-    private void DropItem(){
+    public void DropItem(){
 
     }
 
     public void BaseAction(){
-        action = !action;
-        if(action){
-            PickUpItem();
-        }else{
-            DropItem();
-        }
+        PickUpItem();
     }
 
 }

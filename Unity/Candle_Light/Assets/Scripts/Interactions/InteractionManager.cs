@@ -47,6 +47,8 @@ public class InteractionManager : MonoBehaviour
     //null quando não há item equipado
     private GameObject equipItem = null;
 
+    RaycastHit hitFloor;
+
     //------------------------- Variaveis Globais privadas -------------------------------
 
     private LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
@@ -121,7 +123,7 @@ public class InteractionManager : MonoBehaviour
         if(potentialInteractions.Count == 0){
             if(equipItem != null){
                 if(DropVerification() && FloorVerification()){
-                   equipItem.GetComponent<EquipItemInteractable>().DropItem();
+                  // equipItem.GetComponent<EquipItemInteractable>().DropItem(hitFloor.point);
                 }
             }
             return;
@@ -134,22 +136,21 @@ public class InteractionManager : MonoBehaviour
     }
 
     private bool DropVerification(){
-        RaycastHit hit;
-       if(Physics.Raycast(rayDrop.position, Vector3.down, out hit, deploymentHeight)){
-        return false;
-       }
-       return true;
+        RaycastHit hitDrop;
+        if(Physics.Raycast(rayDrop.position, Vector3.down, out hitDrop, deploymentHeight)){
+            return false;
+        }
+        return true;
 
     }
 
     private bool FloorVerification(){
-       RaycastHit hit;
-       if(Physics.Raycast(rayFloor.position, Vector3.forward, out hit, deploymentHeight)){
-        if(hit.collider.tag == "Floor"){
-            return true;
+        if(Physics.Raycast(rayFloor.position, Vector3.forward, out hitFloor, deploymentHeight)){
+            if(hitFloor.collider.tag == "Floor"){
+                return true;
+            }
+            return false;
         }
         return false;
-       }
-       return false;
     }
 }

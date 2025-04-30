@@ -13,8 +13,10 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
         transform.localRotation = Quaternion.identity;
     }
     
-    public void DropItem(){
+    public void DropItem( Transform position){
+        transform.SetParent(null);
 
+    //    transform.localPosition = position.position.;
     }
 
     public void BaseAction(){

@@ -4,6 +4,7 @@ Shader "Custom/Custom_Default"
     {
         _MainTex ("Texture", 2D) = "white" {}
         _ShadowTint ("Shadow Tint", Color) = (0.5,0.5,0.5)
+        [Enum(UnityEngine.Rendering.CullMode)] _Cull ("Cull", Float) = 0
         //[MaterialToggle] _Cutoff ("Cutout", Float) = 0
         //_VertEffectSize ("Vert Snap Strength", Float) = 128
     }
@@ -13,6 +14,7 @@ Shader "Custom/Custom_Default"
         {
             Name "ForwardPass"
             ZWrite ON
+            Cull[_Cull]
 
             Tags {
                 "Queue"="Geometry"

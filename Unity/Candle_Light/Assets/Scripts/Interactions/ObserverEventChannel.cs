@@ -39,7 +39,8 @@ public class ObserverEventChannel : MonoBehaviour
     /*------------------------------------------------------------------------------
     Função:     NotifyObservers
     Descrição:  Notifica todos os Observadores que se registraram para executarem uma função.
-    Entrada:    ItemSO - item que ditará qual ação o Observador fará.
+    Entrada:    int - informação para animação do item
+                object - informação generica para cada item especifico
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void NotifyObservers(int message, object additionalInformation = null){

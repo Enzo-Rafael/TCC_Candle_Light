@@ -19,6 +19,7 @@ using UnityEditor;
 public enum ItemType{Single, Multiple}
 public enum ItemActionType{Toggle, Cosume, Trigger}
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(ExecuteItemCommand))]
 public class ExecuteCommand_Editor: Editor{
 
@@ -48,11 +49,13 @@ public class ExecuteCommand_Editor: Editor{
         serializedObject.ApplyModifiedProperties();
     }
 }
+#endif
 
 public class ExecuteItemCommand : MonoBehaviour, IObserver
 {
 
     //-------------------------- Variaveis Globais Visiveis --------------------------------
+    
     [Tooltip("Referência para codigo que terá como esse item funciona")]
     [HideInInspector]
     [SerializeField]
@@ -106,6 +109,7 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
     Função:     OnEventRaised
     Descrição:  Chama a função respectiva do Atuador, para que ele possa executar sua função.
     Entrada:    int - indentificação para dizer qual ação o atuador fará.
+                object - Informação com tipo generico do que o objeto faz
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void OnEventRaised(int message, object additionalInformation){
@@ -126,7 +130,12 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
             break;
         }
     }
-    
+    /*------------------------------------------------------------------------------
+    Função:     UnregisterEvent
+    Descrição:  Desregistra o Objeto na lista de Observadores do item especifico.
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/ 
     private void UnregisterEvent(){
         _observerEvent.UnregisterObserver(this);
     }

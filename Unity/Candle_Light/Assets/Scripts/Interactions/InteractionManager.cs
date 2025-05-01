@@ -34,10 +34,6 @@ public class InteractionManager : MonoBehaviour
     [Tooltip("Referência para o Transform de Origem do RayCast para verificar se há chão")]
     [SerializeField]
     private Transform rayFloor = null;
-    
-    [Tooltip("Layer do detector é ignorada")]
-    [SerializeField]
-    private LayerMask groundLayer;
 
     //null quando não há item equipado
     private GameObject equipItem = null;
@@ -47,10 +43,7 @@ public class InteractionManager : MonoBehaviour
     //------------------------- Variaveis Globais privadas -------------------------------
 
     private LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
-    void Update()
-    {
-        Debug.DrawRay(rayFloor.position, Vector3.down * deploymentHeight);
-    }
+    
     /*------------------------------------------------------------------------------
     Função:     OnEnable
     Descrição:  Associa todas as funções utilizadas ao canal de comunicação para que 
@@ -60,7 +53,6 @@ public class InteractionManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     private void OnEnable(){
         _inputReader.ActionEventOne += UseInteractionType;
-        Debug.Log(rayFloor.name);
         // _inputReader.ActionEventTwo += UseInteractionType;      
     }
     /*------------------------------------------------------------------------------

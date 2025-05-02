@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cb29dd6fd39b44d981aff5f36759ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdPosition: {fileID: 0}
-  pickUpOffSetY: -0.301
+  pickUpOffSet: {x: -0.03, y: 0.1, z: 0.25}
+  pickUpRotation: {x: -90, y: 0, z: 0}
 --- !u!65 &8572091421701183851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 2
+  m_Range: 2.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d70fcc14c7c6046a44db12d7e1dfab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 2
+  radius: 2.5
   doPositionSync: 0
 --- !u!1001 &2991548523544863419
 PrefabInstance:

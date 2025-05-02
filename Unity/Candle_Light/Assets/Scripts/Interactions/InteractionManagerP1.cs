@@ -38,9 +38,9 @@ public class InteractionManagerP1 : MonoBehaviour
     //------------------------- Variaveis Globais privadas -------------------------------
     
     //null quando não há item equipado
-    private GameObject equipItem = null;
+    private EquipItemInteractable equipItem = null;
     private const int floorLayer = 13;
-    private const int EquipLayer = 12;
+    
 
     RaycastHit hitFloor;
 
@@ -117,7 +117,6 @@ public class InteractionManagerP1 : MonoBehaviour
                 var equipScript = equipItem.GetComponent<EquipItemInteractable>();
                 if(equipScript != null){
                     equipScript.DropItem(hitFloor.point);
-                    equipItem.layer = EquipLayer;
                     equipItem = null;
                 }
             } 
@@ -125,8 +124,8 @@ public class InteractionManagerP1 : MonoBehaviour
         }
         potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
         if(potentialInteractions.First.Value.layer == LayerMask.NameToLayer("EquipInteractable")){
-            equipItem = potentialInteractions.First.Value;
-            potentialInteractions.First.Value.layer = default;
+            equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
+
             RemovePotentialInteraction(potentialInteractions.First.Value);
         }
     }

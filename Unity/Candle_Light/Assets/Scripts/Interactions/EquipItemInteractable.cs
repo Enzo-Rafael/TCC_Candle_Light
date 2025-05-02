@@ -17,17 +17,18 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
 
     //-------------------------- Variaveis Globais Visiveis --------------------------------
 
-    [Tooltip("Referência para o local que o objeto irá quando equipado")]
+    [Tooltip("Offset de posicao quando o objeto é pego")]
     [SerializeField]
-    private Transform holdPosition;
+    private Vector3 pickUpOffSet;
 
-    [Tooltip("Offset para o Y quando o objeto é pego")]
+    [Tooltip("Rotacao relativa ao alvo objeto é pego")]
     [SerializeField]
-    private float pickUpOffSetY = -0.301f;
+    private Vector3 pickUpRotation = Vector3.zero;
     
     //------------------------- Variaveis Globais privadas -------------------------------
 
     private BoxCollider boxcolider;
+    private const int EquipLayer = 12;
 
     /*------------------------------------------------------------------------------
     Função:     Start
@@ -40,14 +41,19 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     }
     /*------------------------------------------------------------------------------
     Função:     PickUpItem
-    Descrição:  associa o item a "mão" do personagem
+    Descrição:  Se atribui ao pickup do jogador
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void PickUpItem(){
-        transform.SetParent(holdPosition);
-        transform.localPosition = new Vector3(0, pickUpOffSetY, 0);
-        transform.localRotation = Quaternion.identity;
+    private void PickUpItem()
+    {
+        transform.SetParent(PlayerOneScript.Instance.HoldPosition);
+        transform.localPosition = pickUpOffSet;
+        transform.localRotation = Quaternion.Euler(pickUpRotation);
+            
+        gameObject.layer = default;
+
+        PlayerOneScript.Instance.Pickup(this);
     }
     /*------------------------------------------------------------------------------
     Função:     DropItem
@@ -62,6 +68,9 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
         this.transform.position = position + new Vector3(0,0,0);
         this.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         boxcolider.enabled = true;
+        gameObject.layer = EquipLayer;
+
+        PlayerOneScript.Instance.Drop(this);
     }
     /*------------------------------------------------------------------------------
     Função:     BaseAction

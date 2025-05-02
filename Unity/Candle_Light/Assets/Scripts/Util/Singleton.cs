@@ -18,9 +18,13 @@ public class Singleton<T> : MonoBehaviour where T: MonoBehaviour
             // Se a instancia nao existir, cria uma e atribui
             if(instance == null)
             {
-                GameObject obj = new GameObject($"{typeof(T)} Singleton");
-                instance = obj.AddComponent<T>();
-                DontDestroyOnLoad(instance);
+                instance = FindFirstObjectByType<T>();
+                if(instance == null)
+                {
+                    GameObject obj = new GameObject($"{typeof(T)} Singleton");
+                    instance = obj.AddComponent<T>();
+                    DontDestroyOnLoad(instance);
+                }
             }
             return instance;
         }

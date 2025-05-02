@@ -100,25 +100,25 @@ Shader "Custom/Custom_Default"
             }
 
             // Calculo de incidencia da luz
-            half CalculateLight(Light light, float3 normal)
+            half3 CalculateLight(Light light, float3 normal)
             {
-                half diffuse = saturate(dot(normal, light.direction) * SHADOW_HARDNESS);
+                half3 diffuse = saturate(dot(normal, light.direction) * SHADOW_HARDNESS);
 
-                return diffuse * light.shadowAttenuation;
+                return diffuse * light.shadowAttenuation * light.color;
             }
 
             // Calculo de luz sem normal
-            half CalculateSecondLight(Light light)
+            half3 CalculateSecondLight(Light light)
             {
-                half diffuse = (light.distanceAttenuation * LIGHT_ATTENUATION);
+                half3 diffuse = (light.distanceAttenuation * LIGHT_ATTENUATION);
 
-                return diffuse;
+                return diffuse * light.color;
             }
 
             half4 frag (v2f IN) : SV_Target
             {
                 half4 col = 0;
-                half lightVal = 0;
+                half3 lightVal = 0;
 
                 // Sampling sombras
                 half4 shadowCoord = TransformWorldToShadowCoord(IN.worldPos);
@@ -170,7 +170,7 @@ Shader "Custom/Custom_Default"
             ZWrite On
             ZTest LEqual
             ColorMask 0
-            Cull[_Cull] 
+            Cull Off
 
             HLSLPROGRAM
             #pragma target 2.0

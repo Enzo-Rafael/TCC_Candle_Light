@@ -2,21 +2,37 @@ using UnityEngine;
 using Unity.Cinemachine;
 //Player 1: MoveR: WASD InteragIr: J Rocionar camera:Q/K e E/L 
 
-public class PlayerOneScript : MonoBehaviour
+public class PlayerOneScript : Singleton<PlayerOneScript>
 {
-    //Variaveis
+    //-------------------------- Variaveis Globais Visiveis --------------------------------
 	[SerializeField] private InputReader _inputReader = default;
-    private Vector2 _inputVector;
-    Vector3 playerMove;
+
+    [Tooltip("Referência para o local que o objeto irá quando equipado")]
+    [SerializeField]
+    private Transform holdPosition;
+    public Transform HoldPosition{ get => holdPosition; }
+
     public float velocity;
+
     public CharacterController controller;
+
     public Animator animator;
+
+    //------------------------- Variaveis Globais privadas ----------------------------------
+
+    private Vector2 _inputVector;
+
+    private Vector3 playerMove;
+
     private bool groundedPlayer;
+
     private float gravityValue = -9.81f;
+    
     private CinemachineCamera mainCam;// referencia para a o andar do player a partir da camera
 
     //Orientação para o movimento
     private Vector3 forward;
+    
     private Vector3 strafe;
 
     //Metodos
@@ -53,6 +69,16 @@ public class PlayerOneScript : MonoBehaviour
         animator.SetFloat("WalkSpeed", playerMove.magnitude);
         playerMove.y += gravityValue * Time.deltaTime;//Gravidade do player 1
         controller.Move(playerMove * velocity * Time.deltaTime);
+    }
+
+    public void Pickup(EquipItemInteractable item)
+    {
+        animator.SetTrigger("Pickup");
+    }
+
+    public void Drop(EquipItemInteractable item)
+    {
+        animator.SetTrigger("Drop");
     }
 }
 /*      forward = _inputVector.y * velocity * new Vector3(0, 0,-mainCam.transform.position.z);

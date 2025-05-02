@@ -25,19 +25,26 @@ public class UseMultipleItemInteraction : MonoBehaviour, IInteractable
   [SerializeField] 
   private int orderID;
 
+  //------------------------- Variaveis Globais privadas -------------------------------
+
   private bool action = false;
     
   public ObserverEventChannel GetObserver(){
     return _observerEvent;
   }
+
   public void SetObserver(ObserverEventChannel observerEvent){
     _observerEvent = observerEvent;
   }
-
+  /*------------------------------------------------------------------------------
+  Função:     BaseAction
+  Descrição:  Ação executada ao interagir com o item
+  Entrada:    -
+  Saída:      -
+  ------------------------------------------------------------------------------*/
   public void BaseAction(){
     action = !action;
     _observerEvent.NotifyObservers(action? 1:0, orderID);
-    Debug.Log("Uepa");
   }
 }
 

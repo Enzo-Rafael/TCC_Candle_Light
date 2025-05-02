@@ -1,10 +1,10 @@
 /**************************************************************
     Jogos Digitais SG
-    InteractionManager
+    InteractionManagerP1
 
     Descrição: Dita quais ações serão tomadas ao interagir com o item.
 
-    Candle Light - Jogos Digitais LURDES –  14/03/2024
+    Candle Light - Jogos Digitais LURDES –  01/05/2024
     Modificado por: Italo 
     Referencias: Unity Chop Chop
 ***************************************************************/
@@ -13,9 +13,12 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
-public class InteractionManager : MonoBehaviour
+
+
+public class InteractionManagerP1 : MonoBehaviour
 {
 
     //-------------------------- Variaveis Globais Visiveis --------------------------------
@@ -24,10 +27,26 @@ public class InteractionManager : MonoBehaviour
     [SerializeField] 
     private InputReader _inputReader = default;
 
+    [Tooltip("Tamanho da distância que o raycast irá verificar para verificar se há chão")]
+    [SerializeField]
+    private float deploymentHeight;
+
+    [Tooltip("Referência para o Transform de Origem do RayCast para verificar se há chão")]
+    [SerializeField]
+    private Transform rayFloor = null;
+
     //------------------------- Variaveis Globais privadas -------------------------------
+    
+    //null quando não há item equipado
+    private GameObject equipItem = null;
+    private const int floorLayer = 13;
+    private const int EquipLayer = 12;
+
+    RaycastHit hitFloor;
+
 
     private LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
-
+    
     /*------------------------------------------------------------------------------
     Função:     OnEnable
     Descrição:  Associa todas as funções utilizadas ao canal de comunicação para que 
@@ -37,7 +56,6 @@ public class InteractionManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     private void OnEnable(){
         _inputReader.ActionEventOne += UseInteractionType;
-        _inputReader.ActionEventTwo += UseInteractionType;      
     }
     /*------------------------------------------------------------------------------
     Função:     OnDisable
@@ -47,7 +65,6 @@ public class InteractionManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     private void OnDisable(){
         _inputReader.ActionEventOne -= UseInteractionType;
-        _inputReader.ActionEventTwo -= UseInteractionType;
     }
     /*------------------------------------------------------------------------------
     Função:     OnTriggerDetected
@@ -91,11 +108,38 @@ public class InteractionManager : MonoBehaviour
     /*------------------------------------------------------------------------------
     Função:     UseInteractionType
     Descrição:  verifica qual a interação do item e executa as ações necessarias.
-    Entrada:    GameObject -  Objeto que contem qual item é e quem está na lista de observadores
+    Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void UseInteractionType(){
-        if(potentialInteractions.Count == 0) return;
-        potentialInteractions.First.Value.GetComponent<IInteractable>().BaseAction();
+        if(potentialInteractions.Count == 0){
+            if(equipItem != null && FloorVerification()){
+                var equipScript = equipItem.GetComponent<EquipItemInteractable>();
+                if(equipScript != null){
+                    equipScript.DropItem(hitFloor.point);
+                    equipItem.layer = EquipLayer;
+                    equipItem = null;
+                }
+            } 
+            return;
+        }
+        potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
+        if(potentialInteractions.First.Value.layer == LayerMask.NameToLayer("EquipInteractable")){
+            equipItem = potentialInteractions.First.Value;
+            potentialInteractions.First.Value.layer = default;
+            RemovePotentialInteraction(potentialInteractions.First.Value);
+        }
+    }
+    /*------------------------------------------------------------------------------
+    Função:     FloorVerification
+    Descrição:  Raycast que verifica se tem chão para dropar o equipavel.
+    Entrada:    -
+    Saída:      bool - Confirma se há ou não chão.
+    ------------------------------------------------------------------------------*/
+    private bool FloorVerification(){
+        if(Physics.Raycast(rayFloor.position, Vector3.down, out hitFloor, deploymentHeight)){
+            return hitFloor.collider.gameObject.layer == floorLayer;
+        }
+        return false;
     }
 }

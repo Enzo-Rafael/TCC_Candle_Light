@@ -125,8 +125,8 @@ GameObject:
   - component: {fileID: 5176793665718216371}
   - component: {fileID: 2439669967701740958}
   - component: {fileID: 5061557446704673241}
-  - component: {fileID: 5703467674756799526}
   - component: {fileID: 5970005580199222380}
+  - component: {fileID: 5679381062829531428}
   - component: {fileID: 4843380957931801773}
   m_Layer: 11
   m_Name: Player2
@@ -193,19 +193,6 @@ MonoBehaviour:
   camPlayerTwo: {fileID: 0}
   velocity: 2
   controller: {fileID: 2439669967701740958}
---- !u!114 &5703467674756799526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6006832363215773459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 443387b057e3f644f88a8ab78143b933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
 --- !u!114 &5970005580199222380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +206,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doPositionSync: 1
+--- !u!114 &5679381062829531428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006832363215773459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bbb248c83bb5443ae6da8844da4643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
 --- !u!114 &4843380957931801773
 MonoBehaviour:
   m_ObjectHideFlags: 0

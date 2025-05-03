@@ -123,13 +123,18 @@ public class InteractionManagerP1 : MonoBehaviour
             } 
             return;
         }
-        if(potentialInteractions.First.Value.layer == EquipLayer && equipItem == null){
-            potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
-            equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
-            equipItem.DefineLayer(default);
-            RemovePotentialInteraction(potentialInteractions.First.Value);  
-        } else if(potentialInteractions.First.Value.layer ==  UseLayer){
-            potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
+        switch(potentialInteractions.First.Value.layer){
+            case EquipLayer:
+            if(equipItem == null){
+                potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
+                equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
+                equipItem.DefineLayer(default);
+                RemovePotentialInteraction(potentialInteractions.First.Value);  
+            }
+            break;
+            case UseLayer:
+                potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
+            break;
         }
     }
     /*------------------------------------------------------------------------------

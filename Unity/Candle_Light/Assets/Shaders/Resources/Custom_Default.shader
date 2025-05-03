@@ -5,8 +5,7 @@ Shader "Custom/Custom_Default"
         _MainTex ("Texture", 2D) = "white" {}
         _ShadowTint ("Shadow Tint", Color) = (0.5,0.5,0.5)
         [Enum(UnityEngine.Rendering.CullMode)] _Cull ("Cull", Float) = 0
-        //[MaterialToggle] _Cutoff ("Cutout", Float) = 0
-        //_VertEffectSize ("Vert Snap Strength", Float) = 128
+        [MaterialToggle] _Highlight ("Highlight", Float) = 0
     }
     SubShader
     {
@@ -52,7 +51,6 @@ Shader "Custom/Custom_Default"
             {
                 float4 vertex : SV_POSITION;
                 float3 normalWS : NORMAL;
-                float4 color : COLOR;
                 float2 uv : TEXCOORD0;
                 float3 worldPos : TEXCOORD1;
             };
@@ -60,6 +58,7 @@ Shader "Custom/Custom_Default"
             #include "Assets/Shaders/CustomShaderConfigs.hlsl"
 
             sampler2D _MainTex;
+            half _Highlight;
             
             CBUFFER_START(UnityPerMaterial)
             float4 _MainTex_ST;
@@ -143,6 +142,12 @@ Shader "Custom/Custom_Default"
 
                 lightVal = saturate(lightVal);
                 col = tex2D(_MainTex, IN.uv);
+                half timer = abs(frac(_Time.y)*2-1);
+
+                if(_Highlight == 1)
+                {
+                    col.rgb += saturate(0.8-dot(IN.normalWS, inputData.viewDirectionWS)) * HIGHLIGHT_COLOR * (timer/2+0.5);
+                }
 
                 col.rgb = (col * lightVal) + (col * _ShadowTint * (1-lightVal));
                 

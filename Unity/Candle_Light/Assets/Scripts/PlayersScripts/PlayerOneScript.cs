@@ -24,9 +24,7 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
 
     private Vector3 playerMove;
 
-    private bool groundedPlayer;
-
-    private float gravityValue = -9.81f;
+    private float gravityValue = -50f;
     
     private CinemachineCamera mainCam;// referencia para a o andar do player a partir da camera
 
@@ -50,8 +48,7 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
     void Update()
     {
         mainCam = GetComponent<ChangeCam>().GetCam();
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerMove.y < 0){
+        if (controller.isGrounded && playerMove.y < 0){
             playerMove.y = 0f;
         }
         Vector3 camForward = Vector3.Scale(mainCam.transform.forward, new Vector3(1, 0, 1)).normalized;

@@ -37,7 +37,7 @@ public class MultipleOrderValidator : MonoBehaviour, IMultiple
         if (PlayerPress.Count == OrderPress.Length){
             for (int i = 0; i < PlayerPress.Count; ++i){
                 if (OrderPress[i] != PlayerPress[i]){
-                    PlayerPress.Clear();
+                    PlayerPress.RemoveAt(0);
                     return false;
                 }
             }

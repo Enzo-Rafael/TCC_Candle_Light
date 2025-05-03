@@ -47,7 +47,6 @@ public class InteractionManagerP1 : MonoBehaviour
 
     RaycastHit hitFloor;
 
-
     private LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
     
     /*------------------------------------------------------------------------------
@@ -76,11 +75,11 @@ public class InteractionManagerP1 : MonoBehaviour
                 GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void OnTriggerDetected(bool entered, GameObject itemInteratable){
+    public void OnTriggerDetected(bool entered, GameObject itemInteractable){
         if(entered){
-            AddPotentialInteraction(itemInteratable);
+            AddPotentialInteraction(itemInteractable);
         }else{
-            RemovePotentialInteraction(itemInteratable);
+            RemovePotentialInteraction(itemInteractable);
         }
     }
     /*------------------------------------------------------------------------------
@@ -89,8 +88,13 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-	private void AddPotentialInteraction(GameObject itemInteratable){
-        potentialInteractions.AddFirst(itemInteratable);
+	private void AddPotentialInteraction(GameObject itemInteractable){
+        potentialInteractions.AddFirst(itemInteractable);
+
+        foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
+        {
+                    renderer.material.SetFloat("_Highlight", 1);
+        }
     }
     /*------------------------------------------------------------------------------
     Função:     RemovePotentialInteraction
@@ -98,12 +102,17 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-	private void RemovePotentialInteraction(GameObject itemInteratable){
+	private void RemovePotentialInteraction(GameObject itemInteractable){
 		LinkedListNode<GameObject> currentNode = potentialInteractions.First;
 		while (currentNode != null){
-			if (currentNode.Value == itemInteratable){
-                Debug.Log("Removi");
+			if (currentNode.Value == itemInteractable){
+                //Debug.Log("Removi");
 				potentialInteractions.Remove(currentNode);
+
+                foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
+                {
+                    renderer.material.SetFloat("_Highlight", 0);
+                }
 				break;
 			}
 			currentNode = currentNode.Next;

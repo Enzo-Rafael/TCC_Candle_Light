@@ -57,7 +57,6 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
     //-------------------------- Variaveis Globais Visiveis --------------------------------
     
     [Tooltip("Referência para codigo que terá como esse item funciona")]
-    [HideInInspector]
     [SerializeField]
     private MonoBehaviour _multipleCode;
     private IMultiple _multiple => _multipleCode as IMultiple;

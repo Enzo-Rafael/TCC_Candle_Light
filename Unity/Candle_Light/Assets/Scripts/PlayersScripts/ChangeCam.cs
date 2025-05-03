@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity.Cinemachine;
 using System;
+using System.Linq;
 
 public class ChangeCam : MonoBehaviour
 {
@@ -58,7 +59,7 @@ public class ChangeCam : MonoBehaviour
     /// <param name="nextRoomsCams"> Conjunto de cameras a ser ativado. </param>
     internal void SetCams(CinemachineCamera[] nextRoomsCams)
     {
-        if(nextRoomsCams == camRef) return;
+        if(!nextRoomsCams.Except(camRef).Any()) return;
 
         currentCam.Priority = 0;
 

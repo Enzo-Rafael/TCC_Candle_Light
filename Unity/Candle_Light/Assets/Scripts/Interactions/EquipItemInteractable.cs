@@ -45,14 +45,10 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void PickUpItem()
-    {
+    private void PickUpItem(){
         transform.SetParent(PlayerOneScript.Instance.HoldPosition);
         transform.localPosition = pickUpOffSet;
         transform.localRotation = Quaternion.Euler(pickUpRotation);
-            
-        gameObject.layer = default;
-
         PlayerOneScript.Instance.Pickup(this);
     }
     /*------------------------------------------------------------------------------
@@ -62,15 +58,24 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void DropItem(Vector3 position){
-        //boxcolider.enabled = false;
+        boxcolider.enabled = false;
         Debug.Log(position);
         transform.SetParent(null);
         transform.position = position + new Vector3(0,0,0);
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
-        //boxcolider.enabled = true;
-        gameObject.layer = EquipLayer;
+        boxcolider.enabled = true;
+        DefineLayer();
 
         PlayerOneScript.Instance.Drop(this);
+    }
+    /*------------------------------------------------------------------------------
+    Função:     DefineLayer
+    Descrição:  Define a layer do item
+    Entrada:    int - numero da layer, caso não atribua nada o valor base será o EquipLayer
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void DefineLayer(int layer = EquipLayer){
+        gameObject.layer = layer;
     }
     /*------------------------------------------------------------------------------
     Função:     BaseAction

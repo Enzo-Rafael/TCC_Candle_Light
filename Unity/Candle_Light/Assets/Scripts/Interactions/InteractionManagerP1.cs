@@ -42,7 +42,8 @@ public class InteractionManagerP1 : MonoBehaviour
     //------------------------- Variaveis Globais privadas -------------------------------
     
     private const int floorLayer = 13;
-    
+    private const int EquipLayer = 12;
+    private const int UseLayer = 6;
 
     RaycastHit hitFloor;
 
@@ -101,6 +102,7 @@ public class InteractionManagerP1 : MonoBehaviour
 		LinkedListNode<GameObject> currentNode = potentialInteractions.First;
 		while (currentNode != null){
 			if (currentNode.Value == itemInteratable){
+                Debug.Log("Removi");
 				potentialInteractions.Remove(currentNode);
 				break;
 			}
@@ -116,16 +118,18 @@ public class InteractionManagerP1 : MonoBehaviour
     public void UseInteractionType(){
         if(potentialInteractions.Count == 0){
             if(equipItem != null && FloorVerification()){
-                    equipItem.DropItem(hitFloor.point);
-                    equipItem = null;
+                equipItem.DropItem(hitFloor.point);
+                equipItem = null;
             } 
             return;
         }
-        potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
-        if(potentialInteractions.First.Value.layer == LayerMask.NameToLayer("EquipInteractable")){
+        if(potentialInteractions.First.Value.layer == EquipLayer && equipItem == null){
+            potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
             equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
-
-            RemovePotentialInteraction(potentialInteractions.First.Value);
+            equipItem.DefineLayer(default);
+            RemovePotentialInteraction(potentialInteractions.First.Value);  
+        } else if(potentialInteractions.First.Value.layer ==  UseLayer){
+            potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
         }
     }
     /*------------------------------------------------------------------------------

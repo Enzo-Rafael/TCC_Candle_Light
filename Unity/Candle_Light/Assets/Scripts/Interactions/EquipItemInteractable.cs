@@ -62,12 +62,12 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void DropItem(Vector3 position){
-        boxcolider.enabled = false;
+        //boxcolider.enabled = false;
         Debug.Log(position);
-        this.transform.SetParent(null);
-        this.transform.position = position + new Vector3(0,0,0);
-        this.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
-        boxcolider.enabled = true;
+        transform.SetParent(null);
+        transform.position = position + new Vector3(0,0,0);
+        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        //boxcolider.enabled = true;
         gameObject.layer = EquipLayer;
 
         PlayerOneScript.Instance.Drop(this);

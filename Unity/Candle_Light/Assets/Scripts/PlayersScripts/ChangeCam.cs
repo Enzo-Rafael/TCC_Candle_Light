@@ -58,6 +58,8 @@ public class ChangeCam : MonoBehaviour
     /// <param name="nextRoomsCams"> Conjunto de cameras a ser ativado. </param>
     internal void SetCams(CinemachineCamera[] nextRoomsCams)
     {
+        if(nextRoomsCams == camRef) return;
+
         currentCam.Priority = 0;
 
         foreach(CinemachineCamera camera in camRef)

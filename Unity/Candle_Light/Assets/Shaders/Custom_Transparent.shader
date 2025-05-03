@@ -28,6 +28,19 @@ Shader "Custom/Custom_Transparent"
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+
+            #pragma multi_compile_instancing
+            #pragma multi_compile _ _FORWARD_PLUS
+            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS
+            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
+            #pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW
+            #pragma multi_complie _ _ADITIONAL_LIGHTS
+            
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+#if (UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN)
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/RealTimeLights.hlsl"
+#endif
             
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             
@@ -93,13 +106,56 @@ Shader "Custom/Custom_Transparent"
             }
 
 
+            // Calculo de incidencia da luz
+            half3 CalculateLight(Light light, float3 normal)
+            {
+                half3 diffuse = saturate(dot(normal, light.direction) * SHADOW_HARDNESS);
+
+                return diffuse * light.shadowAttenuation * light.color;
+            }
+
+            // Calculo de luz sem normal
+            half3 CalculateSecondLight(Light light)
+            {
+                half3 diffuse = (light.distanceAttenuation * LIGHT_ATTENUATION);
+
+                return diffuse * light.color;
+            }
+
             half4 frag (v2f IN) : SV_Target
             {
                 half4 col = 0;
+                half3 lightVal = 0;
 
+                // Sampling sombras
+                half4 shadowCoord = TransformWorldToShadowCoord(IN.worldPos);
+
+                // Calculo de luz principal
+                Light light = GetMainLight(shadowCoord);
+                lightVal = CalculateLight(light, IN.normalWS);
+
+                // Preparacao para loop de luz
+                InputData inputData = (InputData)0;
+                inputData.positionWS = IN.worldPos;
+                inputData.positionCS = IN.vertex;
+                inputData.normalWS = IN.normalWS;
+                inputData.viewDirectionWS = GetWorldSpaceNormalizeViewDir(IN.worldPos);
+
+                // Calculo de luzes secundarias
+                uint pixelLightCount = GetAdditionalLightsCount();
+                LIGHT_LOOP_BEGIN(pixelLightCount)
+                    Light additionalLight = GetAdditionalLight(lightIndex, inputData.positionWS, 1);
+                    lightVal += CalculateSecondLight(additionalLight);
+                LIGHT_LOOP_END
+
+                lightVal = saturate(lightVal);
                 col = tex2D(_MainTex, IN.uv);
 
-                col.rgb = col * _Tint;
+                col.rgb = (col * lightVal) + (col * _Tint * (1-lightVal));
+                
+                clip(col.a-0.5);
+
+                //col.rgb = col * _Tint;
                 
                 col.a = _Alpha - IN.vertex.z * _FadeStrength;
                 

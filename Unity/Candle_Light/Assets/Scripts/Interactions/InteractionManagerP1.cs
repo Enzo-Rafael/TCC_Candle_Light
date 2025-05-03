@@ -35,10 +35,12 @@ public class InteractionManagerP1 : MonoBehaviour
     [SerializeField]
     private Transform rayFloor = null;
 
+    //null quando não há item equipado
+    [SerializeField]
+    private EquipItemInteractable equipItem = null;
+
     //------------------------- Variaveis Globais privadas -------------------------------
     
-    //null quando não há item equipado
-    private EquipItemInteractable equipItem = null;
     private const int floorLayer = 13;
     
 
@@ -114,11 +116,8 @@ public class InteractionManagerP1 : MonoBehaviour
     public void UseInteractionType(){
         if(potentialInteractions.Count == 0){
             if(equipItem != null && FloorVerification()){
-                var equipScript = equipItem.GetComponent<EquipItemInteractable>();
-                if(equipScript != null){
-                    equipScript.DropItem(hitFloor.point);
+                    equipItem.DropItem(hitFloor.point);
                     equipItem = null;
-                }
             } 
             return;
         }

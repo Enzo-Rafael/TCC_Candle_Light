@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.Cinemachine;
+using UnityEditor.Animations;
 //Player 1: MoveR: WASD InteragIr: J Rocionar camera:Q/K e E/L 
 
 public class PlayerOneScript : Singleton<PlayerOneScript>
@@ -48,6 +49,7 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
     void Update()
     {
         mainCam = GetComponent<ChangeCam>().GetCam();
+
         if (controller.isGrounded && playerMove.y < 0){
             playerMove.y = 0f;
         }

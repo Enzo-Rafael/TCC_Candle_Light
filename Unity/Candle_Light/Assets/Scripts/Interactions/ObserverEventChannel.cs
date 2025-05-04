@@ -50,6 +50,7 @@ public class ObserverEventChannel : MonoBehaviour
             }
         }
     }
+    
 }
   
 

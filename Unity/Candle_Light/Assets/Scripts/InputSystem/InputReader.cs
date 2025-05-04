@@ -104,6 +104,32 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 	}
+
+    public void EnablePlayerInput(int index){
+        switch(index)
+        {
+            case 1:
+            _playersInput.Player1Move.Enable();
+            break;
+
+            case 2:
+            _playersInput.Player2Move.Enable();
+            break;
+        }
+    }
+    public void DisablePlayerInput(int index){
+        switch(index)
+        {
+            case 1:
+            _playersInput.Player1Move.Disable();
+            break;
+            
+            case 2:
+            _playersInput.Player2Move.Disable();
+            break;
+        }
+    }
+
     public void OnMoveInputOne(InputAction.CallbackContext context){
         MoveEventOne.Invoke(context.ReadValue<Vector3>());
     }

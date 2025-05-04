@@ -142,7 +142,7 @@ Shader "Custom/Custom_Default"
 
                 lightVal = saturate(lightVal);
                 col = tex2D(_MainTex, IN.uv);
-                half timer = abs(frac(_Time.y)*2-1);
+                half timer = abs(frac(_Time.z)*2-1);
 
                 if(_Highlight == 1)
                 {

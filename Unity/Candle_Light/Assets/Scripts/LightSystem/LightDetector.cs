@@ -25,11 +25,17 @@ public class LightDetector : MonoBehaviour
     [Header("Habilite para sincronizar a posicao no update de fisica")]
     [SerializeField] private bool doPositionSync;
 
-    public Action<bool> LightChangeEvent;
+    public Action<bool> lightChangeEvent;
+
+    [Tooltip("Referência para os objetos que receberão os comandos da interação")]
+	[SerializeField] 
+    private ObserverEventChannel _observerEvent = default;    
 
     void Awake()
     {
-        LightChangeEvent = (x) => {};
+        lightChangeEvent = (x) => {};
+        if(_observerEvent)
+            lightChangeEvent += (x) => _observerEvent.NotifyObservers(x? 1:0);
     }
 
     void FixedUpdate()
@@ -51,7 +57,7 @@ public class LightDetector : MonoBehaviour
                     if(_isLit != lit)
                     { 
                         _isLit = lit; 
-                        LightChangeEvent(lit);
+                        lightChangeEvent(lit);
                     }; 
                 }, 
                 GetInstanceID());

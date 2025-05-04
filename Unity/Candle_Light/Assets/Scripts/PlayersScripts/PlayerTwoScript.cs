@@ -22,6 +22,10 @@ public class PlayerTwoScript : MonoBehaviour
     public CharacterController controller;
     private bool groundedPlayer;
 
+    [SerializeField] private Transform respawnPoint;
+    private bool _disabled;
+    public bool IsDisabled{ get => _disabled;}
+
     //test
     private Vector3 forward;
     private Vector3 strafe;
@@ -32,6 +36,7 @@ public class PlayerTwoScript : MonoBehaviour
 	private void OnEnable(){
         _inputReader.MoveEventTwo += OnMove;
         _inputReader.MouseEvent += OnMouse;
+        _disabled = false;
 	}
 	private void OnDisable(){
         _inputReader.MoveEventTwo -= OnMove;
@@ -46,7 +51,10 @@ public class PlayerTwoScript : MonoBehaviour
         _mouseVector = movement;
     }
 
-    void Update(){
+    void Update()
+    {
+        if(_disabled) return;
+
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && _inputVector.y < 0){
            _inputVector.y = 0f;
@@ -62,6 +70,19 @@ public class PlayerTwoScript : MonoBehaviour
         }
 
         controller.Move(playerMove * velocity * Time.deltaTime);
+    }
+
+    /// <summary>
+    /// Mata o fantasma, travando os controles e respawnando no lugar correto
+    /// </summary>
+    public void Die()
+    {
+        _disabled = true;
+        this.CallWithDelay(() =>
+        {
+            transform.position = respawnPoint.position;
+            _disabled = false;
+        }, 0.5f);
     }
 
     /// <summary>

@@ -442,7 +442,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Forward"",
                     ""id"": ""736eb174-2ae7-4a84-8e52-95ce711bb656"",
-                    ""path"": ""<Keyboard>/numpad1"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -453,7 +453,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Backward"",
                     ""id"": ""43d9f6b2-723e-4cd4-8d60-e573f5e5ccc5"",
-                    ""path"": ""<Keyboard>/numpad2"",
+                    ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

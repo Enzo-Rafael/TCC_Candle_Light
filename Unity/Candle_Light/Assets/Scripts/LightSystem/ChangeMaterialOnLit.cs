@@ -28,7 +28,7 @@ public class ChangeMaterialOnLit : MonoBehaviour
         detector = GetComponent<LightDetector>();
 
         originalMaterial = meshRenderer.material;
-        detector.LightChangeEvent += SetMaterial;
+        detector.lightChangeEvent += SetMaterial;
     }
 
     private void SetMaterial(bool value)

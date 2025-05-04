@@ -23,7 +23,7 @@ public class DarknessTimer : MonoBehaviour
     [Tooltip("Tempo que leva para o objeto ir de completamente tomado para iluminado")]
     [SerializeField] private float lightTime;
 
-    private float timer; 
+    private float timer;
 
     void Awake()
     {
@@ -43,7 +43,9 @@ public class DarknessTimer : MonoBehaviour
             timer = Mathf.Min(timer + (1/darkTime) * Time.fixedDeltaTime, 1);
             if(timer >= 1)
             {
-                Debug.Log("Escuridao no maximo, fantasma morreria aqui.");
+                if(!playerScript.IsDisabled)
+                    playerScript.Die();
+                timer -= 0.02f;
             }
         }
 

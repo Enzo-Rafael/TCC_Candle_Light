@@ -1,6 +1,5 @@
 using UnityEngine;
 using Unity.Cinemachine;
-using UnityEditor.Animations;
 //Player 1: MoveR: WASD InteragIr: J Rocionar camera:Q/K e E/L 
 
 public class PlayerOneScript : Singleton<PlayerOneScript>

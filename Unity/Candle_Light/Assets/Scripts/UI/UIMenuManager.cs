@@ -51,7 +51,7 @@ public class UIMenuManager : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     private void StartNewGame(){
-        SceneManager.LoadScene("MainHaill");
+        SceneManager.LoadScene("Mansion");
     }
     /*------------------------------------------------------------------------------
     Função:     OpenSettings

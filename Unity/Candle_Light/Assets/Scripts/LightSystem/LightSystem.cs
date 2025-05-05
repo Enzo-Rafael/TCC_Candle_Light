@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Sistema que roda os calculos de deteccao de luz
@@ -292,7 +293,7 @@ public class LightSystem : Singleton<LightSystem>
     /// Acha um detector de luz ativo com o id especificado
     /// </summary>
     /// <param name="id"> id do detector a ser procurado</param>
-    protected Detector FindLightSysDetector(int id)
+    private Detector FindLightSysDetector(int id)
     {
         
 
@@ -309,7 +310,7 @@ public class LightSystem : Singleton<LightSystem>
     /// Acha uma fonte de luz radial ativa com o id especificado
     /// </summary>
     /// <param name="id"> id da luz a ser procurada</param>
-    protected PointLight FindLightSysPointLight(int id)
+    private PointLight FindLightSysPointLight(int id)
     {
         for (int i = 0; i < dynamicPointLights.Count; i++)
         {
@@ -325,6 +326,20 @@ public class LightSystem : Singleton<LightSystem>
         throw new ArgumentException($"Luz radial com ID [{id}] nao encontrado no sistema de luz. A tipagem da luz pode estar incorreta.");
     }
 
+    private void ClearAll()
+    {
+        staticDetectors = new List<Detector>();
+        dynamicDetectors = new List<Detector>();
+
+        staticPointLights = new List<PointLight>();
+        dynamicPointLights = new List<PointLight>();
+    }
+
+    private void OnLoadedScene(Scene scene, LoadSceneMode loadMode)
+    {
+        ClearAll();
+    }
+
     #endregion
 
     void Awake()
@@ -335,6 +350,8 @@ public class LightSystem : Singleton<LightSystem>
         staticPointLights = new List<PointLight>();
         dynamicPointLights = new List<PointLight>();
 
+        SceneManager.sceneLoaded += OnLoadedScene;
+
         //foreach(Light light in FindObjectsByType<Light>(FindObjectsSortMode.None))
         //{
         //    if(light.type == UnityEngine.LightType.Directional)
@@ -343,6 +360,8 @@ public class LightSystem : Singleton<LightSystem>
         //    }
         //}
     }
+    
+    
 
     void OnDrawGizmosSelected()
     {

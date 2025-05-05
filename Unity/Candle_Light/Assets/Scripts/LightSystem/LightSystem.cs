@@ -335,7 +335,7 @@ public class LightSystem : Singleton<LightSystem>
         dynamicPointLights = new List<PointLight>();
     }
 
-    private void OnLoadedScene(Scene scene, LoadSceneMode loadMode)
+    private void OnUnLoadedScene(Scene scene)
     {
         ClearAll();
     }
@@ -350,7 +350,7 @@ public class LightSystem : Singleton<LightSystem>
         staticPointLights = new List<PointLight>();
         dynamicPointLights = new List<PointLight>();
 
-        SceneManager.sceneLoaded += OnLoadedScene;
+        SceneManager.sceneUnloaded += OnUnLoadedScene;
 
         //foreach(Light light in FindObjectsByType<Light>(FindObjectsSortMode.None))
         //{

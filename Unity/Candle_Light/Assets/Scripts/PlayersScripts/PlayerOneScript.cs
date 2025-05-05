@@ -16,7 +16,7 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
 
     public CharacterController controller;
 
-    public Animator animator;
+    public Animator[] animators;
 
     //------------------------- Variaveis Globais privadas ----------------------------------
 
@@ -64,19 +64,27 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
         {
             gameObject.transform.forward = playerMove;
         }
-        animator.SetFloat("WalkSpeed", playerMove.magnitude);
+
+        foreach(Animator animator in animators){
+            animator.SetFloat("WalkSpeed", playerMove.magnitude);
+        }
+
         playerMove.y += gravityValue * Time.deltaTime;//Gravidade do player 1
         controller.Move(playerMove * velocity * Time.deltaTime);
     }
 
     public void Pickup(EquipItemInteractable item)
     {
-        animator.SetTrigger("Pickup");
+        foreach(Animator animator in animators){
+            animator.SetTrigger("Pickup");
+        }
     }
 
     public void Drop(EquipItemInteractable item)
     {
-        animator.SetTrigger("Drop");
+        foreach(Animator animator in animators){
+            animator.SetTrigger("Drop");
+        }
     }
 }
 /*      forward = _inputVector.y * velocity * new Vector3(0, 0,-mainCam.transform.position.z);

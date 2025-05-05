@@ -146,7 +146,7 @@ Shader "Custom/Custom_Default"
 
                 if(_Highlight == 1)
                 {
-                    col.rgb += saturate(0.8-dot(IN.normalWS, inputData.viewDirectionWS)) * HIGHLIGHT_COLOR * (timer/2+0.5);
+                    col.rgb += saturate(1-dot(IN.normalWS, inputData.viewDirectionWS)) * HIGHLIGHT_COLOR * (timer/2+0.5);
                 }
 
                 col.rgb = (col * lightVal) + (col * _ShadowTint * (1-lightVal));

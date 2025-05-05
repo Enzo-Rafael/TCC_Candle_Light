@@ -77,12 +77,7 @@ public class PlayerTwoScript : MonoBehaviour
     /// </summary>
     public void Die()
     {
-        _disabled = true;
-        this.CallWithDelay(() =>
-        {
-            transform.position = respawnPoint.position;
-            _disabled = false;
-        }, 0.5f);
+        transform.position = respawnPoint.position;
     }
 
     /// <summary>

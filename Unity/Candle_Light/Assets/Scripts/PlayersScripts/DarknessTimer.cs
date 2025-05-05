@@ -30,14 +30,14 @@ public class DarknessTimer : MonoBehaviour
         detector = GetComponent<LightDetector>();
         playerScript = GetComponent<PlayerTwoScript>();
         postProcessingVolume.profile.TryGet(out darknessEffect);
-        timer = 0;
+        timer = 0.000001f;
     }
 
     void FixedUpdate()
     {
         if(detector.IsLit)
         {
-            timer = Mathf.Max(timer - (1/lightTime) * Time.fixedDeltaTime, 0);
+            timer = Mathf.Max(timer - (1/lightTime) * Time.fixedDeltaTime, 0.000001f);
         }else
         {
             timer = Mathf.Min(timer + (1/darkTime) * Time.fixedDeltaTime, 1);
@@ -45,7 +45,7 @@ public class DarknessTimer : MonoBehaviour
             {
                 if(!playerScript.IsDisabled)
                     playerScript.Die();
-                timer -= 0.02f;
+                timer -= 0.01f;
             }
         }
 

@@ -142,7 +142,11 @@ public class InteractionManagerP1 : MonoBehaviour
             }
             break;
             case UseLayer:
-                potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
+                foreach(IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
+                {
+                    Debug.Log("interagiu");
+                    interactable.BaseAction();
+                }
             break;
         }
     }

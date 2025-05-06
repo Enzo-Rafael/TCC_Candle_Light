@@ -10,7 +10,7 @@ public class SincCams : MonoBehaviour
     }
     void Update()
     {
-        
+        //camMimic.gameObject.
         camMimic.transform.position = camTarget.transform.position;
         camMimic.transform.rotation = camTarget.transform.rotation;
     }

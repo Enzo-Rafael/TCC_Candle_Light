@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using Mirror;
 public class SyncCam : NetworkBehaviour
 {
     [SyncVar] Transform cam1;
@@ -10,12 +10,12 @@ public class SyncCam : NetworkBehaviour
     }
 
     [Client]
-    public Update(){
+    public void Update(){
         if(isClient && NetworkClient.active){
             if(StaticVar.characterNumber == 0){
-                cam1 = GameManager.GetTransformChangeP1();
+                cam1 = GameManager.Instance.GetTransformChangeP1();
             }else{
-                cam2 = GameManager.GetTransformChangeP2();
+                cam2 = GameManager.Instance.GetTransformChangeP2();
             }
         }
     }

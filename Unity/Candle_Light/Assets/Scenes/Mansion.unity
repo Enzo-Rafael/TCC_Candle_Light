@@ -409,6 +409,8 @@ MonoBehaviour:
   animator: {fileID: 1490596643}
   _actionType: 0
   parameterName: State
+  _enableCustomScript: 0
+  _customScript: {fileID: 0}
   _multipleCode: {fileID: 0}
   _itemType: 0
 --- !u!114 &65283249
@@ -424,6 +426,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _observerEvent: {fileID: 398046259}
+  animator: {fileID: 0}
+  _actionType: 0
+  parameterName: 
+  _enableCustomScript: 0
+  _customScript: {fileID: 0}
   orderID: 3
 --- !u!1 &69391505
 GameObject:
@@ -8300,6 +8307,8 @@ MonoBehaviour:
   animator: {fileID: 1400751582}
   _actionType: 0
   parameterName: State
+  _enableCustomScript: 0
+  _customScript: {fileID: 0}
   _multipleCode: {fileID: 0}
   _itemType: 0
 --- !u!114 &573079180
@@ -8315,6 +8324,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _observerEvent: {fileID: 398046259}
+  animator: {fileID: 0}
+  _actionType: 0
+  parameterName: 
+  _enableCustomScript: 0
+  _customScript: {fileID: 0}
   orderID: 1
 --- !u!1 &579903081
 GameObject:
@@ -12548,6 +12562,8 @@ MonoBehaviour:
   animator: {fileID: 1108781758}
   _actionType: 2
   parameterName: Activate
+  _enableCustomScript: 0
+  _customScript: {fileID: 0}
   _multipleCode: {fileID: 0}
   _itemType: 1
 --- !u!114 &1108781760
@@ -19675,6 +19691,8 @@ MonoBehaviour:
   animator: {fileID: 507037180}
   _actionType: 0
   parameterName: State
+  _enableCustomScript: 0
+  _customScript: {fileID: 0}
   _multipleCode: {fileID: 0}
   _itemType: 0
 --- !u!114 &2138993112
@@ -19690,6 +19708,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _observerEvent: {fileID: 398046259}
+  animator: {fileID: 0}
+  _actionType: 0
+  parameterName: 
+  _enableCustomScript: 0
+  _customScript: {fileID: 0}
   orderID: 2
 --- !u!1001 &899805145347538378
 PrefabInstance:
@@ -19963,6 +19986,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GradeBiblioteca
       objectReference: {fileID: 0}
+    - target: {fileID: 6139061868104905565, guid: 90f80e00340be9e43a3d16b42101ca3b, type: 3}
+      propertyPath: _itemType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139061868104905565, guid: 90f80e00340be9e43a3d16b42101ca3b, type: 3}
+      propertyPath: _enableCustomScript
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20225,12 +20256,28 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3489398684036774991, guid: efc4eb8c1d5811544888cddeb01bbb7b, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 4964085831050372482}
+    - target: {fileID: 3489398684036774991, guid: efc4eb8c1d5811544888cddeb01bbb7b, type: 3}
+      propertyPath: _actionType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489398684036774991, guid: efc4eb8c1d5811544888cddeb01bbb7b, type: 3}
+      propertyPath: parameterName
+      value: Click
+      objectReference: {fileID: 0}
     - target: {fileID: 5069819429428337973, guid: efc4eb8c1d5811544888cddeb01bbb7b, type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6399805930472567149, guid: efc4eb8c1d5811544888cddeb01bbb7b, type: 3}
       propertyPath: _itemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027076136678344082, guid: efc4eb8c1d5811544888cddeb01bbb7b, type: 3}
+      propertyPath: _enableCustomScript
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8738445153512323992, guid: efc4eb8c1d5811544888cddeb01bbb7b, type: 3}
@@ -20242,6 +20289,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efc4eb8c1d5811544888cddeb01bbb7b, type: 3}
+--- !u!95 &4964085831050372482 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3144136105108838178, guid: efc4eb8c1d5811544888cddeb01bbb7b, type: 3}
+  m_PrefabInstance: {fileID: 4964085831050372481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5478874672173318322
 PrefabInstance:
   m_ObjectHideFlags: 0

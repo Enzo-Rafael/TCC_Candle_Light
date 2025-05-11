@@ -12,19 +12,15 @@ public class Interactable_Editor: Editor{
 
         serializedObject.Update();
 
-        SerializedProperty itemTypeProp = serializedObject.FindProperty("_itemType");
-        SerializedProperty multipleCodeProp = serializedObject.FindProperty("_multipleCode");
         SerializedProperty actionTypeProp = serializedObject.FindProperty("_actionType");
+        SerializedProperty enableScriptProp = serializedObject.FindProperty("_enableCustomScript");
+        SerializedProperty customScriptProp = serializedObject.FindProperty("_customScript");
 
-        // Mostra o tipo do item (Single / Multiple)
-        EditorGUILayout.PropertyField(itemTypeProp);
-
-        // Mostra o tipo de ação (Trigger, Toggle, Cosume)
         EditorGUILayout.PropertyField(actionTypeProp);
+        EditorGUILayout.PropertyField(enableScriptProp);
 
-        // Mostra todas as outras propriedades, exceto as que já manipulamos
-        DrawPropertiesExcluding(serializedObject, "_itemType", "_multipleCode", "_actionType");
-
+        if (enableScriptProp.boolValue)EditorGUILayout.PropertyField(customScriptProp, new GUIContent("Script Customizado"));
+        
         serializedObject.ApplyModifiedProperties();
     }
 }
@@ -50,7 +46,22 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     protected string parameterName;
 
-    public virtual void ExecuteOrder(int message){
+
+    [Tooltip("Habilta o script custom.")]
+    [SerializeField] private bool _enableCustomScript;
+
+    [Tooltip("Referência para script custom que será executado quando iteragir com o item")]
+    [SerializeField]
+    protected MonoBehaviour _customScript;
+    protected ICustomCode _script => _customScript as ICustomCode;
+
+    /*------------------------------------------------------------------------------
+    Função:     ExecuteOrder
+    Descrição:  Executa a animação do item.
+    Entrada:    int - indentificação para dizer qual ação o atuador fará.
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    protected virtual void ExecuteOrder(int message){
             switch(_actionType){
             case ItemActionType.Trigger:
                 animator.SetTrigger(parameterName);
@@ -65,6 +76,7 @@ public class Interactable : MonoBehaviour
             animator.SetTrigger(parameterName);
             break;
         }
+        if(_script != null) _script.CustomBaseAction();
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent
@@ -73,4 +85,12 @@ public class Interactable : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/ 
     protected virtual void UnregisterEvent(){}
+
+    protected ObserverEventChannel GetObserver(){
+        return _observerEvent;
+    }
+
+    protected void SetObserver(ObserverEventChannel observerEvent){
+        _observerEvent = observerEvent;
+    }
 }

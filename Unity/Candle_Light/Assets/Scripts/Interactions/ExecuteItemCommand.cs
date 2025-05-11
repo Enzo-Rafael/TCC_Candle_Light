@@ -30,14 +30,8 @@ public class ExecuteItemCommand_Editor: Editor{
         EditorGUILayout.PropertyField(itemTypeProp);
 
         // Se for do tipo Multiple, mostra o campo do script
-        if ((ItemType)itemTypeProp.enumValueIndex == ItemType.Multiple)
-        {
-            EditorGUILayout.PropertyField(multipleCodeProp, new GUIContent("Código de Múltiplas Interações"));
-        }
-
-        // Mostra todas as outras propriedades, exceto as que já manipulamos
-        DrawPropertiesExcluding(serializedObject, "_itemType", "_multipleCode");
-
+        if ((ItemType)itemTypeProp.enumValueIndex == ItemType.Multiple) EditorGUILayout.PropertyField(multipleCodeProp, new GUIContent("Código de Múltiplas Interações"));
+    
         serializedObject.ApplyModifiedProperties();
     }
 }

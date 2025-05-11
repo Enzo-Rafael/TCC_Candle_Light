@@ -12,14 +12,10 @@
 
 using UnityEngine;
 
-public class UseMultipleItemInteraction : MonoBehaviour, IInteractable
+public class UseMultipleItemInteraction : Interactable, IInteractable
 {
 
-//-------------------------- Variaveis Globais Visiveis --------------------------------
-
-  [Tooltip("Referência para os objetos que receberão os comandos da interação")]
-  [SerializeField] 
-  private ObserverEventChannel _observerEvent = default;    
+//-------------------------- Variaveis Globais Visiveis -------------------------------- 
   
   [Tooltip("Qual a Ordem ele deve ser Ativado")]
   [SerializeField] 
@@ -29,13 +25,6 @@ public class UseMultipleItemInteraction : MonoBehaviour, IInteractable
 
   private bool action = false;
     
-  public ObserverEventChannel GetObserver(){
-    return _observerEvent;
-  }
-
-  public void SetObserver(ObserverEventChannel observerEvent){
-    _observerEvent = observerEvent;
-  }
   /*------------------------------------------------------------------------------
   Função:     BaseAction
   Descrição:  Ação executada ao interagir com o item
@@ -44,7 +33,8 @@ public class UseMultipleItemInteraction : MonoBehaviour, IInteractable
   ------------------------------------------------------------------------------*/
   public void BaseAction(){
     action = !action;
-    _observerEvent.NotifyObservers(action? 1:0, orderID);
+    if(_observerEvent != null)_observerEvent.NotifyObservers(action? 1:0, orderID);
+    ExecuteOrder(action? 1:0);
   }
 }
 

@@ -12,26 +12,16 @@
 
 using UnityEngine;
 
-public class UseItemInteractable : MonoBehaviour, IInteractable
+public class UseItemInteractable : Interactable, IInteractable
 {
 
-//-------------------------- Variaveis Globais Visiveis --------------------------------
-
-  [Tooltip("Referência para os objetos que receberão os comandos da interação")]
-	[SerializeField] 
-  private ObserverEventChannel _observerEvent = default;    
+  //------------------------- Variaveis Globais privadas -------------------------------
   
   private bool action = false;
-    
-  public ObserverEventChannel GetObserver(){
-    return _observerEvent;
-  }
-  public void SetObserver(ObserverEventChannel observerEvent){
-    _observerEvent = observerEvent;
-  }
 
   public void BaseAction(){
     action = !action;
-    _observerEvent.NotifyObservers(action? 1:0);
+    if(_observerEvent != null) _observerEvent.NotifyObservers(action? 1:0);
+    ExecuteOrder(action? 1:0);
   }
 }

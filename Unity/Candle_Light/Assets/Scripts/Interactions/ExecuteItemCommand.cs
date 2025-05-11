@@ -10,18 +10,14 @@
 
 //----------------------------- Bibliotecas Usadas -------------------------------------
 
-using System;
-using System.Diagnostics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor;
-
 public enum ItemType{Single, Multiple}
-public enum ItemActionType{Toggle, Cosume, Trigger}
 
 #if UNITY_EDITOR
+
 [CustomEditor(typeof(ExecuteItemCommand))]
-public class ExecuteCommand_Editor: Editor{
+public class ExecuteItemCommand_Editor: Editor{
 
     public override void OnInspectorGUI(){
 
@@ -29,7 +25,6 @@ public class ExecuteCommand_Editor: Editor{
 
         SerializedProperty itemTypeProp = serializedObject.FindProperty("_itemType");
         SerializedProperty multipleCodeProp = serializedObject.FindProperty("_multipleCode");
-        SerializedProperty actionTypeProp = serializedObject.FindProperty("_actionType");
 
         // Mostra o tipo do item (Single / Multiple)
         EditorGUILayout.PropertyField(itemTypeProp);
@@ -40,49 +35,24 @@ public class ExecuteCommand_Editor: Editor{
             EditorGUILayout.PropertyField(multipleCodeProp, new GUIContent("Código de Múltiplas Interações"));
         }
 
-        // Mostra o tipo de ação (Trigger, Toggle, Cosume)
-        EditorGUILayout.PropertyField(actionTypeProp);
-
         // Mostra todas as outras propriedades, exceto as que já manipulamos
-        DrawPropertiesExcluding(serializedObject, "_itemType", "_multipleCode", "_actionType");
+        DrawPropertiesExcluding(serializedObject, "_itemType", "_multipleCode");
 
         serializedObject.ApplyModifiedProperties();
     }
 }
 #endif
-
-public class ExecuteItemCommand : MonoBehaviour, IObserver
+public class ExecuteItemCommand : Interactable, IObserver
 {
-
-    //-------------------------- Variaveis Globais Visiveis --------------------------------
-    
     [Tooltip("Referência para codigo que terá como esse item funciona")]
     [SerializeField]
-    private MonoBehaviour _multipleCode;
-    private IMultiple _multiple => _multipleCode as IMultiple;
-
-    [Tooltip("Referência para o evento sendo escutado.")]
-	[SerializeField] 
-    private ObserverEventChannel _observerEvent = default;
-
-    [Tooltip("Referência para o controlador de animacao.")]
-	[SerializeField] 
-    private Animator animator;
-
-    [Tooltip("Tipo de ação que o item fará ao interagirem com ele")]
-    [SerializeField] 
-    private ItemActionType _actionType;
-
+    protected MonoBehaviour _multipleCode;
+    protected IMultiple _multiple => _multipleCode as IMultiple;
+    
     [Tooltip("Tipo do item")]
     [SerializeField] 
     private ItemType _itemType;
 
-    [Tooltip("Nome do parametro de animador a ser modificado.")]
-    [SerializeField]
-    private string parameterName;
-
-
-    //Pega referência do animation
     private void Start(){
        if(animator == null) animator = GetComponentInParent<Animator>();
     }
@@ -112,22 +82,8 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void OnEventRaised(int message, object additionalInformation){
-        
         if(_multipleCode != null && !_multiple.Validator(additionalInformation)) return;
-        switch(_actionType){
-            case ItemActionType.Trigger:
-                animator.SetTrigger(parameterName);
-            break;
-
-            case ItemActionType.Toggle:
-                animator.SetBool(parameterName, message != 0);
-            break;
-
-            case ItemActionType.Cosume:
-            animator.SetTrigger(parameterName);
-            UnregisterEvent();
-            break;
-        }
+        ExecuteOrder(message);
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent
@@ -135,7 +91,7 @@ public class ExecuteItemCommand : MonoBehaviour, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/ 
-    private void UnregisterEvent(){
+    protected override void UnregisterEvent(){
         _observerEvent.UnregisterObserver(this);
     }
 }

@@ -13,6 +13,8 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
+
 
 public class ObserverEventChannel : MonoBehaviour
 {
@@ -46,7 +48,8 @@ public class ObserverEventChannel : MonoBehaviour
     public void NotifyObservers(int message = 1, object additionalInformation = null){
         Debug.Log("E aqui?");
         if(observers != null){
-            foreach (var observer in observers){
+            var observersCopy = observers.ToList();
+            foreach (var observer in observersCopy){
                 observer.OnEventRaised(message, additionalInformation);
             }
         }

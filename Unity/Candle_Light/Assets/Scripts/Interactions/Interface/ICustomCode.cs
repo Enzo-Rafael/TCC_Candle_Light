@@ -1,6 +1,3 @@
-using UnityEngine;
-
-public interface ICustomCode
-{
-   public void CustomBaseAction(){}  
+public interface ICustomCode{
+   public void CustomBaseAction(object additionalInformation){}  
 }

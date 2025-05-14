@@ -22,30 +22,26 @@ public class ExecuteItemCommand_Editor: Editor{
     public override void OnInspectorGUI(){
 
         serializedObject.Update();
-
+        base.OnInspectorGUI();
         SerializedProperty itemTypeProp = serializedObject.FindProperty("_itemType");
         SerializedProperty multipleCodeProp = serializedObject.FindProperty("_multipleCode");
-
-        // Mostra o tipo do item (Single / Multiple)
-        EditorGUILayout.PropertyField(itemTypeProp);
-
-        // Se for do tipo Multiple, mostra o campo do script
         if ((ItemType)itemTypeProp.enumValueIndex == ItemType.Multiple) EditorGUILayout.PropertyField(multipleCodeProp, new GUIContent("Código de Múltiplas Interações"));
-    
         serializedObject.ApplyModifiedProperties();
     }
 }
 #endif
 public class ExecuteItemCommand : Interactable, IObserver
 {
+    [Tooltip("Tipo do item")]
+    [SerializeField] 
+    private ItemType _itemType;
+
     [Tooltip("Referência para codigo que terá como esse item funciona")]
+    [HideInInspector]
     [SerializeField]
     protected MonoBehaviour _multipleCode;
     protected IMultiple _multiple => _multipleCode as IMultiple;
     
-    [Tooltip("Tipo do item")]
-    [SerializeField] 
-    private ItemType _itemType;
 
     private void Start(){
        if(animator == null) animator = GetComponentInParent<Animator>();
@@ -57,7 +53,7 @@ public class ExecuteItemCommand : Interactable, IObserver
     Saída:      -
     ------------------------------------------------------------------------------*/
     private void OnEnable(){
-        _observerEvent.RegisterObserver(this);
+        RegisterEvent();
     }
     /*------------------------------------------------------------------------------
     Função:     OnDisable
@@ -76,8 +72,11 @@ public class ExecuteItemCommand : Interactable, IObserver
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void OnEventRaised(int message, object additionalInformation){
+        Debug.Log("Chamei?");
         if(_multipleCode != null && !_multiple.Validator(additionalInformation)) return;
-        ExecuteOrder(message);
+        ExecuteOrder(message, additionalInformation, _script);
+        Debug.Log(_script);
+        Debug.Log(_customScript);
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent
@@ -85,7 +84,15 @@ public class ExecuteItemCommand : Interactable, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/ 
-    protected override void UnregisterEvent(){
+    protected override bool UnregisterEvent(){
+        UnregisterEventPublic();
+        return true;
+    }
+
+    public void RegisterEvent(){
+        _observerEvent.RegisterObserver(this);
+    }
+    public void UnregisterEventPublic(){
         _observerEvent.UnregisterObserver(this);
     }
 }

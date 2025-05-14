@@ -4,7 +4,7 @@ using UnityEngine;
 
 //Player 2: Move setas direcionais e num1 e num2
 
-public class PlayerTwoScript : MonoBehaviour
+public class PlayerTwoScript : Singleton<PlayerTwoScript>
 {
     //Variaveis
 	[SerializeField] private InputReader _inputReader = default;
@@ -84,4 +84,8 @@ public class PlayerTwoScript : MonoBehaviour
     /// Leitor publico para a velocidade do fantasma.
     /// </summary>
     public float GetVelocity(){ return velocity; }
+
+    public void SetDiePosition(Transform spawn){
+        respawnPoint.position = spawn.position;
+    }
 }

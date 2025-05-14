@@ -1,34 +1,14 @@
 using UnityEngine;
-using UnityEditor;
-
 
 public enum ItemActionType{Toggle, Cosume, Trigger}
-
-#if UNITY_EDITOR
-[CustomEditor(typeof(Interactable))]
-public class Interactable_Editor: Editor{
-
-    public override void OnInspectorGUI(){
-
-        serializedObject.Update();
-
-        SerializedProperty actionTypeProp = serializedObject.FindProperty("_actionType");
-        SerializedProperty enableScriptProp = serializedObject.FindProperty("_enableCustomScript");
-        SerializedProperty customScriptProp = serializedObject.FindProperty("_customScript");
-
-        EditorGUILayout.PropertyField(actionTypeProp);
-        EditorGUILayout.PropertyField(enableScriptProp);
-
-        if (enableScriptProp.boolValue)EditorGUILayout.PropertyField(customScriptProp, new GUIContent("Script Customizado"));
-        
-        serializedObject.ApplyModifiedProperties();
-    }
-}
-#endif
 
 public class Interactable : MonoBehaviour
 {
  //-------------------------- Variaveis Globais Visiveis --------------------------------
+
+    [Tooltip("Tipo de ação que o item fará ao interagirem com ele")]
+    [SerializeField] 
+    protected ItemActionType _actionType;
 
     [Tooltip("Referência para o evento sendo escutado.")]
 	[SerializeField] 
@@ -38,9 +18,6 @@ public class Interactable : MonoBehaviour
 	[SerializeField] 
     protected Animator animator;
 
-    [Tooltip("Tipo de ação que o item fará ao interagirem com ele")]
-    [SerializeField] 
-    protected ItemActionType _actionType;
 
     [Tooltip("Nome do parametro de animador a ser modificado.")]
     [SerializeField]
@@ -48,7 +25,8 @@ public class Interactable : MonoBehaviour
 
 
     [Tooltip("Habilta o script custom.")]
-    [SerializeField] private bool _enableCustomScript;
+    [HideInInspector]
+    [SerializeField] public bool _enableCustomScript;
 
     [Tooltip("Referência para script custom que será executado quando iteragir com o item")]
     [SerializeField]
@@ -61,7 +39,7 @@ public class Interactable : MonoBehaviour
     Entrada:    int - indentificação para dizer qual ação o atuador fará.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    protected virtual void ExecuteOrder(int message){
+    protected virtual void ExecuteOrder(int message = 1, object additionalInformation = null, ICustomCode script = null){
             switch(_actionType){
             case ItemActionType.Trigger:
                 animator.SetTrigger(parameterName);
@@ -72,11 +50,11 @@ public class Interactable : MonoBehaviour
             break;
 
             case ItemActionType.Cosume:
-            UnregisterEvent();
+            if(UnregisterEvent()) return;
             animator.SetTrigger(parameterName);
             break;
         }
-        if(_script != null) _script.CustomBaseAction();
+        if(_script != null) _script.CustomBaseAction(additionalInformation);
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent
@@ -84,12 +62,13 @@ public class Interactable : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/ 
-    protected virtual void UnregisterEvent(){}
+    protected virtual bool UnregisterEvent(){
+        return true;
+    }
 
     protected ObserverEventChannel GetObserver(){
         return _observerEvent;
     }
-
     protected void SetObserver(ObserverEventChannel observerEvent){
         _observerEvent = observerEvent;
     }

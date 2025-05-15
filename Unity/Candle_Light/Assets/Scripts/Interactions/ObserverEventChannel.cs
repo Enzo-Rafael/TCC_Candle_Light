@@ -19,6 +19,7 @@ using System.Linq;
 public class ObserverEventChannel : MonoBehaviour
 {
     private List<IObserver> observers = new List<IObserver>();
+    
 
     /*------------------------------------------------------------------------------
     Função:     RegisterObserver
@@ -47,7 +48,8 @@ public class ObserverEventChannel : MonoBehaviour
     ------------------------------------------------------------------------------*/
     public void NotifyObservers(int message = 1, object additionalInformation = null){
         Debug.Log("E aqui?");
-        if(observers != null){
+        if(observers != null && observers.Count != 0){
+            Debug.Log("Quantidade de itens na lista " + observers.Count);
             var observersCopy = observers.ToList();
             foreach (var observer in observersCopy){
                 observer.OnEventRaised(message, additionalInformation);

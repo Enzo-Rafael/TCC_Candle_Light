@@ -18,7 +18,7 @@ public class CreateSelection : NetworkBehaviour
         [SerializeField] private TMP_Text characterNameText = default;//onde ficara o nome do persongem
         [SerializeField] private float turnSpeed = 90f;//Velocidade da troca de seleção de personagens
         [SerializeField] private Character[] characters = default;//Lista ScriptableObjects dos personageens
-        [SerializeField] private CinemachineBrain[] cameras = default;//Lista ScriptableObjects das cameras
+        //[SerializeField] private CinemachineBrain[] cameras = default;//Lista ScriptableObjects das cameras
         [NonSerialized]public bool P1Selected = false , P2Selected = false;//checar se o personagem foi escolhiido
         private int currentCharacterIndex = 0;//Index dos persongens
         private List<GameObject> characterInstances = new List<GameObject>();//Lista da preview dos personagens
@@ -27,7 +27,7 @@ public class CreateSelection : NetworkBehaviour
         private CinemachineInputAxisController cam2;
 
         private void Start(){
-            cam2 = GameObject.FindGameObjectWithTag("CamP2Template").GetComponent<CinemachineInputAxisController>();
+            //cam2 = GameObject.FindGameObjectWithTag("CamP2Template").GetComponent<CinemachineInputAxisController>();
         }
         public override void OnStartClient()
         {
@@ -77,7 +77,7 @@ public class CreateSelection : NetworkBehaviour
             P1Selected = true;
         }
         GameObject characterInstance = Instantiate(characters[characterIndex].GameplayCharacterPrefab);
-        Instantiate(cameras[characterIndex]);
+        //Instantiate(cameras[characterIndex]);
         NetworkServer.Spawn(characterInstance, sender);
     }
 

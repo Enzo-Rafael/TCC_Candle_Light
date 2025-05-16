@@ -957,7 +957,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 138520664}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1186543254}
+        m_TargetAssemblyTypeName: UIPause, Assembly-CSharp
+        m_MethodName: BackToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &138520664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8903,7 +8915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &373944962
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14037,7 +14049,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1920950107}
         m_TargetAssemblyTypeName: CreateSelection, Assembly-CSharp
-        m_MethodName: BtnChangeLeft
+        m_MethodName: BtnChangeRight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19228,6 +19240,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2988320867099705341, guid: efc4eb8c1d5811544888cddeb01bbb7b, type: 3}
   m_PrefabInstance: {fileID: 4964085831050372481}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1186543254 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7682829590872805177, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
+  m_PrefabInstance: {fileID: 1414885645}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34443c18357542742a0552d762294844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1186964922
 GameObject:
   m_ObjectHideFlags: 0
@@ -28104,7 +28127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1920950106
 Transform:
   m_ObjectHideFlags: 0
@@ -31566,7 +31589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
   runInBackground: 1
-  headlessStartMode: 0
+  headlessStartMode: 1
   editorAutoStart: 0
   sendRate: 60
   offlineScene: 

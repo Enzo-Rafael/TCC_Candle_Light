@@ -2,7 +2,7 @@ using UnityEngine;
 using Mirror;
 public class SyncCam : NetworkBehaviour
 {
-    [SyncVar] Transform cam1;
+    /*[SyncVar] Transform cam1;
     [SyncVar] Transform cam2;
 
     public void Start(){
@@ -18,5 +18,5 @@ public class SyncCam : NetworkBehaviour
                 cam2 = GameManager.Instance.GetTransformChangeP2();
             }
         }
-    }
+    }*/
 }

@@ -18,17 +18,20 @@ public class CreateSelection : NetworkBehaviour
         [SerializeField] private TMP_Text characterNameText = default;//onde ficara o nome do persongem
         [SerializeField] private float turnSpeed = 90f;//Velocidade da troca de seleção de personagens
         [SerializeField] private Character[] characters = default;//Lista ScriptableObjects dos personageens
-        [SerializeField] private CinemachineBrain[] cameras = default;//Lista ScriptableObjects das cameras
+        //[SerializeField] private CinemachineBrain[] cameras = default;//Lista ScriptableObjects das cameras
         [NonSerialized]public bool P1Selected = false , P2Selected = false;//checar se o personagem foi escolhiido
         private int currentCharacterIndex = 0;//Index dos persongens
         private List<GameObject> characterInstances = new List<GameObject>();//Lista da preview dos personagens
-        
 
-        private CinemachineInputAxisController cam2;
 
-        private void Start(){
-            cam2 = GameObject.FindGameObjectWithTag("CamP2Template").GetComponent<CinemachineInputAxisController>();
-        }
+    //private CinemachineInputAxisController cam2;
+
+    private void Start()
+    {
+         Cursor.lockState = CursorLockMode.None;
+         Cursor.visible = true; 
+        //cam2 = GameObject.FindGameObjectWithTag("CamP2Template").GetComponent<CinemachineInputAxisController>();
+    }
         public override void OnStartClient()
         {
             if (characterPreviewParent.childCount == 0)
@@ -53,31 +56,39 @@ public class CreateSelection : NetworkBehaviour
     private void Update()
     {
      characterPreviewParent.RotateAround(characterPreviewParent.position,characterPreviewParent.up,turnSpeed * Time.deltaTime);
-       
     }
 
-    public void Select(){//Confirma a opção excolhida de qual persongem vai ser jogado
+    public void Select()
+    {//Confirma a opção excolhida de qual persongem vai ser jogado
         /*if((currentCharacterIndex == 0 && P1Selected == false) || (currentCharacterIndex == 1 && P2Selected == false)){//Trava de um personagem por jogador
             CmdSelect(currentCharacterIndex);
             characterSelectDisplay.SetActive(false); 
         }else{
             BtnChangeLeft();
         }*/
-        CmdSelect(currentCharacterIndex);
-        characterSelectDisplay.SetActive(false); 
+        if ((currentCharacterIndex == 0 && P1Selected == false) || (currentCharacterIndex == 1 && P2Selected == false))
+        {
+            CmdSelect(currentCharacterIndex);
+            characterSelectDisplay.SetActive(false);
+        }
         
+
     }
     [Command(requiresAuthority = false)]
-    public void CmdSelect(int characterIndex, NetworkConnectionToClient sender = null){//O jogo nescessita dos dois persongens para funcionar 
-        if(characterIndex == 1){
-            cam2.enabled = true;
+    public void CmdSelect(int characterIndex, NetworkConnectionToClient sender = null)
+    {//O jogo nescessita dos dois persongens para funcionar 
+        if (characterIndex == 1)
+        {
+            //cam2.enabled = true;
             P2Selected = true;
-        } else{
-            cam2.enabled = false;
+        }
+        else
+        {
+            //cam2.enabled = false;
             P1Selected = true;
         }
-        GameObject characterInstance = Instantiate(characters[characterIndex].GameplayCharacterPrefab);
-        Instantiate(cameras[characterIndex]);
+        GameObject characterInstance = Instantiate(characters[characterIndex].GameplayCharacterPrefab, characterPreviewParent);
+        //Instantiate(cameras[characterIndex]);
         NetworkServer.Spawn(characterInstance, sender);
     }
 

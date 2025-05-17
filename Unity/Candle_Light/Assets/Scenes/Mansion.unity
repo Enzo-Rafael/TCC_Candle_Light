@@ -7454,7 +7454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &373944962
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21386,7 +21386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1920950106
 Transform:
   m_ObjectHideFlags: 0
@@ -23826,6 +23826,7 @@ GameObject:
   - component: {fileID: 8430538663212213413}
   - component: {fileID: 5388014165261811580}
   - component: {fileID: 8430538663212213414}
+  - component: {fileID: 8430538663212213415}
   m_Layer: 0
   m_Name: Canvas Hud Menu
   m_TagString: Untagged
@@ -24110,6 +24111,18 @@ MonoBehaviour:
   statusText: {fileID: 412290226}
   inputNetworkAddress: {fileID: 1591463005}
   inputPort: {fileID: 519482277}
+--- !u!114 &8430538663212213415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7291546566342449421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144be4a8993cf19468c8064f3f39e30f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8953681300034630437
 PrefabInstance:
   m_ObjectHideFlags: 0

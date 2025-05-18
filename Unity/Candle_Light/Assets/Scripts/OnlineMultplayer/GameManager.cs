@@ -1,4 +1,5 @@
 using Mirror;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : NetworkBehaviour
@@ -6,12 +7,8 @@ public class GameManager : NetworkBehaviour
     public static GameManager Instance;
 
     [SyncVar]
-    public Transform[] spaunLocations = default;//Lista dos Locais onde os personagens devem spawnar
-    //public Transform transformCamP1;
-    //public Transform transformCamP2;
-
-    [SyncVar]
-    public float matchTime = 0f;
+    public List<Transform> spawnLocations = new List<Transform>();//Lista dos Locais onde os personagens devem spawnar
+    
 
     private void Awake(){
         if (Instance == null) Instance = this;

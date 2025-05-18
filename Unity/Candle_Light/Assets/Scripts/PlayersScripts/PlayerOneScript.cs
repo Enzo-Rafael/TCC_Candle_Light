@@ -1,12 +1,13 @@
 using UnityEngine;
 using Unity.Cinemachine;
+using Mirror;
 //Player 1: MoveR: WASD InteragIr: J Rocionar camera:Q/K e E/L 
 
-public class PlayerOneScript : Singleton<PlayerOneScript>
+public class PlayerOneScript : NetworkBehaviour
 {
     //-------------------------- Variaveis Globais Visiveis --------------------------------
 	[SerializeField] private InputReader _inputReader = default;
-
+    public static PlayerOneScript Instance;
     [Tooltip("Referência para o local que o objeto irá quando equipado")]
     [SerializeField]
     private Transform holdPosition;
@@ -34,9 +35,14 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
     private Vector3 strafe;
 
     //Metodos
-	private void OnEnable(){
+    void Awake()
+    {
+        Instance = this;
+    }
+    private void OnEnable()
+    {
         _inputReader.MoveEventOne += OnMove;
-	}
+    }
 	private void OnDisable(){
         _inputReader.MoveEventOne -= OnMove;
 	}
@@ -47,6 +53,7 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
     
     void Update()
     {
+        
         mainCam = GetComponent<ChangeCam>().GetCam();
 
         if (controller.isGrounded && playerMove.y < 0){

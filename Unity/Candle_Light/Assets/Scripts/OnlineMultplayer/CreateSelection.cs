@@ -69,8 +69,7 @@ public class CreateSelection : NetworkBehaviour
         GameObject characterInstance = Instantiate(characters[characterIndex].GameplayCharacterPrefab);
         //Instantiate(cameras[characterIndex]);
         NetworkServer.Spawn(characterInstance, sender);
-        
-        characterInstance.transform.position = GameManager.Instance.spaunLocations[characterIndex].position;
+        characterInstance.transform.position = GameManager.Instance.spawnLocations[characterIndex].position;
     }
 
     public void BtnChangeRight(){//Vai fazer a troca de personagem levando o a auteração de valores para a direita

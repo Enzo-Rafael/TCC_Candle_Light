@@ -1,10 +1,11 @@
 using System;
 using Unity.Cinemachine;
 using UnityEngine;
+using Mirror;
 
 //Player 2: Move setas direcionais e num1 e num2
 
-public class PlayerTwoScript : MonoBehaviour
+public class PlayerTwoScript : NetworkBehaviour
 {
     //Variaveis
 	[SerializeField] private InputReader _inputReader = default;
@@ -50,10 +51,12 @@ public class PlayerTwoScript : MonoBehaviour
     private void OnMouse(Vector2 movement){
         _mouseVector = movement;
     }
-
+    
     void Update()
     {
-        if(_disabled) return;
+
+
+        if (_disabled) return;
 
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && _inputVector.y < 0){

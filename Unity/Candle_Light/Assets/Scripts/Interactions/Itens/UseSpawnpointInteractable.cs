@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(ExecuteItemCommand))]
@@ -15,6 +14,7 @@ public class UseSpawnpointInteractable : Interactable, IInteractable
     }
     public void BaseAction(){
         if(action) return;
+        Debug.Log("LavouLegal");
         if(_observerEvent != null) _observerEvent.NotifyObservers(1, this);
         ExecuteOrder();
         DefineSpawn();
@@ -26,7 +26,6 @@ public class UseSpawnpointInteractable : Interactable, IInteractable
         SetAction(true);
     }
     public void SetAction(bool action){
-        Debug.Log("Entrei na função de setar a action " + gameObject.name + "tipo de action que fez " + action);
         this.action = action;
     }
     public void Register(){

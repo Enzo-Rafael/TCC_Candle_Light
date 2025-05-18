@@ -72,8 +72,11 @@ public class ExecuteItemCommand : Interactable, IObserver
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void OnEventRaised(int message, object additionalInformation){
+        Debug.Log("Chamei?");
         if(_multipleCode != null && !_multiple.Validator(additionalInformation)) return;
-        ExecuteOrder(message, additionalInformation);
+        ExecuteOrder(message, additionalInformation, _script);
+        Debug.Log(_script);
+        Debug.Log(_customScript);
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent
@@ -81,12 +84,12 @@ public class ExecuteItemCommand : Interactable, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/ 
-    protected override void UnregisterEvent(){
+    protected override bool UnregisterEvent(){
         UnregisterEventPublic();
+        return true;
     }
 
     public void RegisterEvent(){
-        Debug.Log("Registrei o evento");
         _observerEvent.RegisterObserver(this);
     }
     public void UnregisterEventPublic(){

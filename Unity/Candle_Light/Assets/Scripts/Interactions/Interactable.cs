@@ -31,8 +31,7 @@ public class Interactable : MonoBehaviour
     [Tooltip("Referência para script custom que será executado quando iteragir com o item")]
     [SerializeField]
     protected MonoBehaviour _customScript;
-    protected ICodeCustom _script => _customScript as ICodeCustom;
-
+    protected ICustomCode _script => _customScript as ICustomCode;
 
     /*------------------------------------------------------------------------------
     Função:     ExecuteOrder
@@ -40,7 +39,7 @@ public class Interactable : MonoBehaviour
     Entrada:    int - indentificação para dizer qual ação o atuador fará.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    protected virtual void ExecuteOrder(int message = 1, object additionalInformation = null){
+    protected virtual void ExecuteOrder(int message = 1, object additionalInformation = null, ICustomCode script = null){
             switch(_actionType){
             case ItemActionType.Trigger:
                 animator.SetTrigger(parameterName);
@@ -51,15 +50,11 @@ public class Interactable : MonoBehaviour
             break;
 
             case ItemActionType.Cosume:
+            if(UnregisterEvent()) return;
             animator.SetTrigger(parameterName);
-            UnregisterEvent();
             break;
         }
-        Debug.Log("Entrei Aqui");
-        if(_script != null){
-            Debug.Log("E aqui? eu entrei?");
-          _script.CustomBaseAction(additionalInformation);  
-        } 
+        if(_script != null) _script.CustomBaseAction(additionalInformation);
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent
@@ -67,8 +62,8 @@ public class Interactable : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/ 
-    protected virtual void UnregisterEvent(){
-
+    protected virtual bool UnregisterEvent(){
+        return true;
     }
 
     protected ObserverEventChannel GetObserver(){

@@ -1,6 +1,6 @@
 using UnityEngine;
 using System;
-using TMPro;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using Mirror;
 
@@ -12,11 +12,11 @@ public class CreateSelection : NetworkBehaviour
         //Variaveis
         [SerializeField] private GameObject characterSelectDisplay = default;//Menu de seleção de personagem
         [SerializeField] private Transform characterPreviewParent = default;//tranforme de onde o personagem que esta sendo mostrado vai estar 
-        [SerializeField] private TMP_Text characterNameText = default;//onde ficara o nome do persongem
+        [SerializeField] private Text characterNameText;//onde ficara o nome do persongem
         [SerializeField] private float turnSpeed = 90f;//Velocidade da troca de seleção de personagens
         [SerializeField] private Character[] characters = default;//Lista ScriptableObjects dos personageens
-        //[SerializeField] private CinemachineBrain[] cameras = default;//Lista ScriptableObjects das cameras
-        [NonSerialized]public bool P1Selected = false , P2Selected = false;//checar se o personagem foi escolhiido
+        
+        //[SyncVar][NonSerialized]public bool P1Selected = false , P2Selected = false;//checar se o personagem foi escolhiido
         private int currentCharacterIndex = 0;//Index dos persongens
         private List<GameObject> characterInstances = new List<GameObject>();//Lista da preview dos personagens
 
@@ -59,30 +59,18 @@ public class CreateSelection : NetworkBehaviour
         }else{
             BtnChangeLeft();
         }*/
-    if ((currentCharacterIndex == 0 && P1Selected == false) || (currentCharacterIndex == 1 && P2Selected == false))
-        {
-            CmdSelect(currentCharacterIndex);
-            characterSelectDisplay.SetActive(false);
-        }
-        
-
+   
+        CmdSelect(currentCharacterIndex);
+        characterSelectDisplay.SetActive(false);
     }
     [Command(requiresAuthority = false)]
     public void CmdSelect(int characterIndex, NetworkConnectionToClient sender = null)
     {//O jogo nescessita dos dois persongens para funcionar 
-        if (characterIndex == 1)
-        {
-            //cam2.enabled = true;
-            P2Selected = true;
-        }
-        else
-        {
-            //cam2.enabled = false;
-            P1Selected = true;
-        }
         GameObject characterInstance = Instantiate(characters[characterIndex].GameplayCharacterPrefab);
         //Instantiate(cameras[characterIndex]);
         NetworkServer.Spawn(characterInstance, sender);
+        
+        characterInstance.transform.position = GameManager.Instance.spaunLocations[characterIndex].position;
     }
 
     public void BtnChangeRight(){//Vai fazer a troca de personagem levando o a auteração de valores para a direita

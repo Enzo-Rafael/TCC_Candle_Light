@@ -6,9 +6,9 @@ public class GameManager : NetworkBehaviour
     public static GameManager Instance;
 
     [SyncVar]
-    public Transform transformCamP1;
-    [SyncVar]
-    public Transform transformCamP2;
+    public Transform[] spaunLocations = default;//Lista dos Locais onde os personagens devem spawnar
+    //public Transform transformCamP1;
+    //public Transform transformCamP2;
 
     [SyncVar]
     public float matchTime = 0f;
@@ -18,7 +18,7 @@ public class GameManager : NetworkBehaviour
         else Destroy(gameObject);
     }
 
-    [Server]
+    /*[Server]
     public void TransformChangeP1(Transform cam){
         transformCamP1 = cam;
     }
@@ -33,5 +33,5 @@ public class GameManager : NetworkBehaviour
     [Server]
     public Transform GetTransformChangeP2(){
         return transformCamP2;
-    }
+    }*/
 }

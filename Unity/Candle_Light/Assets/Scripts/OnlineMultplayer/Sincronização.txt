@@ -1,0 +1,23 @@
+Sincronização
+
+classes:
+GameManager, SyncCam, MyNetworkManager
+
+Como os dados são sincronizados:
+Os dados são sincronizados no GameManager através das variáveis contidas neles 
+
+Quais métodos da API Mirror você utilizou:
+[Client], [Command], [SyncVar], OnClientDisconect, NetworkManager.startPosition
+
+Quais foram os maiores desafios que você enfrentou e como resolveu:
+Desafio 1 - Sincronizar as câmeras: NÃO CONSEGUI
+Tentei utilizar do GameManager e do SyncCam para pegar a câmera do personagem 2(Obs: a ideia era sincar ela primeiro pra depois ppassa pra do personagem 1)
+
+Desafio 2 - Foçar a escolha dos personagens cada um com um: Consegui
+Utilizei do código de seleção de personagem para chamar duas booleanas que determinam a escolha se um personagem foi escolhido. Quando o personagem for escolhido ele altera a booleana correspondente a ele e se ela estiver positiva o código ira trocar para o próximo personagem e o jogador terá que clicar em selecionar novamente.
+
+Desafio 3 - Spawn diferente pra cada personagem: Consegui parcialmente
+Utilizei do GameManager para armazenar as posições dos spawners mas só o personagem do host vai para ponto certo já o do jogador que entra spawna no ponto 0,0,0 do mapa, mesmo utilizando do NetworkManager.startPosition
+
+Como garantir que somente o servidor tenha autoridade de escrita sobre os dados:
+Utilizando de demarcações como [Server] no caso do servidor.

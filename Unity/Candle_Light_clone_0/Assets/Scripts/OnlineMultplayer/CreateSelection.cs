@@ -50,7 +50,7 @@ public class CreateSelection : NetworkBehaviour
     {
      characterPreviewParent.RotateAround(characterPreviewParent.position,characterPreviewParent.up,turnSpeed * Time.deltaTime);
     }
-
+   
     public void Select()
     {//Confirma a opção excolhida de qual persongem vai ser jogado
         /*if((currentCharacterIndex == 0 && P1Selected == false) || (currentCharacterIndex == 1 && P2Selected == false)){//Trava de um personagem por jogador
@@ -69,18 +69,18 @@ public class CreateSelection : NetworkBehaviour
         {
             BtnChangeLeft();
         }
-        
+
     }
     [Command(requiresAuthority = false)]
     public void CmdSelect(int characterIndex, NetworkConnectionToClient sender = null)
     {//O jogo nescessita dos dois persongens para funcionar 
         if (characterIndex == 0) GameManager.Instance.player01 = true;
         if (characterIndex == 1) GameManager.Instance.player02 = true;
-
+        GameManager.Instance.SetIndexCurrent(characterIndex);
         GameObject characterInstance = Instantiate(characters[characterIndex].GameplayCharacterPrefab);
 
         NetworkServer.Spawn(characterInstance, sender);
-        
+        characterInstance.transform.position = GameManager.Instance.SetSpawn().position;
         //characterInstance.transform.position = GameManager.Instance.spawnLocations[characterIndex].position;
     }
 

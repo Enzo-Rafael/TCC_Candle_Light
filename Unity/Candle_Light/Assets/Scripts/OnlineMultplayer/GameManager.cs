@@ -9,8 +9,6 @@ public class GameManager : NetworkBehaviour
     [SyncVar]
     public int charIndex;
     [SyncVar]
-    public List<Transform> spawnLocations = new List<Transform>();//Lista dos Locais onde os personagens devem spawnar
-    [SyncVar]
     public Transform camNewPos;
     [SyncVar]
     public bool player01 = false;
@@ -47,9 +45,14 @@ public class GameManager : NetworkBehaviour
         return camNewPos;
     }
     [Server]
-    public void setSpawn()
+    public Transform SetSpawn()
     {
-        NetworkManager.startPositions = spawnLocations;
+        return NetworkManager.startPositions[charIndex];
+    }
+    [Server]
+    public void SetIndexCurrent(int index)
+    {
+        charIndex = index;
     }
     
 }

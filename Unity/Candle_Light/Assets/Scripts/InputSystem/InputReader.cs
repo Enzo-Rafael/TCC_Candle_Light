@@ -26,6 +26,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     public event UnityAction ActionEventOne= delegate { };
     public event UnityAction ActionEventTwo = delegate { };
     public event UnityAction<Vector2> MouseEvent = delegate { };
+    public event UnityAction<Vector2> VooEvent = delegate { };
     public event UnityAction<bool> EscEvent = delegate { };
     public event UnityAction ChangeCamLeftEvent = delegate { };
     public event UnityAction ChangeCamRightEvent = delegate { };
@@ -146,7 +147,9 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     public void OnMouse(InputAction.CallbackContext context){
         MouseEvent.Invoke(context.ReadValue<Vector2>());
     }
-
+    public void OnVooFantasma(InputAction.CallbackContext context){
+        VooEvent.Invoke(context.ReadValue<Vector2>());
+    }
     public void OnClose(InputAction.CallbackContext context){
         if (context.phase == InputActionPhase.Performed) MenuCloseEvent.Invoke();
     }

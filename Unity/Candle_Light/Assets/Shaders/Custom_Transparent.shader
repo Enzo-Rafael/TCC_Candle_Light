@@ -13,7 +13,7 @@ Shader "Custom/Custom_Transparent"
         Pass
         {
             Name "ForwardPass"
-            ZWrite ON
+            ZWrite OFF
             Cull [_Cull]
             Blend SrcAlpha OneMinusSrcAlpha
 

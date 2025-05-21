@@ -22433,7 +22433,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   charIndex: 0
-  camNewPos: {fileID: 0}
+  camNewPosP1: 0
+  camNewPosP2: {fileID: 0}
   player01: 0
   player02: 0
 --- !u!114 &2064216685
@@ -22990,9 +22991,10 @@ GameObject:
   - component: {fileID: 594286067950193427}
   - component: {fileID: 3093781592121024964}
   - component: {fileID: 3093781592121024963}
+  - component: {fileID: 3093781592121024965}
   m_Layer: 0
   m_Name: NetworkManager
-  m_TagString: Untagged
+  m_TagString: NetworkManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23130,6 +23132,34 @@ MonoBehaviour:
   evaluationMethod: 0
   evaluationInterval: 3
   timeInterpolationGui: 0
+--- !u!114 &3093781592121024965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425953316631271746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d7da4e566d24ea7b0e12178d934b648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clientIntervalReceivedPackets: 0
+  clientIntervalReceivedBytes: 0
+  clientIntervalSentPackets: 0
+  clientIntervalSentBytes: 0
+  clientReceivedPacketsPerSecond: 0
+  clientReceivedBytesPerSecond: 0
+  clientSentPacketsPerSecond: 0
+  clientSentBytesPerSecond: 0
+  serverIntervalReceivedPackets: 0
+  serverIntervalReceivedBytes: 0
+  serverIntervalSentPackets: 0
+  serverIntervalSentBytes: 0
+  serverReceivedPacketsPerSecond: 0
+  serverReceivedBytesPerSecond: 0
+  serverSentPacketsPerSecond: 0
+  serverSentBytesPerSecond: 0
 --- !u!1001 &3858552229583715132
 PrefabInstance:
   m_ObjectHideFlags: 0

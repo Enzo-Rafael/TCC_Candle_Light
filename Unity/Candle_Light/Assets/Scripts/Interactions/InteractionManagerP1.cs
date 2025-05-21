@@ -15,10 +15,10 @@ using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
+using Mirror;
 
 
-
-public class InteractionManagerP1 : MonoBehaviour
+public class InteractionManagerP1 :NetworkBehaviour
 {
 
     //-------------------------- Variaveis Globais Visiveis --------------------------------
@@ -57,6 +57,10 @@ public class InteractionManagerP1 : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     private void OnEnable(){
+         if (!isOwned)
+        {
+            return;
+        }
         _inputReader.ActionEventOne += UseInteractionType;
     }
     /*------------------------------------------------------------------------------
@@ -76,9 +80,16 @@ public class InteractionManagerP1 : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void OnTriggerDetected(bool entered, GameObject itemInteractable){
-        if(entered){
+         if (!isOwned)
+        {
+            return;
+        }
+        if (entered)
+        {
             AddPotentialInteraction(itemInteractable);
-        }else{
+        }
+        else
+        {
             RemovePotentialInteraction(itemInteractable);
         }
     }
@@ -125,11 +136,13 @@ public class InteractionManagerP1 : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void UseInteractionType(){
-        if(potentialInteractions.Count == 0){
-            if(equipItem != null && FloorVerification()){
+        if (potentialInteractions.Count == 0)
+        {
+            if (equipItem != null && FloorVerification())
+            {
                 equipItem.DropItem(hitFloor.point);
                 equipItem = null;
-            } 
+            }
             return;
         }
         switch(potentialInteractions.First.Value.layer){
@@ -157,7 +170,9 @@ public class InteractionManagerP1 : MonoBehaviour
     Saída:      bool - Confirma se há ou não chão.
     ------------------------------------------------------------------------------*/
     private bool FloorVerification(){
-        if(Physics.Raycast(rayFloor.position, Vector3.down, out hitFloor, deploymentHeight)){
+        
+        if (Physics.Raycast(rayFloor.position, Vector3.down, out hitFloor, deploymentHeight))
+        {
             return hitFloor.collider.gameObject.layer == floorLayer;
         }
         return false;

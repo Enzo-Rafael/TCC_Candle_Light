@@ -9,13 +9,14 @@ public class MyNetworkManager : NetworkManager
     {
         base.OnServerConnect(conn);
         Debug.Log("Ola, conectei ");
+        GameManager.Instance.CheckCharactersDisponibility();
         
     }
     public override void OnClientDisconnect()
     {
 
-        Debug.Log("Desonectei ");
-
+        Debug.Log("Desonectei");
+        GameManager.Instance.CheckCharactersDisponibility();
         base.OnClientDisconnect();
     }
     

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Mirror;
 
 public class CreateSelection : NetworkBehaviour
-    {
+{
         /*Cretitos: 
         Dapper Dino:https://www.youtube.com/@DapperDinoCodingTutorials
         */
@@ -15,9 +15,10 @@ public class CreateSelection : NetworkBehaviour
         [SerializeField] private Text characterNameText;//onde ficara o nome do persongem
         [SerializeField] private float turnSpeed = 90f;//Velocidade da troca de seleção de personagens
         [SerializeField] private Character[] characters = default;//Lista ScriptableObjects dos personageens
+                         private NetworkIdentity identity = default;
         
         //[SyncVar][NonSerialized]public bool P1Selected = false , P2Selected = false;//checar se o personagem foi escolhiido
-        private int currentCharacterIndex = 0;//Index dos persongens
+    private int currentCharacterIndex = 0;//Index dos persongens
         private List<GameObject> characterInstances = new List<GameObject>();//Lista da preview dos personagens
 
     private void Start()
@@ -28,27 +29,29 @@ public class CreateSelection : NetworkBehaviour
     public override void OnStartClient()
     {
         if (characterPreviewParent.childCount == 0)
+        {
+            foreach (var character in characters)
             {
-                foreach (var character in characters)
-                {
-                    GameObject characterInstance =
-                        Instantiate(character.CharacterPreviewPrefab, characterPreviewParent);
+                GameObject characterInstance =
+                    Instantiate(character.CharacterPreviewPrefab, characterPreviewParent);
 
-                    characterInstance.SetActive(false);
+                characterInstance.SetActive(false);
 
-                    characterInstances.Add(characterInstance);
-                }
+                characterInstances.Add(characterInstance);
             }
-
-            characterInstances[currentCharacterIndex].SetActive(true);
-            characterNameText.text = characters[currentCharacterIndex].CharacterName;
-
-            characterSelectDisplay.SetActive(true);
         }
+        
+        characterInstances[currentCharacterIndex].SetActive(true);
+        characterNameText.text = characters[currentCharacterIndex].CharacterName;
+
+        characterSelectDisplay.SetActive(true);
+        identity = GetComponent<NetworkIdentity>();
+    }
+    
 
     private void Update()
     {
-     characterPreviewParent.RotateAround(characterPreviewParent.position,characterPreviewParent.up,turnSpeed * Time.deltaTime);
+        characterPreviewParent.RotateAround(characterPreviewParent.position, characterPreviewParent.up, turnSpeed * Time.deltaTime);
     }
    
     public void Select()
@@ -59,10 +62,10 @@ public class CreateSelection : NetworkBehaviour
         }else{
             BtnChangeLeft();
         }*/
-        GameManager.Instance.CheckCharactersDisponibility();
+        GameManager.Instance.CheckCharactersDisponibility();//Faz uma chamada no gama manager para ver se alguns do personagens esta em cena
         if ((currentCharacterIndex == 0 && GameManager.Instance.player01 == false) || (currentCharacterIndex == 1 && GameManager.Instance.player02 == false))
         {
-            CmdSelect(currentCharacterIndex);
+            CmdSelect(currentCharacterIndex, identity.connectionToClient);
             characterSelectDisplay.SetActive(false);
         }
         else
@@ -72,13 +75,12 @@ public class CreateSelection : NetworkBehaviour
 
     }
     [Command(requiresAuthority = false)]
-    public void CmdSelect(int characterIndex, NetworkConnectionToClient sender = null)
+    public void CmdSelect(int characterIndex, NetworkConnectionToClient sender)
     {//O jogo nescessita dos dois persongens para funcionar 
         if (characterIndex == 0) GameManager.Instance.player01 = true;
         if (characterIndex == 1) GameManager.Instance.player02 = true;
         GameManager.Instance.SetIndexCurrent(characterIndex);
         GameObject characterInstance = Instantiate(characters[characterIndex].GameplayCharacterPrefab);
-
         NetworkServer.Spawn(characterInstance, sender);
         characterInstance.transform.position = GameManager.Instance.SetSpawn().position;
         //characterInstance.transform.position = GameManager.Instance.spawnLocations[characterIndex].position;

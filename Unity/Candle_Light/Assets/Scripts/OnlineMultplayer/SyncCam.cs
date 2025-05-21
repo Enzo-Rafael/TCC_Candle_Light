@@ -3,21 +3,25 @@ using Mirror;
 using Unity.Cinemachine;
 public class SyncCam : NetworkBehaviour
 {
+    //Variavei para as cameras(Real e a Virtual), e para os componetes em que vão ser desativados
     public GameObject camPlayer;
-    [SyncVar] Transform cam2;
+    public GameObject camFolowPlayer;
+    private CinemachineInputAxisController controllerAxis;
+    private CinemachinePanTilt panTilt;
 
-    [Client]
+    [Server]
     public void Update(){
-        if (!isClientOnly)
+        if (!isOwned)
         {
-            GameManager.Instance.TransformChangeP1(camPlayer.GetComponent<Transform>());
+            controllerAxis = GetComponentInChildren<CinemachineInputAxisController>();
+            panTilt = GetComponentInChildren<CinemachinePanTilt>();
+            controllerAxis.SynchronizeControllers();
+            panTilt.enabled = false;
+            GameManager.Instance.TransformChangeP2(camFolowPlayer.GetComponent<Transform>());
         }
         else
         {
-            //GameManager.Instance.TransformChangeP1(GameObject.);
-            camPlayer.GetComponent<CinemachineInputAxisController>().enabled = false;
-            camPlayer.transform.position = GameManager.Instance.SetPos().position;
-            camPlayer.transform.rotation = GameManager.Instance.SetPos().rotation;
+            GameManager.Instance.camNewPosP2 = camFolowPlayer.transform;
         }
     }
 }

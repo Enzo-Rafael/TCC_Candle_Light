@@ -8,7 +8,7 @@ using Mirror;
 public class PlayerTwoScript : NetworkBehaviour
 {
     //Variaveis
-	[SerializeField] private InputReader _inputReader = default;
+    [SerializeField] private InputReader _inputReader = default;
     private Vector3 _inputVector;
 
     [SerializeField] private GameObject camPlayerTwo;
@@ -25,7 +25,7 @@ public class PlayerTwoScript : NetworkBehaviour
 
     [SerializeField] private Transform respawnPoint;
     private bool _disabled;
-    public bool IsDisabled{ get => _disabled;}
+    public bool IsDisabled { get => _disabled; }
 
     //test
     private Vector3 forward;
@@ -34,27 +34,31 @@ public class PlayerTwoScript : NetworkBehaviour
 
     //Metodos
 
-	private void OnEnable(){
+    private void OnEnable()
+    {
         _inputReader.MoveEventTwo += OnMove;
         _inputReader.MouseEvent += OnMouse;
         _disabled = false;
-	}
-	private void OnDisable(){
+    }
+    private void OnDisable()
+    {
         _inputReader.MoveEventTwo -= OnMove;
         _inputReader.MouseEvent -= OnMouse;
-	}
-    
-    private void OnMove(Vector3 movement){
+    }
+
+    private void OnMove(Vector3 movement)
+    {
         _inputVector = movement;
     }
 
-    private void OnMouse(Vector2 movement){
+    private void OnMouse(Vector2 movement)
+    {
         _mouseVector = movement;
     }
-    
+
     void Update()
     {
-         if (!isClient)
+        if (!isClient || !isOwned)
         {
             return;
         }
@@ -62,8 +66,9 @@ public class PlayerTwoScript : NetworkBehaviour
         if (_disabled) return;
 
         groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && _inputVector.y < 0){
-           _inputVector.y = 0f;
+        if (groundedPlayer && _inputVector.y < 0)
+        {
+            _inputVector.y = 0f;
         }
         forward = _inputVector.y * camPlayerTwo.transform.forward;
         strafe = _inputVector.x * camPlayerTwo.transform.right;
@@ -89,5 +94,12 @@ public class PlayerTwoScript : NetworkBehaviour
     /// <summary>
     /// Leitor publico para a velocidade do fantasma.
     /// </summary>
-    public float GetVelocity(){ return velocity; }
+    public float GetVelocity() { return velocity; }
+
+    //|-----Online---Multiplayer-----|
+    public override void OnStopClient()
+    {
+        GameManager.Instance.player02 = false;
+        base.OnStopClient();
+    }
 }

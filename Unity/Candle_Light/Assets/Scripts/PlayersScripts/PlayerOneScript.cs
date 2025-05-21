@@ -6,12 +6,12 @@ using Mirror;
 public class PlayerOneScript : NetworkBehaviour
 {
     //-------------------------- Variaveis Globais Visiveis --------------------------------
-	[SerializeField] private InputReader _inputReader = default;
+    [SerializeField] private InputReader _inputReader = default;
     public static PlayerOneScript Instance;
     [Tooltip("Referência para o local que o objeto irá quando equipado")]
     [SerializeField]
     private Transform holdPosition;
-    public Transform HoldPosition{ get => holdPosition; }
+    public Transform HoldPosition { get => holdPosition; }
 
     public float velocity;
 
@@ -19,6 +19,7 @@ public class PlayerOneScript : NetworkBehaviour
 
     public Animator[] animators;
 
+    public int id;
     //------------------------- Variaveis Globais privadas ----------------------------------
 
     private Vector2 _inputVector;
@@ -26,56 +27,63 @@ public class PlayerOneScript : NetworkBehaviour
     private Vector3 playerMove;
 
     private float gravityValue = -50f;
-    
+
     private CinemachineCamera mainCam;// referencia para a o andar do player a partir da camera
 
     //Orientação para o movimento
     private Vector3 forward;
-    
+
     private Vector3 strafe;
 
     //Metodos
     void Awake()
     {
-        Instance = this;
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+        //id = GetComponent<NetworkIdentity>().co;
     }
     private void OnEnable()
     {
         _inputReader.MoveEventOne += OnMove;
     }
-	private void OnDisable(){
+    private void OnDisable()
+    {
         _inputReader.MoveEventOne -= OnMove;
-	}
+    }
 
-    private void OnMove(Vector3 movement){
+    private void OnMove(Vector3 movement)
+    {
         _inputVector = movement;
     }
-    
+
+
     void Update()
     {
-        if (!isClient)
+        if ( !isOwned)
         {
             return;
         }
         mainCam = GetComponent<ChangeCam>().GetCam();
 
-        if (controller.isGrounded && playerMove.y < 0){
+        if (controller.isGrounded && playerMove.y < 0)
+        {
             playerMove.y = 0f;
         }
         Vector3 camForward = Vector3.Scale(mainCam.transform.forward, new Vector3(1, 0, 1)).normalized;
         Vector3 camStrafe = Vector3.Scale(mainCam.transform.right, new Vector3(1, 0, 1)).normalized;
-        forward = Vector3.Lerp(forward, _inputVector.y * camForward, Time.deltaTime*5);
-        strafe = Vector3.Lerp(strafe, _inputVector.x * camStrafe, Time.deltaTime*5);
+        forward = Vector3.Lerp(forward, _inputVector.y * camForward, Time.deltaTime * 5);
+        strafe = Vector3.Lerp(strafe, _inputVector.x * camStrafe, Time.deltaTime * 5);
         playerMove = forward + strafe;
 
-        
+
 
         if (playerMove != Vector3.zero)
         {
             gameObject.transform.forward = playerMove;
         }
 
-        foreach(Animator animator in animators){
+        foreach (Animator animator in animators)
+        {
             animator.SetFloat("WalkSpeed", playerMove.magnitude);
         }
 
@@ -85,16 +93,29 @@ public class PlayerOneScript : NetworkBehaviour
 
     public void Pickup(EquipItemInteractable item)
     {
-        foreach(Animator animator in animators){
+        foreach (Animator animator in animators)
+        {
             animator.SetTrigger("Pickup");
         }
     }
 
     public void Drop(EquipItemInteractable item)
-    {
-        foreach(Animator animator in animators){
+    {   
+        if ( !isOwned)
+        {
+            return;
+        }
+        foreach (Animator animator in animators)
+        {
             animator.SetTrigger("Drop");
         }
+    }
+
+    //|-----Online---Multiplayer-----|
+    public override void OnStopClient()
+    {
+        GameManager.Instance.player01 = false;
+        base.OnStopClient();
     }
 }
 /*      forward = _inputVector.y * velocity * new Vector3(0, 0,-mainCam.transform.position.z);

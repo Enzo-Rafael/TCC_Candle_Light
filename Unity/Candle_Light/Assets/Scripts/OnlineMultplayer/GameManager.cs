@@ -2,14 +2,17 @@ using Mirror;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameManager : NetworkBehaviour
 {
     public static GameManager Instance;
-
+    //Variavei para os indices e posicoes pra seicronização
     [SyncVar]
     public int charIndex;
     [SyncVar]
-    public Transform camNewPos;
+    public int camNewPosP1;
+    [SyncVar]
+    public Transform camNewPosP2;
     [SyncVar]
     public bool player01 = false;
     [SyncVar]
@@ -35,14 +38,14 @@ public class GameManager : NetworkBehaviour
     }
 
     [Server]
-    public void TransformChangeP1(Transform cam)
+    public void TransformChangeP2(Transform transformCam)
     {
-        camNewPos = cam;
+       camNewPosP2 = transformCam;
     }
     [Server]
     public Transform SetPos()
     {
-        return camNewPos;
+        return camNewPosP2;
     }
     [Server]
     public Transform SetSpawn()

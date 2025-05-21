@@ -11,15 +11,24 @@ public class ChangeCam : NetworkBehaviour
     [SerializeField] private int currentCamIndex = 0;
     private CinemachineCamera currentCam;
 
-    void Start(){
+    void Start()
+    {
         camRef = GameObject.Find("CamHall").GetComponentsInChildren<CinemachineCamera>();
         currentCam = camRef[0];
-        foreach(CinemachineCamera cam in camRef){
-            if(cam == currentCam){
+        foreach (CinemachineCamera cam in camRef)
+        {
+            if (cam == currentCam)
+            {
                 cam.Priority = 1;
-            }else{
+            }
+            else
+            {
                 cam.Priority = 0;
             }
+        }
+        if (isOwned)
+        {
+            GameManager.Instance.camNewPosP1 = currentCamIndex;
         }
     }
     void OnEnable()
@@ -35,29 +44,49 @@ public class ChangeCam : NetworkBehaviour
 
     public void OnChangeCamLeft()
     {
-        currentCam.Priority = 0;
-        currentCamIndex--;
-        if (currentCamIndex < 0)
+        if (!isOwned)
         {
-            currentCamIndex += camRef.Length;
+            return;
         }
-        currentCam = camRef[currentCamIndex];
-        currentCam.Priority = 1;
+        else
+        {
+            currentCam.Priority = 0;
+            currentCamIndex--;
+            if (currentCamIndex < 0)
+            {
+                currentCamIndex += camRef.Length;
+            }
+            currentCam = camRef[currentCamIndex];
+            currentCam.Priority = 1;
+            GameManager.Instance.camNewPosP1 = currentCamIndex;
+        }
+
     }
-    
+
     public void OnChangeCamRight()
     {
-        currentCam.Priority = 0;
-        currentCamIndex = (currentCamIndex + 1) % camRef.Length;
-        currentCam = camRef[currentCamIndex];
-        currentCam.Priority = 1;
+        if (!isOwned)
+        {
+            return;
+        }
+        else
+        {
+            currentCam.Priority = 0;
+            currentCamIndex = (currentCamIndex + 1) % camRef.Length;
+            currentCam = camRef[currentCamIndex];
+            currentCam.Priority = 1;
+            GameManager.Instance.camNewPosP1 = currentCamIndex;
+        }
+
     }
-    public CinemachineCamera GetCam(){
+    public CinemachineCamera GetCam()
+    {
         return currentCam;
     }
 
-    public void ClearCams(){
-        Array.Clear(camRef,0,camRef.Length);
+    public void ClearCams()
+    {
+        Array.Clear(camRef, 0, camRef.Length);
     }
 
     /// <summary>
@@ -66,18 +95,18 @@ public class ChangeCam : NetworkBehaviour
     /// <param name="nextRoomsCams"> Conjunto de cameras a ser ativado. </param>
     internal void SetCams(CinemachineCamera[] nextRoomsCams)
     {
-        if(!nextRoomsCams.Except(camRef).Any()) return;
+        if (!nextRoomsCams.Except(camRef).Any()) return;
 
         currentCam.Priority = 0;
 
-        foreach(CinemachineCamera camera in camRef)
+        foreach (CinemachineCamera camera in camRef)
         {
             camera.gameObject.SetActive(false);
         }
 
         camRef = nextRoomsCams;
 
-        foreach(CinemachineCamera camera in camRef)
+        foreach (CinemachineCamera camera in camRef)
         {
             camera.gameObject.SetActive(true);
         }
@@ -86,4 +115,9 @@ public class ChangeCam : NetworkBehaviour
         currentCam = camRef[0];
         currentCam.Priority = 1;
     }
+    /*[Client]
+    public void Update()
+    {
+        if (!isOwned)currentCam = camRef[GameManager.Instance.camNewPosP1];
+    }*/
 }

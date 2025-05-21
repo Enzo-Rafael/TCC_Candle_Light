@@ -14,8 +14,7 @@ public class UseSpawnpointInteractable : Interactable, IInteractable
     }
     public void BaseAction(){
         if(action) return;
-        Debug.Log("LavouLegal");
-        if(_observerEvent != null) _observerEvent.NotifyObservers(1, this);
+        if(_observerEvent != null) _observerEvent.NotifyObservers();
         ExecuteOrder();
         DefineSpawn();
     }

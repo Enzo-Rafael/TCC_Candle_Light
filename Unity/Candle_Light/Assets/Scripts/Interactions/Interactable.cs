@@ -31,7 +31,7 @@ public class Interactable : MonoBehaviour
     [Tooltip("Referência para script custom que será executado quando iteragir com o item")]
     [SerializeField]
     protected MonoBehaviour _customScript;
-    protected ICustomCode _script => _customScript as ICustomCode;
+    protected ICodeCustom _script => _customScript as ICodeCustom;
 
     /*------------------------------------------------------------------------------
     Função:     ExecuteOrder
@@ -39,7 +39,7 @@ public class Interactable : MonoBehaviour
     Entrada:    int - indentificação para dizer qual ação o atuador fará.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    protected virtual void ExecuteOrder(int message = 1, object additionalInformation = null, ICustomCode script = null){
+    protected virtual void ExecuteOrder(int message = 1, object additionalInformation = null){
             switch(_actionType){
             case ItemActionType.Trigger:
                 animator.SetTrigger(parameterName);
@@ -50,7 +50,7 @@ public class Interactable : MonoBehaviour
             break;
 
             case ItemActionType.Cosume:
-            if(UnregisterEvent()) return;
+            UnregisterEvent();
             animator.SetTrigger(parameterName);
             break;
         }
@@ -62,9 +62,7 @@ public class Interactable : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/ 
-    protected virtual bool UnregisterEvent(){
-        return true;
-    }
+    protected virtual void UnregisterEvent(){}
 
     protected ObserverEventChannel GetObserver(){
         return _observerEvent;

@@ -1,12 +1,17 @@
 using UnityEngine;
 
 [RequireComponent(typeof(UseSpawnpointInteractable))]
-public class CustomSpawnpointExecute : MonoBehaviour, ICustomCode
+public class CustomSpawnpointExecute : MonoBehaviour, ICodeCustom
 {
+    UseSpawnpointInteractable spawnReference;
+    public void Start(){
+        spawnReference = GetComponent<UseSpawnpointInteractable>();
+    }
     public void CustomBaseAction(object additionalInformation){
-        UseSpawnpointInteractable spawnReference = (UseSpawnpointInteractable) additionalInformation;
-        Debug.Log("Executei");
-        spawnReference.SetAction(false);
+        if (spawnReference != null) spawnReference.SetAction(false);
+    }
+
+    public void SetSpawnReference(){
+        spawnReference.SetAction(true);
     }  
-    
 }

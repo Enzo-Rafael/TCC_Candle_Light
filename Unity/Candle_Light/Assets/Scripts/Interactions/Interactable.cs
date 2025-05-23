@@ -33,28 +33,33 @@ public class Interactable : MonoBehaviour
     protected MonoBehaviour _customScript;
     protected ICodeCustom _script => _customScript as ICodeCustom;
 
+    protected bool consumeBool = false;
+
     /*------------------------------------------------------------------------------
     Função:     ExecuteOrder
     Descrição:  Executa a animação do item.
     Entrada:    int - indentificação para dizer qual ação o atuador fará.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    protected virtual void ExecuteOrder(int message = 1, object additionalInformation = null){
-            switch(_actionType){
+    protected virtual void ExecuteOrder(int message = 1, object additionalInformation = null)
+    {
+        switch (_actionType)
+        {
             case ItemActionType.Trigger:
                 animator.SetTrigger(parameterName);
-            break;
+                break;
 
             case ItemActionType.Toggle:
                 animator.SetBool(parameterName, message != 0);
-            break;
+                break;
 
             case ItemActionType.Cosume:
-            UnregisterEvent();
-            animator.SetTrigger(parameterName);
-            break;
+                if(!consumeBool) animator.SetTrigger(parameterName);
+                UnregisterEvent();
+                consumeBool = true;
+                break;
         }
-        if(_script != null) _script.CustomBaseAction(additionalInformation);
+        if (_script != null) _script.CustomBaseAction(additionalInformation);
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent

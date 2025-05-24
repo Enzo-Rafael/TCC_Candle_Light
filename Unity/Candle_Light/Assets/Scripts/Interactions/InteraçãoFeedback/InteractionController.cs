@@ -24,28 +24,28 @@ public class InteractionController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 12)
+       /* if (other.gameObject.layer == 12)
         {
            currentTarget = other?.GetComponent<InteractableInfos>();
            UpdateIteractableSprite(); 
-        }
+        }*/
         
     }
     void OnTriggerExit(Collider other)
     {
-        spriteCanvas.SetActive(false);
-        interactionSprite.sprite = null;
+       // spriteCanvas.SetActive(false);
+       // interactionSprite.sprite = null;
     }
 
-    void UpdateIteractableSprite()
+    public void UpdateIteractableSprite(InteractableInfos infos)
     {
-        if (currentTarget == null)
+        if (infos == null)
         {
             spriteCanvas.SetActive(false);
             return;
         }
         spriteCanvas.SetActive(true);
-        interactionSprite.sprite = currentTarget.InteractSprite;
+        interactionSprite.sprite = infos.InteractSprite;
     }
 
     public void cavasClose()

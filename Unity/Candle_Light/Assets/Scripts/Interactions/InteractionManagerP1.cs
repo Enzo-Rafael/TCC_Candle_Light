@@ -39,8 +39,11 @@ public class InteractionManagerP1 : MonoBehaviour
     [SerializeField]
     private EquipItemInteractable equipItem = null;
 
+    [SerializeField]
+    private InteractionController iController;
+
     //------------------------- Variaveis Globais privadas -------------------------------
-    
+
     private const int floorLayer = 13;
     private const int EquipLayer = 12;
     private const int UseLayer = 6;
@@ -88,13 +91,15 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-	private void AddPotentialInteraction(GameObject itemInteractable){
+    private void AddPotentialInteraction(GameObject itemInteractable)
+    {
         potentialInteractions.AddFirst(itemInteractable);
 
         foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
         {
-                    renderer.material.SetFloat("_Highlight", 1);
+            renderer.material.SetFloat("_Highlight", 1);
         }
+        iController.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
     }
     /*------------------------------------------------------------------------------
     Função:     RemovePotentialInteraction
@@ -102,21 +107,24 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-	private void RemovePotentialInteraction(GameObject itemInteractable){
-		LinkedListNode<GameObject> currentNode = potentialInteractions.First;
-		while (currentNode != null){
-			if (currentNode.Value == itemInteractable){
+    private void RemovePotentialInteraction(GameObject itemInteractable)
+    {
+        LinkedListNode<GameObject> currentNode = potentialInteractions.First;
+        while (currentNode != null)
+        {
+            if (currentNode.Value == itemInteractable)
+            {
                 //Debug.Log("Removi");
-				potentialInteractions.Remove(currentNode);
-
+                potentialInteractions.Remove(currentNode);
+                iController.cavasClose();
                 foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
                 {
                     renderer.material.SetFloat("_Highlight", 0);
                 }
-				break;
-			}
-			currentNode = currentNode.Next;
-		}
+                break;
+            }
+            currentNode = currentNode.Next;
+        }
     }
     /*------------------------------------------------------------------------------
     Função:     UseInteractionType
@@ -132,23 +140,25 @@ public class InteractionManagerP1 : MonoBehaviour
             } 
             return;
         }
-        switch(potentialInteractions.First.Value.layer){
+        GameObject.FindGameObjectWithTag("Player1").GetComponentInChildren<InteractionController>().cavasClose();//!!!
+        switch (potentialInteractions.First.Value.layer)
+        {
             case EquipLayer:
-            if(equipItem == null){
-                potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
-                equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
-                equipItem.DefineLayer(default);
-                RemovePotentialInteraction(potentialInteractions.First.Value);
-                GameObject.FindGameObjectWithTag("Player1").GetComponentInChildren<InteractionController>().cavasClose();
-            }
-            break;
+                if (equipItem == null)
+                {
+                    potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
+                    equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
+                    equipItem.DefineLayer(default);
+                    RemovePotentialInteraction(potentialInteractions.First.Value);
+                }
+                break;
             case UseLayer:
-                foreach(IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
+                foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
                 {
                     Debug.Log("interagiu");
                     interactable.BaseAction();
                 }
-            break;
+                break;
         }
     }
     /*------------------------------------------------------------------------------

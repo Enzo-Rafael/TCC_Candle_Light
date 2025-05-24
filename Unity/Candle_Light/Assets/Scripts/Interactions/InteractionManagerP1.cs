@@ -138,7 +138,8 @@ public class InteractionManagerP1 : MonoBehaviour
                 potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
                 equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
                 equipItem.DefineLayer(default);
-                RemovePotentialInteraction(potentialInteractions.First.Value);  
+                RemovePotentialInteraction(potentialInteractions.First.Value);
+                GameObject.FindGameObjectWithTag("Player1").GetComponentInChildren<InteractionController>().cavasClose();
             }
             break;
             case UseLayer:

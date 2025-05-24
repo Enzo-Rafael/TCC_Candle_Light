@@ -187,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 228685575658608958}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.7, z: 0.995}
+  m_LocalPosition: {x: 0, y: 1.7, z: 0.876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2298,6 +2298,7 @@ GameObject:
   - component: {fileID: 9214219417429163465}
   - component: {fileID: 8338911887323015202}
   - component: {fileID: 2102400550411697456}
+  - component: {fileID: 1604730547337259156}
   m_Layer: 14
   m_Name: InteractionDetector
   m_TagString: Untagged
@@ -2339,8 +2340,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.7, y: 1.8742417, z: 0.66988486}
-  m_Center: {x: 0, y: 0.93712085, z: 0.38494244}
+  m_Size: {x: 0.7, y: 1.8742417, z: 0.86499804}
+  m_Center: {x: 0, y: 0.93712085, z: 0.48249903}
 --- !u!114 &8338911887323015202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2398,6 +2399,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1604730547337259156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3172973006626817043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eff128d74a65f64bbdbf18c235ba3da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indexPlayer: 0
+  spriteCanvas: {fileID: 0}
+  interactionSprite: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 20480
 --- !u!1 &3210729441010689594
 GameObject:
   m_ObjectHideFlags: 0
@@ -6992,7 +7011,9 @@ MonoBehaviour:
   holdPosition: {fileID: 5542937938226062718}
   velocity: 2
   controller: {fileID: 1977109826562393239}
-  animators: []
+  animators:
+  - {fileID: 4027464737638759095}
+  - {fileID: 4625837820589244150}
 --- !u!114 &1122050933420117676
 MonoBehaviour:
   m_ObjectHideFlags: 0

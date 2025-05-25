@@ -140,7 +140,8 @@ public class InteractionManagerP1 : MonoBehaviour
             } 
             return;
         }
-        GameObject.FindGameObjectWithTag("Player1").GetComponentInChildren<InteractionController>().cavasClose();//!!!
+        //GameObject.FindGameObjectWithTag("Player1").GetComponentInChildren<InteractionController>().cavasClose();//!!!
+        iController.cavasClose();
         switch (potentialInteractions.First.Value.layer)
         {
             case EquipLayer:

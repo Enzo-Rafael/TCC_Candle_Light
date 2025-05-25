@@ -26,6 +26,8 @@ public class InteractionManagerP2 : MonoBehaviour
     [Tooltip("Referência para usar a função associada ao ScriptableObject")]
     [SerializeField] 
     private InputReader _inputReader = default;
+    [SerializeField]
+    private InteractionController iController;
 
 
     //------------------------- Variaveis Globais privadas -------------------------------
@@ -71,8 +73,10 @@ public class InteractionManagerP2 : MonoBehaviour
     Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-	private void AddPotentialInteraction(GameObject itemInteratable){
+    private void AddPotentialInteraction(GameObject itemInteratable)
+    {
         potentialInteractions.AddFirst(itemInteratable);
+        iController.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
     }
     /*------------------------------------------------------------------------------
     Função:     RemovePotentialInteraction
@@ -85,6 +89,7 @@ public class InteractionManagerP2 : MonoBehaviour
 		while (currentNode != null){
 			if (currentNode.Value == itemInteratable){
 				potentialInteractions.Remove(currentNode);
+                iController.cavasClose();
 				break;
 			}
 			currentNode = currentNode.Next;
@@ -96,8 +101,11 @@ public class InteractionManagerP2 : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void UseInteractionType(){
-        if(potentialInteractions.Count == 0)return;
+    public void UseInteractionType()
+    {
+        if (potentialInteractions.Count == 0) return;
         potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
+        //GameObject.FindGameObjectWithTag("Player2").GetComponent<InteractionController>().cavasClose();//!!!
+        iController.cavasClose();
     }
 }

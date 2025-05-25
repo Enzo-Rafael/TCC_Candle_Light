@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 
@@ -11,31 +10,7 @@ public class InteractionController : MonoBehaviour
     private GameObject spriteCanvas;//Canvas onde vai aparecer a sprite
     [SerializeField]
     private Image interactionSprite;//Sprite que vai aparecer 
-    public LayerMask layerMask;
-
-    InteractableInfos currentTarget;
-
-    public void Start()
-    {
-        //spriteCanvas.SetActive(false);
-        //spriteCanvas = GameObject.FindGameObjectWithTag("CanvasInteraction").GetComponent<CanvasInteraction>().canvas[indexPlayer];
-        //interactionSprite = GameObject.FindGameObjectWithTag("CanvasInteraction").GetComponent<CanvasInteraction>().sprites[indexPlayer];
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-       /* if (other.gameObject.layer == 12)
-        {
-           currentTarget = other?.GetComponent<InteractableInfos>();
-           UpdateIteractableSprite(); 
-        }*/
-        
-    }
-    void OnTriggerExit(Collider other)
-    {
-       // spriteCanvas.SetActive(false);
-       // interactionSprite.sprite = null;
-    }
+    public LayerMask layerMask;//Layer em que ah interação (Lembrete: Setar elas no inspetor)
 
     public void UpdateIteractableSprite(InteractableInfos infos)
     {
@@ -51,7 +26,6 @@ public class InteractionController : MonoBehaviour
     public void cavasClose()
     {
         spriteCanvas.SetActive(false);
-        //interactionSprite.sprite = null;
     }
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 //Player 2: Move setas direcionais e num1 e num2
 
-public class PlayerTwoScript : MonoBehaviour
+public class PlayerTwoScript : Singleton<PlayerTwoScript>
 {
     //Variaveis
 	[SerializeField] private InputReader _inputReader = default;
@@ -16,7 +16,13 @@ public class PlayerTwoScript : MonoBehaviour
 
     private Vector2 _mouseVector;
 
+    private Vector2 _vooDirection;
+
+    [SerializeField] private float vooSpeed = 1f;
+
     private Vector2 startingRotation;
+
+    private float smoothVerticalInput = 0f;
 
     [SerializeField] private float velocity;
     public CharacterController controller;
@@ -36,11 +42,15 @@ public class PlayerTwoScript : MonoBehaviour
 	private void OnEnable(){
         _inputReader.MoveEventTwo += OnMove;
         _inputReader.MouseEvent += OnMouse;
+        _inputReader.VooEvent += OnVoo;
         _disabled = false;
 	}
-	private void OnDisable(){
+    private void OnDisable()
+    {
         _inputReader.MoveEventTwo -= OnMove;
         _inputReader.MouseEvent -= OnMouse;
+        _inputReader.VooEvent -= OnVoo;
+
 	}
     
     private void OnMove(Vector3 movement){
@@ -51,6 +61,12 @@ public class PlayerTwoScript : MonoBehaviour
         _mouseVector = movement;
     }
 
+    private void OnVoo(Vector2 movement)
+    {
+        _vooDirection = movement;
+        Debug.Log(_vooDirection);
+    }
+
     void Update()
     {
         if(_disabled) return;
@@ -59,9 +75,10 @@ public class PlayerTwoScript : MonoBehaviour
         if (groundedPlayer && _inputVector.y < 0){
            _inputVector.y = 0f;
         }
+        smoothVerticalInput = Mathf.Lerp(smoothVerticalInput, _vooDirection.y * vooSpeed, Time.deltaTime / 0.1f);
         forward = _inputVector.y * camPlayerTwo.transform.forward;
         strafe = _inputVector.x * camPlayerTwo.transform.right;
-        vetical = _inputVector.z * camPlayerTwo.transform.up;
+        vetical = (_inputVector.z + smoothVerticalInput) * camPlayerTwo.transform.up;
         //transform.localEulerAngles += new Vector3(0f,_mouseVector.x * Time.deltaTime, 0f);
         playerMove = forward + strafe + vetical;
         if (playerMove != Vector3.zero)
@@ -84,4 +101,8 @@ public class PlayerTwoScript : MonoBehaviour
     /// Leitor publico para a velocidade do fantasma.
     /// </summary>
     public float GetVelocity(){ return velocity; }
+
+    public void SetDiePosition(Transform spawn){
+        respawnPoint.position = spawn.position;
+    }
 }

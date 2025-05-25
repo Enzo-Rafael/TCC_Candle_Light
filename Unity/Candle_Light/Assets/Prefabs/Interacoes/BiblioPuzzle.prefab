@@ -99,12 +99,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6205c0372cd4348a5b488fffee29eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _multipleCode: {fileID: 7785275205816767649}
+  _actionType: 2
   _observerEvent: {fileID: 3204490935792538466}
   animator: {fileID: 4715440369108756772}
-  _actionType: 2
-  _itemType: 1
   parameterName: Completed
+  _enableCustomScript: 0
+  _customScript: {fileID: 0}
+  _itemType: 1
+  _multipleCode: {fileID: 7785275205816767649}
 --- !u!1 &850942102953871433
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +118,6 @@ GameObject:
   - component: {fileID: 5445448737845579345}
   - component: {fileID: 8027076136678344082}
   - component: {fileID: 6054278868718355034}
-  - component: {fileID: 3075038548617110190}
   - component: {fileID: 9002368703932681251}
   m_Layer: 6
   m_Name: Estante (1)
@@ -154,7 +155,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bfd013c3ef438439c9375caa8f8274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _actionType: 2
   _observerEvent: {fileID: 3204490935792538466}
+  animator: {fileID: 9002368703932681251}
+  parameterName: Click
+  _enableCustomScript: 0
+  _customScript: {fileID: 0}
   orderID: 1
 --- !u!65 &6054278868718355034
 BoxCollider:
@@ -177,20 +183,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3075038548617110190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850942102953871433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc7cae4f904bbf4b88610817222e8e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 9002368703932681251}
-  paramName: Click
 --- !u!95 &9002368703932681251
 Animator:
   serializedVersion: 7
@@ -441,7 +433,6 @@ GameObject:
   - component: {fileID: 4379281781907590660}
   - component: {fileID: 2070609338371291426}
   - component: {fileID: 891332314545653925}
-  - component: {fileID: 5462446729306148745}
   - component: {fileID: 5368806270582371954}
   m_Layer: 6
   m_Name: Estante (2)
@@ -479,7 +470,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bfd013c3ef438439c9375caa8f8274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _actionType: 2
   _observerEvent: {fileID: 3204490935792538466}
+  animator: {fileID: 5368806270582371954}
+  parameterName: Click
+  _enableCustomScript: 0
+  _customScript: {fileID: 0}
   orderID: 2
 --- !u!65 &891332314545653925
 BoxCollider:
@@ -502,20 +498,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5462446729306148745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2125868972758522470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc7cae4f904bbf4b88610817222e8e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 5368806270582371954}
-  paramName: Click
 --- !u!95 &5368806270582371954
 Animator:
   serializedVersion: 7
@@ -875,7 +857,6 @@ GameObject:
   - component: {fileID: 3559817228996822960}
   - component: {fileID: 2951651555215809976}
   - component: {fileID: 8693954134658314202}
-  - component: {fileID: 5861205055071459833}
   - component: {fileID: 1076188112931895963}
   m_Layer: 6
   m_Name: Estante (0)
@@ -913,7 +894,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bfd013c3ef438439c9375caa8f8274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _actionType: 2
   _observerEvent: {fileID: 3204490935792538466}
+  animator: {fileID: 1076188112931895963}
+  parameterName: Click
+  _enableCustomScript: 0
+  _customScript: {fileID: 0}
   orderID: 0
 --- !u!65 &8693954134658314202
 BoxCollider:
@@ -936,20 +922,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5861205055071459833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4009642907278950131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc7cae4f904bbf4b88610817222e8e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1076188112931895963}
-  paramName: Click
 --- !u!95 &1076188112931895963
 Animator:
   serializedVersion: 7
@@ -1417,7 +1389,6 @@ GameObject:
   - component: {fileID: 6189720342016061666}
   - component: {fileID: 3489398684036774991}
   - component: {fileID: 8526777779494398590}
-  - component: {fileID: 256802211459218620}
   - component: {fileID: 3144136105108838178}
   m_Layer: 6
   m_Name: Estante (3)
@@ -1455,7 +1426,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bfd013c3ef438439c9375caa8f8274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _actionType: 2
   _observerEvent: {fileID: 3204490935792538466}
+  animator: {fileID: 3144136105108838178}
+  parameterName: Click
+  _enableCustomScript: 0
+  _customScript: {fileID: 0}
   orderID: 3
 --- !u!65 &8526777779494398590
 BoxCollider:
@@ -1478,20 +1454,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &256802211459218620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9174225201426182359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc7cae4f904bbf4b88610817222e8e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 3144136105108838178}
-  paramName: Click
 --- !u!95 &3144136105108838178
 Animator:
   serializedVersion: 7

@@ -295,6 +295,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "VooFantasma",
+                    "type": "Value",
+                    "id": "e4e9aab5-97e9-4098-9b06-043175d7cb0b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -471,6 +480,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Mouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33ae56a9-ec79-450a-8f90-4b0d2d9d8de3",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VooFantasma",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

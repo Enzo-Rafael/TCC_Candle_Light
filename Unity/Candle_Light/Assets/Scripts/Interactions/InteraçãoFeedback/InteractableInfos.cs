@@ -3,6 +3,6 @@ using UnityEngine;
 public interface InteractableInfos 
 {
 //public string InteracMessage { get; }
-    public Sprite InteractSprite { get; }
-    //public void Interact();
+    public Sprite interactSprite { get; }
+    public TextScriptable text { get; }
 }

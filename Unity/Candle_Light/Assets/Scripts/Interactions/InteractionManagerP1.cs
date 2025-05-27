@@ -99,7 +99,8 @@ public class InteractionManagerP1 : MonoBehaviour
         {
             renderer.material.SetFloat("_Highlight", 1);
         }
-        iController.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+        iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+        //iController?.UpdateIteractableText(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
     }
     /*------------------------------------------------------------------------------
     Função:     RemovePotentialInteraction
@@ -116,7 +117,8 @@ public class InteractionManagerP1 : MonoBehaviour
             {
                 //Debug.Log("Removi");
                 potentialInteractions.Remove(currentNode);
-                iController.cavasClose();
+                iController.canvasCloseSprite();
+                iController.canvasCloseText();
                 foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
                 {
                     renderer.material.SetFloat("_Highlight", 0);
@@ -140,15 +142,14 @@ public class InteractionManagerP1 : MonoBehaviour
             } 
             return;
         }
-        //GameObject.FindGameObjectWithTag("Player1").GetComponentInChildren<InteractionController>().cavasClose();//!!!
-        iController.cavasClose();
+        iController.canvasCloseSprite();
         switch (potentialInteractions.First.Value.layer)
         {
             case EquipLayer:
                 if (equipItem == null)
                 {
                     potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
-                    equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
+                    equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();                
                     equipItem.DefineLayer(default);
                     RemovePotentialInteraction(potentialInteractions.First.Value);
                 }
@@ -157,6 +158,7 @@ public class InteractionManagerP1 : MonoBehaviour
                 foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
                 {
                     Debug.Log("interagiu");
+                    iController?.UpdateIteractableText(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                     interactable.BaseAction();
                 }
                 break;

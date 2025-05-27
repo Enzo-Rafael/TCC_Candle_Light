@@ -89,7 +89,8 @@ public class InteractionManagerP2 : MonoBehaviour
 		while (currentNode != null){
 			if (currentNode.Value == itemInteratable){
 				potentialInteractions.Remove(currentNode);
-                iController.cavasClose();
+                iController.canvasCloseSprite();
+                iController.canvasCloseText();
 				break;
 			}
 			currentNode = currentNode.Next;
@@ -105,7 +106,6 @@ public class InteractionManagerP2 : MonoBehaviour
     {
         if (potentialInteractions.Count == 0) return;
         potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
-        //GameObject.FindGameObjectWithTag("Player2").GetComponent<InteractionController>().cavasClose();//!!!
-        iController.cavasClose();
+        iController.canvasCloseSprite();
     }
 }

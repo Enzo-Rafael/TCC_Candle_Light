@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 5973922315954919590}
   - component: {fileID: 4888381871637652493}
   - component: {fileID: 8572091421701183851}
+  - component: {fileID: 4698636793131872903}
+  - component: {fileID: 3133920288796526836}
+  - component: {fileID: 4641707242165213588}
   m_Layer: 12
   m_Name: CasticaoComVela
   m_TagString: Untagged
@@ -69,6 +72,73 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.16825163, y: 0.80562097, z: 0.16825163}
   m_Center: {x: 0, y: 0.40281054, z: 0.000000059604645}
+--- !u!114 &4698636793131872903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2360656563134924689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a553cb17010b2403e8523b558bffbc14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 5973922315954919590}
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  onlySyncOnChange: 1
+  compressRotation: 1
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  coordinateSpace: 0
+  timelineOffset: 1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  bufferResetMultiplier: 3
+  useFixedUpdate: 0
+  positionSensitivity: 0.01
+  rotationSensitivity: 0.01
+  scaleSensitivity: 0.01
+--- !u!114 &3133920288796526836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2360656563134924689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 2830773736
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
+--- !u!114 &4641707242165213588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2360656563134924689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64440a04fd366a449b06cc82d02a752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  identity: {fileID: 3133920288796526836}
 --- !u!1 &6317334054419460270
 GameObject:
   m_ObjectHideFlags: 0

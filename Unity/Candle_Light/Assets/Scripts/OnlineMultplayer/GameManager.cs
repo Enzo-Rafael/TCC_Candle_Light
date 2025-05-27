@@ -12,6 +12,8 @@ public class GameManager : NetworkBehaviour
     [SyncVar]
     public int camNewPosP1;
     [SyncVar]
+    public Transform[] startPos;
+    [SyncVar]
     public Transform camNewPosP2;
     [SyncVar]
     public bool player01 = false;

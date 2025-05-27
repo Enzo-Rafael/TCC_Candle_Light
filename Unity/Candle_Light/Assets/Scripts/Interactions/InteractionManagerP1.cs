@@ -57,7 +57,7 @@ public class InteractionManagerP1 :NetworkBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     private void OnEnable(){
-         if (!isOwned)
+        if (!isOwned)
         {
             return;
         }
@@ -70,6 +70,10 @@ public class InteractionManagerP1 :NetworkBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     private void OnDisable(){
+        if (!isOwned)
+        {
+            return;
+        }
         _inputReader.ActionEventOne -= UseInteractionType;
     }
     /*------------------------------------------------------------------------------
@@ -100,6 +104,10 @@ public class InteractionManagerP1 :NetworkBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
 	private void AddPotentialInteraction(GameObject itemInteractable){
+        if (!isOwned)
+        {
+            return;
+        }
         potentialInteractions.AddFirst(itemInteractable);
 
         foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
@@ -136,6 +144,10 @@ public class InteractionManagerP1 :NetworkBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void UseInteractionType(){
+        if (!isOwned)
+        {
+            return;
+        }
         if (potentialInteractions.Count == 0)
         {
             if (equipItem != null && FloorVerification())

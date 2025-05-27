@@ -17,6 +17,7 @@ public class PlayerOneScript : NetworkBehaviour
 
     public CharacterController controller;
 
+    public NetworkAnimator[] netAnimators;
     public Animator[] animators;
 
     public int id;
@@ -93,7 +94,7 @@ public class PlayerOneScript : NetworkBehaviour
 
     public void Pickup(EquipItemInteractable item)
     {
-        foreach (Animator animator in animators)
+        foreach (NetworkAnimator animator in netAnimators)
         {
             animator.SetTrigger("Pickup");
         }
@@ -105,7 +106,7 @@ public class PlayerOneScript : NetworkBehaviour
         {
             return;
         }
-        foreach (Animator animator in animators)
+        foreach (NetworkAnimator animator in netAnimators)
         {
             animator.SetTrigger("Drop");
         }

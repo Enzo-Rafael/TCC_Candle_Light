@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 6139061868104905565}
   - component: {fileID: 4751996190801027795}
   - component: {fileID: 5228961348838903877}
+  - component: {fileID: 5589079205840201559}
   m_Layer: 0
   m_Name: GradeBiblioteca
   m_TagString: Untagged
@@ -249,6 +250,23 @@ MonoBehaviour:
   positionSensitivity: 0.01
   rotationSensitivity: 0.01
   scaleSensitivity: 0.01
+--- !u!114 &5589079205840201559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046727683521648948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 0
+  animator: {fileID: 7868734213617958200}
 --- !u!1001 &1351122746976167169
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6999,6 +6999,8 @@ MonoBehaviour:
   holdPosition: {fileID: 5542937938226062718}
   velocity: 2
   controller: {fileID: 1977109826562393239}
+  netAnimators:
+  - {fileID: -6344293164273560155}
   animators:
   - {fileID: 4027464737638759095}
   - {fileID: 4625837820589244150}
@@ -7037,6 +7039,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443387b057e3f644f88a8ab78143b933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
   deploymentHeight: 2
   rayFloor: {fileID: 1379459251215976561}
@@ -7733,6 +7738,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2757204347067005015, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
+      propertyPath: _assetId
+      value: 2445771244
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133920288796526836, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: _assetId
       value: 2445771244
       objectReference: {fileID: 0}

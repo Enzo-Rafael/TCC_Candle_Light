@@ -107,5 +107,6 @@ public class InteractionManagerP2 : MonoBehaviour
         if (potentialInteractions.Count == 0) return;
         potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
         iController.canvasCloseSprite();
+        iController?.UpdateIteractableText(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
     }
 }

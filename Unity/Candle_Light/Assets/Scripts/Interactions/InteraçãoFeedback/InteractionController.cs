@@ -29,7 +29,7 @@ public class InteractionController : MonoBehaviour
         interactionSprite.sprite = infos.interactSprite;
     }
 
-    public void UpdateIteractableText(InteractableInfos textInfo)
+    public void UpdateIteractableText(InteractableInfos textInfo, int index)
     {
         if (textInfo == null || textInfo.text == null)
         {
@@ -38,7 +38,7 @@ public class InteractionController : MonoBehaviour
         }
         canvasCloseSprite();
         textCanvas.SetActive(true);
-        textElement.text = textInfo.text.textString;
+        textElement.text = textInfo.text.textString[index];
 
     }
 

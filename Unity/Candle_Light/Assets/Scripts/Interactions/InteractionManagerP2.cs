@@ -28,6 +28,8 @@ public class InteractionManagerP2 : MonoBehaviour
     private InputReader _inputReader = default;
     [SerializeField]
     private InteractionController iController;
+    [SerializeField]
+    private int indexText = 0;
 
 
     //------------------------- Variaveis Globais privadas -------------------------------
@@ -106,7 +108,18 @@ public class InteractionManagerP2 : MonoBehaviour
     {
         if (potentialInteractions.Count == 0) return;
         potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
+        int i = potentialInteractions.First.Value.GetComponent<InteractableInfos>().text.textString.Length;
         iController.canvasCloseSprite();
-        iController?.UpdateIteractableText(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+        Debug.Log("interagiu");
+        if (indexText < i)
+        {
+            iController?.UpdateIteractableText(potentialInteractions.First.Value.GetComponent<InteractableInfos>(), indexText);
+            indexText += 1;
+        }
+        else
+        {
+            iController.canvasCloseText();
+            indexText = 0;
+        }
     }
 }

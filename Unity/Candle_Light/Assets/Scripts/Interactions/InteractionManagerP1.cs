@@ -41,6 +41,8 @@ public class InteractionManagerP1 : MonoBehaviour
 
     [SerializeField]
     private InteractionController iController;
+    [SerializeField]
+    private int indexText = 0;
 
     //------------------------- Variaveis Globais privadas -------------------------------
 
@@ -157,8 +159,18 @@ public class InteractionManagerP1 : MonoBehaviour
             case UseLayer:
                 foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
                 {
+                    int i = potentialInteractions.First.Value.GetComponent<InteractableInfos>().text.textString.Length;
                     Debug.Log("interagiu");
-                    iController?.UpdateIteractableText(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+                    if (indexText < i)
+                    {
+                        iController?.UpdateIteractableText(potentialInteractions.First.Value.GetComponent<InteractableInfos>(), indexText);
+                        indexText += 1;
+                    }
+                    else
+                    {
+                        iController.canvasCloseText();
+                        indexText = 0;
+                    }
                     interactable.BaseAction();
                 }
                 break;

@@ -100,8 +100,6 @@ public class InteractionManagerP2 : MonoBehaviour
     ------------------------------------------------------------------------------*/
     public void UseInteractionType(){
         if(potentialInteractions.Count == 0)return;
-        Debug.Log("Entrei aqui");
-        Debug.Log(potentialInteractions.Count);
         potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
     }
 }

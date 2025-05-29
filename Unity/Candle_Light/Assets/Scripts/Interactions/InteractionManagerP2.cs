@@ -71,8 +71,10 @@ public class InteractionManagerP2 : MonoBehaviour
     Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-	private void AddPotentialInteraction(GameObject itemInteratable){
+    private void AddPotentialInteraction(GameObject itemInteratable)
+    {
         potentialInteractions.AddFirst(itemInteratable);
+        Debug.Log("Adicionei na lista");
     }
     /*------------------------------------------------------------------------------
     Função:     RemovePotentialInteraction
@@ -98,6 +100,8 @@ public class InteractionManagerP2 : MonoBehaviour
     ------------------------------------------------------------------------------*/
     public void UseInteractionType(){
         if(potentialInteractions.Count == 0)return;
+        Debug.Log("Entrei aqui");
+        Debug.Log(potentialInteractions.Count);
         potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
     }
 }

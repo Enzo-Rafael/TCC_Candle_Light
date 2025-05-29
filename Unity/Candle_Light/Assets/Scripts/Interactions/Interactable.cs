@@ -46,15 +46,15 @@ public class Interactable : MonoBehaviour
         switch (_actionType)
         {
             case ItemActionType.Trigger:
-                animator.SetTrigger(parameterName);
+                if(animator != null)animator.SetTrigger(parameterName);
                 break;
 
             case ItemActionType.Toggle:
-                animator.SetBool(parameterName, message != 0);
+                if(animator != null)animator.SetBool(parameterName, message != 0);
                 break;
 
             case ItemActionType.Cosume:
-                if(!consumeBool) animator.SetTrigger(parameterName);
+                if(!consumeBool && animator != null) animator.SetTrigger(parameterName);
                 UnregisterEvent();
                 consumeBool = true;
                 break;

@@ -11,43 +11,33 @@ using UnityEngine;
 [RequireComponent(typeof(Light))]
 public class PointLight : MonoBehaviour
 {
-    [SerializeField] private float radius;
+    public float radius;
 
-    [SerializeField] private Light light;
-
-    /// <summary>
-    /// Habilite para sincronizar a posicao no update de fisica.
-    /// </summary>
-    //[Header("Habilite para sincronizar a posicao no update de fisica")]
-    //[SerializeField] private bool doPositionSync;
+    public Light visualLight;
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, radius);
-        if(light)
-            light.range = radius;
+        if(visualLight)
+            visualLight.range = radius;
         
     }
 
     void FixedUpdate()
     {
-        // Sincroniza posicao com o sistema de luz
-        //if (doPositionSync)
-        //{
-            LightSystem.Instance.UpdatePointLightPos(GetInstanceID(), transform.position);
-        //}
+        
     }
 
 
     void OnEnable()
     {
-        LightSystem.Instance.AddPointLight(transform.position, radius, GetInstanceID());
+        LightSystem.Instance.AddPointLight(this);
     }
 
     void OnDisable()
     {
-        LightSystem.Instance.RemovePointLight(GetInstanceID());
+        LightSystem.Instance.RemovePointLight(this);
     }
 
 }

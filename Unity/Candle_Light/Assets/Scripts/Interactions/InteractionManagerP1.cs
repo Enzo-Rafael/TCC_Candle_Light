@@ -145,6 +145,7 @@ public class InteractionManagerP1 : MonoBehaviour
             return;
         }
         iController.canvasCloseSprite();
+        _inputReader.DisablePlayerInputMove(1);
         switch (potentialInteractions.First.Value.layer)
         {
             case EquipLayer:
@@ -169,6 +170,7 @@ public class InteractionManagerP1 : MonoBehaviour
                     else
                     {
                         iController.canvasCloseText();
+                        _inputReader.EnablePlayerInput(1);
                         indexText = 0;
                     }
                     interactable.BaseAction();

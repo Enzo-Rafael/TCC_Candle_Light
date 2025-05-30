@@ -17,13 +17,13 @@ using UnityEngine.Events;
 public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions, PlayersInputMap.IPlayer1MoveActions, PlayersInputMap.IInComumInputsActions
 {
 
-//-------------------------- Variaveis Globais Visiveis --------------------------------
+    //-------------------------- Variaveis Globais Visiveis --------------------------------
 
     //Delegates usados para definir as funçõoes que serão chamadas quando um botão for apertado
-    private PlayersInputMap _playersInput;      
-	public event UnityAction<Vector3> MoveEventOne = delegate { };
-	public event UnityAction<Vector3> MoveEventTwo = delegate { };    
-    public event UnityAction ActionEventOne= delegate { };
+    private PlayersInputMap _playersInput;
+    public event UnityAction<Vector3> MoveEventOne = delegate { };
+    public event UnityAction<Vector3> MoveEventTwo = delegate { };
+    public event UnityAction ActionEventOne = delegate { };
     public event UnityAction ActionEventTwo = delegate { };
     public event UnityAction<Vector2> MouseEvent = delegate { };
     public event UnityAction<Vector2> VooEvent = delegate { };
@@ -39,13 +39,15 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnEnable(){
-		if (_playersInput == null){
-			_playersInput = new PlayersInputMap();
+    private void OnEnable()
+    {
+        if (_playersInput == null)
+        {
+            _playersInput = new PlayersInputMap();
             _playersInput.Player1Move.SetCallbacks(this);
-			_playersInput.Player2Move.SetCallbacks(this);
+            _playersInput.Player2Move.SetCallbacks(this);
             _playersInput.InComumInputs.SetCallbacks(this);
-		}
+        }
     }
     /*------------------------------------------------------------------------------
     Função:     OnDisable
@@ -53,18 +55,20 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-	private void OnDisable(){
-		DisableAllInput();
-	}
+    private void OnDisable()
+    {
+        DisableAllInput();
+    }
     /*------------------------------------------------------------------------------
     Função:     EnableAllInput
     Descrição:  Habilita todos os inputs
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void EnableAllInput(){
+    public void EnableAllInput()
+    {
         _playersInput.Player1Move.Enable();
-		_playersInput.Player2Move.Enable();
+        _playersInput.Player2Move.Enable();
         _playersInput.InComumInputs.Enable();
     }
     /*------------------------------------------------------------------------------
@@ -73,91 +77,118 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-	public void DisableAllInput(){
-		_playersInput.Player1Move.Disable();
-		_playersInput.Player2Move.Disable();
+    public void DisableAllInput()
+    {
+        _playersInput.Player1Move.Disable();
+        _playersInput.Player2Move.Disable();
         _playersInput.InComumInputs.Disable();
 
-	}
+    }
     /*------------------------------------------------------------------------------
     Função:     EnableGameplayInput
     Descrição:  Habilita somente os inputs de gameplay
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-	public void EnableGameplayInput(){
-		_playersInput.Player1Move.Enable();
-		_playersInput.Player2Move.Enable();
+    public void EnableGameplayInput()
+    {
+        _playersInput.Player1Move.Enable();
+        _playersInput.Player2Move.Enable();
         _playersInput.InComumInputs.Enable();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-	}
+    }
     /*------------------------------------------------------------------------------
     Função:     EnableMenuInput
     Descrição:  Habilita somente os inputs de menu
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-	public void EnableMenuInput(){
-		_playersInput.Player1Move.Disable();
-		_playersInput.Player2Move.Disable();
+    public void EnableMenuInput()
+    {
+        _playersInput.Player1Move.Disable();
+        _playersInput.Player2Move.Disable();
         _playersInput.InComumInputs.Enable();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-	}
-
-    public void EnablePlayerInput(int index){
-        switch(index)
-        {
-            case 1:
-            _playersInput.Player1Move.Enable();
-            break;
-
-            case 2:
-            _playersInput.Player2Move.Enable();
-            break;
-        }
-    }
-    public void DisablePlayerInput(int index){
-        switch(index)
-        {
-            case 1:
-            _playersInput.Player1Move.Disable();
-            break;
-            
-            case 2:
-            _playersInput.Player2Move.Disable();
-            break;
-        }
     }
 
-    public void OnMoveInputOne(InputAction.CallbackContext context){
+    public void EnablePlayerInput(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                _playersInput.Player1Move.Enable();
+                break;
+
+            case 2:
+                _playersInput.Player2Move.Enable();
+                break;
+        }
+    }
+    public void DisablePlayerInput(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                _playersInput.Player1Move.Disable();
+                break;
+
+            case 2:
+                _playersInput.Player2Move.Disable();
+                break;
+        }
+    }
+
+    public void OnMoveInputOne(InputAction.CallbackContext context)
+    {
         MoveEventOne.Invoke(context.ReadValue<Vector3>());
     }
-    public void OnMoveInputTwo(InputAction.CallbackContext context){
-		MoveEventTwo.Invoke(context.ReadValue<Vector3>());
+    public void OnMoveInputTwo(InputAction.CallbackContext context)
+    {
+        MoveEventTwo.Invoke(context.ReadValue<Vector3>());
     }
-    public void OnActionInputOne(InputAction.CallbackContext context){
+    public void OnActionInputOne(InputAction.CallbackContext context)
+    {
         if (context.phase == InputActionPhase.Performed) ActionEventOne.Invoke();
     }
-    public void OnActionInputTwo(InputAction.CallbackContext context){
+    public void OnActionInputTwo(InputAction.CallbackContext context)
+    {
         if (context.phase == InputActionPhase.Performed) ActionEventTwo.Invoke();
 
     }
-    public void OnMouse(InputAction.CallbackContext context){
+    public void OnMouse(InputAction.CallbackContext context)
+    {
         MouseEvent.Invoke(context.ReadValue<Vector2>());
     }
-    public void OnVooFantasma(InputAction.CallbackContext context){
+    public void OnVooFantasma(InputAction.CallbackContext context)
+    {
         VooEvent.Invoke(context.ReadValue<Vector2>());
     }
-    public void OnClose(InputAction.CallbackContext context){
+    public void OnClose(InputAction.CallbackContext context)
+    {
         if (context.phase == InputActionPhase.Performed) MenuCloseEvent.Invoke();
     }
-    public void OnChangeCamLeft(InputAction.CallbackContext context){
-       if (context.phase == InputActionPhase.Performed) ChangeCamLeftEvent.Invoke();
+    public void OnChangeCamLeft(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed) ChangeCamLeftEvent.Invoke();
     }
-    public void OnChangeCamRight(InputAction.CallbackContext context){
-       if (context.phase == InputActionPhase.Performed) ChangeCamRightEvent.Invoke();
+    public void OnChangeCamRight(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed) ChangeCamRightEvent.Invoke();
+    }
+    //PROVISORIO
+     public void DisablePlayerInputMove(int index){
+        switch(index)
+        {
+            case 1:
+            _playersInput.Player1Move.MoveInputOne.Disable();
+            break;
+            
+            case 2:
+            _playersInput.Player2Move.MoveInputTwo.Disable();
+            break;
+        }
     }
     
 }

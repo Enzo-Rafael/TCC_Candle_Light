@@ -110,6 +110,7 @@ public class InteractionManagerP2 : MonoBehaviour
         potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
         int i = potentialInteractions.First.Value.GetComponent<InteractableInfos>().text.textString.Length;
         iController.canvasCloseSprite();
+        _inputReader.DisablePlayerInputMove(2);
         Debug.Log("interagiu");
         if (indexText < i)
         {
@@ -119,6 +120,7 @@ public class InteractionManagerP2 : MonoBehaviour
         else
         {
             iController.canvasCloseText();
+            _inputReader.EnablePlayerInput(2);
             indexText = 0;
         }
     }

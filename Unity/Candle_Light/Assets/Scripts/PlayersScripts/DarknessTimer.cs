@@ -13,6 +13,8 @@ public class DarknessTimer : MonoBehaviour
     private PlayerTwoScript playerScript;
 
     private DarknessEffectVolumeComponent darknessEffect;
+
+    private InputReader inputReader = default;
     
     [Tooltip("Volume contendo o componente DarknessEffect para a tela correta.")]
     [SerializeField] private Volume postProcessingVolume;
@@ -25,25 +27,31 @@ public class DarknessTimer : MonoBehaviour
 
     private float timer;
 
+    private bool _disabled;
+
     void Awake()
     {
         detector = GetComponent<LightDetector>();
         playerScript = GetComponent<PlayerTwoScript>();
         postProcessingVolume.profile.TryGet(out darknessEffect);
         timer = 0.000001f;
+        inputReader.CheatGhostInvulEvent += () => _disabled = !_disabled;
     }
 
     void FixedUpdate()
     {
-        if(detector.IsLit)
+        if (_disabled) return;
+
+        if (detector.IsLit)
         {
-            timer = Mathf.Max(timer - (1/lightTime) * Time.fixedDeltaTime, 0.000001f);
-        }else
+            timer = Mathf.Max(timer - (1 / lightTime) * Time.fixedDeltaTime, 0.000001f);
+        }
+        else
         {
-            timer = Mathf.Min(timer + (1/darkTime) * Time.fixedDeltaTime, 1);
-            if(timer >= 1)
+            timer = Mathf.Min(timer + (1 / darkTime) * Time.fixedDeltaTime, 1);
+            if (timer >= 1)
             {
-                if(!playerScript.IsDisabled)
+                if (!playerScript.IsDisabled)
                     playerScript.Die();
                 timer -= 0.01f;
             }

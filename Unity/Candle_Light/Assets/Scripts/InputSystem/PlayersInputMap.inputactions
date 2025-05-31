@@ -508,6 +508,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "CheatInvulGhost",
+                    "type": "Button",
+                    "id": "214bdd7f-2450-4c05-8262-affbcd609839",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -519,6 +528,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Close",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "83675e42-a45e-4ec0-b111-d3c061f6a1fe",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheatInvulGhost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

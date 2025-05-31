@@ -594,6 +594,15 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""CheatInvulGhost"",
+                    ""type"": ""Button"",
+                    ""id"": ""214bdd7f-2450-4c05-8262-affbcd609839"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -605,6 +614,17 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Close"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83675e42-a45e-4ec0-b111-d3c061f6a1fe"",
+                    ""path"": ""<Keyboard>/f1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheatInvulGhost"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -628,6 +648,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         // InComumInputs
         m_InComumInputs = asset.FindActionMap("InComumInputs", throwIfNotFound: true);
         m_InComumInputs_Close = m_InComumInputs.FindAction("Close", throwIfNotFound: true);
+        m_InComumInputs_CheatInvulGhost = m_InComumInputs.FindAction("CheatInvulGhost", throwIfNotFound: true);
     }
 
     ~@PlayersInputMap()
@@ -969,6 +990,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_InComumInputs;
     private List<IInComumInputsActions> m_InComumInputsActionsCallbackInterfaces = new List<IInComumInputsActions>();
     private readonly InputAction m_InComumInputs_Close;
+    private readonly InputAction m_InComumInputs_CheatInvulGhost;
     /// <summary>
     /// Provides access to input actions defined in input action map "InComumInputs".
     /// </summary>
@@ -984,6 +1006,10 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "InComumInputs/Close".
         /// </summary>
         public InputAction @Close => m_Wrapper.m_InComumInputs_Close;
+        /// <summary>
+        /// Provides access to the underlying input action "InComumInputs/CheatInvulGhost".
+        /// </summary>
+        public InputAction @CheatInvulGhost => m_Wrapper.m_InComumInputs_CheatInvulGhost;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1013,6 +1039,9 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
             @Close.started += instance.OnClose;
             @Close.performed += instance.OnClose;
             @Close.canceled += instance.OnClose;
+            @CheatInvulGhost.started += instance.OnCheatInvulGhost;
+            @CheatInvulGhost.performed += instance.OnCheatInvulGhost;
+            @CheatInvulGhost.canceled += instance.OnCheatInvulGhost;
         }
 
         /// <summary>
@@ -1027,6 +1056,9 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
             @Close.started -= instance.OnClose;
             @Close.performed -= instance.OnClose;
             @Close.canceled -= instance.OnClose;
+            @CheatInvulGhost.started -= instance.OnCheatInvulGhost;
+            @CheatInvulGhost.performed -= instance.OnCheatInvulGhost;
+            @CheatInvulGhost.canceled -= instance.OnCheatInvulGhost;
         }
 
         /// <summary>
@@ -1146,5 +1178,12 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnClose(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CheatInvulGhost" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCheatInvulGhost(InputAction.CallbackContext context);
     }
 }

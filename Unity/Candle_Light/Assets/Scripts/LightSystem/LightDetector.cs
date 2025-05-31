@@ -19,32 +19,30 @@ public class LightDetector : MonoBehaviour
 
     private bool _isLit;
 
-    /// <summary>
-    /// Habilite para sincronizar a posicao no update de fisica.
-    /// </summary>
-    [Header("Habilite para sincronizar a posicao no update de fisica")]
-    [SerializeField] private bool doPositionSync;
-
     public Action<bool> lightChangeEvent;
 
     [Tooltip("Referência para os objetos que receberão os comandos da interação")]
 	[SerializeField] 
-    private ObserverEventChannel _observerEvent = default;    
+    private ObserverEventChannel _observerEvent = default;
+
+    [Tooltip("Referência para o animator. DEVE TER UM PARAMETRO BOOL CHAMADO \"IS LIT\".")]
+    [SerializeField]
+    private Animator animator;
 
     void Awake()
     {
-        lightChangeEvent = (x) => {};
-        if(_observerEvent)
-            lightChangeEvent += (x) => _observerEvent.NotifyObservers(x? 1:0);
+        lightChangeEvent = (x) => { };
+        if (_observerEvent)
+            lightChangeEvent += (x) => _observerEvent.NotifyObservers(x ? 1 : 0);
+        if (animator != null)
+            lightChangeEvent += (x) => animator.SetBool("IsLit", x);
     }
 
     void FixedUpdate()
     {
-        // Sincroniza posicao com o sistema de luz
-        if(doPositionSync)
-        {
-            LightSystem.Instance.UpdateDetectorPos(GetInstanceID(), transform.position);
-        }
+        
+        LightSystem.Instance.UpdateDetectorPos(GetInstanceID(), transform.position);
+
     }
 
 

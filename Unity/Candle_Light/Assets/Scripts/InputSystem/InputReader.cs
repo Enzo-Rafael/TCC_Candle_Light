@@ -28,6 +28,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     public event UnityAction<Vector2> MouseEvent = delegate { };
     public event UnityAction<Vector2> VooEvent = delegate { };
     public event UnityAction<bool> EscEvent = delegate { };
+    public event UnityAction CheatGhostInvulEvent = delegate { };
     public event UnityAction ChangeCamLeftEvent = delegate { };
     public event UnityAction ChangeCamRightEvent = delegate { };
 
@@ -177,18 +178,24 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     {
         if (context.phase == InputActionPhase.Performed) ChangeCamRightEvent.Invoke();
     }
-    //PROVISORIO
-     public void DisablePlayerInputMove(int index){
-        switch(index)
-        {
-            case 1:
-            _playersInput.Player1Move.MoveInputOne.Disable();
-            break;
-            
-            case 2:
-            _playersInput.Player2Move.MoveInputTwo.Disable();
-            break;
-        }
+    public void OnCheatInvulGhost(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed) CheatGhostInvulEvent();
     }
     
+    //PROVISORIO
+    public void DisablePlayerInputMove(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                _playersInput.Player1Move.MoveInputOne.Disable();
+                break;
+
+            case 2:
+                _playersInput.Player2Move.MoveInputTwo.Disable();
+                break;
+        }
+    }
+
 }

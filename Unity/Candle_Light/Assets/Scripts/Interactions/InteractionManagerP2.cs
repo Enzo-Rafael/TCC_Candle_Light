@@ -79,6 +79,7 @@ public class InteractionManagerP2 : MonoBehaviour
     {
         potentialInteractions.AddFirst(itemInteratable);
         iController.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+        Debug.Log("Adicionei na lista");
     }
     /*------------------------------------------------------------------------------
     Função:     RemovePotentialInteraction

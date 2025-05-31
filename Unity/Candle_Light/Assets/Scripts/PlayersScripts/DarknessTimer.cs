@@ -14,6 +14,7 @@ public class DarknessTimer : MonoBehaviour
 
     private DarknessEffectVolumeComponent darknessEffect;
 
+    [SerializeField]
     private InputReader inputReader = default;
     
     [Tooltip("Volume contendo o componente DarknessEffect para a tela correta.")]

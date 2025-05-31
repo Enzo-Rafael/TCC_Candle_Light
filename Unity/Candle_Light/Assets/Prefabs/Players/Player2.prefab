@@ -492,8 +492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe72e2d9badc0234eb902e424fe56a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doPositionSync: 1
   _observerEvent: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &5679381062829531428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,6 +507,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
+  iController: {fileID: 5676224265979371617}
+  indexText: 0
 --- !u!114 &4843380957931801773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,6 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b59122554271b43859ba2749b4cb05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
   postProcessingVolume: {fileID: 0}
   darkTime: 3.5
   lightTime: 0.5
@@ -536,10 +539,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexPlayer: 0
   spriteCanvas: {fileID: 0}
+  textCanvas: {fileID: 0}
   interactionSprite: {fileID: 0}
+  textElement: {fileID: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16384
 --- !u!1 &8297063916956038905
 GameObject:
   m_ObjectHideFlags: 0

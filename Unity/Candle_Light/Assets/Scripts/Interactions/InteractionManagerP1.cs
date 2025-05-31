@@ -39,8 +39,13 @@ public class InteractionManagerP1 : MonoBehaviour
     [SerializeField]
     private EquipItemInteractable equipItem = null;
 
+    [SerializeField]
+    private InteractionController iController;
+    [SerializeField]
+    private int indexText = 0;
+
     //------------------------- Variaveis Globais privadas -------------------------------
-    
+
     private const int floorLayer = 13;
     private const int EquipLayer = 12;
     private const int UseLayer = 6;
@@ -88,13 +93,16 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-	private void AddPotentialInteraction(GameObject itemInteractable){
+    private void AddPotentialInteraction(GameObject itemInteractable)
+    {
         potentialInteractions.AddFirst(itemInteractable);
 
         foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
         {
-                    renderer.material.SetFloat("_Highlight", 1);
+            renderer.material.SetFloat("_Highlight", 1);
         }
+        iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+        //iController?.UpdateIteractableText(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
     }
     /*------------------------------------------------------------------------------
     Função:     RemovePotentialInteraction
@@ -102,21 +110,25 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-	private void RemovePotentialInteraction(GameObject itemInteractable){
-		LinkedListNode<GameObject> currentNode = potentialInteractions.First;
-		while (currentNode != null){
-			if (currentNode.Value == itemInteractable){
+    private void RemovePotentialInteraction(GameObject itemInteractable)
+    {
+        LinkedListNode<GameObject> currentNode = potentialInteractions.First;
+        while (currentNode != null)
+        {
+            if (currentNode.Value == itemInteractable)
+            {
                 //Debug.Log("Removi");
-				potentialInteractions.Remove(currentNode);
-
+                potentialInteractions.Remove(currentNode);
+                iController.canvasCloseSprite();
+                iController.canvasCloseText();
                 foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
                 {
                     renderer.material.SetFloat("_Highlight", 0);
                 }
-				break;
-			}
-			currentNode = currentNode.Next;
-		}
+                break;
+            }
+            currentNode = currentNode.Next;
+        }
     }
     /*------------------------------------------------------------------------------
     Função:     UseInteractionType
@@ -132,22 +144,42 @@ public class InteractionManagerP1 : MonoBehaviour
             } 
             return;
         }
-        switch(potentialInteractions.First.Value.layer){
+        iController.canvasCloseSprite();
+        switch (potentialInteractions.First.Value.layer)
+        {
             case EquipLayer:
-            if(equipItem == null){
-                potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
-                equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
-                equipItem.DefineLayer(default);
-                RemovePotentialInteraction(potentialInteractions.First.Value);  
-            }
-            break;
-            case UseLayer:
-                foreach(IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
+                if (equipItem == null)
                 {
-                    Debug.Log("interagiu");
-                    interactable.BaseAction();
+                    potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
+                    equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();                
+                    equipItem.DefineLayer(default);
+                    RemovePotentialInteraction(potentialInteractions.First.Value);
                 }
-            break;
+                break;
+            case UseLayer:
+                InteractableInfos infos = potentialInteractions.First.Value.GetComponent<InteractableInfos>();
+                _inputReader.DisablePlayerInputMove(1);
+                foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
+                {
+                    if(infos != null){
+                        int i = infos.text.textString.Length;
+                        Debug.Log("interagiu");
+                        if (indexText < i)
+                        {
+                            iController.UpdateIteractableText(infos, indexText);
+                            indexText += 1;
+                        }
+                        else
+                        {
+                            iController.canvasCloseText();
+                            iController.canvasCloseSprite();
+                            _inputReader.EnablePlayerInput(1);
+                            indexText = 0;
+                            interactable.BaseAction();
+                        }
+                    }else interactable.BaseAction();
+                }
+                break;
         }
     }
     /*------------------------------------------------------------------------------

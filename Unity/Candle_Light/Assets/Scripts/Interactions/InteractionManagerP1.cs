@@ -145,7 +145,6 @@ public class InteractionManagerP1 : MonoBehaviour
             return;
         }
         iController.canvasCloseSprite();
-        _inputReader.DisablePlayerInputMove(1);
         switch (potentialInteractions.First.Value.layer)
         {
             case EquipLayer:
@@ -158,22 +157,27 @@ public class InteractionManagerP1 : MonoBehaviour
                 }
                 break;
             case UseLayer:
+                InteractableInfos infos = potentialInteractions.First.Value.GetComponent<InteractableInfos>();
+                _inputReader.DisablePlayerInputMove(1);
                 foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
                 {
-                    int i = potentialInteractions.First.Value.GetComponent<InteractableInfos>().text.textString.Length;
-                    Debug.Log("interagiu");
-                    if (indexText < i)
-                    {
-                        iController?.UpdateIteractableText(potentialInteractions.First.Value.GetComponent<InteractableInfos>(), indexText);
-                        indexText += 1;
-                    }
-                    else
-                    {
-                        iController.canvasCloseText();
-                        _inputReader.EnablePlayerInput(1);
-                        indexText = 0;
-                    }
-                    interactable.BaseAction();
+                    if(infos != null){
+                        int i = infos.text.textString.Length;
+                        Debug.Log("interagiu");
+                        if (indexText < i)
+                        {
+                            iController.UpdateIteractableText(infos, indexText);
+                            indexText += 1;
+                        }
+                        else
+                        {
+                            iController.canvasCloseText();
+                            iController.canvasCloseSprite();
+                            _inputReader.EnablePlayerInput(1);
+                            indexText = 0;
+                            interactable.BaseAction();
+                        }
+                    }else interactable.BaseAction();
                 }
                 break;
         }

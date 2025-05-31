@@ -108,20 +108,24 @@ public class InteractionManagerP2 : MonoBehaviour
     {
         if (potentialInteractions.Count == 0) return;
         potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
-        int i = potentialInteractions.First.Value.GetComponent<InteractableInfos>().text.textString.Length;
-        iController.canvasCloseSprite();
-        _inputReader.DisablePlayerInputMove(2);
-        Debug.Log("interagiu");
-        if (indexText < i)
-        {
-            iController?.UpdateIteractableText(potentialInteractions.First.Value.GetComponent<InteractableInfos>(), indexText);
-            indexText += 1;
-        }
-        else
-        {
-            iController.canvasCloseText();
-            _inputReader.EnablePlayerInput(2);
-            indexText = 0;
+
+        InteractableInfos infos = potentialInteractions.First.Value.GetComponent<InteractableInfos>();
+        if(infos != null){
+            int i = infos.text.textString.Length;
+            _inputReader.DisablePlayerInputMove(2);
+            Debug.Log("interagiu");
+            if (indexText < i)
+            {
+                iController?.UpdateIteractableText(infos, indexText);
+                indexText += 1;
+            }
+            else
+            {
+                iController.canvasCloseSprite();
+                iController.canvasCloseText();
+                _inputReader.EnablePlayerInput(2);
+                indexText = 0;
+            }
         }
     }
 }

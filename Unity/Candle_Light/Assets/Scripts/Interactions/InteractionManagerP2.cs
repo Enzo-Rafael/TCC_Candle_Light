@@ -5,7 +5,7 @@
     Descrição: Dita quais ações serão tomadas ao interagir com o item.
 
     Candle Light - Jogos Digitais LURDES –  14/03/2024
-    Modificado por: Italo 
+    Modificado por: Italo
     Referencias: Unity Chop Chop
 ***************************************************************/
 
@@ -24,7 +24,7 @@ public class InteractionManagerP2 : MonoBehaviour
     //-------------------------- Variaveis Globais Visiveis --------------------------------
 
     [Tooltip("Referência para usar a função associada ao ScriptableObject")]
-    [SerializeField] 
+    [SerializeField]
     private InputReader _inputReader = default;
     [SerializeField]
     private InteractionController iController;
@@ -35,16 +35,16 @@ public class InteractionManagerP2 : MonoBehaviour
     //------------------------- Variaveis Globais privadas -------------------------------
 
     private LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
-    
+
     /*------------------------------------------------------------------------------
     Função:     OnEnable
-    Descrição:  Associa todas as funções utilizadas ao canal de comunicação para que 
+    Descrição:  Associa todas as funções utilizadas ao canal de comunicação para que
                 qualquer script que utilize o canal possa utilizar a função.
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
     private void OnEnable(){
-        _inputReader.ActionEventTwo += UseInteractionType;      
+        _inputReader.ActionEventTwo += UseInteractionType;
     }
     /*------------------------------------------------------------------------------
     Função:     OnDisable
@@ -62,11 +62,11 @@ public class InteractionManagerP2 : MonoBehaviour
                 GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void OnTriggerDetected(bool entered, GameObject itemInteratable){
+    public void OnTriggerDetected(bool entered, GameObject itemInteractable){
         if(entered){
-            AddPotentialInteraction(itemInteratable);
+            AddPotentialInteraction(itemInteractable);
         }else{
-            RemovePotentialInteraction(itemInteratable);
+            RemovePotentialInteraction(itemInteractable);
         }
     }
     /*------------------------------------------------------------------------------
@@ -75,9 +75,15 @@ public class InteractionManagerP2 : MonoBehaviour
     Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void AddPotentialInteraction(GameObject itemInteratable)
+    private void AddPotentialInteraction(GameObject itemInteractable)
     {
-        potentialInteractions.AddFirst(itemInteratable);
+
+        foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
+        {
+            renderer.material.SetFloat("_Highlight", 1);
+        }
+
+        potentialInteractions.AddFirst(itemInteractable);
         iController.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
         Debug.Log("Adicionei na lista");
     }
@@ -87,10 +93,16 @@ public class InteractionManagerP2 : MonoBehaviour
     Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-	private void RemovePotentialInteraction(GameObject itemInteratable){
+	private void RemovePotentialInteraction(GameObject itemInteractable)
+    {
+        foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
+        {
+            renderer.material.SetFloat("_Highlight", 0);
+        }
+
 		LinkedListNode<GameObject> currentNode = potentialInteractions.First;
 		while (currentNode != null){
-			if (currentNode.Value == itemInteratable){
+			if (currentNode.Value == itemInteractable){
 				potentialInteractions.Remove(currentNode);
                 iController.canvasCloseSprite();
                 iController.canvasCloseText();

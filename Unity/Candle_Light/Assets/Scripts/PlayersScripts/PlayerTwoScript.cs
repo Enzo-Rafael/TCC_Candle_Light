@@ -32,6 +32,10 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
     private bool _disabled;
     public bool IsDisabled{ get => _disabled;}
 
+    [SerializeField] private float showDecay;
+    [SerializeField] private float showTimerMax;
+    [HideInInspector] public float showTimer;
+
     //test
     private Vector3 forward;
     private Vector3 strafe;
@@ -39,12 +43,19 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
 
     //Metodos
 
-	private void OnEnable(){
+    private void OnEnable()
+    {
         _inputReader.MoveEventTwo += OnMove;
         _inputReader.MouseEvent += OnMouse;
         _inputReader.VooEvent += OnVoo;
+        _inputReader.GhostShowEvent += Show;
         _disabled = false;
+
+        showTimer = 0;
 	}
+
+
+
     private void OnDisable()
     {
         _inputReader.MoveEventTwo -= OnMove;
@@ -52,7 +63,7 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
         _inputReader.VooEvent -= OnVoo;
 
 	}
-    
+
     private void OnMove(Vector3 movement){
         _inputVector = movement;
     }
@@ -67,13 +78,19 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
         Debug.Log(_vooDirection);
     }
 
+    private void Show(float ammount)
+    {
+        showTimer = Mathf.Min(showTimer + ammount, showTimerMax);
+    }
+
     void Update()
     {
-        if(_disabled) return;
+        if (_disabled) return;
 
         groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && _inputVector.y < 0){
-           _inputVector.y = 0f;
+        if (groundedPlayer && _inputVector.y < 0)
+        {
+            _inputVector.y = 0f;
         }
         smoothVerticalInput = Mathf.Lerp(smoothVerticalInput, _vooDirection.y * vooSpeed, Time.deltaTime / 0.1f);
         forward = _inputVector.y * camPlayerTwo.transform.forward;
@@ -87,8 +104,10 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
         }
 
         controller.Move(playerMove * velocity * Time.deltaTime);
-    }
 
+        showTimer = MathF.Max(showTimer - showDecay, 0);
+
+    }
     /// <summary>
     /// Mata o fantasma, travando os controles e respawnando no lugar correto
     /// </summary>

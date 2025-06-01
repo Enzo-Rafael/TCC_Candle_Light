@@ -3,7 +3,7 @@
     InputReader
     Descrição: Gerencia os Inputs do jogo.
     Candle Light - Jogos Digitais LURDES –  29/03/2024
-    Modificado por: Italo 
+    Modificado por: Italo
 ***************************************************************/
 
 //----------------------------- Bibliotecas Usadas -------------------------------------
@@ -25,6 +25,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     public event UnityAction<Vector3> MoveEventTwo = delegate { };
     public event UnityAction ActionEventOne = delegate { };
     public event UnityAction ActionEventTwo = delegate { };
+    public event UnityAction<float> GhostShowEvent = delegate { };
     public event UnityAction<Vector2> MouseEvent = delegate { };
     public event UnityAction<Vector2> VooEvent = delegate { };
     public event UnityAction<bool> EscEvent = delegate { };
@@ -35,7 +36,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     public event UnityAction MenuCloseEvent = delegate { };
     /*------------------------------------------------------------------------------
     Função:     OnEnable
-    Descrição:  Assosia os inputs a o controlador desse script permitindo que 
+    Descrição:  Assosia os inputs a o controlador desse script permitindo que
                 as funções da interface sejam definidas por aqui.
     Entrada:    -
     Saída:      -
@@ -158,6 +159,13 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
         if (context.phase == InputActionPhase.Performed) ActionEventTwo.Invoke();
 
     }
+    public void OnGhostShow(InputAction.CallbackContext context)
+    {
+        if (context.canceled)
+        {
+            GhostShowEvent((float)context.duration);
+        }
+    }
     public void OnMouse(InputAction.CallbackContext context)
     {
         MouseEvent.Invoke(context.ReadValue<Vector2>());
@@ -182,7 +190,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     {
         if (context.phase == InputActionPhase.Performed) CheatGhostInvulEvent();
     }
-    
+
     //PROVISORIO
     public void DisablePlayerInputMove(int index)
     {

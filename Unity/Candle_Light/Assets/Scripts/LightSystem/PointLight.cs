@@ -15,29 +15,28 @@ public class PointLight : MonoBehaviour
 
     public Light visualLight;
 
+    public SpriteRenderer litSprite;
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, radius);
         if(visualLight)
             visualLight.range = radius;
-        
-    }
 
-    void FixedUpdate()
-    {
-        
     }
 
 
     void OnEnable()
     {
         LightSystem.Instance.AddPointLight(this);
+        if(litSprite != null) litSprite.enabled = true;
     }
 
     void OnDisable()
     {
         LightSystem.Instance.RemovePointLight(this);
+        if(litSprite != null) litSprite.enabled = false;
     }
 
 }

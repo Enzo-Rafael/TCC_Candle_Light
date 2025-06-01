@@ -390,6 +390,15 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""GhostShow"",
+                    ""type"": ""Button"",
+                    ""id"": ""d96d73bc-69e9-47c7-9195-f5b33a6f1d9a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -579,6 +588,17 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                     ""action"": ""VooFantasma"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""15f4ae2d-5a0f-41c5-ac9d-e8367748c5f8"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GhostShow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -645,6 +665,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         m_Player2Move_ActionInputTwo = m_Player2Move.FindAction("ActionInputTwo", throwIfNotFound: true);
         m_Player2Move_Mouse = m_Player2Move.FindAction("Mouse", throwIfNotFound: true);
         m_Player2Move_VooFantasma = m_Player2Move.FindAction("VooFantasma", throwIfNotFound: true);
+        m_Player2Move_GhostShow = m_Player2Move.FindAction("GhostShow", throwIfNotFound: true);
         // InComumInputs
         m_InComumInputs = asset.FindActionMap("InComumInputs", throwIfNotFound: true);
         m_InComumInputs_Close = m_InComumInputs.FindAction("Close", throwIfNotFound: true);
@@ -864,6 +885,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player2Move_ActionInputTwo;
     private readonly InputAction m_Player2Move_Mouse;
     private readonly InputAction m_Player2Move_VooFantasma;
+    private readonly InputAction m_Player2Move_GhostShow;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player2Move".
     /// </summary>
@@ -891,6 +913,10 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player2Move/VooFantasma".
         /// </summary>
         public InputAction @VooFantasma => m_Wrapper.m_Player2Move_VooFantasma;
+        /// <summary>
+        /// Provides access to the underlying input action "Player2Move/GhostShow".
+        /// </summary>
+        public InputAction @GhostShow => m_Wrapper.m_Player2Move_GhostShow;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -929,6 +955,9 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
             @VooFantasma.started += instance.OnVooFantasma;
             @VooFantasma.performed += instance.OnVooFantasma;
             @VooFantasma.canceled += instance.OnVooFantasma;
+            @GhostShow.started += instance.OnGhostShow;
+            @GhostShow.performed += instance.OnGhostShow;
+            @GhostShow.canceled += instance.OnGhostShow;
         }
 
         /// <summary>
@@ -952,6 +981,9 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
             @VooFantasma.started -= instance.OnVooFantasma;
             @VooFantasma.performed -= instance.OnVooFantasma;
             @VooFantasma.canceled -= instance.OnVooFantasma;
+            @GhostShow.started -= instance.OnGhostShow;
+            @GhostShow.performed -= instance.OnGhostShow;
+            @GhostShow.canceled -= instance.OnGhostShow;
         }
 
         /// <summary>
@@ -1163,6 +1195,13 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnVooFantasma(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "GhostShow" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGhostShow(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "InComumInputs" which allows adding and removing callbacks.

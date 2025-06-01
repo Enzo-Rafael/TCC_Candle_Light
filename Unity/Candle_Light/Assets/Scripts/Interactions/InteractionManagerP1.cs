@@ -177,7 +177,11 @@ public class InteractionManagerP1 : MonoBehaviour
                             indexText = 0;
                             interactable.BaseAction();
                         }
-                    }else interactable.BaseAction();
+                    }
+                    else{
+                        interactable.BaseAction();
+                        _inputReader.EnablePlayerInput(1);
+                    }
                 }
                 break;
         }

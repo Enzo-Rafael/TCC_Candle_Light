@@ -3,7 +3,9 @@ Shader "Custom/Custom_Default"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _MainTint ("Main Tint", Color) = (1,1,1)
         _ShadowTint ("Shadow Tint", Color) = (0.5,0.5,0.5)
+        _LightTint ("Light Tint", Color) = (1, 1, 1)
         [Enum(UnityEngine.Rendering.CullMode)] _Cull ("Cull", Float) = 0
         [MaterialToggle] _Highlight ("Highlight", Float) = 0
     }
@@ -62,7 +64,9 @@ Shader "Custom/Custom_Default"
             
             CBUFFER_START(UnityPerMaterial)
             float4 _MainTex_ST;
+            half3 _MainTint;
             half3 _ShadowTint;
+            half3 _LightTint;
             float _ShadowHardness;
             CBUFFER_END
             
@@ -117,14 +121,14 @@ Shader "Custom/Custom_Default"
             half4 frag (v2f IN) : SV_Target
             {
                 half4 col = 0;
-                half3 lightVal = 0;
+                half3 lightCol = 0;
 
                 // Sampling sombras
                 half4 shadowCoord = TransformWorldToShadowCoord(IN.worldPos);
 
                 // Calculo de luz principal
                 Light light = GetMainLight(shadowCoord);
-                lightVal = CalculateLight(light, IN.normalWS);
+                lightCol = CalculateLight(light, IN.normalWS);
 
                 // Preparacao para loop de luz
                 InputData inputData = (InputData)0;
@@ -137,10 +141,10 @@ Shader "Custom/Custom_Default"
                 uint pixelLightCount = GetAdditionalLightsCount();
                 LIGHT_LOOP_BEGIN(pixelLightCount)
                     Light additionalLight = GetAdditionalLight(lightIndex, inputData.positionWS, 1);
-                    lightVal += CalculateSecondLight(additionalLight);
+                    lightCol += CalculateSecondLight(additionalLight);
                 LIGHT_LOOP_END
 
-                lightVal = saturate(lightVal);
+                lightCol = saturate(lightCol);
                 col = tex2D(_MainTex, IN.uv);
                 half timer = abs(frac(_Time.z)*2-1);
 
@@ -149,7 +153,7 @@ Shader "Custom/Custom_Default"
                     col.rgb += saturate(1-dot(IN.normalWS, inputData.viewDirectionWS)) * HIGHLIGHT_COLOR * (timer/2+0.5);
                 }
 
-                col.rgb = (col * lightVal) + (col * _ShadowTint * (1-lightVal));
+                col.rgb = _MainTint * ((col * _LightTint * lightCol) + (col * _ShadowTint * (1-lightCol)));
                 
                 clip(col.a-0.5);
                 return col;

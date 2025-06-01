@@ -20,8 +20,11 @@ public class NoCandleZone : MonoBehaviour
 
     private BoxCollider col;
 
+    private bool _disabled;
+
     void Awake()
     {
+        _disabled = false;
         lightsContained = new List<PointLight>();
         col = GetComponent<BoxCollider>();
 
@@ -33,6 +36,8 @@ public class NoCandleZone : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (_disabled) return;
+
         foreach (PointLight light in LightSystem.Instance.pointLights)
         {
             if (col.bounds.Contains(light.transform.position))
@@ -61,6 +66,7 @@ public class NoCandleZone : MonoBehaviour
     /// </summary>
     public void Disperse()
     {
+        _disabled = true;
         StartCoroutine(DisperseCoroutine());
     }
 
@@ -68,7 +74,7 @@ public class NoCandleZone : MonoBehaviour
     {
         while (lightsContained.Count > 0)
         {
-            yield return new WaitForSeconds(Random.Range(1f, 3f));
+            yield return new WaitForSeconds(Random.Range(0.2f, 1f));
 
             int randIndex = Random.Range(0, lightsContained.Count);
 

@@ -3,6 +3,7 @@ Shader "Custom/Custom_Default_VertColor"
     Properties
     {
         _ShadowTint ("Shadow Tint", Color) = (0.5,0.5,0.5)
+        _MainTint ("Main Tint", Color) = (1, 1, 1)
         //_VertEffectSize ("Vert Snap Strength", Float) = 128
     }
     SubShader

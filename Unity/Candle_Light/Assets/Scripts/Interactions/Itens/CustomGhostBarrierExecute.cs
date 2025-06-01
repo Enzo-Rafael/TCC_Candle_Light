@@ -9,7 +9,7 @@ public class CustomGhostBarrier : MonoBehaviour, ICodeCustom
         if (barrierReference != null) barrierReference.SetActive(false);
     }
 
-    // ia trocar pra ser uma custom generico pra mudar o estado de ativado ou desativado dos itens, 
+    // ia trocar pra ser uma custom generico pra mudar o estado de ativado ou desativado dos itens,
     // e ja aproveitar pra usar no puzzle da bliblioteca só que mesmo mudando pra true não tá ativando essa porra.
 
     // using UnityEngine;
@@ -24,9 +24,8 @@ public class CustomGhostBarrier : MonoBehaviour, ICodeCustom
     //                 Debug.Log(objectsInList.activeSelf);
     //                 objectsInList.SetActive(!objectsInList.activeSelf);
     //                 Debug.Log(objectsInList.activeSelf);
-    //             }    
+    //             }
     //         }
     //     }
 }
 
-}

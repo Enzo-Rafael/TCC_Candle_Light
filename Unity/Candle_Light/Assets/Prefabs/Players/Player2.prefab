@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8447268604795137480}
   - component: {fileID: 360806007194598628}
   - component: {fileID: 862914848807340741}
+  - component: {fileID: 8549270507246860716}
   m_Layer: 11
   m_Name: Graphics
   m_TagString: Untagged
@@ -128,8 +129,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
-  m_Bindings: []
+  m_Bindings:
+  - {fileID: 8549270507246860716}
   m_VisualEffect: {fileID: 360806007194598628}
+--- !u!114 &8549270507246860716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230205568269854901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb7a44b882b9fc4183b39d1206df9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnProperty:
+    m_Name: SpawnRate
+  target: {fileID: 5061557446704673241}
 --- !u!1 &2864596355448705373
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,8 +513,9 @@ MonoBehaviour:
   velocity: 2
   controller: {fileID: 2439669967701740958}
   respawnPoint: {fileID: 0}
-  showDecay: 0
-  showTimerMax: 0
+  showDecay: 1
+  showTimerMax: 2
+  showTimer: 1
 --- !u!114 &5970005580199222380
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -34,7 +34,8 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
 
     [SerializeField] private float showDecay;
     [SerializeField] private float showTimerMax;
-    [HideInInspector] public float showTimer;
+    public float ShowTimerMax(){ return showTimerMax; }
+    public float showTimer = 1;
 
     //test
     private Vector3 forward;
@@ -105,7 +106,7 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
 
         controller.Move(playerMove * velocity * Time.deltaTime);
 
-        showTimer = MathF.Max(showTimer - showDecay, 0);
+        showTimer = MathF.Max(showTimer - showDecay * Time.deltaTime, 0);
 
     }
     /// <summary>

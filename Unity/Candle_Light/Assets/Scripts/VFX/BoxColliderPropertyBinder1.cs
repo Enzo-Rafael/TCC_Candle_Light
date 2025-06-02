@@ -8,22 +8,19 @@ using UnityEngine.VFX.Utility;
 [VFXBinder("Player2")]
 public class Player2Binder : VFXBinderBase
 {
-    [VFXPropertyBinding("UnityEngine.MonoBehaviour")]
-    public ExposedProperty player2Show = "SpawnRate";
+    public ExposedProperty spawnProperty = "SpawnRate";
 
     public PlayerTwoScript target = null;
 
     public override bool IsValid(VisualEffect component)
     {
         return
-            target != null &&
-            component.HasVector3(player2Show) &&
-            component.HasVector3(player2Show);
+            target != null && component.HasFloat(spawnProperty);
     }
 
     public override void UpdateBinding(VisualEffect component)
     {
-        component.SetFloat(player2Show, target.showTimer);
+        component.SetFloat(spawnProperty, target.showTimer);
     }
 }
 

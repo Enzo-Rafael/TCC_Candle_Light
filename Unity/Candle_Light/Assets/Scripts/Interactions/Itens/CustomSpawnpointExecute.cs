@@ -7,11 +7,13 @@ public class CustomSpawnpointExecute : MonoBehaviour, ICodeCustom
     public void Start(){
         spawnReference = GetComponent<UseSpawnpointInteractable>();
     }
-    public void CustomBaseAction(object additionalInformation){
+    public void CustomBaseAction(object additionalInformation)
+    {
         if (spawnReference != null) spawnReference.SetAction(false);
+
     }
 
     public void SetSpawnReference(){
         spawnReference.SetAction(true);
-    }  
+    }
 }

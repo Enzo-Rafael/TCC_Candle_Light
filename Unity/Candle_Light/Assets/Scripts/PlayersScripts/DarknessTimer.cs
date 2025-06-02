@@ -16,7 +16,7 @@ public class DarknessTimer : MonoBehaviour
 
     [SerializeField]
     private InputReader inputReader = default;
-    
+
     [Tooltip("Volume contendo o componente DarknessEffect para a tela correta.")]
     [SerializeField] private Volume postProcessingVolume;
 
@@ -58,7 +58,7 @@ public class DarknessTimer : MonoBehaviour
             }
         }
 
-        darknessEffect.intensity.value = timer;
+        darknessEffect.intensity.value = timer + Mathf.Min(playerScript.showTimer / playerScript.ShowTimerMax(),0.2f);
         darknessEffect.distance.value = darkTime*(1-timer)*playerScript.GetVelocity();
     }
 }

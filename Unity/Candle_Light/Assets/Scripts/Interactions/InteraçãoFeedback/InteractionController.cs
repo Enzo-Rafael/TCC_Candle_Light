@@ -20,13 +20,13 @@ public class InteractionController : MonoBehaviour
 
     public void UpdateIteractableSprite(InteractableInfos infos)
     {
-        if (infos == null || infos.interactSprite == null)
+        if (infos == null)
         {
             spriteCanvas.SetActive(false);
             return;
         }
         spriteCanvas.SetActive(true);
-        interactionSprite.sprite = infos.interactSprite;
+        //interactionSprite.sprite = infos.interactSprite;
     }
 
     public void UpdateIteractableText(InteractableInfos textInfo, int index)

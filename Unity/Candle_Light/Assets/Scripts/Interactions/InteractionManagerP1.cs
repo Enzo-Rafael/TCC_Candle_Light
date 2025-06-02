@@ -102,7 +102,7 @@ public class InteractionManagerP1 : MonoBehaviour
             renderer.material.SetFloat("_Highlight", 1);
         }
         iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
-        //iController?.UpdateIteractableText(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+        //iController?.UpdateIteractableText(potentialInteractions.First.Value.GetComponent<InteractableInfos>(), 0);
     }
     /*------------------------------------------------------------------------------
     Função:     RemovePotentialInteraction
@@ -161,7 +161,9 @@ public class InteractionManagerP1 : MonoBehaviour
                 _inputReader.DisablePlayerInputMove(1);
                 foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
                 {
-                    if(infos != null){
+                    Debug.Log("ue");
+                    if (infos != null)
+                    {
                         int i = infos.text.textString.Length;
                         Debug.Log("interagiu");
                         if (indexText < i)
@@ -178,7 +180,8 @@ public class InteractionManagerP1 : MonoBehaviour
                             interactable.BaseAction();
                         }
                     }
-                    else{
+                    else
+                    {
                         interactable.BaseAction();
                         _inputReader.EnablePlayerInput(1);
                     }

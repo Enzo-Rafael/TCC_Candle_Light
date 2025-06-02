@@ -5,7 +5,7 @@
     Descrição: Dita quais ações serão tomadas ao interagir com o item.
 
     Candle Light - Jogos Digitais LURDES –  01/05/2024
-    Modificado por: Italo 
+    Modificado por: Italo
     Referencias: Unity Chop Chop
 ***************************************************************/
 
@@ -24,7 +24,7 @@ public class InteractionManagerP1 : MonoBehaviour
     //-------------------------- Variaveis Globais Visiveis --------------------------------
 
     [Tooltip("Referência para usar a função associada ao ScriptableObject")]
-    [SerializeField] 
+    [SerializeField]
     private InputReader _inputReader = default;
 
     [Tooltip("Tamanho da distância que o raycast irá verificar para verificar se há chão")]
@@ -53,10 +53,10 @@ public class InteractionManagerP1 : MonoBehaviour
     RaycastHit hitFloor;
 
     private LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
-    
+
     /*------------------------------------------------------------------------------
     Função:     OnEnable
-    Descrição:  Associa todas as funções utilizadas ao canal de comunicação para que 
+    Descrição:  Associa todas as funções utilizadas ao canal de comunicação para que
                 qualquer script que utilize o canal possa utilizar a função.
     Entrada:    -
     Saída:      -
@@ -141,7 +141,7 @@ public class InteractionManagerP1 : MonoBehaviour
             if(equipItem != null && FloorVerification()){
                 equipItem.DropItem(hitFloor.point);
                 equipItem = null;
-            } 
+            }
             return;
         }
         iController.canvasCloseSprite();
@@ -151,39 +151,41 @@ public class InteractionManagerP1 : MonoBehaviour
                 if (equipItem == null)
                 {
                     potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
-                    equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();                
+                    equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
                     equipItem.DefineLayer(default);
                     RemovePotentialInteraction(potentialInteractions.First.Value);
                 }
                 break;
             case UseLayer:
                 InteractableInfos infos = potentialInteractions.First.Value.GetComponent<InteractableInfos>();
-                _inputReader.DisablePlayerInputMove(1);
-                foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
+                if (infos != null)
                 {
-                    Debug.Log("ue");
-                    if (infos != null)
+                    _inputReader.DisablePlayerInputMove(1);
+                    int i = infos.text.textString.Length;
+                    Debug.Log("interagiu");
+                    if (indexText < i)
                     {
-                        int i = infos.text.textString.Length;
-                        Debug.Log("interagiu");
-                        if (indexText < i)
-                        {
-                            iController.UpdateIteractableText(infos, indexText);
-                            indexText += 1;
-                        }
-                        else
-                        {
-                            iController.canvasCloseText();
-                            iController.canvasCloseSprite();
-                            _inputReader.EnablePlayerInput(1);
-                            indexText = 0;
-                            interactable.BaseAction();
-                        }
+                        iController.UpdateIteractableText(infos, indexText);
+                        indexText += 1;
                     }
                     else
                     {
-                        interactable.BaseAction();
+                        iController.canvasCloseText();
+                        iController.canvasCloseSprite();
                         _inputReader.EnablePlayerInput(1);
+                        indexText = 0;
+
+                        foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
+                        {
+                            interactable.BaseAction();
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
+                    {
+                        interactable.BaseAction();
                     }
                 }
                 break;

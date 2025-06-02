@@ -84,7 +84,7 @@ public class InteractionManagerP2 : MonoBehaviour
         }
 
         potentialInteractions.AddFirst(itemInteractable);
-        iController.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+        iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
         Debug.Log("Adicionei na lista");
     }
     /*------------------------------------------------------------------------------

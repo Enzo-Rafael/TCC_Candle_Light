@@ -8,7 +8,11 @@ public class UseSpawnpointInteractable : Interactable, IInteractable
 
     public Transform spawnPosition;
 
-    public void Start(){
+    [SerializeField]
+    private PointLight pointLight;
+
+    public void Start()
+    {
         command = GetComponent<ExecuteItemCommand>();
         command.UnregisterEventPublic();
     }
@@ -24,8 +28,10 @@ public class UseSpawnpointInteractable : Interactable, IInteractable
         Register();
         SetAction(true);
     }
-    public void SetAction(bool action){
+    public void SetAction(bool action)
+    {
         this.action = action;
+        pointLight.enabled = action;
     }
     public void Register(){
         command.RegisterEvent();

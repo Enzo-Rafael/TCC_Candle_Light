@@ -106,11 +106,11 @@ public class NoCandleZone : MonoBehaviour
         colorCurvesComponent.lumVsSat.value.MoveKey(0, new Keyframe(0, colorCurveIntensity * 0.5f));
     }
 
-    void OnDrawGizmosSelected()
-    {
-        filmGrainComponent.intensity.Override(grainIntensity);
-        colorCurvesComponent.lumVsSat.value.MoveKey(0, new Keyframe(0, Mathf.Lerp(curveKFEnd, curveKFStart, colorCurveIntensity)));
-    }
+    //void OnDrawGizmosSelected()
+    //{
+    //    filmGrainComponent.intensity.Override(grainIntensity);
+    //    colorCurvesComponent.lumVsSat.value.MoveKey(0, new Keyframe(0, Mathf.Lerp(curveKFEnd, curveKFStart, colorCurveIntensity)));
+    //}
 
     #endregion
 }

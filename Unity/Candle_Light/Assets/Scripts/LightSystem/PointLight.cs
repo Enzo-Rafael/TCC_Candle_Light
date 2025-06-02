@@ -30,13 +30,15 @@ public class PointLight : MonoBehaviour
     void OnEnable()
     {
         LightSystem.Instance.AddPointLight(this);
-        if(litSprite != null) litSprite.enabled = true;
+        if (litSprite != null) litSprite.enabled = true;
+        visualLight.enabled = true;
     }
 
     void OnDisable()
     {
         LightSystem.Instance.RemovePointLight(this);
-        if(litSprite != null) litSprite.enabled = false;
+        if (litSprite != null) litSprite.enabled = false;
+        visualLight.enabled = false;
     }
 
 }

@@ -20,6 +20,8 @@ public sealed class DarknessEffectVolumeComponent : VolumeComponent, IPostProces
 
     [Tooltip("Distancia maxima de visao.")]
     public MinFloatParameter distance = new MinFloatParameter(10, 0, true);
+    [Tooltip("Efeito de feedback para quando o fantasma se mostra.")]
+    public MinFloatParameter showFeedback = new MinFloatParameter(1, 0, true);
 
     public bool IsActive()
     {

@@ -41,6 +41,10 @@ public class DarknessTimer : MonoBehaviour
 
     void FixedUpdate()
     {
+        darknessEffect.showFeedback.value = Mathf.Min(playerScript.showTimer / playerScript.ShowTimerMax(), 0.5f);
+        darknessEffect.intensity.value = timer;
+        darknessEffect.distance.value = darkTime * (1 - timer) * playerScript.GetVelocity();
+
         if (_disabled) return;
 
         if (detector.IsLit)
@@ -57,8 +61,5 @@ public class DarknessTimer : MonoBehaviour
                 timer -= 0.01f;
             }
         }
-
-        darknessEffect.intensity.value = timer + Mathf.Min(playerScript.showTimer / playerScript.ShowTimerMax(),0.2f);
-        darknessEffect.distance.value = darkTime*(1-timer)*playerScript.GetVelocity();
     }
 }

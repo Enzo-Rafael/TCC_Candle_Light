@@ -1,4 +1,4 @@
 
 public interface ICodeCustom{
-    void CustomBaseAction(object addictionalInfoformation);
+    void CustomBaseAction(object additionalInformation);
 }

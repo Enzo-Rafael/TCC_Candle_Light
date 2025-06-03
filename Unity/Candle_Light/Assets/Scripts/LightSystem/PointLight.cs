@@ -26,7 +26,6 @@ public class PointLight : MonoBehaviour
 
     }
 
-
     void OnEnable()
     {
         LightSystem.Instance.AddPointLight(this);

@@ -5,7 +5,7 @@
     Descrição: Dita como o objeto ira reagir a interação com determinado item.
 
     Candle Light - Jogos Digitais LURDES –  13/03/2024
-    Modificado por: Italo 
+    Modificado por: Italo
 ***************************************************************/
 
 //----------------------------- Bibliotecas Usadas -------------------------------------
@@ -33,7 +33,7 @@ public class ExecuteItemCommand_Editor: Editor{
 public class ExecuteItemCommand : Interactable, IObserver
 {
     [Tooltip("Tipo do item")]
-    [SerializeField] 
+    [SerializeField]
     private ItemType _itemType;
 
     [Tooltip("Referência para codigo que terá como esse item funciona")]
@@ -41,7 +41,7 @@ public class ExecuteItemCommand : Interactable, IObserver
     [SerializeField]
     protected MonoBehaviour _multipleCode;
     protected IMultiple _multiple => _multipleCode as IMultiple;
-     
+
     private void Start(){
        if(animator == null) animator = GetComponentInParent<Animator>();
     }
@@ -79,7 +79,7 @@ public class ExecuteItemCommand : Interactable, IObserver
     Descrição:  Desregistra o Objeto na lista de Observadores do item especifico.
     Entrada:    -
     Saída:      -
-    ------------------------------------------------------------------------------*/ 
+    ------------------------------------------------------------------------------*/
     protected override void UnregisterEvent(){
         UnregisterEventPublic();
     }

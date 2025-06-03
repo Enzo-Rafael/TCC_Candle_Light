@@ -81,7 +81,8 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
 
     private void Show(float ammount)
     {
-        showTimer = Mathf.Min(showTimer + ammount, showTimerMax);
+        if(showTimer <=0)
+            showTimer = Mathf.Min(showTimer + ammount, showTimerMax);
     }
 
     void Update()

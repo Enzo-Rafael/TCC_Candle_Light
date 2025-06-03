@@ -120,7 +120,10 @@ public class InteractionManagerP2 : MonoBehaviour
     public void UseInteractionType()
     {
         if (potentialInteractions.Count == 0) return;
-        potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
+        foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
+        {
+            interactable.BaseAction();
+        }
 
         InteractableInfos infos = potentialInteractions.First.Value.GetComponent<InteractableInfos>();
         if(infos != null){

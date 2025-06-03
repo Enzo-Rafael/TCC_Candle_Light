@@ -163,7 +163,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     {
         if (context.canceled)
         {
-            GhostShowEvent((float)context.duration);
+            GhostShowEvent(Mathf.Max((float)context.duration, 0.75f));
         }
     }
     public void OnMouse(InputAction.CallbackContext context)

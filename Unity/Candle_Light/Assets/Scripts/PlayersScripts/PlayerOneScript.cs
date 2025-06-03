@@ -1,6 +1,6 @@
 using UnityEngine;
 using Unity.Cinemachine;
-//Player 1: MoveR: WASD InteragIr: J Rocionar camera:Q/K e E/L 
+//Player 1: MoveR: WASD InteragIr: J Rocionar camera:Q/K e E/L
 
 public class PlayerOneScript : Singleton<PlayerOneScript>
 {
@@ -24,13 +24,13 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
 
     private Vector3 playerMove;
 
-    private float gravityValue = -50f;
-    
+    private float gravityValue = -500f;
+
     private CinemachineCamera mainCam;// referencia para a o andar do player a partir da camera
 
     //Orientação para o movimento
     private Vector3 forward;
-    
+
     private Vector3 strafe;
 
     //Metodos
@@ -44,7 +44,7 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
     private void OnMove(Vector3 movement){
         _inputVector = movement;
     }
-    
+
     void Update()
     {
         mainCam = GetComponent<ChangeCam>().GetCam();
@@ -58,7 +58,7 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
         strafe = Vector3.Lerp(strafe, _inputVector.x * camStrafe, Time.deltaTime*5);
         playerMove = forward + strafe;
 
-        
+
 
         if (playerMove != Vector3.zero)
         {

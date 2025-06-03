@@ -15,7 +15,7 @@ public class PointLight : MonoBehaviour
 
     public Light visualLight;
 
-    public SpriteRenderer litSprite;
+    public GameObject litSprite;
 
     void OnDrawGizmosSelected()
     {
@@ -29,14 +29,14 @@ public class PointLight : MonoBehaviour
     void OnEnable()
     {
         LightSystem.Instance.AddPointLight(this);
-        if (litSprite != null) litSprite.enabled = true;
+        if (litSprite != null) litSprite.SetActive(true);
         visualLight.enabled = true;
     }
 
     void OnDisable()
     {
         LightSystem.Instance.RemovePointLight(this);
-        if (litSprite != null) litSprite.enabled = false;
+        if (litSprite != null) litSprite.SetActive(false);
         visualLight.enabled = false;
     }
 

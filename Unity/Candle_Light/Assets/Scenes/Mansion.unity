@@ -9389,6 +9389,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -2.8933105
       objectReference: {fileID: 0}
+    - target: {fileID: 5116541642783299066, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3296279714372026428, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
@@ -11999,19 +12003,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5112375157775719838, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 7.3472e-40
+      value: 9.4467156e+30
       objectReference: {fileID: 0}
     - target: {fileID: 5112375157775719838, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 15491427
+      value: 4.937414e-31
       objectReference: {fileID: 0}
     - target: {fileID: 5112375157775719838, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 0
+      value: 1.3563128e-19
       objectReference: {fileID: 0}
     - target: {fileID: 5112375157775719838, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 0
+      value: 7.491162e+31
       objectReference: {fileID: 0}
     - target: {fileID: 5973922315954919590, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12053,6 +12057,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9186792359121653019, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
+      propertyPath: textScriptable
+      value: 
+      objectReference: {fileID: 11400000, guid: e43527d06276373468eb9d1458fb8964, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12632,6 +12640,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.876
       objectReference: {fileID: 0}
+    - target: {fileID: 1604730547337259156, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
+      propertyPath: textUI
+      value: 
+      objectReference: {fileID: 778935926}
+    - target: {fileID: 1604730547337259156, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
+      propertyPath: simpleText
+      value: 
+      objectReference: {fileID: 1932617712}
     - target: {fileID: 1604730547337259156, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
       propertyPath: textCanvas
       value: 
@@ -13573,6 +13589,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.19123363, y: 9.5515, z: 5.272935}
   m_Center: {x: 0.45104265, y: 0, z: 0.3935361}
+--- !u!114 &1932617712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3348591909972314931, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
+  m_PrefabInstance: {fileID: 1414885645}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1940126599
 GameObject:
   m_ObjectHideFlags: 0

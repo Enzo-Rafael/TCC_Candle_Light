@@ -7,12 +7,16 @@ public class InteractionController : MonoBehaviour
 {
     /*Variaveis*/
     public int indexPlayer;//Index dos personagens 0 para o P1 e 1 para o P2
+    /*[SerializeField]
+    private GameObject spriteCanvas;//Canvas onde vai aparecer a sprite*/
     [SerializeField]
-    private GameObject spriteCanvas;//Canvas onde vai aparecer a sprite
+    private GameObject textUI;
     [SerializeField]
     private GameObject textCanvas;//Canvas onde vai aparecer a texto
+    /*[SerializeField]
+    private Image interactionSprite;//Sprite que vai aparecer*/
     [SerializeField]
-    private Image interactionSprite;//Sprite que vai aparecer
+    private TMP_Text simpleText;
     [SerializeField]
     private TMP_Text textElement;//texto a ser exibido
 
@@ -25,7 +29,9 @@ public class InteractionController : MonoBehaviour
         //    spriteCanvas.SetActive(false);
         //    return;
         //}
-        spriteCanvas.SetActive(true);
+        //spriteCanvas.SetActive(true);
+        textUI.SetActive(true);
+        simpleText.text = infos.text.textString[0];
         //interactionSprite.sprite = infos.interactSprite;
     }
 
@@ -44,7 +50,8 @@ public class InteractionController : MonoBehaviour
 
     public void canvasCloseSprite()
     {
-        spriteCanvas.SetActive(false);
+        textUI.SetActive(false);
+        //spriteCanvas.SetActive(false);
     }
 
     public void canvasCloseText()

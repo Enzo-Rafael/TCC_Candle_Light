@@ -8,8 +8,6 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(PlayerTwoScript))]
 public class DarknessTimer : MonoBehaviour
 {
-    private LightDetector detector;
-
     private PlayerTwoScript playerScript;
 
     private DarknessEffectVolumeComponent darknessEffect;
@@ -20,10 +18,10 @@ public class DarknessTimer : MonoBehaviour
     [Tooltip("Volume contendo o componente DarknessEffect para a tela correta.")]
     [SerializeField] private Volume postProcessingVolume;
 
-    [Tooltip("Tempo que leva para o objeto ir de iluminado para completamente tomado por trevas.")]
+    [Tooltip("Tempo que leva para o player ir de iluminado para completamente tomado por trevas.")]
     [SerializeField] private float darkTime;
 
-    [Tooltip("Tempo que leva para o objeto ir de completamente tomado para iluminado")]
+    [Tooltip("Tempo que leva para o player ir de completamente tomado para iluminado")]
     [SerializeField] private float lightTime;
 
     private float timer;
@@ -32,7 +30,6 @@ public class DarknessTimer : MonoBehaviour
 
     void Awake()
     {
-        detector = GetComponent<LightDetector>();
         playerScript = GetComponent<PlayerTwoScript>();
         postProcessingVolume.profile.TryGet(out darknessEffect);
         timer = 0.000001f;
@@ -47,19 +44,20 @@ public class DarknessTimer : MonoBehaviour
 
         if (_disabled) return;
 
-        if (detector.IsLit)
+        timer = Mathf.Max(timer - (1 / lightTime) * Time.fixedDeltaTime, 0.000001f);
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (!other.CompareTag("Breu") || _disabled) return;
+
+        timer = Mathf.Min(timer + (1 / darkTime) * Time.fixedDeltaTime, 1);
+        if (timer >= 1)
         {
-            timer = Mathf.Max(timer - (1 / lightTime) * Time.fixedDeltaTime, 0.000001f);
+            if (!playerScript.IsDisabled)
+                playerScript.Die();
+            timer -= 0.01f;
         }
-        else
-        {
-            timer = Mathf.Min(timer + (1 / darkTime) * Time.fixedDeltaTime, 1);
-            if (timer >= 1)
-            {
-                if (!playerScript.IsDisabled)
-                    playerScript.Die();
-                timer -= 0.01f;
-            }
-        }
+
     }
 }

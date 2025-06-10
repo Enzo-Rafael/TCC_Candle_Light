@@ -2,11 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
-
-//================
-// TODO: Fazer o VolumeManipulator ser um componente separado e generico
-//================
 
 /// <summary>
 /// O BoxCollider trigger associado com esse objeto desligara luzes que estiverem dentro dele, e as ligara de novo quando sairem.
@@ -27,12 +22,8 @@ public class NoCandleZone : MonoBehaviour
         _disabled = false;
         lightsContained = new List<PointLight>();
         col = GetComponent<BoxCollider>();
-
-        // coisa do manipulador de volume
-        volumeProfile = GetComponent<Volume>().profile;
-        volumeProfile.TryGet(out filmGrainComponent);
-        volumeProfile.TryGet(out colorCurvesComponent);
     }
+
 
     void FixedUpdate()
     {
@@ -46,6 +37,7 @@ public class NoCandleZone : MonoBehaviour
                 light.visualLight.enabled = false;
                 light.enabled = false;
                 LightSystem.Instance.RemovePointLight(light);
+                return;
             }
         }
 
@@ -57,6 +49,7 @@ public class NoCandleZone : MonoBehaviour
                 light.visualLight.enabled = true;
                 light.enabled = true;
                 lightsContained.Remove(light);
+                return;
             }
         }
     }
@@ -84,33 +77,5 @@ public class NoCandleZone : MonoBehaviour
             lightsContained.RemoveAt(randIndex);
         }
     }
-    #endregion
-
-    #region VOLUME_MANIPULATOR
-    private VolumeProfile volumeProfile;
-
-    [SerializeField]
-    private float grainIntensity;
-
-    [SerializeField]
-    private float colorCurveIntensity;
-    const float curveKFStart = 0.1f, curveKFEnd = 0.5f;
-
-    private FilmGrain filmGrainComponent;
-    private ColorCurves colorCurvesComponent;
-
-
-    void OnAnimatorMove()
-    {
-        filmGrainComponent.intensity.Override(grainIntensity);
-        colorCurvesComponent.lumVsSat.value.MoveKey(0, new Keyframe(0, colorCurveIntensity * 0.5f));
-    }
-
-    //void OnDrawGizmosSelected()
-    //{
-    //    filmGrainComponent.intensity.Override(grainIntensity);
-    //    colorCurvesComponent.lumVsSat.value.MoveKey(0, new Keyframe(0, Mathf.Lerp(curveKFEnd, curveKFStart, colorCurveIntensity)));
-    //}
-
     #endregion
 }

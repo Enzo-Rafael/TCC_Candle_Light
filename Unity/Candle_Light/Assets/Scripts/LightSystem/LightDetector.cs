@@ -22,10 +22,10 @@ public class LightDetector : MonoBehaviour
     public Action<bool> lightChangeEvent;
 
     [Tooltip("Referência para os objetos que receberão os comandos da interação")]
-	[SerializeField] 
+	[SerializeField]
     private ObserverEventChannel _observerEvent = default;
 
-    [Tooltip("Referência para o animator. DEVE TER UM PARAMETRO BOOL CHAMADO \"IS LIT\".")]
+    [Tooltip("Referência para o animator. DEVE TER UM PARAMETRO BOOL CHAMADO \"IsLit\".")]
     [SerializeField]
     private Animator animator;
 
@@ -40,7 +40,7 @@ public class LightDetector : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+
         LightSystem.Instance.UpdateDetectorPos(GetInstanceID(), transform.position);
 
     }
@@ -49,15 +49,15 @@ public class LightDetector : MonoBehaviour
     void OnEnable()
     {
         LightSystem.Instance.AddDetector(
-                transform.position, 
-                (lit)=> 
+                transform.position,
+                (lit)=>
                 {
                     if(_isLit != lit)
-                    { 
-                        _isLit = lit; 
+                    {
+                        _isLit = lit;
                         lightChangeEvent(lit);
-                    }; 
-                }, 
+                    };
+                },
                 GetInstanceID());
     }
 

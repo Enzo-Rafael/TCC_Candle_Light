@@ -3358,6 +3358,7 @@ GameObject:
   - component: {fileID: 676624736}
   - component: {fileID: 676624735}
   - component: {fileID: 676624739}
+  - component: {fileID: 676624740}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3465,6 +3466,18 @@ MonoBehaviour:
   _creditsPanel: {fileID: 147201988}
   _popupPanel: {fileID: 1573900443}
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
+--- !u!114 &676624740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676624734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44cd814c96d00644692f7dc4f711ce3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &687868474
 GameObject:
   m_ObjectHideFlags: 0
@@ -3991,6 +4004,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774994437}
   m_CullTransparentMesh: 1
+--- !u!1 &795605534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 795605535}
+  - component: {fileID: 795605536}
+  m_Layer: 0
+  m_Name: SaveGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &795605535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795605534}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &795605536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795605534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 304116724ebf45648bd788c9fe9f1e85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoints: []
+  btnLoad: {fileID: 0}
+  notification: {fileID: 0}
+  sceneName: Mansion
+  onLoad: 0
 --- !u!1 &821730267
 GameObject:
   m_ObjectHideFlags: 0
@@ -10933,3 +10995,4 @@ SceneRoots:
   - {fileID: 610902853}
   - {fileID: 676624738}
   - {fileID: 1831343104}
+  - {fileID: 795605535}

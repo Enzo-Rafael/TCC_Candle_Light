@@ -40,7 +40,7 @@ public class DarknessTimer : MonoBehaviour
     {
         darknessEffect.showFeedback.value = Mathf.Min(playerScript.showTimer / playerScript.ShowTimerMax(), 0.5f);
         darknessEffect.intensity.value = timer;
-        darknessEffect.distance.value = darkTime * (1 - timer) * playerScript.GetVelocity();
+        darknessEffect.distance.value = darkTime * (1 - timer) * playerScript.GetVelocity() * 1/timer;
 
         if (_disabled) return;
 
@@ -51,7 +51,7 @@ public class DarknessTimer : MonoBehaviour
     {
         if (!other.CompareTag("Breu") || _disabled) return;
 
-        timer = Mathf.Min(timer + (1 / darkTime) * Time.fixedDeltaTime, 1);
+        timer = Mathf.Min(timer + (1/darkTime + 1/lightTime) * Time.fixedDeltaTime, 1.1f);
         if (timer >= 1)
         {
             if (!playerScript.IsDisabled)

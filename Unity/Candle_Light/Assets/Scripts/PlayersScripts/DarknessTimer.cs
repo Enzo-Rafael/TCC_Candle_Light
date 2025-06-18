@@ -44,7 +44,7 @@ public class DarknessTimer : MonoBehaviour
 
         if (_disabled) return;
 
-        timer = Mathf.Max(timer - (1 / lightTime) * Time.fixedDeltaTime, 0.000001f);
+        timer = Mathf.Max(timer - (1 / lightTime) * Time.fixedDeltaTime, 0.01f);
     }
 
     void OnTriggerStay(Collider other)

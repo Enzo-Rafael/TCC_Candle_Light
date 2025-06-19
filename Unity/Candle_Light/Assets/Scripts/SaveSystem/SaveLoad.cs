@@ -37,7 +37,7 @@ public class SaveLoad : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        btnLoad = GameObject.Find("LoadButton");
+        btnLoad = GameObject.Find("ButtonContinue");
     }
 
     void Update()
@@ -50,12 +50,15 @@ public class SaveLoad : MonoBehaviour
         {
             if (btnLoad != null) btnLoad.SetActive(false);
         }
+        if(Input.GetKeyDown(KeyCode.CapsLock)){
+            Save();
+        }
     }
     //Salva as informações do jogo
     public void Save()
     {
         notification = GameObject.Find("NotificationSave").GetComponent<Animator>();
-        SceneData data = new SceneData();
+        /*SceneData data = new SceneData();
         //---------------------------------------------------------------------------
 
         //Gera o arquivo de save-----------------------------------------------------
@@ -63,13 +66,21 @@ public class SaveLoad : MonoBehaviour
         onLoad = true;
         Debug.Log("S");
         File.WriteAllText(path, s);
+        notification.SetTrigger("Notification");*/
         notification.SetTrigger("Notification");
     }
 
-    //Carrega as informações do jogo
+    //Carrega as informações do jogo quando a cena já esta carregada
     public void Load()
     {
         string s = File.ReadAllText(path);
+        SceneData data = JsonUtility.FromJson<SceneData>(s);
+    }
+    
+    //Carrega as informações do jogo diretamente depois de carregar a cena
+    public void StartLoad()
+    {
+        AsSceneLoad();
     }
 
     public async void AsSceneLoad()

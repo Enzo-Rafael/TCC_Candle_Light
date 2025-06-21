@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class BtnSave : MonoBehaviour
 {
-    //UI dentro da cena de jogo
+    //dentro da cena de jogo
     public void OnBtnSave()
     {
         SaveLoad.Instance.Save();

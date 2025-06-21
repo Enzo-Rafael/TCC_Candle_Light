@@ -6,16 +6,21 @@ using System.Linq;
 public class ChangeCam : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader = default;
-    [SerializeField] public CinemachineCamera[] camRef;
-    [SerializeField] private int currentCamIndex = 0;
+    public CinemachineCamera[] camRef;
+    public int currentCamIndex = 0;
     private CinemachineCamera currentCam;
 
-    void Start(){
+    void Start()
+    {
         currentCam = camRef[0];
-        foreach(CinemachineCamera cam in camRef){
-            if(cam == currentCam){
+        foreach (CinemachineCamera cam in camRef)
+        {
+            if (cam == currentCam)
+            {
                 cam.Priority = 1;
-            }else{
+            }
+            else
+            {
                 cam.Priority = 0;
             }
         }
@@ -30,27 +35,32 @@ public class ChangeCam : MonoBehaviour
         _inputReader.ChangeCamLeftEvent -= OnChangeCamLeft;
         _inputReader.ChangeCamRightEvent -= OnChangeCamRight;
     }
-    public void OnChangeCamLeft(){
+    public void OnChangeCamLeft()
+    {
         currentCam.Priority = 0;
         currentCamIndex--;
-        if(currentCamIndex < 0){
+        if (currentCamIndex < 0)
+        {
             currentCamIndex += camRef.Length;
         }
         currentCam = camRef[currentCamIndex];
         currentCam.Priority = 1;
     }
-    public void OnChangeCamRight(){
+    public void OnChangeCamRight()
+    {
         currentCam.Priority = 0;
         currentCamIndex = (currentCamIndex + 1) % camRef.Length;
         currentCam = camRef[currentCamIndex];
         currentCam.Priority = 1;
     }
-    public CinemachineCamera GetCam(){
+    public CinemachineCamera GetCam()
+    {
         return currentCam;
     }
 
-    public void ClearCams(){
-        Array.Clear(camRef,0,camRef.Length);
+    public void ClearCams()
+    {
+        Array.Clear(camRef, 0, camRef.Length);
     }
 
     /// <summary>
@@ -59,18 +69,18 @@ public class ChangeCam : MonoBehaviour
     /// <param name="nextRoomsCams"> Conjunto de cameras a ser ativado. </param>
     internal void SetCams(CinemachineCamera[] nextRoomsCams)
     {
-        if(!nextRoomsCams.Except(camRef).Any()) return;
+        if (!nextRoomsCams.Except(camRef).Any()) return;
 
         currentCam.Priority = 0;
 
-        foreach(CinemachineCamera camera in camRef)
+        foreach (CinemachineCamera camera in camRef)
         {
             camera.gameObject.SetActive(false);
         }
 
         camRef = nextRoomsCams;
 
-        foreach(CinemachineCamera camera in camRef)
+        foreach (CinemachineCamera camera in camRef)
         {
             camera.gameObject.SetActive(true);
         }
@@ -78,5 +88,19 @@ public class ChangeCam : MonoBehaviour
         currentCamIndex = 0;
         currentCam = camRef[0];
         currentCam.Priority = 1;
+    }
+    public void LoadCurrentCam(int index) {
+          currentCam = camRef[index];
+        foreach (CinemachineCamera cam in camRef)
+        {
+            if (cam == currentCam)
+            {
+                cam.Priority = 1;
+            }
+            else
+            {
+                cam.Priority = 0;
+            }
+        }
     }
 }

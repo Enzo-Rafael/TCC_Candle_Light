@@ -41,9 +41,13 @@ public class ExecuteItemCommand : Interactable, IObserver
     [SerializeField]
     protected MonoBehaviour _multipleCode;
     protected IMultiple _multiple => _multipleCode as IMultiple;
+    public int indexPuzzle;
+    public int spawnProx;
+    public bool completed = false; 
 
-    private void Start(){
-       if(animator == null) animator = GetComponentInParent<Animator>();
+    private void Start()
+    {
+        if (animator == null) animator = GetComponentInParent<Animator>();
     }
     /*------------------------------------------------------------------------------
     Função:     OnEnable
@@ -70,9 +74,12 @@ public class ExecuteItemCommand : Interactable, IObserver
                 object - Informação com tipo generico do que o objeto faz
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void OnEventRaised(int message, object additionalInformation){
-        if(_multipleCode != null && !_multiple.Validator(additionalInformation)) return;
+    public void OnEventRaised(int message, object additionalInformation)
+    {
+        if (_multipleCode != null && !_multiple.Validator(additionalInformation)) return;
         ExecuteOrder(message, additionalInformation);
+        completed = true;
+        SaveLoad.Instance.CallSave(spawnProx);
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent

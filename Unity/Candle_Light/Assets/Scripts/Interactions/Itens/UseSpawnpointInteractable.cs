@@ -5,8 +5,9 @@ public class UseSpawnpointInteractable : Interactable, IInteractable
 {
     private bool action = false;
     private ExecuteItemCommand command;
-
+    public int spawnIndex;
     public Transform spawnPosition;
+
 
     [SerializeField]
     private PointLight pointLight;
@@ -26,6 +27,8 @@ public class UseSpawnpointInteractable : Interactable, IInteractable
     private void DefineSpawn(){
         PlayerTwoScript.Instance.SetDiePosition(spawnPosition);
         Register();
+        //Save
+        SaveLoad.Instance.CallSave(spawnIndex);
         SetAction(true);
     }
     public void SetAction(bool action)

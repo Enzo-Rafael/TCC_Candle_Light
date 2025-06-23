@@ -14,9 +14,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using Unity.Collections.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using UnityEngine;
-
-
 
 public class InteractionManagerP1 : MonoBehaviour
 {
@@ -46,9 +46,10 @@ public class InteractionManagerP1 : MonoBehaviour
 
     //------------------------- Variaveis Globais privadas -------------------------------
 
-    private const int floorLayer = 13;
     private const int EquipLayer = 12;
     private const int UseLayer = 6;
+
+    private const string defaultTag = "Untagged";
 
     RaycastHit hitFloor;
 
@@ -61,7 +62,8 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnEnable(){
+    private void OnEnable()
+    {
         _inputReader.ActionEventOne += UseInteractionType;
     }
     /*------------------------------------------------------------------------------
@@ -70,7 +72,8 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnDisable(){
+    private void OnDisable()
+    {
         _inputReader.ActionEventOne -= UseInteractionType;
     }
     /*------------------------------------------------------------------------------
@@ -80,10 +83,14 @@ public class InteractionManagerP1 : MonoBehaviour
                 GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void OnTriggerDetected(bool entered, GameObject itemInteractable){
-        if(entered){
+    public void OnTriggerDetected(bool entered, GameObject itemInteractable)
+    {
+        if (entered)
+        {
             AddPotentialInteraction(itemInteractable);
-        }else{
+        }
+        else
+        {
             RemovePotentialInteraction(itemInteractable);
         }
     }
@@ -93,16 +100,24 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void AddPotentialInteraction(GameObject itemInteractable)
-    {
+    private void AddPotentialInteraction(GameObject itemInteractable){
         potentialInteractions.AddFirst(itemInteractable);
 
-        foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
-        {
+        foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>()){
             renderer.material.SetFloat("_Highlight", 1);
         }
-        iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
-        //iController?.UpdateIteractableText(potentialInteractions.First.Value.GetComponent<InteractableInfos>(), 0);
+        switch (potentialInteractions.First.Value.layer){
+            case EquipLayer:
+                iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+            break;
+            case UseLayer:
+                if (potentialInteractions.First.Value.tag != defaultTag && equipItem != null){
+                    iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+                }else if (potentialInteractions.First.Value.tag == defaultTag){
+                    iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+                }
+            break;
+        }
     }
     /*------------------------------------------------------------------------------
     Função:     RemovePotentialInteraction
@@ -113,17 +128,19 @@ public class InteractionManagerP1 : MonoBehaviour
     private void RemovePotentialInteraction(GameObject itemInteractable)
     {
         LinkedListNode<GameObject> currentNode = potentialInteractions.First;
-        while (currentNode != null)
-        {
-            if (currentNode.Value == itemInteractable)
-            {
-                //Debug.Log("Removi");
+        while (currentNode != null){
+            if (currentNode.Value == itemInteractable){
                 potentialInteractions.Remove(currentNode);
                 iController.canvasCloseSprite();
                 iController.canvasCloseText();
                 foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
                 {
                     renderer.material.SetFloat("_Highlight", 0);
+                }
+                if(potentialInteractions.Count != 0){
+                    if (equipItem.tag == potentialInteractions.First.Value.tag){
+                        iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+                    }
                 }
                 break;
             }
@@ -137,11 +154,16 @@ public class InteractionManagerP1 : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void UseInteractionType(){
-        if(potentialInteractions.Count == 0){
-            if(equipItem != null && FloorVerification()){
-                equipItem.DropItem(hitFloor.point);
-                equipItem = null;
+        if (potentialInteractions.Count != 0){
+            if (potentialInteractions.First.Value.tag != defaultTag && potentialInteractions.First.Value.layer == UseLayer){ 
+                if (equipItem != null && FloorVerification()){
+                    equipItem.DropItem(hitFloor.point);
+                    equipItem = null;
+                }
+                return;
             }
+        }
+        else{
             return;
         }
         iController.canvasCloseSprite();
@@ -162,7 +184,6 @@ public class InteractionManagerP1 : MonoBehaviour
                 {
                     _inputReader.DisablePlayerInputMove(1);
                     int i = infos.text.textString.Length;
-                    Debug.Log("interagiu");
                     if (indexText < i)
                     {
                         iController.UpdateIteractableText(infos, indexText);
@@ -174,7 +195,6 @@ public class InteractionManagerP1 : MonoBehaviour
                         iController.canvasCloseSprite();
                         _inputReader.EnablePlayerInput(1);
                         indexText = 0;
-
                         foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
                         {
                             interactable.BaseAction();
@@ -197,10 +217,13 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    -
     Saída:      bool - Confirma se há ou não chão.
     ------------------------------------------------------------------------------*/
-    private bool FloorVerification(){
-        if(Physics.Raycast(rayFloor.position, Vector3.down, out hitFloor, deploymentHeight)){
-            return hitFloor.collider.gameObject.layer == floorLayer;
+    private bool FloorVerification()
+    {
+        if (Physics.Raycast(rayFloor.position, Vector3.down, out hitFloor, deploymentHeight))
+        {
+            return hitFloor.collider.gameObject.tag == equipItem.gameObject.tag && hitFloor.collider.gameObject.tag != defaultTag;
         }
         return false;
     }
+
 }

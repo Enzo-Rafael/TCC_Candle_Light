@@ -129,10 +129,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6459785571137562375}
   - component: {fileID: 7687911998304836584}
-  - component: {fileID: 2060398483920448522}
-  m_Layer: 0
+  - component: {fileID: 8991927114358783980}
+  - component: {fileID: 4718871610979679552}
+  m_Layer: 6
   m_Name: ColliderMesinha
-  m_TagString: Untagged
+  m_TagString: DropCandle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -160,7 +161,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8493638373408118908}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &2060398483920448522
+--- !u!65 &8991927114358783980
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,5 +180,26 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8, y: 0.9324167, z: 1.2}
-  m_Center: {x: 0, y: -0.03379166, z: 0}
+  m_Size: {x: 0.6828547, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &4718871610979679552
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493638373408118908}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6828547, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

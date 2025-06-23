@@ -17,26 +17,39 @@ public class UseSpawnpointInteractable : Interactable, IInteractable
         command = GetComponent<ExecuteItemCommand>();
         command.UnregisterEventPublic();
     }
-    public void BaseAction(){
-        if(action) return;
-        if(_observerEvent != null) _observerEvent.NotifyObservers();
+    public void BaseAction()
+    {
+        if (action) return;
+        SaveLoad.Instance.CallSave(spawnIndex);//Save
+        if (_observerEvent != null) _observerEvent.NotifyObservers();
         ExecuteOrder();
         DefineSpawn();
     }
 
-    private void DefineSpawn(){
+    private void DefineSpawn()
+    {
         PlayerTwoScript.Instance.SetDiePosition(spawnPosition);
         Register();
-        //Save
-        SaveLoad.Instance.CallSave(spawnIndex);
         SetAction(true);
     }
-    public void SetAction(bool action)
+    public void SetAction(bool sAction)
     {
-        this.action = action;
+        action = sAction;
         pointLight.enabled = action;
     }
-    public void Register(){
+    public void Register()
+    {
         command.RegisterEvent();
+    }
+    
+
+    
+    public void LoadAction()
+    {
+        if (action) return;
+        if (_observerEvent != null) _observerEvent.NotifyObservers();
+        ExecuteOrder();
+        Register();
+        SetAction(true);
     }
 }

@@ -24,7 +24,7 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     [Tooltip("Rotacao relativa ao alvo objeto é pego")]
     [SerializeField]
     private Vector3 pickUpRotation = Vector3.zero;
-    
+
     //------------------------- Variaveis Globais privadas -------------------------------
 
     private BoxCollider boxcolider;
@@ -36,7 +36,8 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void Start(){
+    private void Start()
+    {
         boxcolider = GetComponent<BoxCollider>();
     }
     /*------------------------------------------------------------------------------
@@ -45,7 +46,8 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void PickUpItem(){
+    private void PickUpItem()
+    {
         transform.SetParent(PlayerOneScript.Instance.HoldPosition);
         transform.localPosition = pickUpOffSet;
         transform.localRotation = Quaternion.Euler(pickUpRotation);
@@ -57,11 +59,12 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     Entrada:    Vector3 - Posição onde o item deve ser dropado
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void DropItem(Vector3 position){
+    public void DropItem(Vector3 position)
+    {
         boxcolider.enabled = false;
         Debug.Log(position);
         transform.SetParent(null);
-        transform.position = position + new Vector3(0,0,0);
+        transform.position = position + new Vector3(0, 0, 0);
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         boxcolider.enabled = true;
         DefineLayer();
@@ -74,7 +77,8 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     Entrada:    int - numero da layer, caso não atribua nada o valor base será o EquipLayer
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void DefineLayer(int layer = EquipLayer){
+    public void DefineLayer(int layer = EquipLayer)
+    {
         gameObject.layer = layer;
     }
     /*------------------------------------------------------------------------------
@@ -83,7 +87,18 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void BaseAction(){
+    public void BaseAction()
+    {
+        PickUpItem();
+    }
+    /*------------------------------------------------------------------------------
+    Função:     LoadAction
+    Descrição:  Ação executada ao carregar um save
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void LoadAction()
+    {
         PickUpItem();
     }
 

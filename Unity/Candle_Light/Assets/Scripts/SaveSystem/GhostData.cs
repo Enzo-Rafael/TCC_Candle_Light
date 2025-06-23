@@ -8,5 +8,5 @@ public class GhostData
     //Position
     public Vector3 position;
     public Vector3 rotation;
-    public Transform spawn;
+    public string spawn;
 }

@@ -5,11 +5,11 @@ using Unity.Cinemachine;
 
 public class MediumAdapter : MediumData
 {
-    public MediumAdapter(GameObject medium, CinemachineCamera[] mediumCams, int mediumCurrentCam)
+    public MediumAdapter(GameObject medium, int mediumCurrentCam, int lastCam)
     {
-        position = new (medium.transform.position.x,medium.transform.position.y, -medium.transform.position.z);
+        position = medium.transform.position;
         rotation = medium.transform.rotation.eulerAngles;
-        cams = mediumCams;
         currentCamIndex = mediumCurrentCam;
+        lengthCams = lastCam;
     }
 }

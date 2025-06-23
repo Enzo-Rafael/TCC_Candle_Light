@@ -6,10 +6,16 @@ using System.IO;
 using System.Threading.Tasks;
 using Unity.Cinemachine;
 using System.Collections.Generic;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
+using Unity.VisualScripting;
+using UnityEditor;
+using System.Collections;
 
 class SceneData
 {
     public MediumData mediumData;
+    public MediumCamData[] mediumCamData;
     public GhostData ghostData;
     public CastesalData castesalData;
     public PuzzleData[] puzzleData;
@@ -20,18 +26,22 @@ public class SaveLoad : MonoBehaviour
     //Instancia
     public static SaveLoad Instance;
     //Referencias
-    public GameObject[] spawnPoints;
-    public GameObject[] puzzles;
+    [Header("Referencias")]
+    public GameObject[] spawnPoints;//GameObjects de Spawn
+    public GameObject[] puzzles;//GameObjects de Puzzle
+    public CinemachineCamera[] p1Cams;//Cameras da Medium
     public GameObject btnLoad;
     [SerializeField] Animator notification;
     //Variaveis
+    [Header("Variaveis")]
     public string sceneName = "Mansion";// public Scene scene;
     public bool onLoad = false;
     //private bool isLoaded = false;
     [NonSerialized] public int priVez = 0;
-    string path;
     [NonSerialized] public int spawnIndex = 0;
-
+    string path;
+    //Variabeis de apoio
+    private CinemachineCamera[] p1CamsSet;
 
     //Metodos
     void Awake()
@@ -40,7 +50,7 @@ public class SaveLoad : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -68,38 +78,45 @@ public class SaveLoad : MonoBehaviour
             StartLoad();
         }
     }
-    //Salva as informações do jogo
+    /*------------------------------------------------------------------------------
+    Função:     Save
+    Descrição:  Salva as informações do jogo
+    Entrada:    - 
+    Saída:      -
+    ------------------------------------------------------------------------------*/
     public void Save()
     {
         notification = GameObject.Find("NotificationSave").GetComponent<Animator>();
         SceneData data = new SceneData();
+        SetMediumCams();
+        SetSpawn();
+        SetPuzzle();
         //---------------------------------------------------------------------------
         GameObject p1 = GameObject.FindWithTag("Player1");
-        CinemachineCamera[] cameras = p1.GetComponent<ChangeCam>().camRef;
         int p1camIndex = p1.GetComponent<ChangeCam>().currentCamIndex;
-
+        int p1camLast = p1.GetComponent<ChangeCam>().camRef.Length;
         //Medium (Obs: "spawnIndex" vai definir qual spawn esta chamand, tomar cuidado)
-        data.mediumData = new MediumAdapter(spawnPoints[spawnIndex].GetComponentInChildren<Transform>().Find("Spawn").gameObject, cameras, p1camIndex);
+        data.mediumData = new MediumAdapter(p1, p1camIndex, p1camLast);
         if (p1.GetComponent<InteractionManagerP1>().equipItem != null)
         {
             data.castesalData = new CastesalData(p1.GetComponent<PlayerOneScript>().HoldPosition,
             p1.GetComponent<InteractionManagerP1>().equipItem.gameObject);
         }
-
+        //Medium Cams
+        data.mediumCamData = new MediumCamData[p1.GetComponent<ChangeCam>().camRef.Length];
+        for (int c = 0; c < p1.GetComponent<ChangeCam>().camRef.Length; c++)
+        {
+            data.mediumCamData[c] = new MediumCamData(p1.GetComponent<ChangeCam>().camRef[c].gameObject.name);
+        }
         //Ghost
-        GameObject p2 = GameObject.FindWithTag("Player2");
-        data.ghostData = new GhostAdapter(spawnPoints[spawnIndex].GetComponentInChildren<Transform>().Find("Spawn").gameObject);
+        data.ghostData = new GhostAdapter(spawnPoints[spawnIndex].GetComponentInChildren<Transform>().Find("Spawn").gameObject, spawnPoints[spawnIndex].name);
 
-        //Puzzle
+        //Puzzle Obs: Revisar
         data.puzzleData = new PuzzleData[puzzles.Length];
         for (int i = 0; i < puzzles.Length; i++)
         {
             data.puzzleData[i] = new PuzzleData(puzzles[i].GetComponent<ExecuteItemCommand>());
         }
-               
-
-        
-
         //Gera o arquivo de save-----------------------------------------------------
         string s = JsonUtility.ToJson(data, true);
         onLoad = true;
@@ -109,32 +126,77 @@ public class SaveLoad : MonoBehaviour
         notification.SetTrigger("Notification");
     }
 
-    //Carrega as informações do jogo quando a cena já esta carregada
+    /*------------------------------------------------------------------------------
+    Função:     Load
+    Descrição:  Carrega as informações do jogo quando a cena já esta carregada
+    Entrada:    - 
+    Saída:      -
+    ------------------------------------------------------------------------------*/
     public void Load()
     {
         string s = File.ReadAllText(path);
         SceneData data = JsonUtility.FromJson<SceneData>(s);
+        //---------------------------------------------------------------
+        p1CamsSet = new CinemachineCamera[data.mediumCamData.Length];
+        SetMediumCams();
+        SetSpawn();
+        SetPuzzle();
         //---------------------------------------------------
-        //Player Medium
-        GameObject p1 = GameObject.FindWithTag("Player1");
+        //Pos Medium e Ghost
+        GameObject p1 = GameObject.Find("Player1");
+        GameObject p2 = GameObject.Find("Player2");
+        //Medium
+        p1.GetComponent<CharacterController>().enabled = false;
         p1.transform.position = data.mediumData.position;
         p1.transform.eulerAngles = data.mediumData.rotation;
-        for (int i = 0; i < data.mediumData.cams.Length; i++) {
-            p1.GetComponent<ChangeCam>().camRef[i] = data.mediumData.cams[i];
-        }
-        p1.GetComponent<ChangeCam>().LoadCurrentCam(data.mediumData.currentCamIndex);
-
+        p1.GetComponent<CharacterController>().enabled = true;
         //Ghost
-        GameObject p2 = GameObject.FindWithTag("Player2");
+        p2.GetComponent<CharacterController>().enabled = false;
         p2.transform.position = data.ghostData.position;
         p2.transform.eulerAngles = data.ghostData.rotation;
-        p2.GetComponent<PlayerTwoScript>().respawnPoint = data.ghostData.spawn;
+        p2.GetComponent<CharacterController>().enabled = true;
+        //Medium Cams Obs(Não queria fazer desse jeito, porem tempo e falta de conhecimento me deixou sem saida)
+        p1.GetComponent<ChangeCam>().ClearCams();
+        p1.GetComponent<ChangeCam>().camRef = new CinemachineCamera[data.mediumData.lengthCams];
+        for (int i = 0; i < data.mediumCamData?.Length; i++)
+        {
+            for (int j = 0; j < p1Cams?.Length; j++)
+            {
+                Debug.Log(" J " + p1Cams[j].name);
+                p1Cams[j].gameObject.SetActive(true);
+                if (p1Cams[j].name == data.mediumCamData[i].cam)
+                {
+
+                    //p1CamsSet[i] = p1Cams[j];
+                     p1.GetComponent<ChangeCam>().camRef[i] = p1Cams[j];
+
+                }
+                p1Cams[j].gameObject.SetActive(true);
+            }
+            //Debug.Log(p1CamsSet[i]);
+        }
+        
+       
+        p1.GetComponent<ChangeCam>().LoadCurrentCam(data.mediumData.currentCamIndex);
+
+        //Ghost spawn point
+        for (int sw = 0; sw < spawnPoints.Length; sw++)
+        {
+            //Debug.Log(sw);
+            if (data.ghostData.spawn == spawnPoints[sw].name)
+            {
+                spawnPoints[sw]?.GetComponent<UseSpawnpointInteractable>().LoadAction();
+            }
+
+        }
+
+        p2.GetComponent<PlayerTwoScript>().respawnPoint = GameObject.Find(data.ghostData.spawn).GetComponent<Transform>();
 
         //Castisal
         if (data.castesalData.name != "")
         {
             GameObject c = GameObject.Find(data.castesalData.name);
-            c.transform.SetParent(data.castesalData.parent);
+            c.GetComponent<EquipItemInteractable>().LoadAction();
         }
 
         //Puzzles
@@ -142,11 +204,14 @@ public class SaveLoad : MonoBehaviour
 
         //----------------------------------------------------------------------
         Debug.Log("L");
+        ArrayUtility.Clear(ref p1CamsSet);
+        //---------------------------------------------------------------------
     }
 
     //Carrega as informações do jogo diretamente depois de carregar a cena
     public void StartLoad()
     {
+        //Load();
         AsSceneLoad();
     }
 
@@ -193,4 +258,40 @@ public class SaveLoad : MonoBehaviour
         Save();
     }
 
+    public void SetMediumCams()//Puxa as cameras na cena de jogo
+    {
+        CamsBeacom[] b = FindObjectsByType<CamsBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+        p1Cams = new CinemachineCamera[b.Length];
+        Debug.Log(b.Length);
+        for (int cine = 0; cine < b.Length; cine++)
+        {
+            p1Cams[cine] = b[cine].gameObject.GetComponent<CinemachineCamera>();
+        }
+        p1Cams.OrderBy(x => x.name);
+
+    }
+
+    public void SetPuzzle()//Puxa os puzzles na cena de jogo
+    {
+        PuzzleBeacom[] b = FindObjectsByType<PuzzleBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+        puzzles = new GameObject[b.Length];
+        for (int cine = 0; cine < b.Length; cine++)
+        {
+            puzzles[cine] = b[cine].gameObject;
+        }
+        puzzles.OrderBy(x => x.name);
+
+    }
+
+    public void SetSpawn()//Puxa os spawners da cena de jogo
+    {
+        SpawnBeacom[] b = FindObjectsByType<SpawnBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+        spawnPoints = new GameObject[b.Length];
+        for (int cine = 0; cine < b.Length; cine++)
+        {
+            spawnPoints[cine] = b[cine].gameObject;
+        }
+        spawnPoints.OrderBy(x => x.name);
+
+    }
 }

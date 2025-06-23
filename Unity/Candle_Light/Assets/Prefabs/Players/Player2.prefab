@@ -95,7 +95,10 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 1
+        m_Name: SpawnRate
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -175,12 +178,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2864596355448705373}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.8969034, z: 0, w: -0.4422266}
+  m_LocalRotation: {x: 0, y: 0.34202015, z: 0, w: 0.9396927}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2177539903029770026}
+  m_Children: []
   m_Father: {fileID: 5176793665718216371}
   m_LocalEulerAnglesHint: {x: -0.57, y: 0, z: 0}
 --- !u!114 &7125607950009247573
@@ -251,8 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d54399b04b4fa48a73e121d4937dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReferenceFrame: 1
-  RecenterTarget: 1
+  ReferenceFrame: 0
+  RecenterTarget: 0
   PanAxis:
     Value: 40
     Center: 0
@@ -350,8 +352,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3158025663042347137}
-  m_LocalEulerAnglesHint: {x: 0, y: 2.145, z: 0}
+  m_Father: {fileID: 5176793665718216371}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2414144799348193261
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -371,7 +373,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.45, z: 1}
+  m_Size: {x: 0.25, y: 0.25, z: 1}
   m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!114 &6813404148890813605
 MonoBehaviour:
@@ -465,6 +467,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2177539903029770026}
   - {fileID: 2753940759498684780}
   - {fileID: 6564709990835501065}
   - {fileID: 3158025663042347137}
@@ -577,6 +580,7 @@ MonoBehaviour:
   spriteCanvas: {fileID: 0}
   textCanvas: {fileID: 0}
   interactionSprite: {fileID: 0}
+  interactText: {fileID: 0}
   textElement: {fileID: 0}
   layerMask:
     serializedVersion: 2

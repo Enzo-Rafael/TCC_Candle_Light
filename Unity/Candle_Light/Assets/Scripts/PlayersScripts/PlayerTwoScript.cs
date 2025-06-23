@@ -3,7 +3,6 @@ using Unity.Cinemachine;
 using UnityEngine;
 
 //Player 2: Move setas direcionais e num1 e num2
-
 public class PlayerTwoScript : Singleton<PlayerTwoScript>
 {
     //Variaveis
@@ -30,7 +29,7 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
 
     [SerializeField] private Transform respawnPoint;
     private bool _disabled;
-    public bool IsDisabled{ get => _disabled;}
+    public bool IsDisabled{ get => _disabled; }
 
     [SerializeField] private float showDecay;
     [SerializeField] private float showTimerMax;
@@ -76,7 +75,8 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
     private void OnVoo(Vector2 movement)
     {
         _vooDirection = movement;
-        Debug.Log(_vooDirection);
+        //Debug.Log(_vooDirection);
+        
     }
 
     private void Show(float ammount)
@@ -98,7 +98,7 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
         forward = _inputVector.y * camPlayerTwo.transform.forward;
         strafe = _inputVector.x * camPlayerTwo.transform.right;
         vetical = (_inputVector.z + smoothVerticalInput) * camPlayerTwo.transform.up;
-        //transform.localEulerAngles += new Vector3(0f,_mouseVector.x * Time.deltaTime, 0f);
+        transform.rotation = Quaternion.LookRotation(camPlayerTwo.transform.forward, Vector3.up);
         playerMove = forward + strafe + vetical;
         if (playerMove != Vector3.zero)
         {

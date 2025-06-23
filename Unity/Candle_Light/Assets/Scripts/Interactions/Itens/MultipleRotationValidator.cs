@@ -17,6 +17,7 @@ public class MultipleRotationValidator : MonoBehaviour, IMultiple
 
     public bool Validator(object additionalInformation)
     {
+        if (!(bool)additionalInformation) return false;
         foreach (UseRotateInteractable rotInteractable in interactables)
         {
             if (!rotInteractable.CheckCorrect()) return false;

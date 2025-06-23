@@ -78,7 +78,7 @@ public class InteractionManagerP2 : MonoBehaviour
     private void AddPotentialInteraction(GameObject itemInteractable)
     {
 
-        foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
+        foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>())
         {
             renderer.material.SetFloat("_Highlight", 1);
         }
@@ -95,7 +95,7 @@ public class InteractionManagerP2 : MonoBehaviour
     ------------------------------------------------------------------------------*/
 	private void RemovePotentialInteraction(GameObject itemInteractable)
     {
-        foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
+        foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>())
         {
             renderer.material.SetFloat("_Highlight", 0);
         }
@@ -120,13 +120,15 @@ public class InteractionManagerP2 : MonoBehaviour
     public void UseInteractionType()
     {
         if (potentialInteractions.Count == 0) return;
+
         foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
         {
             interactable.BaseAction();
         }
 
         InteractableInfos infos = potentialInteractions.First.Value.GetComponent<InteractableInfos>();
-        if(infos != null){
+        if (infos != null)
+        {
             int i = infos.text.textString.Length;
             _inputReader.DisablePlayerInputMove(2);
             Debug.Log("interagiu");

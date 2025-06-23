@@ -103,7 +103,7 @@ public class InteractionManagerP1 : MonoBehaviour
     private void AddPotentialInteraction(GameObject itemInteractable){
         potentialInteractions.AddFirst(itemInteractable);
 
-        foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>()){
+        foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>()){
             renderer.material.SetFloat("_Highlight", 1);
         }
         switch (potentialInteractions.First.Value.layer){
@@ -133,7 +133,7 @@ public class InteractionManagerP1 : MonoBehaviour
                 potentialInteractions.Remove(currentNode);
                 iController.canvasCloseSprite();
                 iController.canvasCloseText();
-                foreach (MeshRenderer renderer in itemInteractable.GetComponentsInChildren<MeshRenderer>())
+                foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>())
                 {
                     renderer.material.SetFloat("_Highlight", 0);
                 }

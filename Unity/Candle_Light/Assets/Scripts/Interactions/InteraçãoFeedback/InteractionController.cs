@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using System.Globalization;
 
 public class InteractionController : MonoBehaviour
 {
@@ -14,18 +15,22 @@ public class InteractionController : MonoBehaviour
     [SerializeField]
     private Image interactionSprite;//Sprite que vai aparecer
     [SerializeField]
+    private TMP_Text interactText;// texto de interacao
+    
+    [SerializeField]
     private TMP_Text textElement;//texto a ser exibido
 
     public LayerMask layerMask;//Layer em que ah interação (Lembrete: Setar elas no inspetor)
 
     public void UpdateIteractableSprite(InteractableInfos infos)
     {
-        //if (infos == null)
-        //{
-        //    spriteCanvas.SetActive(false);
-        //    return;
-        //}
+        if (infos == null)
+        {
+            spriteCanvas.SetActive(false);
+            return;
+        }
         spriteCanvas.SetActive(true);
+        interactText.text = infos.text.textString[0];
         //interactionSprite.sprite = infos.interactSprite;
     }
 

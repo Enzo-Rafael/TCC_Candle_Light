@@ -42,7 +42,7 @@ public class InteractionManagerP1 : MonoBehaviour
     [SerializeField]
     private InteractionController iController;
     [SerializeField]
-    private int indexText = 0;
+    private int indexText = 1;
 
     //------------------------- Variaveis Globais privadas -------------------------------
 
@@ -138,7 +138,7 @@ public class InteractionManagerP1 : MonoBehaviour
                     renderer.material.SetFloat("_Highlight", 0);
                 }
                 if(potentialInteractions.Count != 0){
-                    if (equipItem.tag == potentialInteractions.First.Value.tag){
+                    if (equipItem?.tag == potentialInteractions.First.Value.tag){
                         iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                     }
                 }
@@ -194,7 +194,7 @@ public class InteractionManagerP1 : MonoBehaviour
                         iController.canvasCloseText();
                         iController.canvasCloseSprite();
                         _inputReader.EnablePlayerInput(1);
-                        indexText = 0;
+                        indexText = 1;
                         foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
                         {
                             interactable.BaseAction();

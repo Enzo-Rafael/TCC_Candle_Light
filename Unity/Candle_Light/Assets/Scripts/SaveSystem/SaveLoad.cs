@@ -69,14 +69,14 @@ public class SaveLoad : MonoBehaviour
         {
             if (btnLoad != null) btnLoad.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.CapsLock))
+        /*if (Input.GetKeyDown(KeyCode.CapsLock))
         {
             Save();
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             StartLoad();
-        }
+        }*/
     }
     /*------------------------------------------------------------------------------
     Função:     Save
@@ -109,7 +109,15 @@ public class SaveLoad : MonoBehaviour
             data.mediumCamData[c] = new MediumCamData(p1.GetComponent<ChangeCam>().camRef[c].gameObject.name);
         }
         //Ghost
-        data.ghostData = new GhostAdapter(spawnPoints[spawnIndex].GetComponentInChildren<Transform>().Find("Spawn").gameObject, spawnPoints[spawnIndex].name);
+        foreach (GameObject g in spawnPoints)
+        {
+            if (spawnIndex == g.GetComponent<UseSpawnpointInteractable>().spawnIndex)
+            {
+            data.ghostData = new GhostAdapter(g.GetComponentInChildren<Transform>().Find("Spawn").gameObject, g.name);
+            }
+        }
+       
+       
 
         //Puzzle Obs: Revisar
         data.puzzleData = new PuzzleData[puzzles.Length];
@@ -166,10 +174,8 @@ public class SaveLoad : MonoBehaviour
                 p1Cams[j].gameObject.SetActive(true);
                 if (p1Cams[j].name == data.mediumCamData[i].cam)
                 {
-
                     //p1CamsSet[i] = p1Cams[j];
-                     p1.GetComponent<ChangeCam>().camRef[i] = p1Cams[j];
-
+                    p1.GetComponent<ChangeCam>().camRef[i] = p1Cams[j];
                 }
                 p1Cams[j].gameObject.SetActive(true);
             }
@@ -190,8 +196,8 @@ public class SaveLoad : MonoBehaviour
 
         }
 
-        p2.GetComponent<PlayerTwoScript>().respawnPoint = GameObject.Find(data.ghostData.spawn).GetComponent<Transform>();
-
+        p2.GetComponent<PlayerTwoScript>().respawnPoint.position = GameObject.Find(data.ghostData.spawn).GetComponent<Transform>().position;
+        p2.GetComponent<PlayerTwoScript>().respawnPoint.rotation = GameObject.Find(data.ghostData.spawn).GetComponent<Transform>().rotation;
         //Castisal
         if (data.castesalData.name != "")
         {
@@ -212,19 +218,16 @@ public class SaveLoad : MonoBehaviour
             {
                 if (data.puzzleData[j].indice == puzzles[i].GetComponent<ExecuteItemCommand>().indexPuzzle)
                 {
-                    Debug.Log(data.puzzleData[j].indice);
+                    //Debug.Log(data.puzzleData[j].indice);
                     if (data.puzzleData[j].completed == true)
                     {
-                        puzzles[i].GetComponent<ObserverEventChannel>();
+                        puzzles[i].GetComponent<ExecuteItemCommand>().LoadCompletePuzzle();
                     }
                 }
             }
-            
         }
-        
-
-            //----------------------------------------------------------------------
-            Debug.Log("L");
+        //----------------------------------------------------------------------
+        Debug.Log("L");
         ArrayUtility.Clear(ref p1CamsSet);
         //---------------------------------------------------------------------
     }
@@ -312,7 +315,9 @@ public class SaveLoad : MonoBehaviour
         {
             spawnPoints[cine] = b[cine].gameObject;
         }
-        spawnPoints.OrderBy(x => x.name);
+        spawnPoints.OrderBy(go => go.name).ToArray();
+        //if(spawnPoints != null)Array.Sort(spawnPoints);
+
 
     }
 }

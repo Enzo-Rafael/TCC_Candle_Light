@@ -12,6 +12,10 @@
 
 using UnityEngine;
 using UnityEditor;
+using System;
+using NUnit.Framework;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 public enum ItemType{Single, Multiple}
 
 #if UNITY_EDITOR
@@ -44,6 +48,8 @@ public class ExecuteItemCommand : Interactable, IObserver
     public int indexPuzzle;
     public int spawnProx;
     public bool completed = false;
+    public bool canSave;
+    [SerializeField] protected List<MonoBehaviour> interactions = new List<MonoBehaviour>();
 
     private void Start()
     {
@@ -81,7 +87,7 @@ public class ExecuteItemCommand : Interactable, IObserver
         if (_multipleCode != null && !_multiple.Validator(additionalInformation)) return;
         ExecuteOrder(message, additionalInformation);
         completed = true;
-        //SaveLoad.Instance.CallSave(spawnProx);
+        if (canSave == true) SaveLoad.Instance.CallSave(spawnProx);
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent
@@ -102,5 +108,21 @@ public class ExecuteItemCommand : Interactable, IObserver
     {
         _observerEvent.UnregisterObserver(this);
     }
-    
+    /*------------------------------------------------------------------------------
+    Função:     LoadCompletePuzzle()
+    Descrição:  Carrega o puzzle concluido caso tenha sido no save
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void LoadCompletePuzzle()
+    {
+        if(interactions == null){ return; }
+        canSave = false;
+        foreach (IInteractable i in interactions)
+        {
+            i.BaseAction();
+            Debug.Log(i);
+        }
+        
+    }
 }

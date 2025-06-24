@@ -2804,7 +2804,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 795605537}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BtnSave, Assembly-CSharp
         m_MethodName: BtnNewSave
         m_Mode: 1
@@ -4004,17 +4004,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774994437}
   m_CullTransparentMesh: 1
---- !u!114 &795605537 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6846488148917256655, guid: 81c11ba20f405c34a8758d251a0f4b8a, type: 3}
-  m_PrefabInstance: {fileID: 952026760953699099}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44cd814c96d00644692f7dc4f711ce3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &821730267
 GameObject:
   m_ObjectHideFlags: 0
@@ -4804,7 +4793,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 795605537}
+      - m_Target: {fileID: 1906807809}
         m_TargetAssemblyTypeName: BtnSave, Assembly-CSharp
         m_MethodName: BtnContinue
         m_Mode: 1
@@ -10247,6 +10236,7 @@ GameObject:
   - component: {fileID: 1906807807}
   - component: {fileID: 1906807806}
   - component: {fileID: 1906807808}
+  - component: {fileID: 1906807809}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -10325,6 +10315,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2864d8aa3617bc34896b1b5d8aba1977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1906807809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906807804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44cd814c96d00644692f7dc4f711ce3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1946457261
@@ -11013,7 +11015,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6846488148917256655, guid: 81c11ba20f405c34a8758d251a0f4b8a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -61,7 +61,8 @@ public class ChangeCam : MonoBehaviour
 
     public void ClearCams()
     {
-        ArrayUtility.Clear(ref camRef);
+        //ArrayUtility.Clear(ref camRef);
+        Array.Clear(camRef,0, camRef.Length);
     }
 
     /// <summary>
@@ -103,6 +104,8 @@ public class ChangeCam : MonoBehaviour
             {
                 cam.Priority = 0;
             }
+            OnChangeCamLeft();
+            OnChangeCamRight();
         }
     }
 }

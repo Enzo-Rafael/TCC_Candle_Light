@@ -181,8 +181,8 @@ public class SaveLoad : MonoBehaviour
             }
             //Debug.Log(p1CamsSet[i]);
         }
-        
-       
+
+
         p1.GetComponent<ChangeCam>().LoadCurrentCam(data.mediumData.currentCamIndex);
 
         //Ghost spawn point
@@ -228,7 +228,8 @@ public class SaveLoad : MonoBehaviour
         }
         //----------------------------------------------------------------------
         Debug.Log("L");
-        ArrayUtility.Clear(ref p1CamsSet);
+        //ArrayUtility.Clear(ref p1CamsSet);
+        Array.Clear(p1CamsSet, 0, p1CamsSet.Length);
         //---------------------------------------------------------------------
     }
 

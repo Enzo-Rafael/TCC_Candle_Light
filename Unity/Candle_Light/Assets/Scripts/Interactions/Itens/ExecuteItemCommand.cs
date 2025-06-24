@@ -43,7 +43,7 @@ public class ExecuteItemCommand : Interactable, IObserver
     protected IMultiple _multiple => _multipleCode as IMultiple;
     public int indexPuzzle;
     public int spawnProx;
-    public bool completed = false; 
+    public bool completed = false;
 
     private void Start()
     {
@@ -55,7 +55,8 @@ public class ExecuteItemCommand : Interactable, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnEnable(){
+    private void OnEnable()
+    {
         RegisterEvent();
     }
     /*------------------------------------------------------------------------------
@@ -64,7 +65,8 @@ public class ExecuteItemCommand : Interactable, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnDisable(){
+    private void OnDisable()
+    {
         UnregisterEvent();
     }
     /*------------------------------------------------------------------------------
@@ -87,14 +89,18 @@ public class ExecuteItemCommand : Interactable, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    protected override void UnregisterEvent(){
+    protected override void UnregisterEvent()
+    {
         UnregisterEventPublic();
     }
 
-    public void RegisterEvent(){
+    public void RegisterEvent()
+    {
         _observerEvent.RegisterObserver(this);
     }
-    public void UnregisterEventPublic(){
+    public void UnregisterEventPublic()
+    {
         _observerEvent.UnregisterObserver(this);
     }
+    
 }

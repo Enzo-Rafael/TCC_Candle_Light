@@ -162,7 +162,7 @@ public class SaveLoad : MonoBehaviour
         {
             for (int j = 0; j < p1Cams?.Length; j++)
             {
-                Debug.Log(" J " + p1Cams[j].name);
+                //Debug.Log(" J " + p1Cams[j].name);
                 p1Cams[j].gameObject.SetActive(true);
                 if (p1Cams[j].name == data.mediumCamData[i].cam)
                 {
@@ -198,12 +198,33 @@ public class SaveLoad : MonoBehaviour
             GameObject c = GameObject.Find(data.castesalData.name);
             c.GetComponent<EquipItemInteractable>().LoadAction();
         }
-
+        /*
+        00 01 02 03 04
+        10 11 12 13 14
+        20 21 22 23 24
+        30 31 32 33 34
+        40 41 42 43 44
+        */
         //Puzzles
+        for (int i = 0; i < puzzles.Length; i++)
+        {
+            for (int j = 0; j < data.puzzleData.Length; j++)
+            {
+                if (data.puzzleData[j].indice == puzzles[i].GetComponent<ExecuteItemCommand>().indexPuzzle)
+                {
+                    Debug.Log(data.puzzleData[j].indice);
+                    if (data.puzzleData[j].completed == true)
+                    {
+                        puzzles[i].GetComponent<ObserverEventChannel>();
+                    }
+                }
+            }
+            
+        }
+        
 
-
-        //----------------------------------------------------------------------
-        Debug.Log("L");
+            //----------------------------------------------------------------------
+            Debug.Log("L");
         ArrayUtility.Clear(ref p1CamsSet);
         //---------------------------------------------------------------------
     }

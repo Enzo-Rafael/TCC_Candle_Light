@@ -31,12 +31,16 @@ public class MultipleOrderValidator : MonoBehaviour, IMultiple
     Entrada:    object(int) - Informação sobre qual a ordem do item que foi interagido 
     Saída:      bool - Confirmação a ordem de interação está correta
     ------------------------------------------------------------------------------*/
-    public bool Validator(object additionalInformation){
+    public bool Validator(object additionalInformation)
+    {
         int pointId = (int)additionalInformation;
         PlayerPress.Add(pointId);
-        if (PlayerPress.Count == OrderPress.Length){
-            for (int i = 0; i < PlayerPress.Count; ++i){
-                if (OrderPress[i] != PlayerPress[i]){
+        if (PlayerPress.Count == OrderPress.Length)
+        {
+            for (int i = 0; i < PlayerPress.Count; ++i)
+            {
+                if (OrderPress[i] != PlayerPress[i])
+                {
                     PlayerPress.RemoveAt(0);
                     return false;
                 }
@@ -46,4 +50,6 @@ public class MultipleOrderValidator : MonoBehaviour, IMultiple
         }
         return false;
     }
+    //Save - Resolve automaticamente o puzzle
+    //public
 }

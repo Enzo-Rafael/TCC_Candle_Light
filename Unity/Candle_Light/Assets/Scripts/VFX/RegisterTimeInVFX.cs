@@ -45,13 +45,30 @@ public class RegisterTimeInVFX : MonoBehaviour, IInteractable
     [SerializeField]
     private string stopBoolName;
 
+    private bool isStopped;
+
+    void Awake()
+    {
+        isStopped = false;
+    }
+
     public void BaseAction()
     {
         RegisterTime();
         if (stopEffect)
         {
-            effect.Stop();
-            effect.SetBool(stopBoolName, true);
+            if (!isStopped)
+            {
+                effect.Stop();
+                effect.SetBool(stopBoolName, true);
+                isStopped = true;
+            }
+            else
+            {
+                effect.Play();
+                effect.SetBool(stopBoolName, false);
+                isStopped = false;
+            }
         }
     }
 

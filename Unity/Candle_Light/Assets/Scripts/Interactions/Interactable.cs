@@ -51,6 +51,7 @@ public class Interactable : MonoBehaviour
 
             case ItemActionType.Toggle:
                 if(animator != null)animator.SetBool(parameterName, message != 0);
+                additionalInformation = message != 0;
                 break;
 
             case ItemActionType.Cosume:

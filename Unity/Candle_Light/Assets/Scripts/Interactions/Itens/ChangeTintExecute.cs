@@ -15,10 +15,12 @@ public class ChangeTintExecute : MonoBehaviour, ICodeCustom
 
     public void CustomBaseAction(object additionalInformation)
     {
-        Debug.Log("TriedChangingColor");
         foreach (Renderer rend in rends)
         {
-            rend.material.SetColor("_MainTint", tint);
+            if ((bool)additionalInformation == true)
+                rend.material.SetColor("_MainTint", tint);
+            else
+                rend.material.SetColor("_MainTint", originalTint);
         }
     }
 }

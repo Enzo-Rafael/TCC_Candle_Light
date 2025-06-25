@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6477776883352457532}
   - component: {fileID: 4400526179875178690}
-  - component: {fileID: 1489399189867312948}
   - component: {fileID: 4256149229003648212}
   m_Layer: 0
   m_Name: GradeGrandeBiblioteca
@@ -58,18 +57,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1489399189867312948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959781892845385814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd577c8535fba714a9e70b500afb7e50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4256149229003648212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,9 +70,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent: {fileID: 1489399189867312948}
+  _observerEvent: {fileID: 0}
   animator: {fileID: 4400526179875178690}
   parameterName: On
+  invertParameter: 0
   _enableCustomScript: 0
   _customScript: {fileID: 0}
   _itemType: 0
@@ -487,17 +475,33 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7567329157971448046, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 4400526179875178690}
+    - target: {fileID: 7567329157971448046, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
       propertyPath: _customScript
       value: 
       objectReference: {fileID: 1809030470489220681}
     - target: {fileID: 7567329157971448046, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
+      propertyPath: parameterName
+      value: On
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567329157971448046, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
       propertyPath: _observerEvent
       value: 
-      objectReference: {fileID: 1489399189867312948}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684192093529760009, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
+      propertyPath: _actionType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684192093529760009, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
+      propertyPath: _customScript
+      value: 
+      objectReference: {fileID: 2019244710079128941}
     - target: {fileID: 7684192093529760009, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
       propertyPath: _observerEvent
       value: 
-      objectReference: {fileID: 1489399189867312948}
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7029456247271059009, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
     m_RemovedGameObjects: []
@@ -510,6 +514,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1809030470489220681}
   m_SourcePrefab: {fileID: 100100000, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
+--- !u!114 &2019244710079128941 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7218533791306947359, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
+  m_PrefabInstance: {fileID: 8658362016678510194}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33cc7e0df4cdeda47952443f3e714f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7786033788839824054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1451603957547267268, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}

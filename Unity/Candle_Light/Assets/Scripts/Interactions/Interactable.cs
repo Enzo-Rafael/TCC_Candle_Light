@@ -23,6 +23,9 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     protected string parameterName;
 
+    [SerializeField]
+    protected bool _invertParameter;
+
 
     [Tooltip("Habilta o script custom.")]
     [HideInInspector]
@@ -51,7 +54,7 @@ public class Interactable : MonoBehaviour
 
             case ItemActionType.Toggle:
                 if(animator != null)animator.SetBool(parameterName, message != 0);
-                additionalInformation = message != 0;
+                additionalInformation = (message != 0) != _invertParameter;
                 break;
 
             case ItemActionType.Cosume:

@@ -33,9 +33,11 @@ public class MultipleCandleValidator : MonoBehaviour, IMultiple
         {
             light.gameObject.layer = default;
         }
-        foreach (ObserverEventChannel observers in AlertThisObservers)
-        {
-            observers.NotifyObservers(1);
+        if(AlertThisObservers != null){
+            foreach (ObserverEventChannel observers in AlertThisObservers)
+            {
+                observers.NotifyObservers(1);
+            }
         }
         return true;
     }

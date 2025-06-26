@@ -15,6 +15,8 @@ public class UsePuzzleDad : Interactable, IInteractable
     void Start()
     {
         lightCandle = GetComponentInChildren<PointLight>();
+        lightCandle.visualLight.enabled = false;
+        lightCandle.enabled = false;
     }
 
     public void BaseAction(){

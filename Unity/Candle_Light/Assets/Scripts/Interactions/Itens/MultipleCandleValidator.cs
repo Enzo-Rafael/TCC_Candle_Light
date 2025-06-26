@@ -4,6 +4,8 @@ using UnityEngine;
 public class MultipleCandleValidator : MonoBehaviour, IMultiple
 {
     [SerializeField] private UsePuzzleDad[] lights;
+    //avisa o breu que o puzzle terminou, medida temporaria depois colocarei em todo execute comand par que eles tambem posssam avisar um obsevador.
+    [SerializeField] private ObserverEventChannel[] AlertThisObservers;
     private Vector2 activeLight;
     void Start(){
         lights = GetComponentsInChildren<UsePuzzleDad>();
@@ -27,7 +29,14 @@ public class MultipleCandleValidator : MonoBehaviour, IMultiple
         {
             if (!light.IsFullyLit) return false;
         }
-        Debug.Log("acertei tudo");
+        foreach (UsePuzzleDad light in lights)
+        {
+            light.gameObject.layer = default;
+        }
+        foreach (ObserverEventChannel observers in AlertThisObservers)
+        {
+            observers.NotifyObservers(1);
+        }
         return true;
     }
 }

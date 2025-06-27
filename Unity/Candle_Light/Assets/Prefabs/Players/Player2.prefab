@@ -178,7 +178,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2864596355448705373}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.34202015, z: 0, w: 0.9396927}
+  m_LocalRotation: {x: -0.026296662, y: 0.13149336, z: 0.0034893726, w: 0.9909621}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -253,10 +253,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d54399b04b4fa48a73e121d4937dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReferenceFrame: 0
+  ReferenceFrame: 1
   RecenterTarget: 0
   PanAxis:
-    Value: 40
+    Value: 15.117142
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -266,7 +266,7 @@ MonoBehaviour:
       Time: 0.5
     Restrictions: 0
   TiltAxis:
-    Value: 0
+    Value: -3.040145
     Center: 0
     Range: {x: -70, y: 70}
     Wrap: 0
@@ -314,7 +314,7 @@ MonoBehaviour:
         LegacyInput: 
         LegacyGain: 1
         CancelDeltaTime: 0
-      InputValue: 0
+      InputValue: -0
       Driver:
         AccelTime: 0.1
         DecelTime: 0.1
@@ -445,6 +445,7 @@ GameObject:
   - component: {fileID: 5061557446704673241}
   - component: {fileID: 5970005580199222380}
   - component: {fileID: 5679381062829531428}
+  - component: {fileID: 5053948638938402427}
   - component: {fileID: 4843380957931801773}
   - component: {fileID: 5676224265979371617}
   m_Layer: 11
@@ -491,7 +492,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 0.8
+  m_Height: 0
   m_Radius: 0.4
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -531,7 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe72e2d9badc0234eb902e424fe56a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _observerEvent: {fileID: 0}
+  _observerEvent: {fileID: 5053948638938402427}
   animator: {fileID: 0}
 --- !u!114 &5679381062829531428
 MonoBehaviour:
@@ -548,6 +549,18 @@ MonoBehaviour:
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
   iController: {fileID: 5676224265979371617}
   indexText: 0
+--- !u!114 &5053948638938402427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006832363215773459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd577c8535fba714a9e70b500afb7e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4843380957931801773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,7 +575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
   postProcessingVolume: {fileID: 0}
-  darkTime: 5
+  darkTime: 4
   lightTime: 0.5
 --- !u!114 &5676224265979371617
 MonoBehaviour:

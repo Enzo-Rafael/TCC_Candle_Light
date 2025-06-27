@@ -32,7 +32,7 @@ public class LightDetector : MonoBehaviour
     void Awake()
     {
         lightChangeEvent = (x) => { };
-        if (_observerEvent)
+        if (_observerEvent != null)
             lightChangeEvent += (x) => _observerEvent.NotifyObservers(x ? 1 : 0);
         if (animator != null)
             lightChangeEvent += (x) => animator.SetBool("IsLit", x);
@@ -40,9 +40,7 @@ public class LightDetector : MonoBehaviour
 
     void FixedUpdate()
     {
-
         LightSystem.Instance.UpdateDetectorPos(GetInstanceID(), transform.position);
-
     }
 
 

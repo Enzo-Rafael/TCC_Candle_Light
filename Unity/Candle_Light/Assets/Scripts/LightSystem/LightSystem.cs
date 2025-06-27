@@ -326,8 +326,8 @@ public class LightSystem : Singleton<LightSystem>
         //    }
         //}
     }
-    
-    
+
+
 
     void OnDrawGizmosSelected()
     {
@@ -337,9 +337,21 @@ public class LightSystem : Singleton<LightSystem>
         //    Gizmos.DrawSphere(light.transform.position, light.radius);
         //}
         Gizmos.color = new Color(1.000f, 0.651f, 0.000f, 0.200f);
-        foreach(PointLight light in pointLights)
+        foreach (PointLight light in pointLights)
         {
             Gizmos.DrawSphere(light.transform.position, light.radius);
+        }
+
+        Gizmos.color = Color.magenta;
+        foreach (Detector detector in dynamicDetectors)
+        {
+            Gizmos.DrawSphere(detector.globalPos, 0.5f);
+        }
+        
+        Gizmos.color = Color.red;
+        foreach (Detector detector in staticDetectors)
+        {
+            Gizmos.DrawSphere(detector.globalPos, 0.5f);
         }
     }
 

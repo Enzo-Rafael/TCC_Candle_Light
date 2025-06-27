@@ -1,3 +1,4 @@
+using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -6,7 +7,7 @@ using UnityEngine.Rendering;
 /// </summary>
 [RequireComponent(typeof(LightDetector))]
 [RequireComponent(typeof(PlayerTwoScript))]
-public class DarknessTimer : MonoBehaviour
+public class DarknessTimer : MonoBehaviour, IObserver
 {
     private PlayerTwoScript playerScript;
 
@@ -28,14 +29,25 @@ public class DarknessTimer : MonoBehaviour
 
     private bool _disabled;
 
+    private bool _isLit;
+
+    private ObserverEventChannel eventChannel;
+
     void Awake()
     {
         playerScript = GetComponent<PlayerTwoScript>();
         postProcessingVolume.profile.TryGet(out darknessEffect);
         timer = 0.000001f;
         inputReader.CheatGhostInvulEvent += () => _disabled = !_disabled;
+        eventChannel = GetComponent<ObserverEventChannel>();
+        eventChannel.RegisterObserver(this);
+        _isLit = false;
     }
 
+    public void OnEventRaised(int message, object additionalInformation)
+    {
+        _isLit = (message != 0);
+    }
     void FixedUpdate()
     {
         darknessEffect.showFeedback.value = Mathf.Min(playerScript.showTimer / playerScript.ShowTimerMax(), 0.5f);
@@ -49,7 +61,7 @@ public class DarknessTimer : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (!other.CompareTag("Breu") || _disabled) return;
+        if (!other.CompareTag("Breu") || _disabled || _isLit) return;
 
         timer = Mathf.Min(timer + (1/darkTime + 1/lightTime) * Time.fixedDeltaTime, 1.1f);
         if (timer >= 1)

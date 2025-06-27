@@ -21,7 +21,7 @@ public class PointLight : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, radius);
-        if(visualLight)
+        if (visualLight)
             visualLight.range = radius;
 
     }
@@ -40,4 +40,17 @@ public class PointLight : MonoBehaviour
         visualLight.enabled = false;
     }
 
+    public void Extunguish()
+    {
+        if (visualLight)
+            visualLight.enabled = false;
+        enabled = false;
+    }
+
+    public void LightUp()
+    {
+        if (visualLight)
+            visualLight.enabled = true;
+        enabled = true;
+    }
 }

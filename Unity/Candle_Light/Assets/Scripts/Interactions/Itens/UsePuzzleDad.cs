@@ -15,8 +15,7 @@ public class UsePuzzleDad : Interactable, IInteractable
     void Start()
     {
         lightCandle = GetComponentInChildren<PointLight>();
-        lightCandle.visualLight.enabled = false;
-        lightCandle.enabled = false;
+        lightCandle.Extunguish();
     }
 
     public void BaseAction(){
@@ -26,8 +25,7 @@ public class UsePuzzleDad : Interactable, IInteractable
     public void ActiveSelf(){
         action = !action;
         ExecuteOrder(action ? 1 : 0);
-        lightCandle.visualLight.enabled = action;
-        lightCandle.enabled = action;
+        lightCandle.LightUp();
     }
     public Vector2 GetCordMap(){
         return cordMap;

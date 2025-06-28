@@ -28,12 +28,12 @@ public class UIMainMenu : MonoBehaviour
     {
         CreditsButtonAction.Invoke();
     }
-    public void ExitButton()
-    {
-        ExitButtonAction.Invoke();
-    }
     public void FeaturesButton()
     {
         FeaturesButtonAction.Invoke(); 
+    }
+    public void ExitButton()
+    {
+        ExitButtonAction.Invoke();
     }
 }

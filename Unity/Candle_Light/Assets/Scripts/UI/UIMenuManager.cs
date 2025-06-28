@@ -21,6 +21,7 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private UICredits _creditsPanel = default;
     [SerializeField] private UIPopup _popupPanel = default;
     [SerializeField] private UIFeatures _featuresPanel = default;
+
     [SerializeField] private InputReader _inputReader = default;
 
     /*------------------------------------------------------------------------------
@@ -53,7 +54,8 @@ public class UIMenuManager : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void StartNewGame(){
+    private void StartNewGame()
+    {
         SceneManager.LoadScene("Mansion");
     }
     /*------------------------------------------------------------------------------
@@ -62,7 +64,7 @@ public class UIMenuManager : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OpenSettings(){
+    private void OpenSettings() {
         _settingPanel.gameObject.SetActive(true);
         _settingPanel.Closed += CloseSettings;
     }
@@ -115,6 +117,10 @@ public class UIMenuManager : MonoBehaviour
     private void ClosedFeatures(){
         _featuresPanel.Closed -= ClosedFeatures;
         _featuresPanel.gameObject.SetActive(false);
+    }
+    private void OpenControls(){
+        _featuresPanel.gameObject.SetActive(true);
+        _featuresPanel.Closed += ClosedFeatures;
     }
     /*------------------------------------------------------------------------------
     Função:     ShowExitConfirmationPopup

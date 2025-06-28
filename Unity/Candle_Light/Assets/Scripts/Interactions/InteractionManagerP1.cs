@@ -108,15 +108,18 @@ public class InteractionManagerP1 : MonoBehaviour
         }
         switch (potentialInteractions.First.Value.layer){
             case EquipLayer:
-                iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
-            break;
+                if (equipItem == null)
+                {
+                    iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+                }
+                break;
             case UseLayer:
-                if (potentialInteractions.First.Value.tag != defaultTag && equipItem != null){
+                if (equipItem != null && potentialInteractions.First.Value.tag == equipItem.tag){
                     iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                 }else if (potentialInteractions.First.Value.tag == defaultTag){
                     iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                 }
-            break;
+                break;
         }
     }
     /*------------------------------------------------------------------------------

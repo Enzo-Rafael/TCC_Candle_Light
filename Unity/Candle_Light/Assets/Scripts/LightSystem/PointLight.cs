@@ -47,10 +47,10 @@ public class PointLight : MonoBehaviour
         enabled = false;
     }
 
-    public void LightUp()
+    public void LightUp(bool setLight)
     {
         if (visualLight)
-            visualLight.enabled = true;
-        enabled = true;
+            visualLight.enabled = setLight;
+        enabled = setLight;
     }
 }

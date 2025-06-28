@@ -25,7 +25,7 @@ public class UsePuzzleDad : Interactable, IInteractable
     public void ActiveSelf(){
         action = !action;
         ExecuteOrder(action ? 1 : 0);
-        lightCandle.LightUp();
+        lightCandle.LightUp(action);
     }
     public Vector2 GetCordMap(){
         return cordMap;

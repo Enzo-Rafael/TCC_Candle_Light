@@ -80,8 +80,9 @@ GameObject:
   - component: {fileID: 7931762949708883033}
   - component: {fileID: 7645441540310586833}
   - component: {fileID: 3287160292938423640}
+  - component: {fileID: 7613360226617307266}
   m_Layer: 7
-  m_Name: P1 Follow Cam (1)
+  m_Name: P1 Follow Cam CorredorE(1)
   m_TagString: CamsRef
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Priority:
     Enabled: 1
-    m_Value: 1
+    m_Value: 0
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -128,7 +129,7 @@ MonoBehaviour:
   Lens:
     FieldOfView: 60
     OrthographicSize: 5
-    NearClipPlane: 0.3
+    NearClipPlane: 0.1
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -174,6 +175,18 @@ MonoBehaviour:
     Time: 0
     Smoothing: 0
     IgnoreY: 0
+--- !u!114 &7613360226617307266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599627753622672203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37cade6feff744a43804c34b673e4cf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7156925105372009000
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,8 +302,9 @@ GameObject:
   - component: {fileID: 2491014811975070225}
   - component: {fileID: 4040730533591931855}
   - component: {fileID: 6560018558184095061}
+  - component: {fileID: 690073533661007808}
   m_Layer: 7
-  m_Name: P1 Follow Cam (2)
+  m_Name: P1 Follow Cam CorredorE(2)
   m_TagString: CamsRef
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,7 +351,7 @@ MonoBehaviour:
   Lens:
     FieldOfView: 60
     OrthographicSize: 5
-    NearClipPlane: 0.3
+    NearClipPlane: 0.1
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -383,3 +397,15 @@ MonoBehaviour:
     Time: 0
     Smoothing: 0
     IgnoreY: 0
+--- !u!114 &690073533661007808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8572912786158800146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37cade6feff744a43804c34b673e4cf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

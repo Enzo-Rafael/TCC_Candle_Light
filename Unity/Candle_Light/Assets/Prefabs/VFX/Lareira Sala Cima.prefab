@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4002106591786144221}
   - component: {fileID: 865950385330218745}
   - component: {fileID: 8531248005809466138}
+  - component: {fileID: 5595825238718075065}
   m_Layer: 0
   m_Name: Lareira Sala Cima
   m_TagString: Untagged
@@ -70,6 +71,11 @@ MonoBehaviour:
   _customScript: {fileID: 0}
   _itemType: 0
   _multipleCode: {fileID: 0}
+  indexPuzzle: 0
+  spawnProx: 0
+  completed: 0
+  canSave: 0
+  interactions: []
 --- !u!95 &8531248005809466138
 Animator:
   serializedVersion: 7
@@ -92,6 +98,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &5595825238718075065
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174131195406440921}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.3505962, y: 4.2443094, z: 1.2265637}
+  m_Center: {x: 0, y: 1.6221547, z: -0.63931715}
 --- !u!1 &1707653191770127234
 GameObject:
   m_ObjectHideFlags: 0

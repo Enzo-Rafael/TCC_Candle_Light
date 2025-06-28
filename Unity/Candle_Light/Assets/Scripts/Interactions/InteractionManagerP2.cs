@@ -129,7 +129,7 @@ public class InteractionManagerP2 : MonoBehaviour
         InteractableInfos infos = potentialInteractions.First.Value.GetComponent<InteractableInfos>();
         if (infos != null)
         {
-            int i = infos.text.textString.Length;
+            int i = infos.text? infos.text.textString.Length : 0;
             _inputReader.DisablePlayerInputMove(2);
             Debug.Log("interagiu");
             if (indexText < i)

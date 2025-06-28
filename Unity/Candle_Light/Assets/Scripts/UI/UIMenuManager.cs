@@ -20,6 +20,7 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private UISettingsController _settingPanel = default;
     [SerializeField] private UICredits _creditsPanel = default;
     [SerializeField] private UIPopup _popupPanel = default;
+    [SerializeField] private UIFeatures _featuresPanel = default;
     [SerializeField] private InputReader _inputReader = default;
 
     /*------------------------------------------------------------------------------
@@ -38,11 +39,13 @@ public class UIMenuManager : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void SetMenu(){
+    private void SetMenu()
+    {
         _menuPainel.NewGameButtonAction += StartNewGame;
         _menuPainel.SettingsButtonAction += OpenSettings;
         _menuPainel.CreditsButtonAction += OpenCredits;
         _menuPainel.ExitButtonAction += ShowExitConfirmationPopup;
+        _menuPainel.FeaturesButtonAction += OpenFeatures;
     }
     /*------------------------------------------------------------------------------
     Função:     StartNewGame
@@ -94,15 +97,36 @@ public class UIMenuManager : MonoBehaviour
         _creditsPanel.gameObject.SetActive(false);
     }
     /*------------------------------------------------------------------------------
+    Função:     OpenFeatures
+    Descrição:  Abre o painel de features e associa o a tecla para fecha-lo.
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    private void OpenFeatures(){
+        _featuresPanel.gameObject.SetActive(true);
+        _featuresPanel.Closed += ClosedFeatures;
+    }
+    /*------------------------------------------------------------------------------
+    Função:     CloseFeatures
+    Descrição:  Fecha o painel de features e associa o a tecla para fecha-lo.
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    private void ClosedFeatures(){
+        _featuresPanel.Closed -= ClosedFeatures;
+        _featuresPanel.gameObject.SetActive(false);
+    }
+    /*------------------------------------------------------------------------------
     Função:     ShowExitConfirmationPopup
     Descrição:  Abre um popup de sair e associa a tecla para fecha-lo.
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-	public void ShowExitConfirmationPopup(){
-		_popupPanel.ConfirmationResponseAction += HideExitConfirmationPopup;
-		_popupPanel.gameObject.SetActive(true);
-	}
+    public void ShowExitConfirmationPopup()
+    {
+        _popupPanel.ConfirmationResponseAction += HideExitConfirmationPopup;
+        _popupPanel.gameObject.SetActive(true);
+    }
     /*------------------------------------------------------------------------------
     Função:     HideExitConfirmationPopup
     Descrição:  Fecha o popup/jogo de sair e associa a tecla para fecha-lo.

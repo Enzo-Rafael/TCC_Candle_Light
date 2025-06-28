@@ -34,7 +34,7 @@ public class RegisterTimeInVFXEditor : Editor
 public class RegisterTimeInVFX : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    private VisualEffect effect;
+    private VisualEffect[] effects;
 
     [SerializeField]
     private string timePropertyName;
@@ -59,22 +59,30 @@ public class RegisterTimeInVFX : MonoBehaviour, IInteractable
         {
             if (!isStopped)
             {
-                effect.Stop();
-                effect.SetBool(stopBoolName, true);
-                isStopped = true;
+                foreach (VisualEffect effect in effects)
+                {
+                    effect.Stop();
+                    effect.SetBool(stopBoolName, true);
+                    isStopped = true;
+                }
             }
             else
             {
-                effect.Play();
-                effect.SetBool(stopBoolName, false);
-                isStopped = false;
+                foreach (VisualEffect effect in effects)
+                {
+                    effect.Play();
+                    effect.SetBool(stopBoolName, false);
+                    isStopped = false;
+                }
             }
         }
     }
 
     public void RegisterTime()
     {
-        Debug.Log("Reg Time");
-        effect.SetFloat(timePropertyName, effect.GetSpawnSystemInfo("System").totalTime);
+        foreach (VisualEffect effect in effects)
+        {
+            effect.SetFloat(timePropertyName, effect.GetSpawnSystemInfo("System").totalTime);
+        }
     }
 }

@@ -63,6 +63,7 @@ MonoBehaviour:
   _observerEvent: {fileID: 7029456247271059009}
   animator: {fileID: 0}
   parameterName: 
+  _invertParameter: 0
   _enableCustomScript: 0
   _customScript: {fileID: 0}
   _itemType: 0
@@ -139,6 +140,7 @@ MonoBehaviour:
   _observerEvent: {fileID: 7029456247271059009}
   animator: {fileID: 0}
   parameterName: 
+  _invertParameter: 0
   _enableCustomScript: 0
   _customScript: {fileID: 0}
 --- !u!114 &7218533791306947359
@@ -153,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cc7e0df4cdeda47952443f3e714f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 416695865741681115}
+  effects: []
   timePropertyName: StopTime
   stopEffect: 1
   stopBoolName: Dissipating
@@ -407,10 +409,5 @@ PrefabInstance:
 --- !u!4 &185919874421501453 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3346087547921955317, guid: f9b86bed6e2621748acfac557190fc25, type: 3}
-  m_PrefabInstance: {fileID: 3241243462127507448}
-  m_PrefabAsset: {fileID: 0}
---- !u!2083052967 &416695865741681115 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 2968808316215686691, guid: f9b86bed6e2621748acfac557190fc25, type: 3}
   m_PrefabInstance: {fileID: 3241243462127507448}
   m_PrefabAsset: {fileID: 0}

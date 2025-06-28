@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class CustomGhostBarrier : MonoBehaviour, ICodeCustom
+public class CustomEnableGameobject : MonoBehaviour, ICodeCustom
 {
-    [SerializeField] GameObject barrierReference;
+    [SerializeField] GameObject objectReference;
+    [SerializeField] private bool onOff;
     public void CustomBaseAction(object additionalInformation)
     {
         //poderia só desabilitar esse gameobject, mas se quisermos habilitar a barreira de novo não daria
-        if (barrierReference != null) barrierReference.SetActive(false);
+        if (objectReference != null) objectReference.SetActive(onOff);
     }
 
     // ia trocar pra ser uma custom generico pra mudar o estado de ativado ou desativado dos itens,

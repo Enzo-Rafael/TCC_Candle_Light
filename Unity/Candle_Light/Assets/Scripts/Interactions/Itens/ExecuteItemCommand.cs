@@ -12,6 +12,10 @@
 
 using UnityEngine;
 using UnityEditor;
+using System;
+using NUnit.Framework;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 public enum ItemType{Single, Multiple}
 
 #if UNITY_EDITOR
@@ -41,9 +45,15 @@ public class ExecuteItemCommand : Interactable, IObserver
     [SerializeField]
     protected MonoBehaviour _multipleCode;
     protected IMultiple _multiple => _multipleCode as IMultiple;
+    public int indexPuzzle;
+    public int spawnProx;
+    public bool completed = false;
+    public bool canSave;
+    [SerializeField] protected List<MonoBehaviour> interactions = new List<MonoBehaviour>();
 
-    private void Start(){
-       if(animator == null) animator = GetComponentInParent<Animator>();
+    private void Start()
+    {
+        if (animator == null) animator = GetComponentInParent<Animator>();
     }
     /*------------------------------------------------------------------------------
     Função:     OnEnable
@@ -51,7 +61,8 @@ public class ExecuteItemCommand : Interactable, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnEnable(){
+    private void OnEnable()
+    {
         RegisterEvent();
     }
     /*------------------------------------------------------------------------------
@@ -60,7 +71,8 @@ public class ExecuteItemCommand : Interactable, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnDisable(){
+    private void OnDisable()
+    {
         UnregisterEvent();
     }
     /*------------------------------------------------------------------------------
@@ -70,9 +82,12 @@ public class ExecuteItemCommand : Interactable, IObserver
                 object - Informação com tipo generico do que o objeto faz
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void OnEventRaised(int message, object additionalInformation){
-        if(_multipleCode != null && !_multiple.Validator(additionalInformation)) return;
+    public void OnEventRaised(int message, object additionalInformation)
+    {
+        if (_multipleCode != null && !_multiple.Validator(additionalInformation)) return;
         ExecuteOrder(message, additionalInformation);
+        completed = true;
+        if (canSave == true) SaveLoad.Instance.CallSave(spawnProx);
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent
@@ -80,14 +95,34 @@ public class ExecuteItemCommand : Interactable, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    protected override void UnregisterEvent(){
+    protected override void UnregisterEvent()
+    {
         UnregisterEventPublic();
     }
 
-    public void RegisterEvent(){
+    public void RegisterEvent()
+    {
         _observerEvent.RegisterObserver(this);
     }
-    public void UnregisterEventPublic(){
+    public void UnregisterEventPublic()
+    {
         _observerEvent.UnregisterObserver(this);
+    }
+    /*------------------------------------------------------------------------------
+    Função:     LoadCompletePuzzle()
+    Descrição:  Carrega o puzzle concluido caso tenha sido no save
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void LoadCompletePuzzle()
+    {
+        if(interactions == null){ return; }
+        canSave = false;
+        foreach (IInteractable i in interactions)
+        {
+            i.BaseAction();
+            Debug.Log(i);
+        }
+        
     }
 }

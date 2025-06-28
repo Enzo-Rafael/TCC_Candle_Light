@@ -27,7 +27,7 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
     public CharacterController controller;
     private bool groundedPlayer;
 
-    [SerializeField] private Transform respawnPoint;
+    [SerializeField] public Transform respawnPoint;
     private bool _disabled;
     public bool IsDisabled{ get => _disabled; }
 

@@ -58,4 +58,6 @@ public class MultipleOrderValidator : MonoBehaviour, IMultiple
         }
         return true;
     }
+    //Save - Resolve automaticamente o puzzle
+    //public
 }

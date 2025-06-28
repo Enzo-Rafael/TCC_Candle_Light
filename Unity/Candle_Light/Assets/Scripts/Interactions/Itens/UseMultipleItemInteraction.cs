@@ -34,6 +34,7 @@ public class UseMultipleItemInteraction : Interactable, IInteractable
   public void BaseAction(){
     action = !action;
     if(_observerEvent != null)_observerEvent.NotifyObservers(action? 1:0, orderID);
+    Debug.Log(gameObject.name);
     ExecuteOrder(action? 1:0);
   }
 }

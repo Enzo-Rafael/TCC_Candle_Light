@@ -37,7 +37,7 @@ public class InteractionManagerP1 : MonoBehaviour
 
     //null quando não há item equipado
     [SerializeField]
-    private EquipItemInteractable equipItem = null;
+    public EquipItemInteractable equipItem = null;
 
     [SerializeField]
     private InteractionController iController;

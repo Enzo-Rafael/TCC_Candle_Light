@@ -31,7 +31,7 @@ public class RegisterTimeInVFXEditor : Editor
 
 #endif
 
-public class RegisterTimeInVFX : MonoBehaviour, IInteractable
+public class RegisterTimeInVFX : MonoBehaviour, ICodeCustom
 {
     [SerializeField]
     private VisualEffect[] effects;
@@ -52,7 +52,15 @@ public class RegisterTimeInVFX : MonoBehaviour, IInteractable
         isStopped = false;
     }
 
-    public void BaseAction()
+    public void RegisterTime()
+    {
+        foreach (VisualEffect effect in effects)
+        {
+            effect.SetFloat(timePropertyName, effect.GetSpawnSystemInfo("System").totalTime);
+        }
+    }
+
+    public void CustomBaseAction(object additionalInformation)
     {
         RegisterTime();
         if (stopEffect)
@@ -75,14 +83,6 @@ public class RegisterTimeInVFX : MonoBehaviour, IInteractable
                     isStopped = false;
                 }
             }
-        }
-    }
-
-    public void RegisterTime()
-    {
-        foreach (VisualEffect effect in effects)
-        {
-            effect.SetFloat(timePropertyName, effect.GetSpawnSystemInfo("System").totalTime);
         }
     }
 }

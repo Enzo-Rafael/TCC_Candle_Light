@@ -46,6 +46,8 @@ GameObject:
   - component: {fileID: 243995815538553030}
   - component: {fileID: 1440399177381621380}
   - component: {fileID: 227697148411116730}
+  - component: {fileID: 8294787822184850004}
+  - component: {fileID: 3361725880207761808}
   m_Layer: 0
   m_Name: PuzzleDad
   m_TagString: Untagged
@@ -90,7 +92,7 @@ MonoBehaviour:
   parameterName: 
   _invertParameter: 0
   _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  _customScript: {fileID: 8294787822184850004}
   _itemType: 1
   _multipleCode: {fileID: 1440399177381621380}
   indexPuzzle: 2
@@ -126,6 +128,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd577c8535fba714a9e70b500afb7e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8294787822184850004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584826774354992537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33cc7e0df4cdeda47952443f3e714f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects:
+  - {fileID: 0}
+  timePropertyName: StopTime
+  stopEffect: 1
+  stopBoolName: Dissipating
+--- !u!114 &3361725880207761808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584826774354992537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435f85f67c4bc4648a172ba00e06a082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &757658555855333390

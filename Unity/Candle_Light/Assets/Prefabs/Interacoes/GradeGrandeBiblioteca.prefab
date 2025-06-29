@@ -78,6 +78,11 @@ MonoBehaviour:
   _customScript: {fileID: 0}
   _itemType: 0
   _multipleCode: {fileID: 0}
+  indexPuzzle: 0
+  spawnProx: 0
+  completed: 0
+  canSave: 0
+  interactions: []
 --- !u!1 &2901464686684049163
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,7 +498,7 @@ PrefabInstance:
     - target: {fileID: 7684192093529760009, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
       propertyPath: _customScript
       value: 
-      objectReference: {fileID: 2019244710079128941}
+      objectReference: {fileID: 4836342000965580185}
     - target: {fileID: 7684192093529760009, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
       propertyPath: _observerEvent
       value: 
@@ -509,18 +514,32 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1525614819112410982, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1809030470489220681}
+    - targetCorrespondingSourceObject: {fileID: 5386341063980849058, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 4836342000965580185}
   m_SourcePrefab: {fileID: 100100000, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
---- !u!114 &2019244710079128941 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7218533791306947359, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
+--- !u!1 &3668338892739111376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5386341063980849058, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
   m_PrefabInstance: {fileID: 8658362016678510194}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &4836342000965580185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668338892739111376}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33cc7e0df4cdeda47952443f3e714f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effects:
+  - {fileID: 9070470445004971945}
+  timePropertyName: StopTime
+  stopEffect: 1
+  stopBoolName: Dissipating
 --- !u!4 &7786033788839824054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1451603957547267268, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
@@ -544,6 +563,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tint: {r: 0.45188984, g: 1, b: 0.43867922, a: 1}
+--- !u!2083052967 &9070470445004971945 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 416695865741681115, guid: ee50c21c787e306448217f5d40cd06ec, type: 3}
+  m_PrefabInstance: {fileID: 8658362016678510194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8968425278545910416
 PrefabInstance:
   m_ObjectHideFlags: 0

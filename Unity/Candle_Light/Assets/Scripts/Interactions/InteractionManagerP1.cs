@@ -158,10 +158,15 @@ public class InteractionManagerP1 : MonoBehaviour
     ------------------------------------------------------------------------------*/
     public void UseInteractionType(){
         if (potentialInteractions.Count != 0){
-            if (potentialInteractions.First.Value.tag != defaultTag && potentialInteractions.First.Value.layer == UseLayer){ 
-                if (equipItem != null && FloorVerification()){
+            if (potentialInteractions.First.Value.tag != defaultTag && potentialInteractions.First.Value.layer == UseLayer){
+                if (equipItem != null && FloorVerification())
+                {
                     equipItem.DropItem(hitFloor.point);
                     equipItem = null;
+                    foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
+                    {
+                        interactable.BaseAction();
+                    }
                 }
                 return;
             }

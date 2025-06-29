@@ -17,9 +17,9 @@ class SceneData
     public MediumData mediumData;
     public MediumCamData[] mediumCamData;
     public GhostData ghostData;
-    public CastesalData castesalData;
+    public CastesalData[] castesalData;
     public PuzzleData[] puzzleData;
-    public GameObject casticalExpecifico;
+    //public GameObject casticalExpecifico;
 }
 public class SaveLoad : MonoBehaviour
 {
@@ -30,6 +30,7 @@ public class SaveLoad : MonoBehaviour
     public GameObject[] spawnPoints;//GameObjects de Spawn
     public GameObject[] puzzles;//GameObjects de Puzzle
     public CinemachineCamera[] p1Cams;//Cameras da Medium
+    public GameObject[] objHolds; //Objetos que podem ser segurados 
     public GameObject btnLoad;
     [SerializeField] Animator notification;
     //Variaveis
@@ -88,19 +89,33 @@ public class SaveLoad : MonoBehaviour
     {
         notification = GameObject.Find("NotificationSave").GetComponent<Animator>();
         SceneData data = new SceneData();
+        //Seta-as-Referencias-------------------------------------------------------------
         SetMediumCams();
         SetSpawn();
         SetPuzzle();
+        SetHoldObjs();
         //---------------------------------------------------------------------------
         GameObject p1 = GameObject.FindWithTag("Player1");
         int p1camIndex = p1.GetComponent<ChangeCam>().currentCamIndex;
         int p1camLast = p1.GetComponent<ChangeCam>().camRef.Length;
         //Medium (Obs: "spawnIndex" vai definir qual spawn esta chamand, tomar cuidado)
         data.mediumData = new MediumAdapter(p1, p1camIndex, p1camLast);
-        if (p1.GetComponent<InteractionManagerP1>().equipItem != null)
+        if (objHolds != null)
         {
-            data.castesalData = new CastesalData(p1.GetComponent<PlayerOneScript>().HoldPosition,
-            p1.GetComponent<InteractionManagerP1>().equipItem.gameObject);
+            bool isHold;
+            data.castesalData = new CastesalData[objHolds.Length];
+            for (int c = 0; c < objHolds.Length; c++)
+            {
+                if (p1.GetComponent<InteractionManagerP1>().equipItem != null && p1.GetComponent<InteractionManagerP1>().equipItem.name == objHolds[c].name)
+                {
+                    isHold = true;
+                }
+                else
+                {
+                    isHold = false;
+                }
+                data.castesalData[c] = new CastesalAdapter(isHold, p1.GetComponent<PlayerOneScript>().HoldPosition, objHolds[c]);
+            }
         }
         //Medium Cams
         data.mediumCamData = new MediumCamData[p1.GetComponent<ChangeCam>().camRef.Length];
@@ -109,21 +124,24 @@ public class SaveLoad : MonoBehaviour
             data.mediumCamData[c] = new MediumCamData(p1.GetComponent<ChangeCam>().camRef[c].gameObject.name);
         }
         //Ghost
-        foreach (GameObject g in spawnPoints)
+        if (spawnPoints != null)
         {
-            if (spawnIndex == g.GetComponent<UseSpawnpointInteractable>().spawnIndex)
+            foreach (GameObject g in spawnPoints)
             {
-            data.ghostData = new GhostAdapter(g.GetComponentInChildren<Transform>().Find("Spawn").gameObject, g.name);
+                if (spawnIndex == g.GetComponent<UseSpawnpointInteractable>().spawnIndex)
+                {
+                    data.ghostData = new GhostAdapter(g.GetComponentInChildren<Transform>().Find("Spawn").gameObject, g.name);
+                }
             }
         }
-       
-       
-
         //Puzzle Obs: Revisar
-        data.puzzleData = new PuzzleData[puzzles.Length];
-        for (int i = 0; i < puzzles.Length; i++)
+        if (puzzles != null)
         {
-            data.puzzleData[i] = new PuzzleData(puzzles[i].GetComponent<ExecuteItemCommand>());
+            data.puzzleData = new PuzzleData[puzzles.Length];
+            for (int i = 0; i < puzzles.Length; i++)
+            {
+                data.puzzleData[i] = new PuzzleData(puzzles[i].GetComponent<ExecuteItemCommand>());
+            }
         }
         //Gera o arquivo de save-----------------------------------------------------
         string s = JsonUtility.ToJson(data, true);
@@ -144,11 +162,12 @@ public class SaveLoad : MonoBehaviour
     {
         string s = File.ReadAllText(path);
         SceneData data = JsonUtility.FromJson<SceneData>(s);
-        //---------------------------------------------------------------
+        //Seta-as-Referencias-------------------------------------------------------------
         p1CamsSet = new CinemachineCamera[data.mediumCamData.Length];
         SetMediumCams();
         SetSpawn();
         SetPuzzle();
+        SetHoldObjs();
         //---------------------------------------------------
         //Pos Medium e Ghost
         GameObject p1 = GameObject.Find("Player1");
@@ -199,11 +218,21 @@ public class SaveLoad : MonoBehaviour
         p2.GetComponent<PlayerTwoScript>().respawnPoint.position = GameObject.Find(data.ghostData.spawn).GetComponent<Transform>().position;
         p2.GetComponent<PlayerTwoScript>().respawnPoint.rotation = GameObject.Find(data.ghostData.spawn).GetComponent<Transform>().rotation;
         //Castisal
-        if (data.castesalData.name != "")
+        
+        for (int obj = 0; obj < objHolds.Length; obj++)
         {
-            GameObject c = GameObject.Find(data.castesalData.name);
-            c.GetComponent<EquipItemInteractable>().LoadAction();
+            if (data.castesalData[obj].isHold == true)
+            {
+                GameObject c = GameObject.Find(data.castesalData[obj].name);
+                c.GetComponent<EquipItemInteractable>().LoadAction();
+            }
+            else
+            {
+                objHolds[obj].transform.position = data.castesalData[obj].position;
+                objHolds[obj].transform.eulerAngles = data.castesalData[obj].rotation;
+            }
         }
+        
         /*
         00 01 02 03 04
         10 11 12 13 14
@@ -318,7 +347,16 @@ public class SaveLoad : MonoBehaviour
         }
         spawnPoints.OrderBy(go => go.name).ToArray();
         //if(spawnPoints != null)Array.Sort(spawnPoints);
+    }
 
-
+    public void SetHoldObjs()//Puxa os objs que podem ser carregados da cena de jogo
+    {
+        HoldBeacom[] b = FindObjectsByType<HoldBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+        objHolds = new GameObject[b.Length];
+        for (int cine = 0; cine < b.Length; cine++)
+        {
+            objHolds[cine] = b[cine].gameObject;
+        }
+        objHolds.OrderBy(go => go.name).ToArray();
     }
 }

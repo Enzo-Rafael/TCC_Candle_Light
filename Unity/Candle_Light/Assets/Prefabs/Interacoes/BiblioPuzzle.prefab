@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3204490935792538466}
   - component: {fileID: 7785275205816767649}
   - component: {fileID: 6399805930472567149}
+  - component: {fileID: 9005605665689269426}
   m_Layer: 0
   m_Name: BiblioPuzzle
   m_TagString: Untagged
@@ -113,10 +114,23 @@ MonoBehaviour:
   completed: 0
   canSave: 1
   interactions:
+  - {fileID: 0}
   - {fileID: 2951651555215809976}
   - {fileID: 8027076136678344082}
   - {fileID: 2070609338371291426}
   - {fileID: 3489398684036774991}
+--- !u!114 &9005605665689269426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604868572003334045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435f85f67c4bc4648a172ba00e06a082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &850942102953871433
 GameObject:
   m_ObjectHideFlags: 0

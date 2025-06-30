@@ -115,7 +115,10 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
     /// </summary>
     public void Die()
     {
+        //Debug.LogAssertion("Die moment");
+        controller.enabled = false;
         transform.position = respawnPoint.position;
+        controller.enabled = true;
     }
 
     /// <summary>

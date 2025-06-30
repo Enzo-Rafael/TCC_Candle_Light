@@ -8,7 +8,7 @@ public class UIControls : MonoBehaviour
     private void OnEnable()
     {
         _inputReader.DisableAllInput();
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -18,7 +18,7 @@ public class UIControls : MonoBehaviour
     }
     public void ClosePanel()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         Closed.Invoke();
     }
 }

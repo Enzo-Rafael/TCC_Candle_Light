@@ -50,6 +50,10 @@ public class RegisterTimeInVFX : MonoBehaviour, ICodeCustom
     void Awake()
     {
         isStopped = false;
+        this.CallWithDelay(() =>
+        {
+            foreach(VisualEffect fx in effects){ fx.Play(); }
+        },0.1f);
     }
 
     public void RegisterTime()

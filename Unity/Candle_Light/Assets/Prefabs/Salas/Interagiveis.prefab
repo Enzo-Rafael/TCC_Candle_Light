@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 5761997778500603078}
   - component: {fileID: 5203584120254599542}
   - component: {fileID: 8970210530626538950}
+  - component: {fileID: 8120036758549295606}
   m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
@@ -194,6 +195,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8120036758549295606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338455217672503443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 11400000, guid: 60ac803b522f07141baa8f8dd89ed99f, type: 2}
 --- !u!1 &2013503883351209097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,6 +2236,9 @@ MonoBehaviour:
   effects:
   - {fileID: 775513432825748416}
   - {fileID: 293496428788136700}
+  - {fileID: 7166052542763112712}
+  - {fileID: 1085786120983858846}
+  - {fileID: 5022749849079304657}
   timePropertyName: StopTime
   stopEffect: 1
   stopBoolName: Dissipating
@@ -2495,6 +2512,11 @@ PrefabInstance:
 --- !u!4 &598309370328432968 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3346087547921955317, guid: f9b86bed6e2621748acfac557190fc25, type: 3}
+  m_PrefabInstance: {fileID: 2747811320111315133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &1085786120983858846 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 2968808316215686691, guid: f9b86bed6e2621748acfac557190fc25, type: 3}
   m_PrefabInstance: {fileID: 2747811320111315133}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2859163481054407776
@@ -4794,6 +4816,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b86bed6e2621748acfac557190fc25, type: 3}
+--- !u!2083052967 &7166052542763112712 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 2968808316215686691, guid: f9b86bed6e2621748acfac557190fc25, type: 3}
+  m_PrefabInstance: {fileID: 5350766459715645227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7218721938729998046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3346087547921955317, guid: f9b86bed6e2621748acfac557190fc25, type: 3}
@@ -6650,6 +6677,11 @@ PrefabInstance:
 --- !u!4 &4821252843975007751 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3346087547921955317, guid: f9b86bed6e2621748acfac557190fc25, type: 3}
+  m_PrefabInstance: {fileID: 7820279817131403250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &5022749849079304657 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 2968808316215686691, guid: f9b86bed6e2621748acfac557190fc25, type: 3}
   m_PrefabInstance: {fileID: 7820279817131403250}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7928107534120990493

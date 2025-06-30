@@ -62,12 +62,12 @@ public class DarknessTimer : MonoBehaviour, IObserver
     void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag("Breu") || _disabled || _isLit) return;
-
+        //Debug.LogAssertion("in the zone " + timer);
         timer = Mathf.Min(timer + (1/darkTime + 1/lightTime) * Time.fixedDeltaTime, 1.1f);
         if (timer >= 1)
         {
-            if (!playerScript.IsDisabled)
-                playerScript.Die();
+            //Debug.LogAssertion("try die");
+            playerScript.Die();
             timer -= 0.01f;
         }
 

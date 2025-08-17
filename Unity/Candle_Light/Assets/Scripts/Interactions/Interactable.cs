@@ -1,23 +1,28 @@
 using UnityEngine;
+using System.Collections.Generic; 
 
-public enum ItemActionType{Toggle, Cosume, Trigger}
+public enum ItemActionType{None, Toggle, Cosume, Trigger}
 
 public class Interactable : MonoBehaviour
 {
  //-------------------------- Variaveis Globais Visiveis --------------------------------
 
     [Tooltip("Tipo de ação que o item fará ao interagirem com ele")]
-    [SerializeField] 
+    [SerializeField]
     protected ItemActionType _actionType;
 
+    [Tooltip("Habilita o uso de um Observer Event Channel para este objeto.")]
+    [SerializeField]
+    protected bool _useObserverEvent; 
+    
     [Tooltip("Referência para o evento sendo escutado.")]
-	[SerializeField] 
+    [SerializeField]
     protected ObserverEventChannel _observerEvent = default;
 
-    [Tooltip("Referência para o controlador de animacao.")]
-	[SerializeField] 
-    protected Animator animator;
 
+    [Tooltip("Referência para o controlador de animacao.")]
+    [SerializeField]
+    protected Animator animator;
 
     [Tooltip("Nome do parametro de animador a ser modificado.")]
     [SerializeField]
@@ -26,15 +31,13 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     protected bool _invertParameter;
 
+    [Tooltip("Habilita a lista de scripts customizados.")]
+    [SerializeField] public bool _useCustomScripts;
 
-    [Tooltip("Habilta o script custom.")]
-    [HideInInspector]
-    [SerializeField] public bool _enableCustomScript;
 
-    [Tooltip("Referência para script custom que será executado quando iteragir com o item")]
+    [Tooltip("Lista de scripts customizados que serão executados quando interagir com o item")]
     [SerializeField]
-    protected MonoBehaviour _customScript;
-    protected ICodeCustom _script => _customScript as ICodeCustom;
+    protected List<MonoBehaviour> _customScripts;
 
     protected bool consumeBool = false;
 
@@ -49,21 +52,28 @@ public class Interactable : MonoBehaviour
         switch (_actionType)
         {
             case ItemActionType.Trigger:
-                if(animator != null)animator.SetTrigger(parameterName);
+                if (animator != null) animator.SetTrigger(parameterName);
                 break;
 
             case ItemActionType.Toggle:
-                if(animator != null)animator.SetBool(parameterName, message != 0);
+                if (animator != null) animator.SetBool(parameterName, message != 0);
                 additionalInformation = (message != 0) != _invertParameter;
                 break;
 
             case ItemActionType.Cosume:
-                if(!consumeBool && animator != null) animator.SetTrigger(parameterName);
+                if (!consumeBool && animator != null) animator.SetTrigger(parameterName);
                 UnregisterEvent();
                 consumeBool = true;
                 break;
         }
-        if (_script != null) _script.CustomBaseAction(additionalInformation);
+        if (_useCustomScripts && _customScripts != null){
+            foreach (var scriptComponent in _customScripts){
+                if (scriptComponent is ICodeCustom script){
+                    script.CustomBaseAction(additionalInformation);
+                }
+            }
+        }
+
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent

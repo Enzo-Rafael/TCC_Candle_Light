@@ -18,22 +18,22 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 public enum ItemType{Single, Multiple}
 
-#if UNITY_EDITOR
+// #if UNITY_EDITOR
 
-[CustomEditor(typeof(ExecuteItemCommand))]
-public class ExecuteItemCommand_Editor: Editor{
+// [CustomEditor(typeof(ExecuteItemCommand))]
+// public class ExecuteItemCommand_Editor: Editor{
 
-    public override void OnInspectorGUI(){
+//     public override void OnInspectorGUI(){
 
-        serializedObject.Update();
-        base.OnInspectorGUI();
-        SerializedProperty itemTypeProp = serializedObject.FindProperty("_itemType");
-        SerializedProperty multipleCodeProp = serializedObject.FindProperty("_multipleCode");
-        if ((ItemType)itemTypeProp.enumValueIndex == ItemType.Multiple) EditorGUILayout.PropertyField(multipleCodeProp, new GUIContent("Código de Múltiplas Interações"));
-        serializedObject.ApplyModifiedProperties();
-    }
-}
-#endif
+//         serializedObject.Update();
+//         base.OnInspectorGUI();
+//         SerializedProperty itemTypeProp = serializedObject.FindProperty("_itemType");
+//         SerializedProperty multipleCodeProp = serializedObject.FindProperty("_multipleCode");
+//         if ((ItemType)itemTypeProp.enumValueIndex == ItemType.Multiple) EditorGUILayout.PropertyField(multipleCodeProp, new GUIContent("Código de Múltiplas Interações"));
+//         serializedObject.ApplyModifiedProperties();
+//     }
+// }
+// #endif
 public class ExecuteItemCommand : Interactable, IObserver
 {
     [Tooltip("Tipo do item")]
@@ -41,7 +41,6 @@ public class ExecuteItemCommand : Interactable, IObserver
     private ItemType _itemType;
 
     [Tooltip("Referência para codigo que terá como esse item funciona")]
-    [HideInInspector]
     [SerializeField]
     protected MonoBehaviour _multipleCode;
     protected IMultiple _multiple => _multipleCode as IMultiple;

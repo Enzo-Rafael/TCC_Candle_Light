@@ -11,29 +11,9 @@
 //----------------------------- Bibliotecas Usadas -------------------------------------
 
 using UnityEngine;
-using UnityEditor;
-using System;
-using NUnit.Framework;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 public enum ItemType{Single, Multiple}
 
-// #if UNITY_EDITOR
-
-// [CustomEditor(typeof(ExecuteItemCommand))]
-// public class ExecuteItemCommand_Editor: Editor{
-
-//     public override void OnInspectorGUI(){
-
-//         serializedObject.Update();
-//         base.OnInspectorGUI();
-//         SerializedProperty itemTypeProp = serializedObject.FindProperty("_itemType");
-//         SerializedProperty multipleCodeProp = serializedObject.FindProperty("_multipleCode");
-//         if ((ItemType)itemTypeProp.enumValueIndex == ItemType.Multiple) EditorGUILayout.PropertyField(multipleCodeProp, new GUIContent("Código de Múltiplas Interações"));
-//         serializedObject.ApplyModifiedProperties();
-//     }
-// }
-// #endif
 public class ExecuteItemCommand : Interactable, IObserver
 {
     [Tooltip("Tipo do item")]

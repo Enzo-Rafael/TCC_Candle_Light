@@ -62,8 +62,7 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnEnable()
-    {
+    private void OnEnable(){
         _inputReader.ActionEventOne += UseInteractionType;
     }
     /*------------------------------------------------------------------------------
@@ -72,8 +71,7 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnDisable()
-    {
+    private void OnDisable(){
         _inputReader.ActionEventOne -= UseInteractionType;
     }
     /*------------------------------------------------------------------------------
@@ -85,12 +83,10 @@ public class InteractionManagerP1 : MonoBehaviour
     ------------------------------------------------------------------------------*/
     public void OnTriggerDetected(bool entered, GameObject itemInteractable)
     {
-        if (entered)
-        {
+        if (entered){
             AddPotentialInteraction(itemInteractable);
         }
-        else
-        {
+        else{
             RemovePotentialInteraction(itemInteractable);
         }
     }
@@ -108,8 +104,7 @@ public class InteractionManagerP1 : MonoBehaviour
         }
         switch (potentialInteractions.First.Value.layer){
             case EquipLayer:
-                if (equipItem == null)
-                {
+                if (equipItem == null){
                     iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                 }
                 break;
@@ -136,8 +131,7 @@ public class InteractionManagerP1 : MonoBehaviour
                 potentialInteractions.Remove(currentNode);
                 iController.canvasCloseSprite();
                 iController.canvasCloseText();
-                foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>())
-                {
+                foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>()){
                     renderer.material.SetFloat("_Highlight", 0);
                 }
                 if(potentialInteractions.Count != 0){
@@ -159,12 +153,10 @@ public class InteractionManagerP1 : MonoBehaviour
     public void UseInteractionType(){
         if (potentialInteractions.Count != 0){
             if (potentialInteractions.First.Value.tag != defaultTag && potentialInteractions.First.Value.layer == UseLayer){
-                if (equipItem != null && FloorVerification())
-                {
+                if (equipItem != null && FloorVerification()){
                     equipItem.DropItem(hitFloor.point);
                     equipItem = null;
-                    foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
-                    {
+                    foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>()){
                         interactable.BaseAction();
                     }
                 }
@@ -175,11 +167,9 @@ public class InteractionManagerP1 : MonoBehaviour
             return;
         }
         iController.canvasCloseSprite();
-        switch (potentialInteractions.First.Value.layer)
-        {
+        switch (potentialInteractions.First.Value.layer){
             case EquipLayer:
-                if (equipItem == null)
-                {
+                if (equipItem == null){
                     potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
                     equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
                     equipItem.DefineLayer(default);
@@ -188,31 +178,25 @@ public class InteractionManagerP1 : MonoBehaviour
                 break;
             case UseLayer:
                 InteractableInfos infos = potentialInteractions.First.Value.GetComponent<InteractableInfos>();
-                if (infos != null)
-                {
+                if (infos != null){
                     _inputReader.DisablePlayerInputMove(1);
                     int i = infos.text.textString.Length;
-                    if (indexText < i)
-                    {
+                    if (indexText < i){
                         iController.UpdateIteractableText(infos, indexText);
                         indexText += 1;
                     }
-                    else
-                    {
+                    else{
                         iController.canvasCloseText();
                         iController.canvasCloseSprite();
                         _inputReader.EnablePlayerInput(1);
                         indexText = 1;
-                        foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
-                        {
+                        foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>()){
                             interactable.BaseAction();
                         }
                     }
                 }
-                else
-                {
-                    foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
-                    {
+                else{
+                    foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>()){
                         interactable.BaseAction();
                     }
                 }
@@ -233,5 +217,4 @@ public class InteractionManagerP1 : MonoBehaviour
         }
         return false;
     }
-
 }

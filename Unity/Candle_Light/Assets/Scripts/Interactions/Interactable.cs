@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic; 
 
-public enum ItemActionType{None, Toggle, Cosume, Trigger}
+public enum ItemActionType{None, Toggle, Consume, Trigger}
 
 public class Interactable : MonoBehaviour
 {
@@ -47,8 +47,9 @@ public class Interactable : MonoBehaviour
     Entrada:    int - indentificação para dizer qual ação o atuador fará.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    protected virtual void ExecuteOrder(int message = 1, object additionalInformation = null)
+    protected void ExecuteOrder(int message = 1, object additionalInformation = null)
     {
+        if (consumeBool)return; 
         switch (_actionType)
         {
             case ItemActionType.Trigger:
@@ -60,8 +61,8 @@ public class Interactable : MonoBehaviour
                 additionalInformation = (message != 0) != _invertParameter;
                 break;
 
-            case ItemActionType.Cosume:
-                if (!consumeBool && animator != null) animator.SetTrigger(parameterName);
+            case ItemActionType.Consume:
+                if (animator != null) animator.SetTrigger(parameterName);
                 UnregisterEvent();
                 consumeBool = true;
                 break;
@@ -80,7 +81,7 @@ public class Interactable : MonoBehaviour
     Descrição:  Desregistra o Objeto na lista de Observadores do item especifico.
     Entrada:    -
     Saída:      -
-    ------------------------------------------------------------------------------*/ 
+    ------------------------------------------------------------------------------*/
     protected virtual void UnregisterEvent(){}
 
     protected ObserverEventChannel GetObserver(){

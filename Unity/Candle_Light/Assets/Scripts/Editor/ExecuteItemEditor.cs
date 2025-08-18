@@ -44,22 +44,24 @@ public class ExecuteItemEditor : InteractableEditor
         var statusRow = new EditorUIUtils.LabeledRow("Status Atual do Puzzle");
         ux.Add(statusRow);
         
+        serializedObject.Update();
         var statusLabel = new Label("Verificando..."); 
         statusRow.Contents.Add(statusLabel);
-
-        if (Target != null){
-            bool isCompleted = Target.completed;
-            if (isCompleted){
-                statusLabel.text = "Concluído";
-                statusLabel.style.color = new StyleColor(new Color(0.2f, 0.8f, 0.2f)); 
+        ux.ContinuousUpdate(() =>{
+            if (Target != null){
+                bool isCompleted = Target.completed;
+                if (isCompleted){
+                    statusLabel.text = "Concluído";
+                    statusLabel.style.color = new StyleColor(new Color(0.2f, 0.8f, 0.2f));
+                }
+                else{
+                    statusLabel.text = "Pendente";
+                    statusLabel.style.color = StyleKeyword.Null;
+                }
+                ;
             }
-            else{
-                statusLabel.text = "Pendente";
-                statusLabel.style.color = StyleKeyword.Null; 
-            };
-        }
+        });
         EditorUIUtils.AddSpace(ux);
-
         ux.Add(new PropertyField(serializedObject.FindProperty("interactions")));
 
     }

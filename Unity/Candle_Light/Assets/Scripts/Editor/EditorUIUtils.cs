@@ -48,7 +48,27 @@ namespace CandleLight.Editor
                 }
             });
         }
-
+        public static void ContinuousUpdate(
+            this VisualElement owner, EditorApplication.CallbackFunction callback)
+        {
+            owner.RegisterCallback<AttachToPanelEvent>(_ =>
+            {
+                owner.OnInitialGeometry(callback); 
+                EditorApplication.update += callback;
+                owner.RegisterCallback<DetachFromPanelEvent>(_ => EditorApplication.update -= callback);
+            });
+        }
+        public static void OnInitialGeometry(
+            this VisualElement owner, EditorApplication.CallbackFunction callback)
+        {
+            owner.RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
+            void OnGeometryChanged(GeometryChangedEvent _)
+            {
+                owner.UnregisterCallback<GeometryChangedEvent>(OnGeometryChanged); // call only once
+                callback();
+            }
+        }
+        
         public static void AddSpace(this VisualElement ux)
         {
             ux.Add(new VisualElement { style = { height = SingleLineHeight / 2 } });

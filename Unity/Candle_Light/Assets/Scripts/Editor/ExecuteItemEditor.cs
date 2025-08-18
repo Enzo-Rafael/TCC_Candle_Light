@@ -20,7 +20,6 @@ public class ExecuteItemEditor : InteractableEditor
         var targetGameObject = Target.gameObject;
 
         var multipleCodeProp = serializedObject.FindProperty("_multipleCode");
-        ux.Add(new PropertyField(multipleCodeProp));
         List<Type> availableTypes = ComponentFinder.GetTypes(typeof(IMultiple));
         var choices = new List<string> { "Single" };
         choices.AddRange(availableTypes.Select(type => ObjectNames.NicifyVariableName(type.Name)));

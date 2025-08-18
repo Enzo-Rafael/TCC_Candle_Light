@@ -20,13 +20,12 @@ public class ExecuteItemEditor : InteractableEditor
         var targetGameObject = Target.gameObject;
 
         var multipleCodeProp = serializedObject.FindProperty("_multipleCode");
-        
+        ux.Add(new PropertyField(multipleCodeProp));
         List<Type> availableTypes = ComponentFinder.GetTypes(typeof(IMultiple));
-
         var choices = new List<string> { "Single" };
         choices.AddRange(availableTypes.Select(type => ObjectNames.NicifyVariableName(type.Name)));
 
-        var dropdownRow = new EditorUIUtils.LabeledRow("Type Action", "Single: Executa sempre que um item interage com ele(caso ele não seja consume) \nMultiple: Tem que atender multiplas condiões para executar");
+        var dropdownRow = new EditorUIUtils.LabeledRow("Item Type", "Single: Executa sempre que um item interage com ele(caso ele não seja consume) \nMultiple: Tem que atender multiplas condiões para executar");
         ux.Add(dropdownRow);
 
         var multipleTypeDropdown = new DropdownField("", choices, 0);
@@ -58,6 +57,7 @@ public class ExecuteItemEditor : InteractableEditor
             else{
                 multipleCodeProp.objectReferenceValue = null;
             }
+            Debug.Log(multipleCodeProp.objectReferenceValue);
             serializedObject.ApplyModifiedProperties();
         });
 

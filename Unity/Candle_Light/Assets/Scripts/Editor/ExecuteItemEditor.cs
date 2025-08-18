@@ -4,6 +4,9 @@ using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using CandleLight.Editor;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
 [CustomEditor(typeof(ExecuteItemCommand))]
 [CanEditMultipleObjects]
@@ -13,27 +16,49 @@ public class ExecuteItemEditor : InteractableEditor
     {
         ux.AddHeader("Execute Item Command Configurações");
 
-        var Target = target as ExecuteItemCommand; 
+        var Target = target as ExecuteItemCommand;
+        var targetGameObject = Target.gameObject;
 
-        var itemTypeProp = serializedObject.FindProperty("_itemType");
         var multipleCodeProp = serializedObject.FindProperty("_multipleCode");
         
-        var itemTypeField = new PropertyField(itemTypeProp);
-        ux.Add(itemTypeField);
+        List<Type> availableTypes = ComponentFinder.GetTypes(typeof(IMultiple));
 
+        var choices = new List<string> { "Single" };
+        choices.AddRange(availableTypes.Select(type => ObjectNames.NicifyVariableName(type.Name)));
 
-        var multipleCodeField = new PropertyField(multipleCodeProp, "Código de Múltiplas Interações");
-        ux.Add(multipleCodeField);
+        var dropdownRow = new EditorUIUtils.LabeledRow("Type Action", "Single: Executa sempre que um item interage com ele(caso ele não seja consume) \nMultiple: Tem que atender multiplas condiões para executar");
+        ux.Add(dropdownRow);
 
-        void UpdateItemCommandFields(ItemType currentType){
-            EditorUIUtils.SetVisible(multipleCodeField, currentType == ItemType.Multiple);
+        var multipleTypeDropdown = new DropdownField("", choices, 0);
+        multipleTypeDropdown.style.flexGrow = 1; 
+        
+        dropdownRow.Contents.Add(multipleTypeDropdown);
+
+        var currentComponent = multipleCodeProp.objectReferenceValue as MonoBehaviour;
+        if (currentComponent != null){
+            int previouslySelectedIndex = availableTypes.FindIndex(type => type == currentComponent.GetType());
+            if (previouslySelectedIndex != -1){
+                multipleTypeDropdown.index = previouslySelectedIndex + 1; 
+            }
         }
 
-        UpdateItemCommandFields((ItemType)itemTypeProp.enumValueIndex);
-
-        itemTypeField.RegisterValueChangeCallback(evt =>
+        multipleTypeDropdown.RegisterValueChangedCallback(evt =>
         {
-            UpdateItemCommandFields((ItemType)evt.changedProperty.enumValueIndex);
+            var oldComponent = multipleCodeProp.objectReferenceValue as MonoBehaviour;
+            int newIndex = multipleTypeDropdown.index;
+
+            if (oldComponent != null){
+                Undo.DestroyObjectImmediate(oldComponent);
+            }
+            if (newIndex > 0){
+                Type newType = availableTypes[newIndex - 1];
+                var newComponent = Undo.AddComponent(targetGameObject, newType);
+                multipleCodeProp.objectReferenceValue = newComponent;
+            }
+            else{
+                multipleCodeProp.objectReferenceValue = null;
+            }
+            serializedObject.ApplyModifiedProperties();
         });
 
         EditorUIUtils.AddHeader(ux, "Dados de Estado e Jogo");
@@ -48,14 +73,17 @@ public class ExecuteItemEditor : InteractableEditor
         var statusLabel = new Label("Verificando..."); 
         statusRow.Contents.Add(statusLabel);
         ux.ContinuousUpdate(() =>{
-            if (Target != null){
-                bool isCompleted = Target.completed;
-                if (isCompleted){
+                if (!Application.isPlaying)
+                    statusRow.SetVisible(false);
+                else{
+                    statusRow.SetVisible(true);
+                    bool isCompleted = Target.completed;
+                    if (isCompleted){
                     statusLabel.text = "Concluído";
                     statusLabel.style.color = new StyleColor(new Color(0.2f, 0.8f, 0.2f));
                 }
                 else{
-                    statusLabel.text = "Pendente";
+                    statusLabel.text = "Incompleto";
                     statusLabel.style.color = StyleKeyword.Null;
                 }
                 ;

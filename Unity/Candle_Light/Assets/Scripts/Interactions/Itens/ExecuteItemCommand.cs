@@ -12,14 +12,10 @@
 
 using UnityEngine;
 using System.Collections.Generic;
-public enum ItemType{Single, Multiple}
+//public enum ItemType{Single, Multiple}
 
 public class ExecuteItemCommand : Interactable, IObserver
 {
-    [Tooltip("Tipo do item")]
-    [SerializeField]
-    private ItemType _itemType;
-
     [Tooltip("Referência para codigo que terá como esse item funciona")]
     [SerializeField]
     protected MonoBehaviour _multipleCode;

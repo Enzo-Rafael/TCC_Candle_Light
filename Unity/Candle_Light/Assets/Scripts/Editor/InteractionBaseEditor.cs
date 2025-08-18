@@ -5,12 +5,12 @@ using UnityEngine.UIElements;
 using CandleLight.Editor; 
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 [CustomEditor(typeof(Interactable), true)]
 [CanEditMultipleObjects]
 public class InteractableEditor : Editor {
     
-    // As propriedades são guardadas como variáveis de membro para fácil acesso
     private SerializedProperty _observerEventProp;
     private SerializedProperty _actionTypeProp;
     private SerializedProperty _animatorProp;
@@ -18,7 +18,6 @@ public class InteractableEditor : Editor {
     private SerializedProperty _invertParameterProp;
     private SerializedProperty _customScriptsProp;
 
-    // O método principal agora apenas orquestra a construção da UI
     public override VisualElement CreateInspectorGUI() {
         var ux = new VisualElement();
         
@@ -67,15 +66,21 @@ public class InteractableEditor : Editor {
 
     private void BuildCustomScriptSection(VisualElement parent) {
         var targetInteractable = target as Interactable;
+        var targetGameObject = targetInteractable.gameObject;
         EditorUIUtils.AddSpace(parent);
         EditorUIUtils.AddHeader(parent, "Scripts Custom");
 
-        var addButton = new Button { text = "Adicionar Script Custom" };
-        parent.Add(addButton);
+        var addActionRow = new EditorUIUtils.LabeledRow("Add Script Custom", "Clique para adicionar um novo componente de script customizado.");
+        parent.AddChild(addActionRow);
 
+        var addButton = new Button { text = "(select)" };
+        addButton.style.flexGrow = 1; 
+        addButton.style.unityTextAlign = TextAnchor.MiddleLeft;
+        addActionRow.Contents.Add(addButton);
+
+        List<Type> validTypes = ComponentFinder.GetTypes(typeof(ICodeCustom));
         var contextMenu = new ContextualMenuManipulator(evt => {
-            var targetGameObject = targetInteractable.gameObject;
-            foreach (var scriptType in CustomScriptFinder.ValidCustomScriptTypes) {
+            foreach (var scriptType in validTypes) {
                 evt.menu.AppendAction(
                     ObjectNames.NicifyVariableName(scriptType.Name),
                     action => {

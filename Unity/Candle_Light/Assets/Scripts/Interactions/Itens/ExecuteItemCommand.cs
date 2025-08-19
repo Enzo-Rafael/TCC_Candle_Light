@@ -87,7 +87,7 @@ public class ExecuteItemCommand : Interactable, IObserver
         if (_multipleCode != null && !_multiple.Validator(additionalInformation)) return;
         ExecuteOrder(message, additionalInformation);
         completed = true;
-        if (canSave == true) SaveLoad.Instance.CallSave(spawnProx);
+        //if (canSave == true) SaveLoad.Instance.CallSave(spawnProx);
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent

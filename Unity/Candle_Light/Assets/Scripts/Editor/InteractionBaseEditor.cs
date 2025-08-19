@@ -67,13 +67,21 @@ public class InteractableEditor : Editor {
             
             EditorUIUtils.SetVisible(invertField, showAnimationFields && currentType == ItemActionType.Toggle);
         }
+        var Target = target as Interactable;
         actionTypeField.RegisterValueChangeCallback(evt => UpdateVisibility());
         useAnimationToggle.RegisterValueChangeCallback(evt => {
             UpdateVisibility();
-            if (evt.changedProperty.boolValue == false) {
-                _animatorProp.objectReferenceValue = null;
-                serializedObject.ApplyModifiedProperties();
+            if (evt.changedProperty.boolValue == true) {
+            if (_animatorProp.objectReferenceValue == null) {
+                Animator foundAnimator = Target.GetComponent<Animator>() ?? Target.GetComponentInParent<Animator>();
+                if (foundAnimator != null) {
+                    _animatorProp.objectReferenceValue = foundAnimator;
+                }
             }
+        }else{
+            _animatorProp.objectReferenceValue = null;
+        }
+        serializedObject.ApplyModifiedProperties();
         });
         UpdateVisibility();
     }

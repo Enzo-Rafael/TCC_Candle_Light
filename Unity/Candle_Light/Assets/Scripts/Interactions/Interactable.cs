@@ -19,7 +19,10 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     protected ObserverEventChannel _observerEvent = default;
 
-
+    [Tooltip("Se marcado, permite configurar uma animação para a ação selecionada.")]
+    [SerializeField]
+    private bool _useAnimation;
+    
     [Tooltip("Referência para o controlador de animacao.")]
     [SerializeField]
     protected Animator animator;
@@ -47,26 +50,29 @@ public class Interactable : MonoBehaviour
     Entrada:    int - indentificação para dizer qual ação o atuador fará.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    protected void ExecuteOrder(int message = 1, object additionalInformation = null)
+    protected void ExecuteOrder(int message = 1)
     {
-        if (consumeBool)return; 
+        if (consumeBool) return;
         switch (_actionType)
         {
             case ItemActionType.Trigger:
                 if (animator != null) animator.SetTrigger(parameterName);
                 break;
-
             case ItemActionType.Toggle:
                 if (animator != null) animator.SetBool(parameterName, message != 0);
-                additionalInformation = (message != 0) != _invertParameter;
-                break;
-
+                CustomScript((message != 0) != _invertParameter);
+                return;
             case ItemActionType.Consume:
                 if (animator != null) animator.SetTrigger(parameterName);
                 UnregisterEvent();
                 consumeBool = true;
                 break;
         }
+        CustomScript();
+    }
+
+    private void CustomScript(object additionalInformation = null)
+    {
         if (_useCustomScripts && _customScripts != null){
             foreach (var scriptComponent in _customScripts){
                 if (scriptComponent is ICodeCustom script){
@@ -74,7 +80,6 @@ public class Interactable : MonoBehaviour
                 }
             }
         }
-
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent
@@ -82,7 +87,7 @@ public class Interactable : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    protected virtual void UnregisterEvent(){}
+    protected virtual void UnregisterEvent() { }
 
     protected ObserverEventChannel GetObserver(){
         return _observerEvent;

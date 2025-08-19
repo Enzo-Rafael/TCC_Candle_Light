@@ -60,7 +60,7 @@ public class ExecuteItemCommand : Interactable, IObserver
     public void OnEventRaised(int message, object additionalInformation)
     {
         if (_multipleCode != null && !_multiple.Validator(additionalInformation)) return;
-        ExecuteOrder(message, additionalInformation);
+        ExecuteOrder(message);
         completed = true;
         if (canSave == true) SaveLoad.Instance.CallSave(spawnProx);
     }

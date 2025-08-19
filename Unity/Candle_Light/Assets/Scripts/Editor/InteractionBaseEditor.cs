@@ -42,26 +42,40 @@ public class InteractableEditor : Editor {
 
     private void BuildAnimationSettings(VisualElement parent) {
         EditorUIUtils.AddSpace(parent);
-        EditorUIUtils.AddHeader(parent, "Configurações de Animação");
+        EditorUIUtils.AddHeader(parent, "Configurações do Interagivel");
+        var actionTypeField = parent.AddChild(new PropertyField(_actionTypeProp));
 
-        var actionTypeField = new PropertyField(_actionTypeProp);
-        parent.Add(actionTypeField);
-
-        var container = new VisualElement();
-        parent.Add(container);
+        var useAnimationProp = serializedObject.FindProperty("_useAnimation");
+        var useAnimationToggle = new PropertyField(useAnimationProp, "Use Animation");
+        parent.AddChild(useAnimationToggle);
+        
+        var animationFieldsContainer = parent.AddChild(new VisualElement());
         
         var invertField = new PropertyField(_invertParameterProp);
-        container.Add(new PropertyField(_animatorProp));
-        container.Add(new PropertyField(_parameterNameProp));
-        container.Add(invertField);
+        animationFieldsContainer.AddChild(new PropertyField(_animatorProp));
+        animationFieldsContainer.AddChild(new PropertyField(_parameterNameProp));
+        animationFieldsContainer.AddChild(invertField);
 
-        void UpdateVisibility(ItemActionType type) {
-            EditorUIUtils.SetVisible(container, type != ItemActionType.None);
-            EditorUIUtils.SetVisible(invertField, type == ItemActionType.Toggle);
+        void UpdateVisibility(){
+            var currentType = (ItemActionType)_actionTypeProp.enumValueIndex;
+            var useAnimation = useAnimationProp.boolValue;
+
+            EditorUIUtils.SetVisible(useAnimationToggle, currentType != ItemActionType.None);
+
+            bool showAnimationFields = currentType != ItemActionType.None && useAnimation;
+            EditorUIUtils.SetVisible(animationFieldsContainer, showAnimationFields);
+            
+            EditorUIUtils.SetVisible(invertField, showAnimationFields && currentType == ItemActionType.Toggle);
         }
-
-        actionTypeField.RegisterValueChangeCallback(evt => UpdateVisibility((ItemActionType)evt.changedProperty.enumValueIndex));
-        UpdateVisibility((ItemActionType)_actionTypeProp.enumValueIndex);
+        actionTypeField.RegisterValueChangeCallback(evt => UpdateVisibility());
+        useAnimationToggle.RegisterValueChangeCallback(evt => {
+            UpdateVisibility();
+            if (evt.changedProperty.boolValue == false) {
+                _animatorProp.objectReferenceValue = null;
+                serializedObject.ApplyModifiedProperties();
+            }
+        });
+        UpdateVisibility();
     }
 
     private void BuildCustomScriptSection(VisualElement parent) {

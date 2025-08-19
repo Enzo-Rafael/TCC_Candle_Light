@@ -21,7 +21,13 @@ public class UseSpawnpointInteractable : Interactable, IInteractable
     {
         if (action) return;
         SaveLoad.Instance.CallSave(spawnIndex);//Save
-        if (_observerEvent != null) _observerEvent.NotifyObservers();
+        if (_observerEvent != null){
+            foreach (var channel in _observerEvent){
+                if (channel != null){
+                    channel.NotifyObservers();
+                }
+            }
+        }
         ExecuteOrder();
         DefineSpawn();
     }
@@ -47,7 +53,13 @@ public class UseSpawnpointInteractable : Interactable, IInteractable
     public void LoadAction()
     {
         if (action) return;
-        if (_observerEvent != null) _observerEvent.NotifyObservers();
+        if (_observerEvent != null){
+            foreach (var channel in _observerEvent){
+                if (channel != null){
+                    channel.NotifyObservers();
+                }
+            }
+        }
         ExecuteOrder();
         Register();
         SetAction(true);

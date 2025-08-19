@@ -26,8 +26,7 @@ public class ExecuteItemCommand : Interactable, IObserver
     public bool canSave;
     [SerializeField] protected List<MonoBehaviour> interactions = new List<MonoBehaviour>();
 
-    private void Start()
-    {
+    private void Start(){
         if (animator == null) animator = GetComponentInParent<Animator>();
     }
     /*------------------------------------------------------------------------------
@@ -36,8 +35,7 @@ public class ExecuteItemCommand : Interactable, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnEnable()
-    {
+    private void OnEnable(){
         RegisterEvent();
     }
     /*------------------------------------------------------------------------------
@@ -46,8 +44,7 @@ public class ExecuteItemCommand : Interactable, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnDisable()
-    {
+    private void OnDisable(){
         UnregisterEvent();
     }
     /*------------------------------------------------------------------------------
@@ -70,18 +67,39 @@ public class ExecuteItemCommand : Interactable, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    protected override void UnregisterEvent()
-    {
+    protected override void UnregisterEvent(){
         UnregisterEventPublic();
     }
 
-    public void RegisterEvent()
-    {
-        _observerEvent.RegisterObserver(this);
+    /*------------------------------------------------------------------------------
+    Função:     RegisterEvent
+    Descrição:  Registra este objeto como um observador em todos os canais de evento.
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void RegisterEvent(){
+        if (_observerEvent != null){
+            foreach (var channel in _observerEvent){
+                if (channel != null){
+                    channel.RegisterObserver(this);
+                }
+            }
+        }
     }
-    public void UnregisterEventPublic()
-    {
-        _observerEvent.UnregisterObserver(this);
+    /*------------------------------------------------------------------------------
+    Função:     UnregisterEventPublic
+    Descrição:  Desregistra este objeto de todos os canais de evento.
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void UnregisterEventPublic(){
+        if (_observerEvent != null){
+            foreach (var channel in _observerEvent){
+                if (channel != null){
+                    channel.UnregisterObserver(this);
+                }
+            }
+        }
     }
     /*------------------------------------------------------------------------------
     Função:     LoadCompletePuzzle()

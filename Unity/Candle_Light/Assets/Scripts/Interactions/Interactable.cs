@@ -10,14 +10,10 @@ public class Interactable : MonoBehaviour
     [Tooltip("Tipo de ação que o item fará ao interagirem com ele")]
     [SerializeField]
     protected ItemActionType _actionType;
-
-    [Tooltip("Habilita o uso de um Observer Event Channel para este objeto.")]
-    [SerializeField]
-    protected bool _useObserverEvent; 
     
     [Tooltip("Referência para o evento sendo escutado.")]
     [SerializeField]
-    protected ObserverEventChannel _observerEvent = default;
+    protected List<ObserverEventChannel> _observerEvent = default;
 
     [Tooltip("Se marcado, permite configurar uma animação para a ação selecionada.")]
     [SerializeField]
@@ -89,10 +85,4 @@ public class Interactable : MonoBehaviour
     ------------------------------------------------------------------------------*/
     protected virtual void UnregisterEvent() { }
 
-    protected ObserverEventChannel GetObserver(){
-        return _observerEvent;
-    }
-    protected void SetObserver(ObserverEventChannel observerEvent){
-        _observerEvent = observerEvent;
-    }
 }

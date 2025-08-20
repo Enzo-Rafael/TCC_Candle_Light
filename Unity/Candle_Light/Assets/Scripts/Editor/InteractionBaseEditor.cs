@@ -26,6 +26,7 @@ public class InteractableEditor : Editor {
         ux.Add(new PropertyField(_observerEventProp));
         BuildAnimationSettings(ux);
         AddInspectorProperties(ux);
+        BaseActionExecute(ux);
         BuildCustomScriptSection(ux);
 
         return ux;
@@ -47,14 +48,14 @@ public class InteractableEditor : Editor {
 
         var useAnimationProp = serializedObject.FindProperty("_useAnimation");
         var useAnimationToggle = new PropertyField(useAnimationProp, "Use Animation");
-        parent.AddChild(useAnimationToggle);
+        parent.Add(useAnimationToggle);
         
         var animationFieldsContainer = parent.AddChild(new VisualElement());
         
         var invertField = new PropertyField(_invertParameterProp);
-        animationFieldsContainer.AddChild(new PropertyField(_animatorProp));
-        animationFieldsContainer.AddChild(new PropertyField(_parameterNameProp));
-        animationFieldsContainer.AddChild(invertField);
+        animationFieldsContainer.Add(new PropertyField(_animatorProp));
+        animationFieldsContainer.Add(new PropertyField(_parameterNameProp));
+        animationFieldsContainer.Add(invertField);
 
         void UpdateVisibility(){
             var currentType = (ItemActionType)_actionTypeProp.enumValueIndex;
@@ -85,6 +86,36 @@ public class InteractableEditor : Editor {
         });
         UpdateVisibility();
     }
+    private void BaseActionExecute(VisualElement parent){
+        if (target is IInteractable targetAsInteractable){
+            EditorUIUtils.AddSpace(parent);
+            var addActionRow = new EditorUIUtils.LabeledRow("Test Interactable");
+            parent.Add(addActionRow);
+            var useButton = new Button(() => {
+                targetAsInteractable?.BaseAction();
+            });
+            useButton.style.flexGrow = 1; 
+            useButton.style.unityTextAlign = TextAnchor.MiddleLeft;
+            useButton.style.unityFontStyleAndWeight = FontStyle.Bold;
+            useButton.style.paddingTop = 6;
+            useButton.style.paddingBottom = 6;
+            useButton.style.marginTop = 2;
+            useButton.style.marginBottom = 2;
+
+            addActionRow.Contents.Add(useButton);
+            useButton.text = "Use Interactable";
+
+            parent.ContinuousUpdate(() =>
+            {
+                if (!Application.isPlaying){
+                    addActionRow.SetVisible(false);
+                }
+                else{
+                    addActionRow.SetVisible(true);  
+                }
+            });
+        }
+    }
 
     private void BuildCustomScriptSection(VisualElement parent) {
         var targetInteractable = target as Interactable;
@@ -92,7 +123,7 @@ public class InteractableEditor : Editor {
         EditorUIUtils.AddSpace(parent);
         EditorUIUtils.AddHeader(parent, "Scripts Custom");
         var addActionRow = new EditorUIUtils.LabeledRow("Add Script Custom", "Clique para adicionar um novo componente de script customizado.");
-        parent.AddChild(addActionRow);
+        parent.Add(addActionRow);
         var addButton = new Button { text = "(Select)" };
         addButton.style.flexGrow = 1; 
         addButton.style.unityTextAlign = TextAnchor.MiddleLeft;

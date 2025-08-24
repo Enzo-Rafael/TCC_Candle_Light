@@ -32,6 +32,9 @@ public class SaveLoad : MonoBehaviour
     public CinemachineCamera[] p1Cams;//Cameras da Medium
     public GameObject[] objHolds; //Objetos que podem ser segurados 
     public GameObject btnLoad;
+    [SerializeField] private GameObject btnContinue;//Btn para liberar a tela de load
+    [SerializeField] private GameObject[] objStopped;//Objetos a serem travados durante o load
+    [SerializeField] private AudioListener aListener; //audilistener
     [SerializeField] Animator notification;
     //Variaveis
     [Header("Variaveis")]
@@ -168,6 +171,9 @@ public class SaveLoad : MonoBehaviour
         SetSpawn();
         SetPuzzle();
         SetHoldObjs();
+        //Test
+        LocateGO();
+        TurnOff();
         //---------------------------------------------------
         //Pos Medium e Ghost
         GameObject p1 = GameObject.Find("Player1");
@@ -218,7 +224,7 @@ public class SaveLoad : MonoBehaviour
         p2.GetComponent<PlayerTwoScript>().respawnPoint.position = GameObject.Find(data.ghostData.spawn).GetComponent<Transform>().position;
         p2.GetComponent<PlayerTwoScript>().respawnPoint.rotation = GameObject.Find(data.ghostData.spawn).GetComponent<Transform>().rotation;
         //Castisal
-        
+
         for (int obj = 0; obj < objHolds.Length; obj++)
         {
             if (data.castesalData[obj].isHold == true)
@@ -232,7 +238,7 @@ public class SaveLoad : MonoBehaviour
                 objHolds[obj].transform.eulerAngles = data.castesalData[obj].rotation;
             }
         }
-        
+
         /*
         00 01 02 03 04
         10 11 12 13 14
@@ -278,6 +284,7 @@ public class SaveLoad : MonoBehaviour
         {
             //Load();
             Debug.Log("Save carregado com sucesso!");
+            TurnOn();
         }
         else
         {
@@ -358,5 +365,30 @@ public class SaveLoad : MonoBehaviour
             objHolds[cine] = b[cine].gameObject;
         }
         objHolds.OrderBy(go => go.name).ToArray();
+    }
+
+    private void LocateGO()//Serve para localizar alguns GameObjects em cena
+    {
+        objStopped = new GameObject[2];
+        objStopped[0] = GameObject.Find("Player1");
+        objStopped[1] = GameObject.Find("Player2");
+        btnContinue = GameObject.Find("ButtonContinue");
+        aListener = GameObject.Find("P1 Cam").GetComponent<AudioListener>();//Colocar o GameObject onde fica o Audio listener
+    }
+
+    private void TurnOff()
+    {
+        objStopped[0].GetComponent<PlayerOneScript>().enabled = false;
+        objStopped[1].GetComponent<PlayerTwoScript>().enabled = false;
+        btnContinue.SetActive(false);
+        aListener.gameObject.SetActive(false);
+    }
+
+    private void TurnOn()
+    {
+        objStopped[0].GetComponent<PlayerOneScript>().enabled = true;
+        objStopped[1].GetComponent<PlayerTwoScript>().enabled = true;
+        btnContinue.SetActive(true);
+        aListener.gameObject.SetActive(true);
     }
 }

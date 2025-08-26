@@ -117,62 +117,67 @@ public class InteractableEditor : Editor {
         }
     }
 
-    private void BuildCustomScriptSection(VisualElement parent) {
-        var targetInteractable = target as Interactable;
-        var targetGameObject = targetInteractable.gameObject;
+    private void BuildCustomScriptSection(VisualElement parent)
+    {
+        
         EditorUIUtils.AddSpace(parent);
         EditorUIUtils.AddHeader(parent, "Scripts Custom");
-        var addActionRow = new EditorUIUtils.LabeledRow("Add Script Custom", "Clique para adicionar um novo componente de script customizado.");
-        parent.Add(addActionRow);
-        var addButton = new Button { text = "(Select)" };
-        addButton.style.flexGrow = 1; 
-        addButton.style.unityTextAlign = TextAnchor.MiddleLeft;
-        addActionRow.Contents.Add(addButton);
+        parent.Add(new PropertyField(_customScriptsProp));
+        //     var targetInteractable = target as Interactable;
+        //     var targetGameObject = targetInteractable.gameObject;
+        //     EditorUIUtils.AddSpace(parent);
+        //     EditorUIUtils.AddHeader(parent, "Scripts Custom");
+        //     var addActionRow = new EditorUIUtils.LabeledRow("Add Script Custom", "Clique para adicionar um novo componente de script customizado.");
+        //     parent.Add(addActionRow);
+        //     var addButton = new Button { text = "(Select)" };
+        //     addButton.style.flexGrow = 1; 
+        //     addButton.style.unityTextAlign = TextAnchor.MiddleLeft;
+        //     addActionRow.Contents.Add(addButton);
 
-        List<Type> validTypes = ComponentFinder.GetTypes(typeof(ICodeCustom));
-        var contextMenu = new ContextualMenuManipulator(evt => {
-            foreach (var scriptType in validTypes){
-                evt.menu.AppendAction(
-                    ObjectNames.NicifyVariableName(scriptType.Name),
-                    action => {
-                        var newComponent = Undo.AddComponent(targetGameObject, scriptType);
-                        _customScriptsProp.InsertArrayElementAtIndex(_customScriptsProp.arraySize);
-                        _customScriptsProp.GetArrayElementAtIndex(_customScriptsProp.arraySize - 1).objectReferenceValue = newComponent;
-                        serializedObject.ApplyModifiedProperties();
-                    },
-                    action => DropdownMenuAction.Status.Normal
-                );
-            }
-        });
-        contextMenu.activators.Clear();
-        contextMenu.activators.Add(new ManipulatorActivationFilter { button = MouseButton.LeftMouse });
-        addButton.AddManipulator(contextMenu);
+        //     List<Type> validTypes = ComponentFinder.GetTypes(typeof(ICodeCustom));
+        //     var contextMenu = new ContextualMenuManipulator(evt => {
+        //         foreach (var scriptType in validTypes){
+        //             evt.menu.AppendAction(
+        //                 ObjectNames.NicifyVariableName(scriptType.Name),
+        //                 action => {
+        //                     var newComponent = Undo.AddComponent(targetGameObject, scriptType);
+        //                     _customScriptsProp.InsertArrayElementAtIndex(_customScriptsProp.arraySize);
+        //                     _customScriptsProp.GetArrayElementAtIndex(_customScriptsProp.arraySize - 1).objectReferenceValue = newComponent;
+        //                     serializedObject.ApplyModifiedProperties();
+        //                 },
+        //                 action => DropdownMenuAction.Status.Normal
+        //             );
+        //         }
+        //     });
+        //     contextMenu.activators.Clear();
+        //     contextMenu.activators.Add(new ManipulatorActivationFilter { button = MouseButton.LeftMouse });
+        //     addButton.AddManipulator(contextMenu);
 
-    parent.ContinuousUpdate(() => {
-        if (targetInteractable == null) return;
-        
-        var actualComponents = targetInteractable.GetComponents<MonoBehaviour>().Where(s => s is ICodeCustom).ToList();
-        bool needsResync = false;
-        if (actualComponents.Count != _customScriptsProp.arraySize){
-            needsResync = true;
-        }else{
-            for (int i = 0; i < actualComponents.Count; i++){
-                var savedRef = _customScriptsProp.GetArrayElementAtIndex(i).objectReferenceValue;
-                if (savedRef != actualComponents[i]){
-                    needsResync = true;
-                    break;
-                }
-            }
-        }
-        if (needsResync){
-            _customScriptsProp.ClearArray();
-            for (int i = 0; i < actualComponents.Count; i++){
-                _customScriptsProp.InsertArrayElementAtIndex(i);
-                _customScriptsProp.GetArrayElementAtIndex(i).objectReferenceValue = actualComponents[i];
-            }
-            serializedObject.ApplyModifiedProperties();
-        }
-    });
+        // parent.ContinuousUpdate(() => {
+        //     if (targetInteractable == null) return;
+
+        //     var actualComponents = targetInteractable.GetComponents<MonoBehaviour>().Where(s => s is ICodeCustom).ToList();
+        //     bool needsResync = false;
+        //     if (actualComponents.Count != _customScriptsProp.arraySize){
+        //         needsResync = true;
+        //     }else{
+        //         for (int i = 0; i < actualComponents.Count; i++){
+        //             var savedRef = _customScriptsProp.GetArrayElementAtIndex(i).objectReferenceValue;
+        //             if (savedRef != actualComponents[i]){
+        //                 needsResync = true;
+        //                 break;
+        //             }
+        //         }
+        //     }
+        //     if (needsResync){
+        //         _customScriptsProp.ClearArray();
+        //         for (int i = 0; i < actualComponents.Count; i++){
+        //             _customScriptsProp.InsertArrayElementAtIndex(i);
+        //             _customScriptsProp.GetArrayElementAtIndex(i).objectReferenceValue = actualComponents[i];
+        //         }
+        //         serializedObject.ApplyModifiedProperties();
+        //     }
+        // });
     }
 
     protected virtual void AddInspectorProperties(VisualElement ux){

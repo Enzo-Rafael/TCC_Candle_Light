@@ -30,9 +30,6 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     protected bool _invertParameter;
 
-    [Tooltip("Habilita a lista de scripts customizados.")]
-    [SerializeField] public bool _useCustomScripts;
-
 
     [Tooltip("Lista de scripts customizados que serão executados quando interagir com o item")]
     [SerializeField]
@@ -67,11 +64,12 @@ public class Interactable : MonoBehaviour
         CustomScript();
     }
 
-    private void CustomScript(object additionalInformation = null)
-    {
-        if (_useCustomScripts && _customScripts != null){
+    private void CustomScript(object additionalInformation = null){
+        if (_customScripts != null){
+            Debug.Log("Custom Script Check");
             foreach (var scriptComponent in _customScripts){
                 if (scriptComponent is ICodeCustom script){
+                    Debug.Log("Custom Script Activated");
                     script.CustomBaseAction(additionalInformation);
                 }
             }

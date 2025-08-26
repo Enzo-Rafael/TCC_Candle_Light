@@ -45,8 +45,7 @@ public class ZoneTriggerController : MonoBehaviour
     Entrada:    Collider - Classe base dos colisores, possui o gameobject dentre outras coisas
     Saída:      -
     ------------------------------------------------------------------------------*/
-	private void OnTriggerExit(Collider other)
-	{
+	private void OnTriggerExit(Collider other){
 		if ((1 << other.gameObject.layer & _layers) != 0){
 			_enterZone.Invoke(false, other.gameObject);
 		}

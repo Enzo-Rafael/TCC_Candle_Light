@@ -42,7 +42,7 @@ VisualEffect:
   m_GameObject: {fileID: 5122528566513729145}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 5e340f850fe8547469f4cea191477e91, type: 3}
-  m_InitialEventName: OnPlay
+  m_InitialEventName: Play
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
@@ -50,7 +50,10 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 0
+        m_Name: ActTime
+        m_Overridden: 0
     m_Vector2f:
       m_Array: []
     m_Vector3f:

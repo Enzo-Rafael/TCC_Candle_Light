@@ -24,7 +24,7 @@ public class UseMultipleItemInteraction : Interactable, IInteractable
   //------------------------- Variaveis Globais privadas -------------------------------
 
   private bool action = false;
-    
+  private int message = 0;
   /*------------------------------------------------------------------------------
   Função:     BaseAction
   Descrição:  Ação executada ao interagir com o item
@@ -33,9 +33,16 @@ public class UseMultipleItemInteraction : Interactable, IInteractable
   ------------------------------------------------------------------------------*/
   public void BaseAction(){
     action = !action;
-    if(_observerEvent != null)_observerEvent.NotifyObservers(action? 1:0, orderID);
-    Debug.Log(gameObject.name);
-    ExecuteOrder(action? 1:0);
+    message = action ? 1 : 0;
+    if (_observerEvent != null)
+    {
+      foreach (var channel in _observerEvent){
+        if (channel != null){
+          channel.NotifyObservers(message, orderID);
+        }
+      }
+    }
+    ExecuteOrder(message);
   }
 }
 

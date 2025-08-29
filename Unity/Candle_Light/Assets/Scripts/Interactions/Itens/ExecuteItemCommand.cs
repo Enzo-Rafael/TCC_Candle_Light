@@ -11,37 +11,12 @@
 //----------------------------- Bibliotecas Usadas -------------------------------------
 
 using UnityEngine;
-using UnityEditor;
-using System;
-using NUnit.Framework;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-public enum ItemType{Single, Multiple}
+//public enum ItemType{Single, Multiple}
 
-#if UNITY_EDITOR
-
-[CustomEditor(typeof(ExecuteItemCommand))]
-public class ExecuteItemCommand_Editor: Editor{
-
-    public override void OnInspectorGUI(){
-
-        serializedObject.Update();
-        base.OnInspectorGUI();
-        SerializedProperty itemTypeProp = serializedObject.FindProperty("_itemType");
-        SerializedProperty multipleCodeProp = serializedObject.FindProperty("_multipleCode");
-        if ((ItemType)itemTypeProp.enumValueIndex == ItemType.Multiple) EditorGUILayout.PropertyField(multipleCodeProp, new GUIContent("Código de Múltiplas Interações"));
-        serializedObject.ApplyModifiedProperties();
-    }
-}
-#endif
 public class ExecuteItemCommand : Interactable, IObserver
 {
-    [Tooltip("Tipo do item")]
-    [SerializeField]
-    private ItemType _itemType;
-
     [Tooltip("Referência para codigo que terá como esse item funciona")]
-    [HideInInspector]
     [SerializeField]
     protected MonoBehaviour _multipleCode;
     protected IMultiple _multiple => _multipleCode as IMultiple;
@@ -51,8 +26,7 @@ public class ExecuteItemCommand : Interactable, IObserver
     public bool canSave;
     [SerializeField] protected List<MonoBehaviour> interactions = new List<MonoBehaviour>();
 
-    private void Start()
-    {
+    private void Start(){
         if (animator == null) animator = GetComponentInParent<Animator>();
     }
     /*------------------------------------------------------------------------------
@@ -61,8 +35,7 @@ public class ExecuteItemCommand : Interactable, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnEnable()
-    {
+    private void OnEnable(){
         RegisterEvent();
     }
     /*------------------------------------------------------------------------------
@@ -71,8 +44,7 @@ public class ExecuteItemCommand : Interactable, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnDisable()
-    {
+    private void OnDisable(){
         UnregisterEvent();
     }
     /*------------------------------------------------------------------------------
@@ -85,7 +57,7 @@ public class ExecuteItemCommand : Interactable, IObserver
     public void OnEventRaised(int message, object additionalInformation)
     {
         if (_multipleCode != null && !_multiple.Validator(additionalInformation)) return;
-        ExecuteOrder(message, additionalInformation);
+        ExecuteOrder(message);
         completed = true;
         if (canSave == true) SaveLoad.Instance.CallSave(spawnProx);
     }
@@ -95,18 +67,39 @@ public class ExecuteItemCommand : Interactable, IObserver
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    protected override void UnregisterEvent()
-    {
+    protected override void UnregisterEvent(){
         UnregisterEventPublic();
     }
 
-    public void RegisterEvent()
-    {
-        _observerEvent.RegisterObserver(this);
+    /*------------------------------------------------------------------------------
+    Função:     RegisterEvent
+    Descrição:  Registra este objeto como um observador em todos os canais de evento.
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void RegisterEvent(){
+        if (_observerEvent != null){
+            foreach (var channel in _observerEvent){
+                if (channel != null){
+                    channel.RegisterObserver(this);
+                }
+            }
+        }
     }
-    public void UnregisterEventPublic()
-    {
-        _observerEvent.UnregisterObserver(this);
+    /*------------------------------------------------------------------------------
+    Função:     UnregisterEventPublic
+    Descrição:  Desregistra este objeto de todos os canais de evento.
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void UnregisterEventPublic(){
+        if (_observerEvent != null){
+            foreach (var channel in _observerEvent){
+                if (channel != null){
+                    channel.UnregisterObserver(this);
+                }
+            }
+        }
     }
     /*------------------------------------------------------------------------------
     Função:     LoadCompletePuzzle()

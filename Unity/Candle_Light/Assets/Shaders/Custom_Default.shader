@@ -35,12 +35,10 @@ Shader "Custom/Custom_Default"
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
             #pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW
             #pragma multi_complie _ _ADITIONAL_LIGHTS
+            #pragma multi_compile _ _ADDITIONAL_LIGHT_SHADOWS
             
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-#if (UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN)
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/RealTimeLights.hlsl"
-#endif
             struct appdata
             {
                 float4 vertex : POSITION;
@@ -111,11 +109,11 @@ Shader "Custom/Custom_Default"
             }
 
             // Calculo de luz sem normal
-            half3 CalculateSecondLight(Light light)
+            half3 CalculateSecondLight(Light light, float3 normal)
             {
-                half3 diffuse = (light.distanceAttenuation * LIGHT_ATTENUATION);
+                half3 diffuse = saturate(dot(normal, light.direction) * light.distanceAttenuation * LIGHT_ATTENUATION);
 
-                return diffuse * light.color;
+                return diffuse * light.shadowAttenuation * light.color;
             }
 
             half4 frag (v2f IN) : SV_Target
@@ -135,13 +133,15 @@ Shader "Custom/Custom_Default"
                 inputData.positionWS = IN.worldPos;
                 inputData.positionCS = IN.vertex;
                 inputData.normalWS = IN.normalWS;
+                inputData.shadowMask = shadowCoord;
                 inputData.viewDirectionWS = GetWorldSpaceNormalizeViewDir(IN.worldPos);
 
                 // Calculo de luzes secundarias
                 uint pixelLightCount = GetAdditionalLightsCount();
                 LIGHT_LOOP_BEGIN(pixelLightCount)
-                    Light additionalLight = GetAdditionalLight(lightIndex, inputData.positionWS, 1);
-                    lightCol += CalculateSecondLight(additionalLight);
+                
+                    Light additionalLight = GetAdditionalLight(lightIndex, inputData.positionWS, inputData.shadowMask);
+                    lightCol += CalculateSecondLight(additionalLight, inputData.normalWS);
                 LIGHT_LOOP_END
 
                 lightCol = saturate(lightCol);

@@ -48,10 +48,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ritualVFX: {fileID: 385981871108148487}
+  teleVFX: {fileID: 9012389858710946833}
   range: 1
   spinnySprite: {fileID: 8888559884797086192}
-  rotSpeed: 0
-  maxSize: 0
+  rotSpeed: 200
+  wobble: 0.1
+  maxSize: 1.2
+  maxHeight: 0.3
 --- !u!1 &8888559884797086192
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +202,11 @@ PrefabInstance:
 --- !u!4 &1041106033329969911 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6264370866417495133, guid: 7344e7e47b415f3458b646f81e55fd38, type: 3}
+  m_PrefabInstance: {fileID: 6385335125382067882}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &9012389858710946833 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 2706439782635172539, guid: 7344e7e47b415f3458b646f81e55fd38, type: 3}
   m_PrefabInstance: {fileID: 6385335125382067882}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7745773020451814575

@@ -10,6 +10,7 @@
 
 //----------------------------- Bibliotecas Usadas -------------------------------------
 
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class UIMenuManager : MonoBehaviour
@@ -21,7 +22,7 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private UICredits _creditsPanel = default;
     [SerializeField] private UIPopup _popupPanel = default;
     [SerializeField] private UIFeatures _featuresPanel = default;
-
+    [SerializeField] private UIControlsChoice _controlsChoicePanel = default;
     [SerializeField] private InputReader _inputReader = default;
 
     /*------------------------------------------------------------------------------
@@ -42,21 +43,11 @@ public class UIMenuManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     private void SetMenu()
     {
-        _menuPainel.NewGameButtonAction += StartNewGame;
         _menuPainel.SettingsButtonAction += OpenSettings;
         _menuPainel.CreditsButtonAction += OpenCredits;
         _menuPainel.ExitButtonAction += ShowExitConfirmationPopup;
         _menuPainel.FeaturesButtonAction += OpenFeatures;
-    }
-    /*------------------------------------------------------------------------------
-    Função:     StartNewGame
-    Descrição:  Lógica para Loudar a Scena.
-    Entrada:    -
-    Saída:      -
-    ------------------------------------------------------------------------------*/
-    private void StartNewGame()
-    {
-        SceneManager.LoadScene("Mansion");
+        _menuPainel.ControlsChoiceAction += OpenChoicesControls;
     }
     /*------------------------------------------------------------------------------
     Função:     OpenSettings
@@ -121,6 +112,14 @@ public class UIMenuManager : MonoBehaviour
     private void OpenControls(){
         _featuresPanel.gameObject.SetActive(true);
         _featuresPanel.Closed += ClosedFeatures;
+    }
+    private void ClosedChoicesControls(){
+        _controlsChoicePanel.Closed -= OpenChoicesControls;
+        _controlsChoicePanel.gameObject.SetActive(false);
+    }
+    private void OpenChoicesControls(){
+        _featuresPanel.gameObject.SetActive(true);
+        _controlsChoicePanel.Closed += ClosedFeatures;
     }
     /*------------------------------------------------------------------------------
     Função:     ShowExitConfirmationPopup

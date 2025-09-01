@@ -17,11 +17,4 @@ public class UIPopup : MonoBehaviour
     public void ConfirmButton(){
         ConfirmationResponseAction.Invoke(true);
     }
-
-    // Gambiarra so pra buildar
-    // TODO: conectar a UI
-    public void Exit()
-    {
-        Application.Quit();
-    }
 }

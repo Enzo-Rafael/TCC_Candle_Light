@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
 
 
@@ -11,6 +10,7 @@ public class UIMainMenu : MonoBehaviour
     public UnityAction CreditsButtonAction;
     public UnityAction ExitButtonAction;
     public UnityAction FeaturesButtonAction;
+    public UnityAction ControlsChoiceAction;
 
     public void ContinueButton()
     {
@@ -30,10 +30,13 @@ public class UIMainMenu : MonoBehaviour
     }
     public void FeaturesButton()
     {
-        FeaturesButtonAction.Invoke(); 
+        FeaturesButtonAction.Invoke();
     }
     public void ExitButton()
     {
         ExitButtonAction.Invoke();
+    }
+    public void ControlsChoiceButton(){
+        ControlsChoiceAction.Invoke();
     }
 }

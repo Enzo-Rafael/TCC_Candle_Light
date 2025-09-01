@@ -14,13 +14,14 @@ using UnityEngine.Events;
 
 
 [CreateAssetMenu(fileName = "InputReader", menuName = "Game/Input Reader")]
-public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions, PlayersInputMap.IPlayer1MoveActions, PlayersInputMap.IInComumInputsActions
+public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveRightActions, PlayersInputMap.IPlayer1MoveLeftActions, PlayersInputMap.IInComumInputsActions,  PlayersInputMap.IPlayer1MoveRightActions, PlayersInputMap.IPlayer2MoveLeftActions
 {
 
     //-------------------------- Variaveis Globais Visiveis --------------------------------
 
     //Delegates usados para definir as funçõoes que serão chamadas quando um botão for apertado
     private PlayersInputMap _playersInput;
+    private bool GhostControlRightActive = false;
     public event UnityAction<Vector3> MoveEventOne = delegate { };
     public event UnityAction<Vector3> MoveEventTwo = delegate { };
     public event UnityAction ActionEventOne = delegate { };
@@ -43,11 +44,12 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     ------------------------------------------------------------------------------*/
     private void OnEnable()
     {
-        if (_playersInput == null)
-        {
+        if (_playersInput == null){
             _playersInput = new PlayersInputMap();
-            _playersInput.Player1Move.SetCallbacks(this);
-            _playersInput.Player2Move.SetCallbacks(this);
+            _playersInput.Player1MoveLeft.SetCallbacks(this);
+            _playersInput.Player2MoveRight.SetCallbacks(this);
+            _playersInput.Player1MoveRight.SetCallbacks(this);
+            _playersInput.Player2MoveLeft.SetCallbacks(this);
             _playersInput.InComumInputs.SetCallbacks(this);
         }
     }
@@ -69,8 +71,14 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     ------------------------------------------------------------------------------*/
     public void EnableAllInput()
     {
-        _playersInput.Player1Move.Enable();
-        _playersInput.Player2Move.Enable();
+        if (GhostControlRightActive){
+            _playersInput.Player1MoveLeft.Enable();
+            _playersInput.Player2MoveRight.Enable();
+        }
+        else{
+            _playersInput.Player1MoveRight.Enable();
+            _playersInput.Player2MoveLeft.Enable();
+        }
         _playersInput.InComumInputs.Enable();
     }
     /*------------------------------------------------------------------------------
@@ -81,10 +89,16 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     ------------------------------------------------------------------------------*/
     public void DisableAllInput()
     {
-        _playersInput.Player1Move.Disable();
-        _playersInput.Player2Move.Disable();
+        if (GhostControlRightActive){
+        _playersInput.Player1MoveLeft.Disable();
+        _playersInput.Player2MoveRight.Disable();
         _playersInput.InComumInputs.Disable();
-
+        }
+        else{
+            _playersInput.Player1MoveRight.Disable();
+            _playersInput.Player2MoveLeft.Disable();
+            _playersInput.InComumInputs.Disable();
+        }
     }
     /*------------------------------------------------------------------------------
     Função:     EnableGameplayInput
@@ -94,8 +108,13 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     ------------------------------------------------------------------------------*/
     public void EnableGameplayInput()
     {
-        _playersInput.Player1Move.Enable();
-        _playersInput.Player2Move.Enable();
+        if (GhostControlRightActive){
+            _playersInput.Player1MoveLeft.Enable();
+            _playersInput.Player2MoveRight.Enable();
+        }else{
+            _playersInput.Player1MoveRight.Enable();
+            _playersInput.Player2MoveLeft.Enable();
+        }
         _playersInput.InComumInputs.Enable();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -108,38 +127,80 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     ------------------------------------------------------------------------------*/
     public void EnableMenuInput()
     {
-        _playersInput.Player1Move.Disable();
-        _playersInput.Player2Move.Disable();
+        if (GhostControlRightActive){
+            _playersInput.Player1MoveLeft.Enable();
+            _playersInput.Player2MoveRight.Enable();
+        }else{
+            _playersInput.Player1MoveRight.Enable();
+            _playersInput.Player2MoveLeft.Enable();
+        }
         _playersInput.InComumInputs.Enable();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-
-    public void EnablePlayerInput(int index)
+    /*------------------------------------------------------------------------------
+    Função:     GhostControlRight
+    Descrição:  Habilita os controles do fantasma na direita e da medium na esquerda
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void GhostControlRight()
     {
-        Debug.Log("enabled input p"+index);
-        switch (index)
-        {
+        GhostControlRightActive = true;
+        _playersInput.Player1MoveRight.Disable();
+        _playersInput.Player2MoveLeft.Disable();
+        _playersInput.Player1MoveLeft.Enable();
+        _playersInput.Player2MoveRight.Enable();
+    }
+    /*------------------------------------------------------------------------------
+    Função:     GhostControlRight
+    Descrição:  Habilita os controles do fantasma na esquerda e da medium na direita
+    Entrada:    -
+    Saída:      -
+    ------------------------------------------------------------------------------*/
+    public void GhostControlLeft()
+    {
+        GhostControlRightActive = false;
+        _playersInput.Player1MoveLeft.Disable();
+        _playersInput.Player2MoveRight.Disable();
+        _playersInput.Player1MoveRight.Enable();
+        _playersInput.Player2MoveLeft.Enable();
+    }
+    public void EnablePlayerInput(int index){
+        switch (index){
             case 1:
-                _playersInput.Player1Move.Enable();
+                if (GhostControlRightActive){
+                    _playersInput.Player1MoveLeft.Enable();
+                }else{
+                    _playersInput.Player1MoveRight.Enable();
+                }
                 break;
 
             case 2:
-                _playersInput.Player2Move.Enable();
+                if (GhostControlRightActive){
+                    _playersInput.Player2MoveRight.Enable();
+                }else{
+                    _playersInput.Player2MoveLeft.Enable();
+                }
                 break;
         }
     }
-    public void DisablePlayerInput(int index)
-    {
-        Debug.Log("disabled input p"+index);
-        switch (index)
-        {
+    public void DisablePlayerInput(int index){
+        switch (index){
             case 1:
-                _playersInput.Player1Move.Disable();
+                if (GhostControlRightActive){
+                    _playersInput.Player1MoveLeft.Disable();
+                }else{
+                    _playersInput.Player1MoveRight.Disable();
+                }
                 break;
 
             case 2:
-                _playersInput.Player2Move.Disable();
+                if (GhostControlRightActive){
+                    _playersInput.Player2MoveRight.Disable();
+                }else{
+                    _playersInput.Player2MoveLeft.Enable();
+                }
                 break;
         }
     }
@@ -194,16 +255,23 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     }
 
     //PROVISORIO
-    public void DisablePlayerInputMove(int index)
-    {
-        switch (index)
-        {
+    public void DisablePlayerInputMove(int index){
+        switch (index){
             case 1:
-                _playersInput.Player1Move.MoveInputOne.Disable();
+                if(GhostControlRightActive){
+                    _playersInput.Player1MoveLeft.MoveInputOne.Disable();
+                }else{
+                    _playersInput.Player1MoveRight.MoveInputOne.Disable();
+                }
                 break;
 
             case 2:
-                _playersInput.Player2Move.MoveInputTwo.Disable();
+                if (GhostControlRightActive){
+                    _playersInput.Player2MoveRight.MoveInputTwo.Disable();
+                }
+                else{
+                    _playersInput.Player2MoveLeft.MoveInputTwo.Disable();
+                }
                 break;
         }
     }

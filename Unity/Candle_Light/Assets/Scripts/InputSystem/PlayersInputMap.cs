@@ -88,7 +88,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
     ""name"": ""PlayersInputMap"",
     ""maps"": [
         {
-            ""name"": ""Player1Move"",
+            ""name"": ""Player1MoveLeft"",
             ""id"": ""2a7db825-d0b2-4f2a-b1d6-e0acc4a7a319"",
             ""actions"": [
                 {
@@ -352,7 +352,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Player2Move"",
+            ""name"": ""Player2MoveRight"",
             ""id"": ""42ad252d-9f22-4616-a64d-47dcafee263c"",
             ""actions"": [
                 {
@@ -603,6 +603,488 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
             ]
         },
         {
+            ""name"": ""Player1MoveRight"",
+            ""id"": ""4af024b7-e1e9-4729-8082-1bcee5d9cf18"",
+            ""actions"": [
+                {
+                    ""name"": ""MoveInputOne"",
+                    ""type"": ""Value"",
+                    ""id"": ""281fa107-687f-4b71-9669-c4ed4b30eceb"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ActionInputOne"",
+                    ""type"": ""Button"",
+                    ""id"": ""939f8070-dcf7-4461-aa79-e20334bcd456"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChangeCamLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""409171a6-e339-4efa-8c74-6c96b683b877"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeCamRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""da3b1626-9a05-46e9-9be2-09ea1484f05a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""027c78b6-2d4a-4391-93a2-702569dd21fc"",
+                    ""path"": ""3DVector(mode=1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputOne"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""89122f25-2429-4328-98c2-9434e8936f79"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""20bf9ee1-f584-4af1-86bb-0683926fb8da"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""b2e32135-fecd-4142-89da-1951e5a32a28"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""555a7ad1-4494-4528-ae4c-8cfb9e7242c4"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Forward"",
+                    ""id"": ""e2d97f0f-070a-4ec5-8544-86173cad742c"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Backward"",
+                    ""id"": ""9cbf355e-503f-4fc4-a138-feea87d68650"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""3893e5c5-fb71-4520-94b1-1009609f7e03"",
+                    ""path"": ""3DVector(mode=1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputOne"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""c2d63b9c-72ef-40c9-bad3-445bdd551c2b"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""3ba7ff99-7592-486f-bc50-f47317d08f99"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""e7b604ce-ec8d-457a-a62c-f49dad277609"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""68a65b55-39ed-4285-b3ce-fb7f4343c7e4"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Forward"",
+                    ""id"": ""8e9e396d-708b-4428-a16a-3ca8f7928f0e"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Backward"",
+                    ""id"": ""f911efb2-82d2-4a65-b0ba-55954990c9e6"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""29e40041-2b17-44ad-a277-0a2a869c58c7"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ActionInputOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4a8b7cf-5d9e-4cca-a73a-a2a12779d51e"",
+                    ""path"": ""<Keyboard>/comma"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeCamLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""59925948-86d1-473c-acc9-a199e23a850b"",
+                    ""path"": ""<Keyboard>/period"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeCamRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Player2MoveLeft"",
+            ""id"": ""dda68d15-df91-4ccc-9f04-441585284d9b"",
+            ""actions"": [
+                {
+                    ""name"": ""MoveInputTwo"",
+                    ""type"": ""Value"",
+                    ""id"": ""0c0a5761-445a-4598-9c6c-5e2768bbbd5a"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ActionInputTwo"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b63d22e-5d96-408c-be45-a2e8639f6494"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Mouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""cce5f19d-108a-4a1f-bb1b-41a93b4251cf"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""VooFantasma"",
+                    ""type"": ""Value"",
+                    ""id"": ""4d30834c-bd89-464e-adb4-87e2f6824537"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""GhostShow"",
+                    ""type"": ""Button"",
+                    ""id"": ""878ca211-111e-48c2-9d57-0da2ec443709"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Direconals"",
+                    ""id"": ""019ba911-ef67-46ce-ac9a-806ae29fbb99"",
+                    ""path"": ""3DVector(mode=1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputTwo"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""a50ab811-ace7-4af7-a39d-d6838acb2793"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""f4596d32-7f07-4858-b8d6-26e165675561"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""3bd2b3d2-34a0-4a7c-aa4a-558fa77886b2"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""bf204863-1cd0-4c99-bfc7-d2c44d761264"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Forward"",
+                    ""id"": ""8ef2dfea-5157-4c13-a1f1-b8205e63b45e"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Backward"",
+                    ""id"": ""1710be71-a78c-4f89-ac20-ed5c7f700657"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""6c6665da-108e-4747-b4f8-b5993c488d5b"",
+                    ""path"": ""3DVector(mode=1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputTwo"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""373de0fa-5327-4b3b-975c-4fd82c26713b"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""32ba3973-8af6-455b-9453-39c3990f792a"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""762aced6-fb5e-48fd-9476-e1e2e2a1dab6"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""4ed26f54-607e-4a8d-87ad-e9e715979fed"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Forward"",
+                    ""id"": ""9c4c4cc9-06aa-415a-a61d-9d0326d58fd6"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Backward"",
+                    ""id"": ""b7aa80e1-5ac8-4344-a08a-7be5baaf1dac"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveInputTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9fbb13bd-7037-4616-ab2f-510521b1c3ba"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ActionInputTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4227a820-4516-4bd2-909d-4786844b22cf"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d18a2b2c-cd8f-4218-8960-930c818ef7fb"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VooFantasma"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""29de4d52-c41c-464d-bef3-7e0bbe5e4bf9"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GhostShow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
             ""name"": ""InComumInputs"",
             ""id"": ""c54e27f8-16d5-4604-9f47-f9971d3e9449"",
             ""actions"": [
@@ -653,19 +1135,32 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Player1Move
-        m_Player1Move = asset.FindActionMap("Player1Move", throwIfNotFound: true);
-        m_Player1Move_MoveInputOne = m_Player1Move.FindAction("MoveInputOne", throwIfNotFound: true);
-        m_Player1Move_ActionInputOne = m_Player1Move.FindAction("ActionInputOne", throwIfNotFound: true);
-        m_Player1Move_ChangeCamLeft = m_Player1Move.FindAction("ChangeCamLeft", throwIfNotFound: true);
-        m_Player1Move_ChangeCamRight = m_Player1Move.FindAction("ChangeCamRight", throwIfNotFound: true);
-        // Player2Move
-        m_Player2Move = asset.FindActionMap("Player2Move", throwIfNotFound: true);
-        m_Player2Move_MoveInputTwo = m_Player2Move.FindAction("MoveInputTwo", throwIfNotFound: true);
-        m_Player2Move_ActionInputTwo = m_Player2Move.FindAction("ActionInputTwo", throwIfNotFound: true);
-        m_Player2Move_Mouse = m_Player2Move.FindAction("Mouse", throwIfNotFound: true);
-        m_Player2Move_VooFantasma = m_Player2Move.FindAction("VooFantasma", throwIfNotFound: true);
-        m_Player2Move_GhostShow = m_Player2Move.FindAction("GhostShow", throwIfNotFound: true);
+        // Player1MoveLeft
+        m_Player1MoveLeft = asset.FindActionMap("Player1MoveLeft", throwIfNotFound: true);
+        m_Player1MoveLeft_MoveInputOne = m_Player1MoveLeft.FindAction("MoveInputOne", throwIfNotFound: true);
+        m_Player1MoveLeft_ActionInputOne = m_Player1MoveLeft.FindAction("ActionInputOne", throwIfNotFound: true);
+        m_Player1MoveLeft_ChangeCamLeft = m_Player1MoveLeft.FindAction("ChangeCamLeft", throwIfNotFound: true);
+        m_Player1MoveLeft_ChangeCamRight = m_Player1MoveLeft.FindAction("ChangeCamRight", throwIfNotFound: true);
+        // Player2MoveRight
+        m_Player2MoveRight = asset.FindActionMap("Player2MoveRight", throwIfNotFound: true);
+        m_Player2MoveRight_MoveInputTwo = m_Player2MoveRight.FindAction("MoveInputTwo", throwIfNotFound: true);
+        m_Player2MoveRight_ActionInputTwo = m_Player2MoveRight.FindAction("ActionInputTwo", throwIfNotFound: true);
+        m_Player2MoveRight_Mouse = m_Player2MoveRight.FindAction("Mouse", throwIfNotFound: true);
+        m_Player2MoveRight_VooFantasma = m_Player2MoveRight.FindAction("VooFantasma", throwIfNotFound: true);
+        m_Player2MoveRight_GhostShow = m_Player2MoveRight.FindAction("GhostShow", throwIfNotFound: true);
+        // Player1MoveRight
+        m_Player1MoveRight = asset.FindActionMap("Player1MoveRight", throwIfNotFound: true);
+        m_Player1MoveRight_MoveInputOne = m_Player1MoveRight.FindAction("MoveInputOne", throwIfNotFound: true);
+        m_Player1MoveRight_ActionInputOne = m_Player1MoveRight.FindAction("ActionInputOne", throwIfNotFound: true);
+        m_Player1MoveRight_ChangeCamLeft = m_Player1MoveRight.FindAction("ChangeCamLeft", throwIfNotFound: true);
+        m_Player1MoveRight_ChangeCamRight = m_Player1MoveRight.FindAction("ChangeCamRight", throwIfNotFound: true);
+        // Player2MoveLeft
+        m_Player2MoveLeft = asset.FindActionMap("Player2MoveLeft", throwIfNotFound: true);
+        m_Player2MoveLeft_MoveInputTwo = m_Player2MoveLeft.FindAction("MoveInputTwo", throwIfNotFound: true);
+        m_Player2MoveLeft_ActionInputTwo = m_Player2MoveLeft.FindAction("ActionInputTwo", throwIfNotFound: true);
+        m_Player2MoveLeft_Mouse = m_Player2MoveLeft.FindAction("Mouse", throwIfNotFound: true);
+        m_Player2MoveLeft_VooFantasma = m_Player2MoveLeft.FindAction("VooFantasma", throwIfNotFound: true);
+        m_Player2MoveLeft_GhostShow = m_Player2MoveLeft.FindAction("GhostShow", throwIfNotFound: true);
         // InComumInputs
         m_InComumInputs = asset.FindActionMap("InComumInputs", throwIfNotFound: true);
         m_InComumInputs_Close = m_InComumInputs.FindAction("Close", throwIfNotFound: true);
@@ -674,8 +1169,10 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
 
     ~@PlayersInputMap()
     {
-        UnityEngine.Debug.Assert(!m_Player1Move.enabled, "This will cause a leak and performance issues, PlayersInputMap.Player1Move.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Player2Move.enabled, "This will cause a leak and performance issues, PlayersInputMap.Player2Move.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Player1MoveLeft.enabled, "This will cause a leak and performance issues, PlayersInputMap.Player1MoveLeft.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Player2MoveRight.enabled, "This will cause a leak and performance issues, PlayersInputMap.Player2MoveRight.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Player1MoveRight.enabled, "This will cause a leak and performance issues, PlayersInputMap.Player1MoveRight.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Player2MoveLeft.enabled, "This will cause a leak and performance issues, PlayersInputMap.Player2MoveLeft.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_InComumInputs.enabled, "This will cause a leak and performance issues, PlayersInputMap.InComumInputs.Disable() has not been called.");
     }
 
@@ -749,44 +1246,44 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Player1Move
-    private readonly InputActionMap m_Player1Move;
-    private List<IPlayer1MoveActions> m_Player1MoveActionsCallbackInterfaces = new List<IPlayer1MoveActions>();
-    private readonly InputAction m_Player1Move_MoveInputOne;
-    private readonly InputAction m_Player1Move_ActionInputOne;
-    private readonly InputAction m_Player1Move_ChangeCamLeft;
-    private readonly InputAction m_Player1Move_ChangeCamRight;
+    // Player1MoveLeft
+    private readonly InputActionMap m_Player1MoveLeft;
+    private List<IPlayer1MoveLeftActions> m_Player1MoveLeftActionsCallbackInterfaces = new List<IPlayer1MoveLeftActions>();
+    private readonly InputAction m_Player1MoveLeft_MoveInputOne;
+    private readonly InputAction m_Player1MoveLeft_ActionInputOne;
+    private readonly InputAction m_Player1MoveLeft_ChangeCamLeft;
+    private readonly InputAction m_Player1MoveLeft_ChangeCamRight;
     /// <summary>
-    /// Provides access to input actions defined in input action map "Player1Move".
+    /// Provides access to input actions defined in input action map "Player1MoveLeft".
     /// </summary>
-    public struct Player1MoveActions
+    public struct Player1MoveLeftActions
     {
         private @PlayersInputMap m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public Player1MoveActions(@PlayersInputMap wrapper) { m_Wrapper = wrapper; }
+        public Player1MoveLeftActions(@PlayersInputMap wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Player1Move/MoveInputOne".
+        /// Provides access to the underlying input action "Player1MoveLeft/MoveInputOne".
         /// </summary>
-        public InputAction @MoveInputOne => m_Wrapper.m_Player1Move_MoveInputOne;
+        public InputAction @MoveInputOne => m_Wrapper.m_Player1MoveLeft_MoveInputOne;
         /// <summary>
-        /// Provides access to the underlying input action "Player1Move/ActionInputOne".
+        /// Provides access to the underlying input action "Player1MoveLeft/ActionInputOne".
         /// </summary>
-        public InputAction @ActionInputOne => m_Wrapper.m_Player1Move_ActionInputOne;
+        public InputAction @ActionInputOne => m_Wrapper.m_Player1MoveLeft_ActionInputOne;
         /// <summary>
-        /// Provides access to the underlying input action "Player1Move/ChangeCamLeft".
+        /// Provides access to the underlying input action "Player1MoveLeft/ChangeCamLeft".
         /// </summary>
-        public InputAction @ChangeCamLeft => m_Wrapper.m_Player1Move_ChangeCamLeft;
+        public InputAction @ChangeCamLeft => m_Wrapper.m_Player1MoveLeft_ChangeCamLeft;
         /// <summary>
-        /// Provides access to the underlying input action "Player1Move/ChangeCamRight".
+        /// Provides access to the underlying input action "Player1MoveLeft/ChangeCamRight".
         /// </summary>
-        public InputAction @ChangeCamRight => m_Wrapper.m_Player1Move_ChangeCamRight;
+        public InputAction @ChangeCamRight => m_Wrapper.m_Player1MoveLeft_ChangeCamRight;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Player1Move; }
+        public InputActionMap Get() { return m_Wrapper.m_Player1MoveLeft; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -794,9 +1291,9 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="Player1MoveActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="Player1MoveLeftActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(Player1MoveActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(Player1MoveLeftActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -804,11 +1301,11 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="Player1MoveActions" />
-        public void AddCallbacks(IPlayer1MoveActions instance)
+        /// <seealso cref="Player1MoveLeftActions" />
+        public void AddCallbacks(IPlayer1MoveLeftActions instance)
         {
-            if (instance == null || m_Wrapper.m_Player1MoveActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_Player1MoveActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_Player1MoveLeftActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Player1MoveLeftActionsCallbackInterfaces.Add(instance);
             @MoveInputOne.started += instance.OnMoveInputOne;
             @MoveInputOne.performed += instance.OnMoveInputOne;
             @MoveInputOne.canceled += instance.OnMoveInputOne;
@@ -829,8 +1326,8 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="Player1MoveActions" />
-        private void UnregisterCallbacks(IPlayer1MoveActions instance)
+        /// <seealso cref="Player1MoveLeftActions" />
+        private void UnregisterCallbacks(IPlayer1MoveLeftActions instance)
         {
             @MoveInputOne.started -= instance.OnMoveInputOne;
             @MoveInputOne.performed -= instance.OnMoveInputOne;
@@ -847,12 +1344,12 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="Player1MoveActions.UnregisterCallbacks(IPlayer1MoveActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="Player1MoveLeftActions.UnregisterCallbacks(IPlayer1MoveLeftActions)" />.
         /// </summary>
-        /// <seealso cref="Player1MoveActions.UnregisterCallbacks(IPlayer1MoveActions)" />
-        public void RemoveCallbacks(IPlayer1MoveActions instance)
+        /// <seealso cref="Player1MoveLeftActions.UnregisterCallbacks(IPlayer1MoveLeftActions)" />
+        public void RemoveCallbacks(IPlayer1MoveLeftActions instance)
         {
-            if (m_Wrapper.m_Player1MoveActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_Player1MoveLeftActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -862,65 +1359,65 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="Player1MoveActions.AddCallbacks(IPlayer1MoveActions)" />
-        /// <seealso cref="Player1MoveActions.RemoveCallbacks(IPlayer1MoveActions)" />
-        /// <seealso cref="Player1MoveActions.UnregisterCallbacks(IPlayer1MoveActions)" />
-        public void SetCallbacks(IPlayer1MoveActions instance)
+        /// <seealso cref="Player1MoveLeftActions.AddCallbacks(IPlayer1MoveLeftActions)" />
+        /// <seealso cref="Player1MoveLeftActions.RemoveCallbacks(IPlayer1MoveLeftActions)" />
+        /// <seealso cref="Player1MoveLeftActions.UnregisterCallbacks(IPlayer1MoveLeftActions)" />
+        public void SetCallbacks(IPlayer1MoveLeftActions instance)
         {
-            foreach (var item in m_Wrapper.m_Player1MoveActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_Player1MoveLeftActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_Player1MoveActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_Player1MoveLeftActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="Player1MoveActions" /> instance referencing this action map.
+    /// Provides a new <see cref="Player1MoveLeftActions" /> instance referencing this action map.
     /// </summary>
-    public Player1MoveActions @Player1Move => new Player1MoveActions(this);
+    public Player1MoveLeftActions @Player1MoveLeft => new Player1MoveLeftActions(this);
 
-    // Player2Move
-    private readonly InputActionMap m_Player2Move;
-    private List<IPlayer2MoveActions> m_Player2MoveActionsCallbackInterfaces = new List<IPlayer2MoveActions>();
-    private readonly InputAction m_Player2Move_MoveInputTwo;
-    private readonly InputAction m_Player2Move_ActionInputTwo;
-    private readonly InputAction m_Player2Move_Mouse;
-    private readonly InputAction m_Player2Move_VooFantasma;
-    private readonly InputAction m_Player2Move_GhostShow;
+    // Player2MoveRight
+    private readonly InputActionMap m_Player2MoveRight;
+    private List<IPlayer2MoveRightActions> m_Player2MoveRightActionsCallbackInterfaces = new List<IPlayer2MoveRightActions>();
+    private readonly InputAction m_Player2MoveRight_MoveInputTwo;
+    private readonly InputAction m_Player2MoveRight_ActionInputTwo;
+    private readonly InputAction m_Player2MoveRight_Mouse;
+    private readonly InputAction m_Player2MoveRight_VooFantasma;
+    private readonly InputAction m_Player2MoveRight_GhostShow;
     /// <summary>
-    /// Provides access to input actions defined in input action map "Player2Move".
+    /// Provides access to input actions defined in input action map "Player2MoveRight".
     /// </summary>
-    public struct Player2MoveActions
+    public struct Player2MoveRightActions
     {
         private @PlayersInputMap m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public Player2MoveActions(@PlayersInputMap wrapper) { m_Wrapper = wrapper; }
+        public Player2MoveRightActions(@PlayersInputMap wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Player2Move/MoveInputTwo".
+        /// Provides access to the underlying input action "Player2MoveRight/MoveInputTwo".
         /// </summary>
-        public InputAction @MoveInputTwo => m_Wrapper.m_Player2Move_MoveInputTwo;
+        public InputAction @MoveInputTwo => m_Wrapper.m_Player2MoveRight_MoveInputTwo;
         /// <summary>
-        /// Provides access to the underlying input action "Player2Move/ActionInputTwo".
+        /// Provides access to the underlying input action "Player2MoveRight/ActionInputTwo".
         /// </summary>
-        public InputAction @ActionInputTwo => m_Wrapper.m_Player2Move_ActionInputTwo;
+        public InputAction @ActionInputTwo => m_Wrapper.m_Player2MoveRight_ActionInputTwo;
         /// <summary>
-        /// Provides access to the underlying input action "Player2Move/Mouse".
+        /// Provides access to the underlying input action "Player2MoveRight/Mouse".
         /// </summary>
-        public InputAction @Mouse => m_Wrapper.m_Player2Move_Mouse;
+        public InputAction @Mouse => m_Wrapper.m_Player2MoveRight_Mouse;
         /// <summary>
-        /// Provides access to the underlying input action "Player2Move/VooFantasma".
+        /// Provides access to the underlying input action "Player2MoveRight/VooFantasma".
         /// </summary>
-        public InputAction @VooFantasma => m_Wrapper.m_Player2Move_VooFantasma;
+        public InputAction @VooFantasma => m_Wrapper.m_Player2MoveRight_VooFantasma;
         /// <summary>
-        /// Provides access to the underlying input action "Player2Move/GhostShow".
+        /// Provides access to the underlying input action "Player2MoveRight/GhostShow".
         /// </summary>
-        public InputAction @GhostShow => m_Wrapper.m_Player2Move_GhostShow;
+        public InputAction @GhostShow => m_Wrapper.m_Player2MoveRight_GhostShow;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Player2Move; }
+        public InputActionMap Get() { return m_Wrapper.m_Player2MoveRight; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -928,9 +1425,9 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="Player2MoveActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="Player2MoveRightActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(Player2MoveActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(Player2MoveRightActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -938,11 +1435,11 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="Player2MoveActions" />
-        public void AddCallbacks(IPlayer2MoveActions instance)
+        /// <seealso cref="Player2MoveRightActions" />
+        public void AddCallbacks(IPlayer2MoveRightActions instance)
         {
-            if (instance == null || m_Wrapper.m_Player2MoveActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_Player2MoveActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_Player2MoveRightActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Player2MoveRightActionsCallbackInterfaces.Add(instance);
             @MoveInputTwo.started += instance.OnMoveInputTwo;
             @MoveInputTwo.performed += instance.OnMoveInputTwo;
             @MoveInputTwo.canceled += instance.OnMoveInputTwo;
@@ -966,8 +1463,8 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="Player2MoveActions" />
-        private void UnregisterCallbacks(IPlayer2MoveActions instance)
+        /// <seealso cref="Player2MoveRightActions" />
+        private void UnregisterCallbacks(IPlayer2MoveRightActions instance)
         {
             @MoveInputTwo.started -= instance.OnMoveInputTwo;
             @MoveInputTwo.performed -= instance.OnMoveInputTwo;
@@ -987,12 +1484,12 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="Player2MoveActions.UnregisterCallbacks(IPlayer2MoveActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="Player2MoveRightActions.UnregisterCallbacks(IPlayer2MoveRightActions)" />.
         /// </summary>
-        /// <seealso cref="Player2MoveActions.UnregisterCallbacks(IPlayer2MoveActions)" />
-        public void RemoveCallbacks(IPlayer2MoveActions instance)
+        /// <seealso cref="Player2MoveRightActions.UnregisterCallbacks(IPlayer2MoveRightActions)" />
+        public void RemoveCallbacks(IPlayer2MoveRightActions instance)
         {
-            if (m_Wrapper.m_Player2MoveActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_Player2MoveRightActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -1002,21 +1499,290 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="Player2MoveActions.AddCallbacks(IPlayer2MoveActions)" />
-        /// <seealso cref="Player2MoveActions.RemoveCallbacks(IPlayer2MoveActions)" />
-        /// <seealso cref="Player2MoveActions.UnregisterCallbacks(IPlayer2MoveActions)" />
-        public void SetCallbacks(IPlayer2MoveActions instance)
+        /// <seealso cref="Player2MoveRightActions.AddCallbacks(IPlayer2MoveRightActions)" />
+        /// <seealso cref="Player2MoveRightActions.RemoveCallbacks(IPlayer2MoveRightActions)" />
+        /// <seealso cref="Player2MoveRightActions.UnregisterCallbacks(IPlayer2MoveRightActions)" />
+        public void SetCallbacks(IPlayer2MoveRightActions instance)
         {
-            foreach (var item in m_Wrapper.m_Player2MoveActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_Player2MoveRightActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_Player2MoveActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_Player2MoveRightActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="Player2MoveActions" /> instance referencing this action map.
+    /// Provides a new <see cref="Player2MoveRightActions" /> instance referencing this action map.
     /// </summary>
-    public Player2MoveActions @Player2Move => new Player2MoveActions(this);
+    public Player2MoveRightActions @Player2MoveRight => new Player2MoveRightActions(this);
+
+    // Player1MoveRight
+    private readonly InputActionMap m_Player1MoveRight;
+    private List<IPlayer1MoveRightActions> m_Player1MoveRightActionsCallbackInterfaces = new List<IPlayer1MoveRightActions>();
+    private readonly InputAction m_Player1MoveRight_MoveInputOne;
+    private readonly InputAction m_Player1MoveRight_ActionInputOne;
+    private readonly InputAction m_Player1MoveRight_ChangeCamLeft;
+    private readonly InputAction m_Player1MoveRight_ChangeCamRight;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Player1MoveRight".
+    /// </summary>
+    public struct Player1MoveRightActions
+    {
+        private @PlayersInputMap m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public Player1MoveRightActions(@PlayersInputMap wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Player1MoveRight/MoveInputOne".
+        /// </summary>
+        public InputAction @MoveInputOne => m_Wrapper.m_Player1MoveRight_MoveInputOne;
+        /// <summary>
+        /// Provides access to the underlying input action "Player1MoveRight/ActionInputOne".
+        /// </summary>
+        public InputAction @ActionInputOne => m_Wrapper.m_Player1MoveRight_ActionInputOne;
+        /// <summary>
+        /// Provides access to the underlying input action "Player1MoveRight/ChangeCamLeft".
+        /// </summary>
+        public InputAction @ChangeCamLeft => m_Wrapper.m_Player1MoveRight_ChangeCamLeft;
+        /// <summary>
+        /// Provides access to the underlying input action "Player1MoveRight/ChangeCamRight".
+        /// </summary>
+        public InputAction @ChangeCamRight => m_Wrapper.m_Player1MoveRight_ChangeCamRight;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Player1MoveRight; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="Player1MoveRightActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(Player1MoveRightActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="Player1MoveRightActions" />
+        public void AddCallbacks(IPlayer1MoveRightActions instance)
+        {
+            if (instance == null || m_Wrapper.m_Player1MoveRightActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Player1MoveRightActionsCallbackInterfaces.Add(instance);
+            @MoveInputOne.started += instance.OnMoveInputOne;
+            @MoveInputOne.performed += instance.OnMoveInputOne;
+            @MoveInputOne.canceled += instance.OnMoveInputOne;
+            @ActionInputOne.started += instance.OnActionInputOne;
+            @ActionInputOne.performed += instance.OnActionInputOne;
+            @ActionInputOne.canceled += instance.OnActionInputOne;
+            @ChangeCamLeft.started += instance.OnChangeCamLeft;
+            @ChangeCamLeft.performed += instance.OnChangeCamLeft;
+            @ChangeCamLeft.canceled += instance.OnChangeCamLeft;
+            @ChangeCamRight.started += instance.OnChangeCamRight;
+            @ChangeCamRight.performed += instance.OnChangeCamRight;
+            @ChangeCamRight.canceled += instance.OnChangeCamRight;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="Player1MoveRightActions" />
+        private void UnregisterCallbacks(IPlayer1MoveRightActions instance)
+        {
+            @MoveInputOne.started -= instance.OnMoveInputOne;
+            @MoveInputOne.performed -= instance.OnMoveInputOne;
+            @MoveInputOne.canceled -= instance.OnMoveInputOne;
+            @ActionInputOne.started -= instance.OnActionInputOne;
+            @ActionInputOne.performed -= instance.OnActionInputOne;
+            @ActionInputOne.canceled -= instance.OnActionInputOne;
+            @ChangeCamLeft.started -= instance.OnChangeCamLeft;
+            @ChangeCamLeft.performed -= instance.OnChangeCamLeft;
+            @ChangeCamLeft.canceled -= instance.OnChangeCamLeft;
+            @ChangeCamRight.started -= instance.OnChangeCamRight;
+            @ChangeCamRight.performed -= instance.OnChangeCamRight;
+            @ChangeCamRight.canceled -= instance.OnChangeCamRight;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="Player1MoveRightActions.UnregisterCallbacks(IPlayer1MoveRightActions)" />.
+        /// </summary>
+        /// <seealso cref="Player1MoveRightActions.UnregisterCallbacks(IPlayer1MoveRightActions)" />
+        public void RemoveCallbacks(IPlayer1MoveRightActions instance)
+        {
+            if (m_Wrapper.m_Player1MoveRightActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="Player1MoveRightActions.AddCallbacks(IPlayer1MoveRightActions)" />
+        /// <seealso cref="Player1MoveRightActions.RemoveCallbacks(IPlayer1MoveRightActions)" />
+        /// <seealso cref="Player1MoveRightActions.UnregisterCallbacks(IPlayer1MoveRightActions)" />
+        public void SetCallbacks(IPlayer1MoveRightActions instance)
+        {
+            foreach (var item in m_Wrapper.m_Player1MoveRightActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_Player1MoveRightActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="Player1MoveRightActions" /> instance referencing this action map.
+    /// </summary>
+    public Player1MoveRightActions @Player1MoveRight => new Player1MoveRightActions(this);
+
+    // Player2MoveLeft
+    private readonly InputActionMap m_Player2MoveLeft;
+    private List<IPlayer2MoveLeftActions> m_Player2MoveLeftActionsCallbackInterfaces = new List<IPlayer2MoveLeftActions>();
+    private readonly InputAction m_Player2MoveLeft_MoveInputTwo;
+    private readonly InputAction m_Player2MoveLeft_ActionInputTwo;
+    private readonly InputAction m_Player2MoveLeft_Mouse;
+    private readonly InputAction m_Player2MoveLeft_VooFantasma;
+    private readonly InputAction m_Player2MoveLeft_GhostShow;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Player2MoveLeft".
+    /// </summary>
+    public struct Player2MoveLeftActions
+    {
+        private @PlayersInputMap m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public Player2MoveLeftActions(@PlayersInputMap wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Player2MoveLeft/MoveInputTwo".
+        /// </summary>
+        public InputAction @MoveInputTwo => m_Wrapper.m_Player2MoveLeft_MoveInputTwo;
+        /// <summary>
+        /// Provides access to the underlying input action "Player2MoveLeft/ActionInputTwo".
+        /// </summary>
+        public InputAction @ActionInputTwo => m_Wrapper.m_Player2MoveLeft_ActionInputTwo;
+        /// <summary>
+        /// Provides access to the underlying input action "Player2MoveLeft/Mouse".
+        /// </summary>
+        public InputAction @Mouse => m_Wrapper.m_Player2MoveLeft_Mouse;
+        /// <summary>
+        /// Provides access to the underlying input action "Player2MoveLeft/VooFantasma".
+        /// </summary>
+        public InputAction @VooFantasma => m_Wrapper.m_Player2MoveLeft_VooFantasma;
+        /// <summary>
+        /// Provides access to the underlying input action "Player2MoveLeft/GhostShow".
+        /// </summary>
+        public InputAction @GhostShow => m_Wrapper.m_Player2MoveLeft_GhostShow;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Player2MoveLeft; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="Player2MoveLeftActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(Player2MoveLeftActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="Player2MoveLeftActions" />
+        public void AddCallbacks(IPlayer2MoveLeftActions instance)
+        {
+            if (instance == null || m_Wrapper.m_Player2MoveLeftActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Player2MoveLeftActionsCallbackInterfaces.Add(instance);
+            @MoveInputTwo.started += instance.OnMoveInputTwo;
+            @MoveInputTwo.performed += instance.OnMoveInputTwo;
+            @MoveInputTwo.canceled += instance.OnMoveInputTwo;
+            @ActionInputTwo.started += instance.OnActionInputTwo;
+            @ActionInputTwo.performed += instance.OnActionInputTwo;
+            @ActionInputTwo.canceled += instance.OnActionInputTwo;
+            @Mouse.started += instance.OnMouse;
+            @Mouse.performed += instance.OnMouse;
+            @Mouse.canceled += instance.OnMouse;
+            @VooFantasma.started += instance.OnVooFantasma;
+            @VooFantasma.performed += instance.OnVooFantasma;
+            @VooFantasma.canceled += instance.OnVooFantasma;
+            @GhostShow.started += instance.OnGhostShow;
+            @GhostShow.performed += instance.OnGhostShow;
+            @GhostShow.canceled += instance.OnGhostShow;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="Player2MoveLeftActions" />
+        private void UnregisterCallbacks(IPlayer2MoveLeftActions instance)
+        {
+            @MoveInputTwo.started -= instance.OnMoveInputTwo;
+            @MoveInputTwo.performed -= instance.OnMoveInputTwo;
+            @MoveInputTwo.canceled -= instance.OnMoveInputTwo;
+            @ActionInputTwo.started -= instance.OnActionInputTwo;
+            @ActionInputTwo.performed -= instance.OnActionInputTwo;
+            @ActionInputTwo.canceled -= instance.OnActionInputTwo;
+            @Mouse.started -= instance.OnMouse;
+            @Mouse.performed -= instance.OnMouse;
+            @Mouse.canceled -= instance.OnMouse;
+            @VooFantasma.started -= instance.OnVooFantasma;
+            @VooFantasma.performed -= instance.OnVooFantasma;
+            @VooFantasma.canceled -= instance.OnVooFantasma;
+            @GhostShow.started -= instance.OnGhostShow;
+            @GhostShow.performed -= instance.OnGhostShow;
+            @GhostShow.canceled -= instance.OnGhostShow;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="Player2MoveLeftActions.UnregisterCallbacks(IPlayer2MoveLeftActions)" />.
+        /// </summary>
+        /// <seealso cref="Player2MoveLeftActions.UnregisterCallbacks(IPlayer2MoveLeftActions)" />
+        public void RemoveCallbacks(IPlayer2MoveLeftActions instance)
+        {
+            if (m_Wrapper.m_Player2MoveLeftActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="Player2MoveLeftActions.AddCallbacks(IPlayer2MoveLeftActions)" />
+        /// <seealso cref="Player2MoveLeftActions.RemoveCallbacks(IPlayer2MoveLeftActions)" />
+        /// <seealso cref="Player2MoveLeftActions.UnregisterCallbacks(IPlayer2MoveLeftActions)" />
+        public void SetCallbacks(IPlayer2MoveLeftActions instance)
+        {
+            foreach (var item in m_Wrapper.m_Player2MoveLeftActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_Player2MoveLeftActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="Player2MoveLeftActions" /> instance referencing this action map.
+    /// </summary>
+    public Player2MoveLeftActions @Player2MoveLeft => new Player2MoveLeftActions(this);
 
     // InComumInputs
     private readonly InputActionMap m_InComumInputs;
@@ -1125,11 +1891,11 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
     /// </summary>
     public InComumInputsActions @InComumInputs => new InComumInputsActions(this);
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player1Move" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player1MoveLeft" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="Player1MoveActions.AddCallbacks(IPlayer1MoveActions)" />
-    /// <seealso cref="Player1MoveActions.RemoveCallbacks(IPlayer1MoveActions)" />
-    public interface IPlayer1MoveActions
+    /// <seealso cref="Player1MoveLeftActions.AddCallbacks(IPlayer1MoveLeftActions)" />
+    /// <seealso cref="Player1MoveLeftActions.RemoveCallbacks(IPlayer1MoveLeftActions)" />
+    public interface IPlayer1MoveLeftActions
     {
         /// <summary>
         /// Method invoked when associated input action "MoveInputOne" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
@@ -1161,11 +1927,90 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
         void OnChangeCamRight(InputAction.CallbackContext context);
     }
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player2Move" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player2MoveRight" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="Player2MoveActions.AddCallbacks(IPlayer2MoveActions)" />
-    /// <seealso cref="Player2MoveActions.RemoveCallbacks(IPlayer2MoveActions)" />
-    public interface IPlayer2MoveActions
+    /// <seealso cref="Player2MoveRightActions.AddCallbacks(IPlayer2MoveRightActions)" />
+    /// <seealso cref="Player2MoveRightActions.RemoveCallbacks(IPlayer2MoveRightActions)" />
+    public interface IPlayer2MoveRightActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "MoveInputTwo" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMoveInputTwo(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ActionInputTwo" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnActionInputTwo(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Mouse" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMouse(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "VooFantasma" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnVooFantasma(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "GhostShow" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGhostShow(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player1MoveRight" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="Player1MoveRightActions.AddCallbacks(IPlayer1MoveRightActions)" />
+    /// <seealso cref="Player1MoveRightActions.RemoveCallbacks(IPlayer1MoveRightActions)" />
+    public interface IPlayer1MoveRightActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "MoveInputOne" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMoveInputOne(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ActionInputOne" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnActionInputOne(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ChangeCamLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChangeCamLeft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ChangeCamRight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChangeCamRight(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player2MoveLeft" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="Player2MoveLeftActions.AddCallbacks(IPlayer2MoveLeftActions)" />
+    /// <seealso cref="Player2MoveLeftActions.RemoveCallbacks(IPlayer2MoveLeftActions)" />
+    public interface IPlayer2MoveLeftActions
     {
         /// <summary>
         /// Method invoked when associated input action "MoveInputTwo" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.

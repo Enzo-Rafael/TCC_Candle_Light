@@ -46,7 +46,6 @@ public class ObserverEventChannel : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void NotifyObservers(int message = 1, object additionalInformation = null){
-        Debug.Log("E aqui?");
         if(observers != null){
             var observersCopy = observers.ToList();
             foreach (var observer in observersCopy){

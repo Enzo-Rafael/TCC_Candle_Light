@@ -3505,9 +3505,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1906807809}
-        m_TargetAssemblyTypeName: BtnSave, Assembly-CSharp
-        m_MethodName: BtnNewSave
+      - m_Target: {fileID: 1906807808}
+        m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
+        m_MethodName: NewGameButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4060,7 +4060,6 @@ GameObject:
   - component: {fileID: 676624735}
   - component: {fileID: 676624739}
   - component: {fileID: 676624740}
-  - component: {fileID: 676624741}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4168,7 +4167,6 @@ MonoBehaviour:
   _creditsPanel: {fileID: 147201988}
   _popupPanel: {fileID: 1573900443}
   _featuresPanel: {fileID: 316940306}
-  _controlsChoicePanel: {fileID: 0}
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
 --- !u!114 &676624740
 MonoBehaviour:
@@ -4182,21 +4180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44cd814c96d00644692f7dc4f711ce3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &676624741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 676624734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 438b34ed312788c4a9246a53cb6e47f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInput: {fileID: 0}
-  presetPadrao: {fileID: 0}
-  presetAlternativo: {fileID: 0}
 --- !u!1 &687868474
 GameObject:
   m_ObjectHideFlags: 0
@@ -5941,9 +5924,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1906807809}
-        m_TargetAssemblyTypeName: BtnSave, Assembly-CSharp
-        m_MethodName: BtnContinue
+      - m_Target: {fileID: 1906807808}
+        m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
+        m_MethodName: ContinueButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
 
 
@@ -30,7 +29,7 @@ public class UIMainMenu : MonoBehaviour
     }
     public void FeaturesButton()
     {
-        FeaturesButtonAction.Invoke(); 
+        FeaturesButtonAction.Invoke();
     }
     public void ExitButton()
     {

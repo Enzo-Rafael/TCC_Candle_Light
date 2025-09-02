@@ -44,8 +44,9 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
-    private void CloseControls()
+    private void CloseControls(bool rightActive)
     {
+        _inputReader.InputSelect(rightActive);
         _controlsPainel.Closed -= CloseControls;
         _controlsPainel.gameObject.SetActive(false);
     }

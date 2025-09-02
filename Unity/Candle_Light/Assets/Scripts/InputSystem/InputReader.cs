@@ -14,7 +14,7 @@ using UnityEngine.Events;
 
 
 [CreateAssetMenu(fileName = "InputReader", menuName = "Game/Input Reader")]
-public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions, PlayersInputMap.IPlayer1MoveActions, PlayersInputMap.IInComumInputsActions
+public class InputReader : ScriptableObject, PlayersInputMap.IPlayer1MoveActions, PlayersInputMap.IInComumInputsActions,  PlayersInputMap.IPlayer2MoveActions
 {
 
     //-------------------------- Variaveis Globais Visiveis --------------------------------
@@ -43,8 +43,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     ------------------------------------------------------------------------------*/
     private void OnEnable()
     {
-        if (_playersInput == null)
-        {
+        if (_playersInput == null){
             _playersInput = new PlayersInputMap();
             _playersInput.Player1Move.SetCallbacks(this);
             _playersInput.Player2Move.SetCallbacks(this);
@@ -67,11 +66,56 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void EnableAllInput()
-    {
+    public void EnableAllInput(){
         _playersInput.Player1Move.Enable();
         _playersInput.Player2Move.Enable();
         _playersInput.InComumInputs.Enable();
+    }
+
+    public void InputSelect(bool rightActive)
+    {
+        if (rightActive){
+            //Player 1
+            _playersInput.Player1Move.MoveInputOne.ApplyBindingOverride(1, "<Keyboard>/w");    // Up
+            _playersInput.Player1Move.MoveInputOne.ApplyBindingOverride(2, "<Keyboard>/s");  // Down
+            _playersInput.Player1Move.MoveInputOne.ApplyBindingOverride(3, "<Keyboard>/a");  // Left
+            _playersInput.Player1Move.MoveInputOne.ApplyBindingOverride(4, "<Keyboard>/d"); // Right
+
+            _playersInput.Player1Move.ChangeCamLeft.ApplyBindingOverride(0, "<Keyboard>/k");
+            _playersInput.Player1Move.ChangeCamLeft.ApplyBindingOverride(1, "<Keyboard>/q");
+            _playersInput.Player1Move.ChangeCamRight.ApplyBindingOverride(0, "<Keyboard>/l");
+            _playersInput.Player1Move.ChangeCamRight.ApplyBindingOverride(1, "<Keyboard>/e");
+
+            //player 2
+            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(1, "<Keyboard>/upArrow");
+            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(2, "<Keyboard>/downArrow");
+            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(3, "<Keyboard>/leftArrow");
+            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(4, "<Keyboard>/rightArrow");
+
+            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(5, "<Keyboard>/rightShift"); // Foward (Positive)
+            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(6, "<Keyboard>/rightCtrl");  // Backward (Negative)
+        }
+        else{
+            // Player 1
+            _playersInput.Player1Move.MoveInputOne.ApplyBindingOverride(1, "<Keyboard>/upArrow");    // Up
+            _playersInput.Player1Move.MoveInputOne.ApplyBindingOverride(2, "<Keyboard>/downArrow");  // Down
+            _playersInput.Player1Move.MoveInputOne.ApplyBindingOverride(3, "<Keyboard>/leftArrow");  // Left
+            _playersInput.Player1Move.MoveInputOne.ApplyBindingOverride(4, "<Keyboard>/rightArrow"); // Right
+
+            _playersInput.Player1Move.ChangeCamLeft.ApplyBindingOverride(0, "<Keyboard>/comma");
+            _playersInput.Player1Move.ChangeCamLeft.ApplyBindingOverride(1, "<Keyboard>/k");
+            _playersInput.Player1Move.ChangeCamRight.ApplyBindingOverride(0, "<Keyboard>/period");
+            _playersInput.Player1Move.ChangeCamRight.ApplyBindingOverride(1, "<Keyboard>/l");
+
+            // Player 2
+            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(1, "<Keyboard>/w");       // Up
+            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(2, "<Keyboard>/s");       // Down
+            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(3, "<Keyboard>/a");       // Left
+            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(4, "<Keyboard>/d");       // Right
+        
+            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(5, "<Keyboard>/leftShift"); // Foward (Positive)
+            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(6, "<Keyboard>/leftCtrl");  // Backward (Negative)
+        }
     }
     /*------------------------------------------------------------------------------
     Função:     DisableAllInput
@@ -79,12 +123,11 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void DisableAllInput()
-    {
+    public void DisableAllInput(){
         _playersInput.Player1Move.Disable();
         _playersInput.Player2Move.Disable();
         _playersInput.InComumInputs.Disable();
-
+        
     }
     /*------------------------------------------------------------------------------
     Função:     EnableGameplayInput
@@ -92,8 +135,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void EnableGameplayInput()
-    {
+    public void EnableGameplayInput(){
         _playersInput.Player1Move.Enable();
         _playersInput.Player2Move.Enable();
         _playersInput.InComumInputs.Enable();
@@ -106,20 +148,15 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void EnableMenuInput()
-    {
-        _playersInput.Player1Move.Disable();
-        _playersInput.Player2Move.Disable();
+    public void EnableMenuInput(){
+         _playersInput.Player1Move.Enable();
+        _playersInput.Player2Move.Enable();
         _playersInput.InComumInputs.Enable();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-
-    public void EnablePlayerInput(int index)
-    {
-        Debug.Log("enabled input p"+index);
-        switch (index)
-        {
+    public void EnablePlayerInput(int index){
+        switch (index){
             case 1:
                 _playersInput.Player1Move.Enable();
                 break;
@@ -129,11 +166,8 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
                 break;
         }
     }
-    public void DisablePlayerInput(int index)
-    {
-        Debug.Log("disabled input p"+index);
-        switch (index)
-        {
+    public void DisablePlayerInput(int index){
+        switch (index){
             case 1:
                 _playersInput.Player1Move.Disable();
                 break;
@@ -194,10 +228,8 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     }
 
     //PROVISORIO
-    public void DisablePlayerInputMove(int index)
-    {
-        switch (index)
-        {
+    public void DisablePlayerInputMove(int index){
+        switch (index){
             case 1:
                 _playersInput.Player1Move.MoveInputOne.Disable();
                 break;

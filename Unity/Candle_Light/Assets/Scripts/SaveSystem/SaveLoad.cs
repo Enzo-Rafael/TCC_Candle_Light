@@ -227,15 +227,16 @@ public class SaveLoad : MonoBehaviour
 
         for (int obj = 0; obj < objHolds.Length; obj++)
         {
-            if (data.castesalData[obj].isHold == true)
-            {
-                GameObject c = GameObject.Find(data.castesalData[obj].name);
-                c.GetComponent<EquipItemInteractable>().LoadAction();
-            }
-            else
+            if (data.castesalData[obj].isHold == false)
             {
                 objHolds[obj].transform.position = data.castesalData[obj].position;
                 objHolds[obj].transform.eulerAngles = data.castesalData[obj].rotation;
+            }
+            else
+            {
+                GameObject c = GameObject.Find(data.castesalData[obj].name);
+                c.GetComponent<EquipItemInteractable>().LoadAction();
+                
             }
         }
 

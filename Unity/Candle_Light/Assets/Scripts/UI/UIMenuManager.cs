@@ -10,6 +10,7 @@
 
 //----------------------------- Bibliotecas Usadas -------------------------------------
 
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class UIMenuManager : MonoBehaviour
@@ -21,7 +22,6 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private UICredits _creditsPanel = default;
     [SerializeField] private UIPopup _popupPanel = default;
     [SerializeField] private UIFeatures _featuresPanel = default;
-
     [SerializeField] private InputReader _inputReader = default;
 
     /*------------------------------------------------------------------------------
@@ -40,8 +40,8 @@ public class UIMenuManager : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void SetMenu()
-    {
+    private void SetMenu(){
+        _menuPainel.ContinueButtonAction += SaveLoad.Instance.StartLoad;
         _menuPainel.NewGameButtonAction += StartNewGame;
         _menuPainel.SettingsButtonAction += OpenSettings;
         _menuPainel.CreditsButtonAction += OpenCredits;
@@ -54,9 +54,9 @@ public class UIMenuManager : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void StartNewGame()
-    {
-        SceneManager.LoadScene("Mansion");
+    private void StartNewGame(){
+        SaveLoad.Instance.NewSave();
+        SceneManager.LoadScene("Mansion");  
     }
     /*------------------------------------------------------------------------------
     Função:     OpenSettings
@@ -117,10 +117,6 @@ public class UIMenuManager : MonoBehaviour
     private void ClosedFeatures(){
         _featuresPanel.Closed -= ClosedFeatures;
         _featuresPanel.gameObject.SetActive(false);
-    }
-    private void OpenControls(){
-        _featuresPanel.gameObject.SetActive(true);
-        _featuresPanel.Closed += ClosedFeatures;
     }
     /*------------------------------------------------------------------------------
     Função:     ShowExitConfirmationPopup

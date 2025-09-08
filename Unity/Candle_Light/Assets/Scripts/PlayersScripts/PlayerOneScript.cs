@@ -5,12 +5,12 @@ using Unity.Cinemachine;
 public class PlayerOneScript : Singleton<PlayerOneScript>
 {
     //-------------------------- Variaveis Globais Visiveis --------------------------------
-	[SerializeField] private InputReader _inputReader = default;
+    [SerializeField] private InputReader _inputReader = default;
 
     [Tooltip("Referência para o local que o objeto irá quando equipado")]
     [SerializeField]
     private Transform holdPosition;
-    public Transform HoldPosition{ get => holdPosition; }
+    public Transform HoldPosition { get => holdPosition; }
 
     public float velocity;
 
@@ -34,14 +34,17 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
     private Vector3 strafe;
 
     //Metodos
-	private void OnEnable(){
+    private void OnEnable()
+    {
         _inputReader.MoveEventOne += OnMove;
-	}
-	private void OnDisable(){
+    }
+    private void OnDisable()
+    {
         _inputReader.MoveEventOne -= OnMove;
-	}
+    }
 
-    private void OnMove(Vector3 movement){
+    private void OnMove(Vector3 movement)
+    {
         _inputVector = movement;
     }
 
@@ -49,13 +52,14 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
     {
         mainCam = GetComponent<ChangeCam>().GetCam();
 
-        if (controller.isGrounded && playerMove.y < 0){
+        if (controller.isGrounded && playerMove.y < 0)
+        {
             playerMove.y = 0f;
         }
         Vector3 camForward = Vector3.Scale(mainCam.transform.forward, new Vector3(1, 0, 1)).normalized;
         Vector3 camStrafe = Vector3.Scale(mainCam.transform.right, new Vector3(1, 0, 1)).normalized;
-        forward = Vector3.Lerp(forward, _inputVector.y * camForward, Time.deltaTime*5);
-        strafe = Vector3.Lerp(strafe, _inputVector.x * camStrafe, Time.deltaTime*5);
+        forward = Vector3.Lerp(forward, _inputVector.y * camForward, Time.deltaTime * 5);
+        strafe = Vector3.Lerp(strafe, _inputVector.x * camStrafe, Time.deltaTime * 5);
         playerMove = forward + strafe;
 
 
@@ -65,7 +69,8 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
             gameObject.transform.forward = playerMove;
         }
 
-        foreach(Animator animator in animators){
+        foreach (Animator animator in animators)
+        {
             animator.SetFloat("WalkSpeed", playerMove.magnitude);
         }
 
@@ -75,17 +80,25 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
 
     public void Pickup(EquipItemInteractable item)
     {
-        foreach(Animator animator in animators){
+        foreach (Animator animator in animators)
+        {
             animator.SetTrigger("Pickup");
         }
     }
 
     public void Drop(EquipItemInteractable item)
     {
-        foreach(Animator animator in animators){
+        foreach (Animator animator in animators)
+        {
             animator.SetTrigger("Drop");
         }
     }
+
+    public void SetInvisible(bool value)
+    {
+        foreach (Renderer r in gameObject.GetComponentsInChildren<Renderer>()){ r.enabled = value; }
+    }
+
 }
 /*      forward = _inputVector.y * velocity * new Vector3(0, 0,-mainCam.transform.position.z);
         strafe = _inputVector.x * velocity * new Vector3(-mainCam.transform.position.z,0,0);*/

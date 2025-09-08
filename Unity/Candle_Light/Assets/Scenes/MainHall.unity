@@ -803,13 +803,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent: {fileID: 398046259}
+  _observerEvent:
+  - {fileID: 0}
+  _useAnimation: 0
   animator: {fileID: 1490596643}
   parameterName: State
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
-  _itemType: 0
+  _customScripts: []
   _multipleCode: {fileID: 0}
   indexPuzzle: 0
   spawnProx: 0
@@ -829,12 +829,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent: {fileID: 398046259}
+  _observerEvent:
+  - {fileID: 0}
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  _customScripts: []
   orderID: 3
 --- !u!1001 &65663629
 PrefabInstance:
@@ -12175,13 +12176,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent: {fileID: 398046259}
+  _observerEvent:
+  - {fileID: 0}
+  _useAnimation: 0
   animator: {fileID: 1400751582}
   parameterName: State
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
-  _itemType: 0
+  _customScripts: []
   _multipleCode: {fileID: 0}
   indexPuzzle: 0
   spawnProx: 0
@@ -12201,12 +12202,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent: {fileID: 398046259}
+  _observerEvent:
+  - {fileID: 0}
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  _customScripts: []
   orderID: 1
 --- !u!1 &574085386
 GameObject:
@@ -20058,13 +20060,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 2
-  _observerEvent: {fileID: 398046259}
+  _observerEvent:
+  - {fileID: 0}
+  _useAnimation: 0
   animator: {fileID: 1108781758}
   parameterName: Activate
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
-  _itemType: 1
+  _customScripts: []
   _multipleCode: {fileID: 1108781760}
   indexPuzzle: 0
   spawnProx: 0
@@ -23596,7 +23598,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3316627586081901544, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.4467163
+      value: -1.4467773
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529553136214547410, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -167.92017
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529553136214547410, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4940725848330029910, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
       propertyPath: m_Name
@@ -23604,7 +23614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5014645643798511511, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.4467163
+      value: -1.4467773
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28617,7 +28627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2771374243806646055, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.212
+      value: -11.9
       objectReference: {fileID: 0}
     - target: {fileID: 2771374243806646055, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28657,23 +28667,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4135097544244111326, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.1692629
+      value: -0.48126316
       objectReference: {fileID: 0}
     - target: {fileID: 4135097544244111326, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7008267
+      value: 0.6686024
       objectReference: {fileID: 0}
     - target: {fileID: 4135097544244111326, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.31112382
+      value: 0.29941213
       objectReference: {fileID: 0}
     - target: {fileID: 4135097544244111326, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.5866918
+      value: -0.6212317
       objectReference: {fileID: 0}
     - target: {fileID: 4135097544244111326, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.26045495
+      value: 0.2781987
       objectReference: {fileID: 0}
     - target: {fileID: 8338911887323015202, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
       propertyPath: _enterZone.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -32290,13 +32300,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent: {fileID: 398046259}
+  _observerEvent:
+  - {fileID: 0}
+  _useAnimation: 0
   animator: {fileID: 507037180}
   parameterName: State
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
-  _itemType: 0
+  _customScripts: []
   _multipleCode: {fileID: 0}
   indexPuzzle: 0
   spawnProx: 0
@@ -32316,12 +32326,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent: {fileID: 398046259}
+  _observerEvent:
+  - {fileID: 0}
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  _customScripts: []
   orderID: 2
 --- !u!1001 &2140028367
 PrefabInstance:
@@ -32565,7 +32576,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8110115297057138928}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27691, y: 0.59453106, z: -0.22885874, w: 0.71935904}
+  m_LocalRotation: {x: 0.26848444, y: 0.6258394, z: -0.24327417, w: 0.6906945}
   m_LocalPosition: {x: -7.2374516, y: 6.9034853, z: -12.630796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -32877,7 +32888,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3369811614532942997}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0016275605, y: 0.992588, z: -0.0133756, w: -0.1207794}
+  m_LocalRotation: {x: -0.0014879897, y: 0.99323004, z: -0.01280165, w: -0.11544731}
   m_LocalPosition: {x: 3.685, y: 0.89, z: 3.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -32935,7 +32946,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5594642589680894129}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3111238, y: -0.58669174, z: 0.2604549, w: 0.70082676}
+  m_LocalRotation: {x: 0.2994121, y: -0.6212317, z: 0.2781987, w: 0.6686024}
   m_LocalPosition: {x: 6.7052073, y: 7.444171, z: -12.381263}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -33125,7 +33136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6390227527454236267}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.024788482, y: 0.9740384, z: -0.13304916, w: 0.18147379}
+  m_LocalRotation: {x: 0.022765778, y: 0.9761855, z: -0.1279306, w: 0.17371625}
   m_LocalPosition: {x: -5.1220927, y: 4.178772, z: 2.4766212}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

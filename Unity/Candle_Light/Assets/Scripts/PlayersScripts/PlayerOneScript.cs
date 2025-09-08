@@ -94,7 +94,7 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
         }
     }
 
-    public void SetInvisible(bool value)
+    public void SetVisible(bool value)
     {
         foreach (Renderer r in gameObject.GetComponentsInChildren<Renderer>()){ r.enabled = value; }
     }

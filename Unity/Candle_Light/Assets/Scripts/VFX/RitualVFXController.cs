@@ -6,6 +6,9 @@ public class RitualVFXController : MonoBehaviour
     [SerializeField] private VisualEffect ritualVFX;
     [SerializeField] private VisualEffect teleVFX;
     [SerializeField] private float range;
+
+    [SerializeField] private Transform targetPos;
+
     [Header("spinny parametros")]
     [SerializeField] private GameObject spinnySprite;
     [SerializeField] private float rotSpeed;
@@ -26,36 +29,43 @@ public class RitualVFXController : MonoBehaviour
         if ((PlayerOneScript.Instance.transform.position - transform.position).magnitude > range || isActivated)
         {
             timeInCircle -= Time.deltaTime * 0.5f;
-            if (timeInCircle <= 0)
-            {
-                ritualVFX.Play();
-                timeInCircle = 0;
-                isActivated = false;
-            }
-
             spinnySprite.transform.rotation = Quaternion.RotateTowards(spinnySprite.transform.rotation, Quaternion.Euler(90, 0, 0), 1);
         }
         else
         {
-            PlayerOneScript.Instance.SetInvisible(true);
             timeInCircle += Time.deltaTime * 0.3f;
-            if (timeInCircle > 1)
-            {
-                ritualVFX.Stop();
-                timeInCircle = 1;
-                isActivated = true;
-                PlayerOneScript.Instance.SetInvisible(false);
-                teleVFX.Play();
-            }
 
             spinnySprite.transform.Rotate(new Vector3(Mathf.Sin(Time.time) * wobble, Mathf.Sin(Time.time) * wobble, 1), rotSpeed * timeInCircle * Time.deltaTime);
             spinnySprite.transform.localPosition = Vector3.up * timeInCircle * maxHeight;
         }
 
+        if (timeInCircle <= 0)
+        {
+            ritualVFX.Play();
+            timeInCircle = 0;
+            isActivated = false;
+            PlayerOneScript.Instance.SetVisible(true);
+        }
+        else if (timeInCircle > 1)
+        {
+            ritualVFX.Stop();
+            timeInCircle = 1;
+            isActivated = true;
+            PlayerOneScript.Instance.SetVisible(false);
+            this.CallWithDelay(Teleport, 2);
+            teleVFX.Play();
+        }
+
         spinnySprite.transform.localScale = Vector3.one * Mathf.Sin(timeInCircle * 2) * 1.1f * maxSize;
-        
+
         ritualVFX.SetFloat("ActTime", timeInCircle);
     }
 
-
+    private void Teleport()
+    {
+        PlayerOneScript.Instance.controller.enabled = false;
+        PlayerOneScript.Instance.transform.position = targetPos.position;
+        PlayerOneScript.Instance.controller.enabled = true;
+    }
+    
 }

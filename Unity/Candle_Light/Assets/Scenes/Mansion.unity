@@ -3450,6 +3450,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 727537896969763133, guid: d42f5ede10a33b740adeecebf965c7ad, type: 3}
   m_PrefabInstance: {fileID: 5478874672173318322}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &1003252706 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8523984296232252366, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
+  m_PrefabInstance: {fileID: 1831703622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1012486089 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 612366947308833466, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
@@ -4818,14 +4823,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2953558477785476131, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131880486324935981, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4940725848330029910, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
       propertyPath: m_Name
       value: In-game UI
       objectReference: {fileID: 0}
-    - target: {fileID: 5873348606316252902, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 5857514668773035385, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
+      propertyPath: _playerOneCamera
+      value: 
+      objectReference: {fileID: 1003252706}
+    - target: {fileID: 5857514668773035385, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
+      propertyPath: _playerTwoCamera
+      value: 
+      objectReference: {fileID: 985309521}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6007,12 +6024,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 2
-  _observerEvent: {fileID: 0}
+  _observerEvent:
+  - {fileID: 0}
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 1758685000}
+  _customScripts: []
 --- !u!1 &1760258034
 GameObject:
   m_ObjectHideFlags: 0
@@ -6329,6 +6347,10 @@ PrefabInstance:
     - target: {fileID: 4772829948696247740, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
       propertyPath: m_BoundingSphereOverride.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272373655261356910, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8523984296232252366, guid: 7be182423623ceb408a9cc7c859c5e58, type: 3}
       propertyPath: near clip plane

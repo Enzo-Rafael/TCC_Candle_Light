@@ -92,8 +92,6 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer1MoveActions
             _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(3, "<Keyboard>/leftArrow");
             _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(4, "<Keyboard>/rightArrow");
 
-            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(5, "<Keyboard>/rightShift"); // Foward (Positive)
-            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(6, "<Keyboard>/rightCtrl");  // Backward (Negative)
         }
         else{
             // Player 1
@@ -113,8 +111,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer1MoveActions
             _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(3, "<Keyboard>/a");       // Left
             _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(4, "<Keyboard>/d");       // Right
         
-            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(5, "<Keyboard>/leftShift"); // Foward (Positive)
-            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(6, "<Keyboard>/leftCtrl");  // Backward (Negative)
+
         }
     }
     /*------------------------------------------------------------------------------

@@ -185,28 +185,6 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Forward"",
-                    ""id"": ""7dbea21c-3b05-45be-8c95-18fcf7c69fee"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveInputOne"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Backward"",
-                    ""id"": ""b4312bdb-79c7-407d-830d-2f0378392276"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveInputOne"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""42ea2c2b-3387-4357-b83c-1a3098fcf87e"",
                     ""path"": ""<Keyboard>/j"",
@@ -373,28 +351,6 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                     ""name"": ""Right"",
                     ""id"": ""13163d23-b9d9-4026-8dd2-d6af5c8ec273"",
                     ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveInputTwo"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Forward"",
-                    ""id"": ""736eb174-2ae7-4a84-8e52-95ce711bb656"",
-                    ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveInputTwo"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Backward"",
-                    ""id"": ""43d9f6b2-723e-4cd4-8d60-e573f5e5ccc5"",
-                    ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

@@ -13,9 +13,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
-using Unity.Collections.LowLevel.Unsafe;
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 public class InteractionManagerP1 : MonoBehaviour
@@ -62,7 +60,8 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnEnable(){
+    private void OnEnable()
+    {
         _inputReader.ActionEventOne += UseInteractionType;
     }
     /*------------------------------------------------------------------------------
@@ -71,8 +70,16 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void OnDisable(){
+    private void OnDisable()
+    {
         _inputReader.ActionEventOne -= UseInteractionType;
+    }
+    private void FixedUpdate()
+    {
+    if (rayFloor != null)
+    {
+        Debug.DrawRay(rayFloor.position, Vector3.down * deploymentHeight);
+    }
     }
     /*------------------------------------------------------------------------------
     Função:     OnTriggerDetected
@@ -83,10 +90,12 @@ public class InteractionManagerP1 : MonoBehaviour
     ------------------------------------------------------------------------------*/
     public void OnTriggerDetected(bool entered, GameObject itemInteractable)
     {
-        if (entered){
+        if (entered)
+        {
             AddPotentialInteraction(itemInteractable);
         }
-        else{
+        else
+        {
             RemovePotentialInteraction(itemInteractable);
         }
     }
@@ -96,22 +105,29 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void AddPotentialInteraction(GameObject itemInteractable){
+    private void AddPotentialInteraction(GameObject itemInteractable)
+    {
         potentialInteractions.AddFirst(itemInteractable);
 
-        foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>()){
+        foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>())
+        {
             renderer.material.SetFloat("_Highlight", 1);
         }
-        switch (potentialInteractions.First.Value.layer){
+        switch (potentialInteractions.First.Value.layer)
+        {
             case EquipLayer:
-                if (equipItem == null){
+                if (equipItem == null)
+                {
                     iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                 }
                 break;
             case UseLayer:
-                if (equipItem != null && potentialInteractions.First.Value.tag == equipItem.tag){
+                if (equipItem != null && potentialInteractions.First.Value.tag == equipItem.tag)
+                {
                     iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
-                }else if (potentialInteractions.First.Value.tag == defaultTag){
+                }
+                else if (potentialInteractions.First.Value.tag == defaultTag)
+                {
                     iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                 }
                 break;
@@ -126,16 +142,21 @@ public class InteractionManagerP1 : MonoBehaviour
     private void RemovePotentialInteraction(GameObject itemInteractable)
     {
         LinkedListNode<GameObject> currentNode = potentialInteractions.First;
-        while (currentNode != null){
-            if (currentNode.Value == itemInteractable){
+        while (currentNode != null)
+        {
+            if (currentNode.Value == itemInteractable)
+            {
                 potentialInteractions.Remove(currentNode);
                 iController.canvasCloseSprite();
                 iController.canvasCloseText();
-                foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>()){
+                foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>())
+                {
                     renderer.material.SetFloat("_Highlight", 0);
                 }
-                if(potentialInteractions.Count != 0){
-                    if (equipItem?.tag == potentialInteractions.First.Value.tag){
+                if (potentialInteractions.Count != 0)
+                {
+                    if (equipItem?.tag == potentialInteractions.First.Value.tag)
+                    {
                         iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                     }
                 }
@@ -150,58 +171,74 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    public void UseInteractionType(){
-        if (potentialInteractions.Count != 0){
-            if (potentialInteractions.First.Value.tag != defaultTag && potentialInteractions.First.Value.layer == UseLayer){
-                if (equipItem != null && FloorVerification()){
+    public void UseInteractionType()
+    {
+        if (potentialInteractions.Count != 0)
+        {
+            if (potentialInteractions.First.Value.tag != defaultTag && potentialInteractions.First.Value.layer == UseLayer)
+            {
+                if (equipItem != null && FloorVerification())
+                {
                     equipItem.DropItem(hitFloor.point);
-                    equipItem = null;
-                    foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>()){
-                        interactable.BaseAction();
+                    foreach (IUseEquip interactable in potentialInteractions.First.Value.GetComponents<IUseEquip>())
+                    {
+                        interactable.BaseAction(equipItem.gameObject);
                     }
+                    equipItem = null;
                 }
                 return;
             }
         }
-        else{
+        else
+        {
             return;
         }
         iController.canvasCloseSprite();
-        switch (potentialInteractions.First.Value.layer){
+        switch (potentialInteractions.First.Value.layer)
+        {
             case EquipLayer:
-                if (equipItem == null){
+                if (equipItem == null)
+                {
                     potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
                     equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
                     equipItem.DefineLayer(default);
                     RemovePotentialInteraction(potentialInteractions.First.Value);
+                    potentialInteractions.First?.Value.GetComponents<IUseEquip>().ToList().ForEach(interactable => interactable.BaseAction(equipItem.gameObject));
                 }
                 break;
             case UseLayer:
                 InteractableInfos infos = potentialInteractions.First.Value.GetComponent<InteractableInfos>();
-                if (infos != null){
+                if (infos != null)
+                {
                     _inputReader.DisablePlayerInputMove(1);
                     int i = infos.text.textString.Length;
-                    if (indexText < i){
+                    if (indexText < i)
+                    {
                         iController.UpdateIteractableText(infos, indexText);
                         indexText += 1;
                     }
-                    else{
+                    else
+                    {
                         iController.canvasCloseText();
                         iController.canvasCloseSprite();
                         _inputReader.EnablePlayerInput(1);
                         indexText = 1;
-                        foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>()){
+                        foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
+                        {
                             interactable.BaseAction();
                         }
                     }
                 }
-                else{
-                    foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>()){
+                else
+                {
+                    foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
+                    {
                         interactable.BaseAction();
                     }
                 }
                 break;
         }
+
     }
     /*------------------------------------------------------------------------------
     Função:     FloorVerification
@@ -209,6 +246,7 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    -
     Saída:      bool - Confirma se há ou não chão.
     ------------------------------------------------------------------------------*/
+
     private bool FloorVerification()
     {
         if (Physics.Raycast(rayFloor.position, Vector3.down, out hitFloor, deploymentHeight))

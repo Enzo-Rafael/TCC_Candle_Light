@@ -117,7 +117,6 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
 
     public void EnablePlayerInput(int index)
     {
-        Debug.Log("enabled input p"+index);
         switch (index)
         {
             case 1:
@@ -131,7 +130,6 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer2MoveActions
     }
     public void DisablePlayerInput(int index)
     {
-        Debug.Log("disabled input p"+index);
         switch (index)
         {
             case 1:

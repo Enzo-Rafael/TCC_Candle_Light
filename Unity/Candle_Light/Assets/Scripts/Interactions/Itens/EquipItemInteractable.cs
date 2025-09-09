@@ -25,13 +25,15 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     [SerializeField]
     private Vector3 pickUpRotation = Vector3.zero;
 
+    [Tooltip("ID Item")]
+    public int ItemID;
     //------------------------- Variaveis Globais privadas -------------------------------
 
     private BoxCollider boxcolider;
     private const int EquipLayer = 12;
 
     /*------------------------------------------------------------------------------
-    Função:     Start
+    Função:     Start 
     Descrição:  Pega as referências necessarias para o script funcionar
     Entrada:    -
     Saída:      -
@@ -62,13 +64,11 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     public void DropItem(Vector3 position)
     {
         boxcolider.enabled = false;
-        Debug.Log(position);
         transform.SetParent(null);
         transform.position = position + new Vector3(0, 0, 0);
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         boxcolider.enabled = true;
         DefineLayer();
-
         PlayerOneScript.Instance.Drop(this);
     }
     /*------------------------------------------------------------------------------
@@ -101,5 +101,4 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     {
         PickUpItem();
     }
-
 }

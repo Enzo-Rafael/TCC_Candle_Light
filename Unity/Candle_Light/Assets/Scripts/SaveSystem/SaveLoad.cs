@@ -235,8 +235,7 @@ public class SaveLoad : MonoBehaviour
             else
             {
                 GameObject c = GameObject.Find(data.castesalData[obj].name);
-                c.GetComponent<EquipItemInteractable>().LoadAction();
-                
+                c.GetComponent<EquipItemInteractable>().LoadAction();    
             }
         }
 

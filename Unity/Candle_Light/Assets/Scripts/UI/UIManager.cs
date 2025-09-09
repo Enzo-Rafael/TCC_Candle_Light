@@ -8,11 +8,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private InputReader _inputReader = default;
 
     [SerializeField] private Camera _playerOneCamera;
-    [SerializeField] private GameObject _playerOneUI;
+    [SerializeField] private RectTransform _playerOneUI;
 
     [SerializeField] private Camera _playerTwoCamera;
 
-    [SerializeField] private GameObject _playerTwoUI;
+    [SerializeField] private RectTransform _playerTwoUI;
 
     private void OnEnable()
     {
@@ -58,14 +58,14 @@ public class UIManager : MonoBehaviour
         if (rightActive){
             _playerOneCamera.rect = new Rect(0, 0, 0.5f, 1);
             _playerTwoCamera.rect = new Rect(0.5f, 0, 0.5f, 1);
-           // _playerOneUI.transform.position = new Vector3(0, 0, 0);
-           // _playerTwoUI.transform.position = new Vector3(0, 0, 0);
+            _playerOneUI.anchoredPosition3D = new Vector3(-960, 0, 0);
+            _playerTwoUI.anchoredPosition3D = new Vector3(960, 0, 0);
         }
         else{
             _playerOneCamera.rect = new Rect(0.5f, 0, 0.5f, 1);
             _playerTwoCamera.rect = new Rect(0, 0, 0.5f, 1);
-           // _playerOneUI.transform.position = new Vector3(960, 0, 0);
-           // _playerTwoUI.transform.position = new Vector3(-960, 0, 0);
+            _playerOneUI.anchoredPosition3D = new Vector3(960, 0, 0);
+            _playerTwoUI.anchoredPosition3D = new Vector3(-960, 0, 0);
         }
     }
 }

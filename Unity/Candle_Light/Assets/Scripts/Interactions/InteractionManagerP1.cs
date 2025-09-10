@@ -29,10 +29,13 @@ public class InteractionManagerP1 : MonoBehaviour
     [SerializeField]
     private float deploymentHeight;
 
-    [Tooltip("Referência para o Transform de Origem do RayCast para verificar se há chão")]
+    [Tooltip("Referência para o Transform de Origem do RayCast para verificar se há um local dropavel")]
     [SerializeField]
-    private Transform rayFloor = null;
+    private Transform rayLeft = null;
 
+    [Tooltip("Referência para o Transform de Origem do RayCast para verificar se há um local dropavel")]
+    [SerializeField]
+    private Transform rayRight = null;
     //null quando não há item equipado
     [SerializeField]
     public EquipItemInteractable equipItem = null;
@@ -74,13 +77,6 @@ public class InteractionManagerP1 : MonoBehaviour
     {
         _inputReader.ActionEventOne -= UseInteractionType;
     }
-    private void FixedUpdate()
-    {
-    if (rayFloor != null)
-    {
-        Debug.DrawRay(rayFloor.position, Vector3.down * deploymentHeight);
-    }
-    }
     /*------------------------------------------------------------------------------
     Função:     OnTriggerDetected
     Descrição:  Designa se o item dentro do range deve ser removido ou adicionado a lista de possiveis interações.
@@ -98,6 +94,14 @@ public class InteractionManagerP1 : MonoBehaviour
         {
             RemovePotentialInteraction(itemInteractable);
         }
+    }
+    private void FixedUpdate()
+    {
+        if (rayLeft != null)
+        {
+            Debug.DrawRay(rayLeft.position, Vector3.down * deploymentHeight);
+            Debug.DrawRay(rayRight.position, Vector3.down * deploymentHeight);
+    }
     }
     /*------------------------------------------------------------------------------
     Função:     AddPotentialInteraction
@@ -177,14 +181,16 @@ public class InteractionManagerP1 : MonoBehaviour
         {
             if (potentialInteractions.First.Value.tag != defaultTag && potentialInteractions.First.Value.layer == UseLayer)
             {
-                if (equipItem != null && FloorVerification())
+                if (equipItem != null && FloorVerification() && potentialInteractions.First.Value.GetComponent<IUseEquip>()?.GetAction() == false)
                 {
-                    equipItem.DropItem(hitFloor.point);
+                    equipItem.DropItem(hitFloor.collider.bounds.center + new Vector3(0, hitFloor.collider.bounds.extents.y, 0));
                     foreach (IUseEquip interactable in potentialInteractions.First.Value.GetComponents<IUseEquip>())
                     {
                         interactable.BaseAction(equipItem.gameObject);
                     }
                     equipItem = null;
+                    iController.canvasCloseSprite();
+                    iController.canvasCloseText();
                 }
                 return;
             }
@@ -203,7 +209,8 @@ public class InteractionManagerP1 : MonoBehaviour
                     equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
                     equipItem.DefineLayer(default);
                     RemovePotentialInteraction(potentialInteractions.First.Value);
-                    potentialInteractions.First?.Value.GetComponents<IUseEquip>().ToList().ForEach(interactable => interactable.BaseAction(equipItem.gameObject));
+                    potentialInteractions.First?.Value.GetComponents<IUseEquip>().ToList().ForEach(interactable => interactable.BaseAction(equipItem.gameObject)); 
+                                       
                 }
                 break;
             case UseLayer:
@@ -247,12 +254,16 @@ public class InteractionManagerP1 : MonoBehaviour
     Saída:      bool - Confirma se há ou não chão.
     ------------------------------------------------------------------------------*/
 
-    private bool FloorVerification()
+    private bool FloorVerification(){
+    if (Physics.Raycast(rayLeft.position, Vector3.down, out hitFloor, deploymentHeight)){
+        if (hitFloor.collider.gameObject.tag == equipItem.gameObject.tag && hitFloor.collider.gameObject.tag != defaultTag) return true;
+        
+    }
+    if (Physics.Raycast(rayRight.position, Vector3.down, out hitFloor, deploymentHeight))
     {
-        if (Physics.Raycast(rayFloor.position, Vector3.down, out hitFloor, deploymentHeight))
-        {
-            return hitFloor.collider.gameObject.tag == equipItem.gameObject.tag && hitFloor.collider.gameObject.tag != defaultTag;
-        }
-        return false;
+        if (hitFloor.collider.gameObject.tag == equipItem.gameObject.tag && hitFloor.collider.gameObject.tag != defaultTag) return true;
+            
+    }
+    return false;
     }
 }

@@ -65,8 +65,8 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     {
         boxcolider.enabled = false;
         transform.SetParent(null);
-        transform.position = position + new Vector3(0, 0, 0);
-        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        transform.position = position;
+        transform.rotation = Quaternion.Euler(0, 0, 0);
         boxcolider.enabled = true;
         DefineLayer();
         PlayerOneScript.Instance.Drop(this);

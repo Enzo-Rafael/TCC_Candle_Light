@@ -4,7 +4,7 @@
 
     Descrição: Dita quais ações serão tomadas ao interagir com o item.
 
-    Candle Light - Jogos Digitais LURDES –  01/05/2024
+    Candle Light - Jogos Digitais LURDES –  10/09/2025
     Modificado por: Italo
     Referencias: Unity Chop Chop
 ***************************************************************/
@@ -126,7 +126,7 @@ public class InteractionManagerP1 : MonoBehaviour
                 }
                 break;
             case UseLayer:
-                if (equipItem != null && potentialInteractions.First.Value.tag == equipItem.tag)
+                if (equipItem != null && potentialInteractions.First.Value.tag == equipItem.tag && (potentialInteractions.First.Value.GetComponent<IUseEquip>()?.GetAction() == false))
                 {
                     iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                 }
@@ -181,7 +181,7 @@ public class InteractionManagerP1 : MonoBehaviour
         {
             if (potentialInteractions.First.Value.tag != defaultTag && potentialInteractions.First.Value.layer == UseLayer)
             {
-                if (equipItem != null && FloorVerification() && potentialInteractions.First.Value.GetComponent<IUseEquip>()?.GetAction() == false)
+                if (equipItem != null && FloorVerification() && (potentialInteractions.First.Value.GetComponent<IUseEquip>()?.GetAction() == false))
                 {
                     equipItem.DropItem(hitFloor.collider.bounds.center + new Vector3(0, hitFloor.collider.bounds.extents.y, 0));
                     foreach (IUseEquip interactable in potentialInteractions.First.Value.GetComponents<IUseEquip>())

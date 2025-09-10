@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class UseEquipPuzzleTP : Interactable, IUseEquip
 {
-    public  bool action = false;
+    private  bool action = false;
     private int message = 0;
 
     [Tooltip("ID que corresponde ao item aceitavel por esse local de DROP")]
     [SerializeField]
     private int correspondingID;
 
-    public void BaseAction(GameObject ItemUse)
+    public void BaseAction(GameObject itemUse)
     {
         action = !action;
         message = action ? 1 : 0;
@@ -20,7 +20,7 @@ public class UseEquipPuzzleTP : Interactable, IUseEquip
             {
                 if (channel != null)
                 {
-                    channel.NotifyObservers(message, action == (ItemUse.GetComponent<EquipItemInteractable>().ItemID == correspondingID));
+                    channel.NotifyObservers(message, action == (itemUse.GetComponent<EquipItemInteractable>().ItemID == correspondingID));
                 }
             }
         }

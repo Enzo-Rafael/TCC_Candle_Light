@@ -19,11 +19,12 @@ public class UseEquipDropGeneric : Interactable, IUseEquip
     public void BaseAction(GameObject itemUse)
     {
         itemOnTop = !itemOnTop;
+        Debug.Log("Base Action " + itemOnTop);
         message = itemOnTop ? 1 : 0;
         ExecuteOrder(message);
     }
     public bool GetAction(){
-        Debug.Log(itemOnTop);
+        Debug.Log("Get Action " + itemOnTop);
         return itemOnTop;
     }
 }

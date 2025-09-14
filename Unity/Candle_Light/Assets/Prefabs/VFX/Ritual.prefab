@@ -33,6 +33,7 @@ Transform:
   - {fileID: 7581768691017053366}
   - {fileID: 4171862601633811712}
   - {fileID: 1041106033329969911}
+  - {fileID: 4229724583673321075}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1328387512517749386
@@ -44,17 +45,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 584854186165828232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d671813a16f4a614f90241c56f3f85f0, type: 3}
+  m_Script: {fileID: 11500000, guid: db080dcbcad38334081841b518c96383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ritualVFX: {fileID: 385981871108148487}
   teleVFX: {fileID: 9012389858710946833}
-  range: 1
+  range: 0.5
+  targetPos: {fileID: 4229724583673321075}
   spinnySprite: {fileID: 8888559884797086192}
-  rotSpeed: 200
-  wobble: 0.1
-  maxSize: 1.2
+  rotSpeed: 300
+  wobble: 0.15
+  maxSize: 1
   maxHeight: 0.3
+--- !u!1 &2785107872884459413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4229724583673321075}
+  m_Layer: 0
+  m_Name: TargetPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4229724583673321075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2785107872884459413}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.41, y: 0, z: 6.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5717014198381592885}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8888559884797086192
 GameObject:
   m_ObjectHideFlags: 0

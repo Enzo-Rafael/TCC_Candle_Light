@@ -3,6 +3,7 @@ using Unity.Cinemachine;
 using System;
 using System.Linq;
 using UnityEditor;
+using UnityEngine.Rendering;
 
 public class ChangeCam : MonoBehaviour
 {
@@ -11,8 +12,12 @@ public class ChangeCam : MonoBehaviour
     public int currentCamIndex = 0;
     private CinemachineCamera currentCam;
 
+    [SerializeField] private Volume postProcessingVolume;
+    private CameraSwapEffectVolumeComponent camVolumeComponent;
+
     void Start()
     {
+        postProcessingVolume.profile.TryGet(out camVolumeComponent);
         currentCam = camRef[0];
         foreach (CinemachineCamera cam in camRef)
         {
@@ -46,6 +51,10 @@ public class ChangeCam : MonoBehaviour
         }
         currentCam = camRef[currentCamIndex];
         currentCam.Priority = 1;
+        LeanTween.value(gameObject, 0, 1, 0.1f)
+                .setLoopPingPong()
+                .setRepeat(2)
+                .setOnUpdate((float val) => { camVolumeComponent.intensity.value = val; Debug.Log(val); });
     }
     public void OnChangeCamRight()
     {
@@ -53,6 +62,10 @@ public class ChangeCam : MonoBehaviour
         currentCamIndex = (currentCamIndex + 1) % camRef.Length;
         currentCam = camRef[currentCamIndex];
         currentCam.Priority = 1;
+        LeanTween.value(gameObject, 0, 1, 0.1f)
+                .setLoopPingPong()
+                .setRepeat(2)
+                .setOnUpdate((float val) => { camVolumeComponent.intensity.value = val; });
     }
     public CinemachineCamera GetCam()
     {

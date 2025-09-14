@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2174604980758729828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3427306a2fedc4da955ed2d4b7d1d2, type: 3}
+  m_Name: CameraSwapEffectRendererFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  injectionPoint: 550
+  material: {fileID: -876546973899608171, guid: 4df69f58b8df34b4aa91221ee04b4148, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,8 +42,9 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: 7833122117494664109}
   - {fileID: 4926405860361910284}
+  - {fileID: -2174604980758729828}
   - {fileID: 4055060848086942558}
-  m_RendererFeatureMap: ad6b866f10d7b46c0c38465e071c5e445e03d1505b784638
+  m_RendererFeatureMap: ad6b866f10d7b46c0c38465e071c5e449cab14a34a40d2e15e03d1505b784638
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}

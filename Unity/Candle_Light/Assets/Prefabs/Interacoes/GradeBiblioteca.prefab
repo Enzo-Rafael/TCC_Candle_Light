@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617295305786158969}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -136,7 +136,7 @@ Transform:
   m_GameObject: {fileID: 4046727683521648948}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.8, y: 0, z: -6.354}
+  m_LocalPosition: {x: 8.89, y: 0, z: -5.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -191,13 +191,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent: {fileID: 4845732395570583483}
+  _observerEvent:
+  - {fileID: 0}
+  _useAnimation: 0
   animator: {fileID: 7868734213617958200}
   parameterName: On
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
-  _itemType: 0
+  _customScripts: []
   _multipleCode: {fileID: 0}
   indexPuzzle: 0
   spawnProx: 0
@@ -222,7 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6475358358416882288, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.295
+      value: -2.394
       objectReference: {fileID: 0}
     - target: {fileID: 6475358358416882288, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6475358358416882288, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.259
+      value: -4.344
       objectReference: {fileID: 0}
     - target: {fileID: 6475358358416882288, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6475358358416882288, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 6475358358416882288, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
       propertyPath: m_LocalRotation.z

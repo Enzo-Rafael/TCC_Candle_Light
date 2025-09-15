@@ -5,7 +5,7 @@ Shader "Custom/Custom_Default"
         _MainTex ("Texture", 2D) = "white" {}
         _MainTint ("Main Tint", Color) = (1,1,1)
         _ShadowTint ("Shadow Tint", Color) = (0.5,0.5,0.5)
-        _LightTint ("Light Tint", Color) = (1, 1, 1)
+        [HDR]_LightTint ("Light Tint", Color) = (1, 1, 1)
         [Enum(UnityEngine.Rendering.CullMode)] _Cull ("Cull", Float) = 0
         [MaterialToggle] _Highlight ("Highlight", Float) = 0
     }

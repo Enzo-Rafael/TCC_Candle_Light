@@ -81,10 +81,8 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer1MoveActions
             _playersInput.Player1Move.MoveInputOne.ApplyBindingOverride(3, "<Keyboard>/a");  // Left
             _playersInput.Player1Move.MoveInputOne.ApplyBindingOverride(4, "<Keyboard>/d"); // Right
 
-            _playersInput.Player1Move.ChangeCamLeft.ApplyBindingOverride(0, "<Keyboard>/k");
-            _playersInput.Player1Move.ChangeCamLeft.ApplyBindingOverride(1, "<Keyboard>/q");
-            _playersInput.Player1Move.ChangeCamRight.ApplyBindingOverride(0, "<Keyboard>/l");
-            _playersInput.Player1Move.ChangeCamRight.ApplyBindingOverride(1, "<Keyboard>/e");
+            _playersInput.Player1Move.ChangeCamLeft.ApplyBindingOverride(0, "<Keyboard>/q");
+            _playersInput.Player1Move.ChangeCamRight.ApplyBindingOverride(0, "<Keyboard>/e");
 
             //player 2
             _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(1, "<Keyboard>/upArrow");
@@ -92,8 +90,6 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer1MoveActions
             _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(3, "<Keyboard>/leftArrow");
             _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(4, "<Keyboard>/rightArrow");
 
-            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(5, "<Keyboard>/rightShift"); // Foward (Positive)
-            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(6, "<Keyboard>/rightCtrl");  // Backward (Negative)
         }
         else{
             // Player 1
@@ -103,9 +99,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer1MoveActions
             _playersInput.Player1Move.MoveInputOne.ApplyBindingOverride(4, "<Keyboard>/rightArrow"); // Right
 
             _playersInput.Player1Move.ChangeCamLeft.ApplyBindingOverride(0, "<Keyboard>/comma");
-            _playersInput.Player1Move.ChangeCamLeft.ApplyBindingOverride(1, "<Keyboard>/k");
             _playersInput.Player1Move.ChangeCamRight.ApplyBindingOverride(0, "<Keyboard>/period");
-            _playersInput.Player1Move.ChangeCamRight.ApplyBindingOverride(1, "<Keyboard>/l");
 
             // Player 2
             _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(1, "<Keyboard>/w");       // Up
@@ -113,8 +107,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer1MoveActions
             _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(3, "<Keyboard>/a");       // Left
             _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(4, "<Keyboard>/d");       // Right
         
-            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(5, "<Keyboard>/leftShift"); // Foward (Positive)
-            _playersInput.Player2Move.MoveInputTwo.ApplyBindingOverride(6, "<Keyboard>/leftCtrl");  // Backward (Negative)
+
         }
     }
     /*------------------------------------------------------------------------------

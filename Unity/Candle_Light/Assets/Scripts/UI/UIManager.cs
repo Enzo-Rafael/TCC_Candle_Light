@@ -7,10 +7,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UIControls _controlsPainel;
     [SerializeField] private InputReader _inputReader = default;
 
-    void Start()
-    {
-        //_inputReader.EnableGameplayInput();
-    }
+    [SerializeField] private Camera _playerOneCamera;
+    [SerializeField] private RectTransform _playerOneUI;
+
+    [SerializeField] private Camera _playerTwoCamera;
+
+    [SerializeField] private RectTransform _playerTwoUI;
 
     private void OnEnable()
     {
@@ -47,7 +49,23 @@ public class UIManager : MonoBehaviour
     private void CloseControls(bool rightActive)
     {
         _inputReader.InputSelect(rightActive);
+        InvertUI(rightActive);
         _controlsPainel.Closed -= CloseControls;
         _controlsPainel.gameObject.SetActive(false);
+    }
+
+    private void InvertUI(bool rightActive){
+        if (rightActive){
+            _playerOneCamera.rect = new Rect(0, 0, 0.5f, 1);
+            _playerTwoCamera.rect = new Rect(0.5f, 0, 0.5f, 1);
+            _playerOneUI.anchoredPosition3D = new Vector3(-960, 0, 0);
+            _playerTwoUI.anchoredPosition3D = new Vector3(960, 0, 0);
+        }
+        else{
+            _playerOneCamera.rect = new Rect(0.5f, 0, 0.5f, 1);
+            _playerTwoCamera.rect = new Rect(0, 0, 0.5f, 1);
+            _playerOneUI.anchoredPosition3D = new Vector3(960, 0, 0);
+            _playerTwoUI.anchoredPosition3D = new Vector3(-960, 0, 0);
+        }
     }
 }

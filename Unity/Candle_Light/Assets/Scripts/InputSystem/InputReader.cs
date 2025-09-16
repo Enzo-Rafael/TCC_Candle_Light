@@ -148,8 +148,11 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer1MoveActions
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-    public void EnablePlayerInput(int index){
-        switch (index){
+
+    public void EnablePlayerInput(int index)
+    {
+        switch (index)
+        {
             case 1:
                 _playersInput.Player1Move.Enable();
                 break;
@@ -159,8 +162,10 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer1MoveActions
                 break;
         }
     }
-    public void DisablePlayerInput(int index){
-        switch (index){
+    public void DisablePlayerInput(int index)
+    {
+        switch (index)
+        {
             case 1:
                 _playersInput.Player1Move.Disable();
                 break;

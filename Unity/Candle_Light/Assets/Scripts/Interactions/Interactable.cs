@@ -66,10 +66,8 @@ public class Interactable : MonoBehaviour
 
     private void CustomScript(object additionalInformation = null){
         if (_customScripts != null){
-            Debug.Log("Custom Script Check");
             foreach (var scriptComponent in _customScripts){
                 if (scriptComponent is ICodeCustom script){
-                    Debug.Log("Custom Script Activated");
                     script.CustomBaseAction(additionalInformation);
                 }
             }

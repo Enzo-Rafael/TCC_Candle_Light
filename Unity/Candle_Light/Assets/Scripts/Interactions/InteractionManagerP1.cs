@@ -210,6 +210,7 @@ public class InteractionManagerP1 : MonoBehaviour
             case EquipLayer:
                 if (equipItem == null)
                 {
+                    Debug.Log("Entrei aqui também");
                     potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
                     equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
                     equipItem.DefineLayer(default);

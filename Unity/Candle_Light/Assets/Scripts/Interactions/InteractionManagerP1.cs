@@ -91,8 +91,6 @@ public class InteractionManagerP1 : MonoBehaviour
         if (entered)
         {
             AddPotentialInteraction(itemInteractable);
-            string nomesdoosItens = string.Join(", ", potentialInteractions.Select(item => item.name));
-            Debug.Log("Itens na lista 'potentialInteractions adicionou na lista pelo trigger': [ " + nomesdoosItens + " ]");
         }
         else
         {
@@ -173,9 +171,6 @@ public class InteractionManagerP1 : MonoBehaviour
     ------------------------------------------------------------------------------*/
     public void UseInteractionType()
     {
-    string nomesDosItens = string.Join(", ", potentialInteractions.Select(item => item.name));
-    Debug.Log("Itens na lista 'potentialInteractions no inicio da interação': [ " + nomesDosItens + " ]");
-
         if (potentialInteractions.Count != 0)
         {
             if (potentialInteractions.First.Value.tag != defaultTag && potentialInteractions.First.Value.layer == UseLayer)
@@ -202,15 +197,11 @@ public class InteractionManagerP1 : MonoBehaviour
             case EquipLayer:
                 if (equipItem == null)
                 {
-                    Debug.Log("Entrei aqui também");
                     potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
                     equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
                     equipItem.DefineLayer(default);
                     RemovePotentialInteraction(potentialInteractions.First.Value);
-                    potentialInteractions.First?.Value.GetComponent<IUseEquip>()?.BaseAction(equipItem.gameObject); 
-                    string nomesdosItens = string.Join(", ", potentialInteractions.Select(item => item.name));
-                    Debug.Log("Itens na lista 'potentialInteractions depois de pegar o item': [ " + nomesdosItens + " ]");
-                                       
+                    potentialInteractions.First?.Value.GetComponent<IUseEquip>()?.BaseAction(equipItem.gameObject);                            
                 }
                 break;
             case UseLayer:

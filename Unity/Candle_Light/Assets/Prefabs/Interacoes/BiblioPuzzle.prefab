@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2988320867099705341}
-  - component: {fileID: 4715440369108756772}
   - component: {fileID: 3204490935792538466}
   - component: {fileID: 7785275205816767649}
   - component: {fileID: 6399805930472567149}
@@ -41,28 +40,6 @@ Transform:
   - {fileID: 6189720342016061666}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &4715440369108756772
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 604868572003334045}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 83a3342cee570dd4697dc1eda454f701, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3204490935792538466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,23 +79,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionType: 2
   _observerEvent:
-  - {fileID: 0}
-  _useAnimation: 0
-  animator: {fileID: 4715440369108756772}
-  parameterName: Completed
+  - {fileID: 3204490935792538466}
+  _useAnimation: 1
+  animator: {fileID: 3531210248858720317}
+  parameterName: On
   _invertParameter: 0
-  _customScripts: []
+  _customScripts:
+  - {fileID: 8022981591341507381}
   _multipleCode: {fileID: 7785275205816767649}
   indexPuzzle: 0
   spawnProx: 0
   completed: 0
   canSave: 1
   interactions:
-  - {fileID: 0}
-  - {fileID: 2951651555215809976}
-  - {fileID: 8027076136678344082}
   - {fileID: 2070609338371291426}
+  - {fileID: 8027076136678344082}
   - {fileID: 3489398684036774991}
+  - {fileID: 2951651555215809976}
 --- !u!114 &9005605665689269426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +173,6 @@ GameObject:
   - component: {fileID: 5445448737845579345}
   - component: {fileID: 8027076136678344082}
   - component: {fileID: 6054278868718355034}
-  - component: {fileID: 9002368703932681251}
   - component: {fileID: 6265268680006673785}
   m_Layer: 6
   m_Name: Estante (1)
@@ -236,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionType: 2
   _observerEvent:
-  - {fileID: 0}
+  - {fileID: 3204490935792538466}
   _useAnimation: 0
   animator: {fileID: 0}
   parameterName: Click
@@ -264,28 +240,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.625021, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &9002368703932681251
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850942102953871433}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0bd08590dbf5b8046be1aed234d781b5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &6265268680006673785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textScriptable: {fileID: 11400000, guid: 60ac803b522f07141baa8f8dd89ed99f, type: 2}
+  textScriptable: {fileID: 11400000, guid: 4a66ece24c90ff34e941b39a6330503d, type: 2}
 --- !u!1 &1106813436264814456
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +436,6 @@ GameObject:
   - component: {fileID: 4379281781907590660}
   - component: {fileID: 2070609338371291426}
   - component: {fileID: 891332314545653925}
-  - component: {fileID: 5368806270582371954}
   - component: {fileID: 5802804503190090163}
   m_Layer: 6
   m_Name: Estante (2)
@@ -522,13 +475,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionType: 2
   _observerEvent:
-  - {fileID: 0}
+  - {fileID: 3204490935792538466}
   _useAnimation: 0
   animator: {fileID: 0}
   parameterName: Click
   _invertParameter: 0
   _customScripts: []
-  orderID: 2
+  orderID: 0
 --- !u!65 &891332314545653925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -550,28 +503,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &5368806270582371954
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2125868972758522470}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0bd08590dbf5b8046be1aed234d781b5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5802804503190090163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,7 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textScriptable: {fileID: 11400000, guid: 60ac803b522f07141baa8f8dd89ed99f, type: 2}
+  textScriptable: {fileID: 11400000, guid: 4a66ece24c90ff34e941b39a6330503d, type: 2}
 --- !u!1 &2757439213195751163
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +699,6 @@ GameObject:
   - component: {fileID: 3559817228996822960}
   - component: {fileID: 2951651555215809976}
   - component: {fileID: 8693954134658314202}
-  - component: {fileID: 1076188112931895963}
   - component: {fileID: 5651471352621095112}
   m_Layer: 6
   m_Name: Estante (0)
@@ -808,13 +738,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionType: 2
   _observerEvent:
-  - {fileID: 0}
+  - {fileID: 3204490935792538466}
   _useAnimation: 0
   animator: {fileID: 0}
   parameterName: Click
   _invertParameter: 0
   _customScripts: []
-  orderID: 0
+  orderID: 3
 --- !u!65 &8693954134658314202
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -836,28 +766,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.65304947, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &1076188112931895963
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4009642907278950131}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0bd08590dbf5b8046be1aed234d781b5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5651471352621095112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,7 +778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textScriptable: {fileID: 11400000, guid: 60ac803b522f07141baa8f8dd89ed99f, type: 2}
+  textScriptable: {fileID: 11400000, guid: 4a66ece24c90ff34e941b39a6330503d, type: 2}
 --- !u!1 &5683447601264635274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,7 +1134,6 @@ GameObject:
   - component: {fileID: 6189720342016061666}
   - component: {fileID: 3489398684036774991}
   - component: {fileID: 8526777779494398590}
-  - component: {fileID: 3144136105108838178}
   - component: {fileID: 4231701127323675010}
   m_Layer: 6
   m_Name: Estante (3)
@@ -1266,13 +1173,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionType: 2
   _observerEvent:
-  - {fileID: 0}
+  - {fileID: 3204490935792538466}
   _useAnimation: 0
   animator: {fileID: 0}
   parameterName: Click
   _invertParameter: 0
   _customScripts: []
-  orderID: 3
+  orderID: 2
 --- !u!65 &8526777779494398590
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1294,28 +1201,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &3144136105108838178
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9174225201426182359}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0bd08590dbf5b8046be1aed234d781b5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &4231701127323675010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1328,7 +1213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textScriptable: {fileID: 11400000, guid: 60ac803b522f07141baa8f8dd89ed99f, type: 2}
+  textScriptable: {fileID: 11400000, guid: 4a66ece24c90ff34e941b39a6330503d, type: 2}
 --- !u!1001 &869386309363634431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1776,14 +1661,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effects:
-  - {fileID: 0}
   - {fileID: 3674004538828859371}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   timePropertyName: StopTime
   stopEffect: 1
   stopBoolName: Dissipating
+--- !u!95 &3531210248858720317 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4400526179875178690, guid: 45a5f5b222f222644847f5a1a5869447, type: 3}
+  m_PrefabInstance: {fileID: 869386309363634431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6044706314335814585 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6914065978929779526, guid: 45a5f5b222f222644847f5a1a5869447, type: 3}

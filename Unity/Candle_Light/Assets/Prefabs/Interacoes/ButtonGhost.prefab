@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1451603957547267268}
   - component: {fileID: 7029456247271059009}
   - component: {fileID: 7567329157971448046}
+  - component: {fileID: 7003759058151102523}
   m_Layer: 0
   m_Name: ButtonGhost
   m_TagString: Untagged
@@ -60,19 +61,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent: {fileID: 7029456247271059009}
+  _observerEvent:
+  - {fileID: 7029456247271059009}
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
-  _itemType: 0
+  _customScripts:
+  - {fileID: 7003759058151102523}
   _multipleCode: {fileID: 0}
   indexPuzzle: 0
   spawnProx: 0
   completed: 0
   canSave: 0
   interactions: []
+--- !u!114 &7003759058151102523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525614819112410982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc8ad1b32cc34b409014047fdd89d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tint: {r: 0.45188984, g: 1, b: 0.43867922, a: 1}
 --- !u!1 &5386341063980849058
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,7 +99,7 @@ GameObject:
   - component: {fileID: 7351345664304228726}
   - component: {fileID: 8313943319983968024}
   - component: {fileID: 7684192093529760009}
-  - component: {fileID: 7218533791306947359}
+  - component: {fileID: 4266752781118966763}
   m_Layer: 14
   m_Name: ButtonCollider
   m_TagString: Untagged
@@ -142,13 +157,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 1
-  _observerEvent: {fileID: 7029456247271059009}
+  _observerEvent:
+  - {fileID: 7029456247271059009}
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
---- !u!114 &7218533791306947359
+  _customScripts:
+  - {fileID: 4266752781118966763}
+--- !u!114 &4266752781118966763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,7 +177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cc7e0df4cdeda47952443f3e714f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects: []
+  effects:
+  - {fileID: 416695865741681115}
   timePropertyName: StopTime
   stopEffect: 1
   stopBoolName: Dissipating
@@ -414,5 +432,10 @@ PrefabInstance:
 --- !u!4 &185919874421501453 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3346087547921955317, guid: f9b86bed6e2621748acfac557190fc25, type: 3}
+  m_PrefabInstance: {fileID: 3241243462127507448}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &416695865741681115 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 2968808316215686691, guid: f9b86bed6e2621748acfac557190fc25, type: 3}
   m_PrefabInstance: {fileID: 3241243462127507448}
   m_PrefabAsset: {fileID: 0}

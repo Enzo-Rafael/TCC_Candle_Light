@@ -13,7 +13,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InteractionManagerP1 : MonoBehaviour
@@ -55,7 +55,6 @@ public class InteractionManagerP1 : MonoBehaviour
 
     private const string defaultTag = "Untagged";
 
-    RaycastHit hitFloor;
 
     private LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
 
@@ -98,14 +97,6 @@ public class InteractionManagerP1 : MonoBehaviour
         else
         {
             RemovePotentialInteraction(itemInteractable);
-        }
-    }
-    private void FixedUpdate()
-    {
-        if (rayLeft != null)
-        {
-            Debug.DrawRay(rayLeft.position, Vector3.down * deploymentHeight);
-            Debug.DrawRay(rayRight.position, Vector3.down * deploymentHeight);
         }
     }
     /*------------------------------------------------------------------------------
@@ -189,9 +180,10 @@ public class InteractionManagerP1 : MonoBehaviour
         {
             if (potentialInteractions.First.Value.tag != defaultTag && potentialInteractions.First.Value.layer == UseLayer)
             {
-                if (equipItem != null && FloorVerification() && (potentialInteractions.First.Value.GetComponent<IUseEquip>()?.GetAction() == false))
+                if (equipItem != null  && (potentialInteractions.First.Value.GetComponent<IUseEquip>()?.GetAction() == false))
                 {
-                    equipItem.DropItem(hitFloor.collider.bounds.center + new Vector3(0, hitFloor.collider.bounds.extents.y, 0));
+                    BoxCollider collider = potentialInteractions.First.Value.GetComponent<BoxCollider>();
+                    equipItem.DropItem(collider.bounds.center + new Vector3(0, collider.bounds.extents.y, 0));
                     potentialInteractions.First.Value.GetComponent<IUseEquip>()?.BaseAction(equipItem.gameObject);
                     iController.canvasCloseSprite();
                     iController.canvasCloseText();
@@ -254,30 +246,5 @@ public class InteractionManagerP1 : MonoBehaviour
                 break;
         }
 
-    }
-    /*------------------------------------------------------------------------------
-    Função:     FloorVerification
-    Descrição:  Raycast que verifica se tem chão para dropar o equipavel.
-    Entrada:    -
-    Saída:      bool - Confirma se há ou não chão.
-    ------------------------------------------------------------------------------*/
-
-    private bool FloorVerification(){
-    if (Physics.Raycast(rayLeft.position, Vector3.down, out hitFloor, deploymentHeight)){
-            if (hitFloor.collider.gameObject.tag == equipItem.gameObject.tag && hitFloor.collider.gameObject.tag != defaultTag){
-                Debug.Log("CARALHO");
-                return true;
-            }   
-    }
-    if (Physics.Raycast(rayRight.position, Vector3.down, out hitFloor, deploymentHeight))
-        {
-            if (hitFloor.collider.gameObject.tag == equipItem.gameObject.tag && hitFloor.collider.gameObject.tag != defaultTag){
-            Debug.Log("PORRA");
-            return true;
-            } 
-                
-
-        }
-    return false;
     }
 }

@@ -20,7 +20,6 @@ public class MultipleCandleValidator : MonoBehaviour, IMultiple
             Mathf.Abs(light.GetCordMap().y - activeLight.y);
             if (distance == 1)
             {
-                Debug.Log("Vela acessa com cordenada " + activeLight);
                 light.ActiveSelf();
             }
         }

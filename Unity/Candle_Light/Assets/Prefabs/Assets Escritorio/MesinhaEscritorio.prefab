@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 7687911998304836584}
   - component: {fileID: 8991927114358783980}
   - component: {fileID: 4718871610979679552}
+  - component: {fileID: 4774882195059149450}
   - component: {fileID: 1124563211285841913}
   m_Layer: 6
   m_Name: ColliderMesinha
@@ -291,6 +292,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6828547, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4774882195059149450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493638373408118908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7c66ef40fdd714aaa19c51d4a05841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionType: 0
+  _observerEvent: []
+  _useAnimation: 0
+  animator: {fileID: 0}
+  parameterName: 
+  _invertParameter: 0
+  _customScripts: []
+  itemOnTop: 0
 --- !u!114 &1124563211285841913
 MonoBehaviour:
   m_ObjectHideFlags: 0

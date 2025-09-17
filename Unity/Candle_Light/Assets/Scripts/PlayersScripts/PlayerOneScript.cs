@@ -23,7 +23,8 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
     private Vector2 _inputVector;
 
     private Vector3 playerMove;
-
+    private Vector3 camForwardOnInput;
+    private Vector3 camStrafeOnInput;
     private float gravityValue = -500f;
 
     private CinemachineCamera mainCam;// referencia para a o andar do player a partir da camera
@@ -43,19 +44,19 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
 
     private void OnMove(Vector3 movement){
         _inputVector = movement;
+        if (_inputVector != Vector2.zero) {
+            CinemachineCamera mainCam = GetComponent<ChangeCam>().GetCam();
+            camForwardOnInput = Vector3.Scale(mainCam.transform.forward, new Vector3(1, 0, 1)).normalized;
+            camStrafeOnInput = Vector3.Scale(mainCam.transform.right, new Vector3(1, 0, 1)).normalized;
+        }
     }
-
     void Update()
     {
-        mainCam = GetComponent<ChangeCam>().GetCam();
-
         if (controller.isGrounded && playerMove.y < 0){
             playerMove.y = 0f;
         }
-        Vector3 camForward = Vector3.Scale(mainCam.transform.forward, new Vector3(1, 0, 1)).normalized;
-        Vector3 camStrafe = Vector3.Scale(mainCam.transform.right, new Vector3(1, 0, 1)).normalized;
-        forward = Vector3.Lerp(forward, _inputVector.y * camForward, Time.deltaTime*5);
-        strafe = Vector3.Lerp(strafe, _inputVector.x * camStrafe, Time.deltaTime*5);
+        forward = Vector3.Lerp(forward, _inputVector.y * camForwardOnInput, Time.deltaTime*5);
+        strafe = Vector3.Lerp(strafe, _inputVector.x * camStrafeOnInput, Time.deltaTime*5);
         playerMove = forward + strafe;
 
 
@@ -87,5 +88,3 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
         }
     }
 }
-/*      forward = _inputVector.y * velocity * new Vector3(0, 0,-mainCam.transform.position.z);
-        strafe = _inputVector.x * velocity * new Vector3(-mainCam.transform.position.z,0,0);*/

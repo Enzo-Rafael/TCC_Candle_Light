@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.IO;
 using UnityEngine.SceneManagement;
 
 public class BtnSave : MonoBehaviour
@@ -16,11 +15,15 @@ public class BtnSave : MonoBehaviour
     //UI do menu inicial do jogo
     public void BtnContinue()
     {
-        SaveLoad.Instance.StartLoad();
+        FadeTrigger.instance.FadeIn(1);
+        
     }
     public void BtnNewSave()
     {
-        SaveLoad.Instance.NewSave();
-        SceneManager.LoadScene("Mansion");
+        FadeTrigger.instance.FadeIn(0);   
     }
+
 }
+/* SaveLoad.Instance.NewSave();
+   SceneManager.LoadScene("Mansion");
+   SaveLoad.Instance.StartLoad();*/

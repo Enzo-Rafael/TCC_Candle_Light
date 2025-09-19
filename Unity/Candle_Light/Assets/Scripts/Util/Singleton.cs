@@ -31,10 +31,9 @@ public class Singleton<T> : MonoBehaviour where T: MonoBehaviour
     }
     private static T instance;
 
-    void Reset()
+    void Start()
     {
-        Debug.LogError("=== Componente singleton nao deve ser adicionado pelo inspetor ===");
-        //gostaria de destruir automaticamente aqui mas a unity nao deixa
-        //DestroyImmediate(this);
+        if (instance != null) DestroyImmediate(this);
+        else instance = this;
     }
 }

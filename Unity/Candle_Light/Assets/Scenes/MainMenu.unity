@@ -4522,12 +4522,24 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1292686965}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1712878240}
+        m_TargetAssemblyTypeName: UISettingsController, Assembly-CSharp
+        m_MethodName: SetMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &921536946
 GameObject:
   m_ObjectHideFlags: 0
@@ -6577,12 +6589,24 @@ MonoBehaviour:
   m_HandleRect: {fileID: 245997375}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1712878240}
+        m_TargetAssemblyTypeName: UISettingsController, Assembly-CSharp
+        m_MethodName: SetMasterVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1292686964
 GameObject:
   m_ObjectHideFlags: 0
@@ -8060,6 +8084,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
+  masterSlider: {fileID: 1255667309}
+  musicSlider: {fileID: 906153894}
+  sfxSlider: {fileID: 1721741454}
 --- !u!1 &1718425691
 GameObject:
   m_ObjectHideFlags: 0
@@ -8276,12 +8303,24 @@ MonoBehaviour:
   m_HandleRect: {fileID: 623032384}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1712878240}
+        m_TargetAssemblyTypeName: UISettingsController, Assembly-CSharp
+        m_MethodName: SetSfxVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1733092611
 GameObject:
   m_ObjectHideFlags: 0
@@ -9956,6 +9995,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144694633}
   m_CullTransparentMesh: 1
+--- !u!1001 &4844739517548305078
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 353182619713203640, guid: 500a87d83ae755342a00aac8b9c90871, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 353182619713203640, guid: 500a87d83ae755342a00aac8b9c90871, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 353182619713203640, guid: 500a87d83ae755342a00aac8b9c90871, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 353182619713203640, guid: 500a87d83ae755342a00aac8b9c90871, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 353182619713203640, guid: 500a87d83ae755342a00aac8b9c90871, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 353182619713203640, guid: 500a87d83ae755342a00aac8b9c90871, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 353182619713203640, guid: 500a87d83ae755342a00aac8b9c90871, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 353182619713203640, guid: 500a87d83ae755342a00aac8b9c90871, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 353182619713203640, guid: 500a87d83ae755342a00aac8b9c90871, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 353182619713203640, guid: 500a87d83ae755342a00aac8b9c90871, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879218533283313356, guid: 500a87d83ae755342a00aac8b9c90871, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 500a87d83ae755342a00aac8b9c90871, type: 3}
 --- !u!1001 &8950077007506371367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10011,8 +10107,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9086224461210788482, guid: 4a6da0c5339eed241afb2e6607cbdd2f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8950077007506371369}
   m_SourcePrefab: {fileID: 100100000, guid: 4a6da0c5339eed241afb2e6607cbdd2f, type: 3}
+--- !u!1 &8950077007506371368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9086224461210788482, guid: 4a6da0c5339eed241afb2e6607cbdd2f, type: 3}
+  m_PrefabInstance: {fileID: 8950077007506371367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8950077007506371369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8950077007506371368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c160096071a964d8fee76fce450e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEnabled: 1
+  audioName: Music_MainMenuMusic
+  volumeMultiplyer: 1
+  channel: 1
+  isHeardByGhost: 1
+  isHeardByGirl: 1
+  isAudioLocal: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -10023,3 +10146,4 @@ SceneRoots:
   - {fileID: 1831343104}
   - {fileID: 795605535}
   - {fileID: 8950077007506371367}
+  - {fileID: 4844739517548305078}

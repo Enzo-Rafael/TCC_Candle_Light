@@ -34,7 +34,8 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
     private Vector3 strafe;
 
     [SerializeField]
-    private AudioSource stepsSound;
+    //private AudioSource stepsSound;
+    public AudioPlayer stepsSoundPlayer;
 
 
     //Metodos
@@ -82,7 +83,17 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
         playerMove.y += gravityValue * Time.deltaTime;//Gravidade do player 1
         controller.Move(playerMove * velocity * Time.deltaTime);
         float move_distance = new Vector3(playerMove.x, 0, playerMove.z).magnitude;
-        stepsSound.volume = move_distance * Time.timeScale * 0.2f;
+        //stepsSound.volume = move_distance * Time.timeScale * 0.2f;
+        if(move_distance > 0.1f)
+        {
+
+            stepsSoundPlayer.ScaleVolume(move_distance * Time.timeScale);
+        }
+        else
+        {
+            stepsSoundPlayer.ScaleVolume(0);
+        }
+
     }
 
     public void Pickup(EquipItemInteractable item)

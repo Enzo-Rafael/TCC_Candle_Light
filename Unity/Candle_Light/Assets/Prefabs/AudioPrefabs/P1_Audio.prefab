@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7422656046701601514}
   - component: {fileID: 5404502326523681815}
+  - component: {fileID: 8729082724787674017}
   m_Layer: 10
   m_Name: Steps
   m_TagString: Untagged
@@ -129,6 +130,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8729082724787674017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429274263649440973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c160096071a964d8fee76fce450e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEnabled: 1
+  audioName: SFX_PlayerSteps
+  volumeMultiplyer: 0.5
+  channel: 0
+  isHeardByGhost: 0
+  isHeardByGirl: 1
+  isAudioLocal: 0
 --- !u!1 &4302010839633118021
 GameObject:
   m_ObjectHideFlags: 0

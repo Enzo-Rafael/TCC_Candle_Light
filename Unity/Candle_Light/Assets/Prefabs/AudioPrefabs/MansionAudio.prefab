@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7977509049581835443}
   - component: {fileID: 5384828526269669952}
+  - component: {fileID: 4984894663674476074}
   m_Layer: 0
   m_Name: Ambient
   m_TagString: Untagged
@@ -161,3 +162,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4984894663674476074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117364289412374291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c160096071a964d8fee76fce450e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEnabled: 1
+  audioName: Music_MansionMusic
+  volumeMultiplyer: 1
+  channel: 1
+  isHeardByGhost: 1
+  isHeardByGirl: 1
+  isAudioLocal: 0

@@ -74,9 +74,11 @@ public class UIMenuManager : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void CloseSettings(){
+    private void CloseSettings()
+    {
         _settingPanel.Closed -= CloseSettings;
         _settingPanel.gameObject.SetActive(false);
+        AudioManager.Instance.PlaySound("UI_Cancel");
     }
     /*------------------------------------------------------------------------------
     Função:     OpenCredits
@@ -94,9 +96,11 @@ public class UIMenuManager : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void CloseCredits(){
+    private void CloseCredits()
+    {
         _creditsPanel.Closed -= CloseCredits;
         _creditsPanel.gameObject.SetActive(false);
+        AudioManager.Instance.PlaySound("UI_Cancel");
     }
     /*------------------------------------------------------------------------------
     Função:     OpenFeatures
@@ -114,9 +118,11 @@ public class UIMenuManager : MonoBehaviour
     Entrada:    -
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void ClosedFeatures(){
+    private void ClosedFeatures()
+    {
         _featuresPanel.Closed -= ClosedFeatures;
         _featuresPanel.gameObject.SetActive(false);
+        AudioManager.Instance.PlaySound("UI_Cancel");
     }
     /*------------------------------------------------------------------------------
     Função:     ShowExitConfirmationPopup
@@ -135,9 +141,18 @@ public class UIMenuManager : MonoBehaviour
     Entrada:    bool - Identifica se o jogador clicou em sim ou não.
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void HideExitConfirmationPopup(bool quitConfirmed){
-		_popupPanel.ConfirmationResponseAction -= HideExitConfirmationPopup;
-		_popupPanel.gameObject.SetActive(false);
-		if (quitConfirmed)Application.Quit();
+    private void HideExitConfirmationPopup(bool quitConfirmed)
+    {
+        _popupPanel.ConfirmationResponseAction -= HideExitConfirmationPopup;
+        _popupPanel.gameObject.SetActive(false);
+        if (quitConfirmed)
+        {
+            Application.Quit();
+            AudioManager.Instance.PlaySound("UI_Cancel");
+        }
+        else
+        {
+            AudioManager.Instance.PlaySound("UI_Confirm");
+        }
 	}
 }

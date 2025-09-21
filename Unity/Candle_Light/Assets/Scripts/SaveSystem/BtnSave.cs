@@ -15,12 +15,12 @@ public class BtnSave : MonoBehaviour
     //UI do menu inicial do jogo
     public void BtnContinue()
     {
-        FadeTrigger.instance.FadeIn(1);
+        //FadeTrigger.instance.FadeIn(1);
         
     }
     public void BtnNewSave()
     {
-        FadeTrigger.instance.FadeIn(0);   
+        //FadeTrigger.instance.FadeIn(0);   
     }
 
 }

@@ -152,7 +152,7 @@ public class UIMenuManager : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.PlaySound("UI_Confirm");
+            AudioManager.Instance.PlaySound("UI_Cancel");
         }
 	}
 }

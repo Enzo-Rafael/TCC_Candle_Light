@@ -175,7 +175,7 @@ public class InteractionManagerP1 : MonoBehaviour
         {
             if (potentialInteractions.First.Value.tag != defaultTag && potentialInteractions.First.Value.layer == UseLayer)
             {
-                if (equipItem != null  && (potentialInteractions.First.Value.GetComponent<IUseEquip>()?.GetAction() == false))
+                if (equipItem != null  /*&& (potentialInteractions.First.Value.GetComponent<IUseEquip>()?.GetAction() == false)*/)
                 {
                     BoxCollider collider = potentialInteractions.First.Value.GetComponent<BoxCollider>();
                     equipItem.DropItem(collider.bounds.center + new Vector3(0, collider.bounds.extents.y, 0));

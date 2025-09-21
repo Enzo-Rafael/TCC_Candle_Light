@@ -33,7 +33,11 @@ public class Singleton<T> : MonoBehaviour where T: MonoBehaviour
 
     void Start()
     {
-        if (instance == null || instance == this) instance = this as T;
+        if (instance == null || instance == this)
+        {
+            instance = this as T;
+            DontDestroyOnLoad(instance);
+        }
         else DestroyImmediate(this);
     }
 }

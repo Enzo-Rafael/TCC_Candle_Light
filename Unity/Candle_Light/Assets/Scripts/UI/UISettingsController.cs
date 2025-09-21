@@ -12,15 +12,15 @@ public class UISettingsController : MonoBehaviour
     public UnityAction Closed;
     void Start()
     {
-        masterSlider.value = AudioManager.Instance.masterVolume * 100;
-        sfxSlider.value = AudioManager.Instance.sfxVolume * 100;
-        musicSlider.value = AudioManager.Instance.musicVolume * 100;
+        //masterSlider.value = AudioManager.Instance.masterVolume * 5;
+        //sfxSlider.value = AudioManager.Instance.sfxVolume * 5;
+        //musicSlider.value = AudioManager.Instance.musicVolume * 5;
     }
     void OnEnable(){
         _inputReader.MenuCloseEvent += ClosePanel;
-        masterSlider.value = AudioManager.Instance.masterVolume * 100;
-        sfxSlider.value = AudioManager.Instance.sfxVolume * 100;
-        musicSlider.value = AudioManager.Instance.musicVolume * 100;
+        //masterSlider.value = AudioManager.Instance.masterVolume * 5;
+        //sfxSlider.value = AudioManager.Instance.sfxVolume * 5;
+        //musicSlider.value = AudioManager.Instance.musicVolume * 5;
     }
 	private void OnDisable(){
         _inputReader.MenuCloseEvent -= ClosePanel;

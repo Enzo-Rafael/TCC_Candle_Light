@@ -58,8 +58,8 @@ public class UIManager : MonoBehaviour
         if (rightActive){
             _playerOneCamera.rect = new Rect(0, 0, 0.5f, 1);
             _playerTwoCamera.rect = new Rect(0.5f, 0, 0.5f, 1);
-            _playerOneUI.anchoredPosition3D = new Vector3(-960, 0, 0);
-            _playerTwoUI.anchoredPosition3D = new Vector3(960, 0, 0);
+            _playerOneUI.anchoredPosition3D = new Vector3(0, 0, 0);
+            _playerTwoUI.anchoredPosition3D = new Vector3(0, 0, 0);
         }
         else{
             _playerOneCamera.rect = new Rect(0.5f, 0, 0.5f, 1);

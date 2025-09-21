@@ -13,17 +13,17 @@ public class AudioManager : Singleton<AudioManager>
 
     public void SetMaster(float value)
     {
-        masterVolume = value / 100;
+        masterVolume = value / 5;
         UpdateAudioListVolume();
     }
     public void SetSfx(float value) 
     { 
-        sfxVolume = value / 100; 
+        sfxVolume = value / 5; 
         UpdateAudioListVolume();
     }
     public void SetMusic(float value) 
     { 
-        musicVolume = value / 100; 
+        musicVolume = value / 5; 
         UpdateAudioListVolume();
     }
 

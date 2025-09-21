@@ -10,7 +10,6 @@
 
 //----------------------------- Bibliotecas Usadas -------------------------------------
 
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class UseItemInteractable : Interactable, IInteractable

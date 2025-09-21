@@ -51,10 +51,7 @@ public class ChangeCam : MonoBehaviour
         }
         currentCam = camRef[currentCamIndex];
         currentCam.Priority = 1;
-        LeanTween.value(gameObject, 0, 1, 0.1f)
-                .setLoopPingPong()
-                .setRepeat(2)
-                .setOnUpdate((float val) => { camVolumeComponent.intensity.value = val; Debug.Log(val); });
+        CamEffects();
     }
     public void OnChangeCamRight()
     {
@@ -62,10 +59,7 @@ public class ChangeCam : MonoBehaviour
         currentCamIndex = (currentCamIndex + 1) % camRef.Length;
         currentCam = camRef[currentCamIndex];
         currentCam.Priority = 1;
-        LeanTween.value(gameObject, 0, 1, 0.1f)
-                .setLoopPingPong()
-                .setRepeat(2)
-                .setOnUpdate((float val) => { camVolumeComponent.intensity.value = val; });
+        CamEffects();
     }
     public CinemachineCamera GetCam()
     {
@@ -75,7 +69,7 @@ public class ChangeCam : MonoBehaviour
     public void ClearCams()
     {
         //ArrayUtility.Clear(ref camRef);
-        Array.Clear(camRef,0, camRef.Length);
+        Array.Clear(camRef, 0, camRef.Length);
     }
 
     /// <summary>
@@ -84,7 +78,7 @@ public class ChangeCam : MonoBehaviour
     /// <param name="nextRoomsCams"> Conjunto de cameras a ser ativado. </param>
     internal void SetCams(CinemachineCamera[] nextRoomsCams)
     {
-        Debug.Log("nextRoomsCams: "+nextRoomsCams.Length + "camRef: " + camRef.Length);
+        Debug.Log("nextRoomsCams: " + nextRoomsCams.Length + "camRef: " + camRef.Length);
         if (!nextRoomsCams.Except(camRef).Any()) return;
 
         currentCam.Priority = 0;
@@ -104,9 +98,11 @@ public class ChangeCam : MonoBehaviour
         currentCamIndex = 0;
         currentCam = camRef[0];
         currentCam.Priority = 1;
+        CamEffects();
     }
-    public void LoadCurrentCam(int index) {
-          currentCam = camRef[index];
+    public void LoadCurrentCam(int index)
+    {
+        currentCam = camRef[index];
         foreach (CinemachineCamera cam in camRef)
         {
             if (cam == currentCam)
@@ -120,5 +116,14 @@ public class ChangeCam : MonoBehaviour
             OnChangeCamLeft();
             OnChangeCamRight();
         }
+    }
+
+    public void CamEffects()
+    {
+        LeanTween.value(gameObject, 0, 1, 0.1f)
+                .setLoopPingPong()
+                .setRepeat(2)
+                .setOnUpdate((float val) => { camVolumeComponent.intensity.value = val; });
+        AudioManager.Instance.PlaySound("UI_CameraChange");
     }
 }

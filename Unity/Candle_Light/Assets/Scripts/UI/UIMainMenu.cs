@@ -72,7 +72,7 @@ public class UIMainMenu : MonoBehaviour
     }
     public void ExitButton()
     {
-        AudioManager.Instance.PlaySound("UI_Cancel");
+        AudioManager.Instance.PlaySound("UI_ChangeScreen");
         ExitButtonAction.Invoke();
     }
 }

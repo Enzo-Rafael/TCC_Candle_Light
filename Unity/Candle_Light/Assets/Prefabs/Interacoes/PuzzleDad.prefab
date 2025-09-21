@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 243995815538553030}
   - component: {fileID: 1440399177381621380}
   - component: {fileID: 227697148411116730}
-  - component: {fileID: 8294787822184850004}
   - component: {fileID: 3361725880207761808}
   m_Layer: 0
   m_Name: PuzzleDad
@@ -87,13 +86,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 1
-  _observerEvent: {fileID: 227697148411116730}
+  _observerEvent:
+  - {fileID: 0}
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 8294787822184850004}
-  _itemType: 1
+  _customScripts: []
   _multipleCode: {fileID: 1440399177381621380}
   indexPuzzle: 2
   spawnProx: 1
@@ -130,26 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd577c8535fba714a9e70b500afb7e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8294787822184850004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584826774354992537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33cc7e0df4cdeda47952443f3e714f05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  timePropertyName: StopTime
-  stopEffect: 1
-  stopBoolName: Dissipating
 --- !u!114 &3361725880207761808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,12 +319,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent: {fileID: 227697148411116730}
+  _observerEvent:
+  - {fileID: 0}
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  _customScripts: []
   cordMap: {x: 1, y: 0}
 --- !u!1 &1117662899230218438
 GameObject:
@@ -592,12 +572,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent: {fileID: 227697148411116730}
+  _observerEvent:
+  - {fileID: 0}
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  _customScripts: []
   cordMap: {x: 0, y: 1}
 --- !u!1 &2895437666710409038
 GameObject:
@@ -1966,12 +1947,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent: {fileID: 227697148411116730}
+  _observerEvent:
+  - {fileID: 0}
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  _customScripts: []
   cordMap: {x: 1, y: 1}
 --- !u!1 &7612494648246656332
 GameObject:
@@ -2160,12 +2142,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent: {fileID: 227697148411116730}
+  _observerEvent:
+  - {fileID: 0}
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  _customScripts: []
   cordMap: {x: 0, y: 0}
 --- !u!1 &7832949163378374087
 GameObject:

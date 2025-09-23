@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class BtnSave : MonoBehaviour
 {
+    public FadeTrigger fade;
     //dentro da cena de jogo
     public void OnBtnSave()
     {
@@ -15,12 +16,12 @@ public class BtnSave : MonoBehaviour
     //UI do menu inicial do jogo
     public void BtnContinue()
     {
-        //FadeTrigger.instance.FadeIn(1);
+        fade.FadeIn(1);
         
     }
     public void BtnNewSave()
     {
-        //FadeTrigger.instance.FadeIn(0);   
+        fade.FadeIn(0);   
     }
 
 }

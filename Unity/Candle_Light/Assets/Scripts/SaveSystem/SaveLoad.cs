@@ -5,12 +5,6 @@ using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
 using Unity.Cinemachine;
-using System.Collections.Generic;
-//using UnityEngine.Rendering;
-//using UnityEngine.UIElements;
-using Unity.VisualScripting;
-using UnityEditor;
-using System.Collections;
 
 class SceneData
 {
@@ -19,7 +13,6 @@ class SceneData
     public GhostData ghostData;
     public CastesalData[] castesalData;
     public PuzzleData[] puzzleData;
-    //public GameObject casticalExpecifico;
 }
 public class SaveLoad : MonoBehaviour
 {
@@ -31,11 +24,10 @@ public class SaveLoad : MonoBehaviour
     public GameObject[] puzzles;//GameObjects de Puzzle
     public CinemachineCamera[] p1Cams;//Cameras da Medium
     public GameObject[] objHolds; //Objetos que podem ser segurados 
-    public GameObject btnLoad;
     [SerializeField] private GameObject btnContinue;//Btn para liberar a tela de load
-    [SerializeField] private GameObject[] objStopped;//Objetos a serem travados durante o load
     [SerializeField] private AudioListener aListener; //audilistener
-    [SerializeField] Animator notification;
+    [SerializeField] private Animator notification;
+    [SerializeField] private InputReader inputReader = default;
     //Variaveis
     [Header("Variaveis")]
     public string sceneName = "Mansion";// public Scene scene;
@@ -43,8 +35,8 @@ public class SaveLoad : MonoBehaviour
     //private bool isLoaded = false;
     [NonSerialized] public int priVez = 0;
     [NonSerialized] public int spawnIndex = 0;
-    string path;
-    //Variabeis de apoio
+    private string path;
+    //Variaveis de apoio
     private CinemachineCamera[] p1CamsSet;
 
     //Metodos
@@ -60,18 +52,20 @@ public class SaveLoad : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        btnLoad = GameObject.Find("ButtonContinue");
+        
     }
+    
 
     void Update()
     {
+        if (btnContinue == null) btnContinue = GameObject.Find("ButtonContinue");//Encontra o botão de continuar
         if (File.Exists(path))
         {
-            if (btnLoad != null) btnLoad.SetActive(true);
+            if (btnContinue != null) btnContinue.SetActive(true);
         }
         else
         {
-            if (btnLoad != null) btnLoad.SetActive(false);
+            if (btnContinue != null) btnContinue.SetActive(false);
         }
         /*if (Input.GetKeyDown(KeyCode.CapsLock))
         {
@@ -311,6 +305,11 @@ public class SaveLoad : MonoBehaviour
     public void NewSave()
     {
         File.Delete(path);
+        SceneData data = new SceneData();
+        string s = JsonUtility.ToJson(data, true);
+        onLoad = true;
+        Debug.Log("NewSave");
+        File.WriteAllText(path, s);
     }
     //Identificar qual spawn point esta sendo chamado
     public void CallSave(int index)
@@ -369,26 +368,21 @@ public class SaveLoad : MonoBehaviour
 
     private void LocateGO()//Serve para localizar alguns GameObjects em cena
     {
-        objStopped = new GameObject[2];
-        objStopped[0] = GameObject.Find("Player1");
-        objStopped[1] = GameObject.Find("Player2");
         btnContinue = GameObject.Find("ButtonContinue");
         aListener = GameObject.Find("P1 Cam").GetComponent<AudioListener>();//Colocar o GameObject onde fica o Audio listener
     }
 
     private void TurnOff()
     {
-        objStopped[0].GetComponent<PlayerOneScript>().enabled = false;
-        objStopped[1].GetComponent<PlayerTwoScript>().enabled = false;
-        btnContinue.SetActive(false);
-        aListener.gameObject.SetActive(false);
+        inputReader.DisableAllInput();
+        //btnContinue?.SetActive(false);
+        aListener?.gameObject.SetActive(false);
     }
 
     private void TurnOn()
     {
-        objStopped[0].GetComponent<PlayerOneScript>().enabled = true;
-        objStopped[1].GetComponent<PlayerTwoScript>().enabled = true;
-        btnContinue.SetActive(true);
-        aListener.gameObject.SetActive(true);
+        inputReader.EnableAllInput();
+        //btnContinue?.SetActive(true);
+        aListener?.gameObject.SetActive(true);
     }
 }

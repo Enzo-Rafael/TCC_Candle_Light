@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -10,22 +11,30 @@ public class UISettingsController : MonoBehaviour
     public Slider musicSlider;
     public Slider sfxSlider;
     public UnityAction Closed;
+    public Slider brightSlider;
+    //---------BackGroundVariables------
+    [NonSerialized] public float brightnessValue = 1.0f;
+
     void Start()
     {
         //masterSlider.value = AudioManager.Instance.masterVolume * 5;
         //sfxSlider.value = AudioManager.Instance.sfxVolume * 5;
         //musicSlider.value = AudioManager.Instance.musicVolume * 5;
+        brightSlider.value = 1;
     }
-    void OnEnable(){
+    void OnEnable()
+    {
         _inputReader.MenuCloseEvent += ClosePanel;
         //masterSlider.value = AudioManager.Instance.masterVolume * 5;
         //sfxSlider.value = AudioManager.Instance.sfxVolume * 5;
         //musicSlider.value = AudioManager.Instance.musicVolume * 5;
     }
-	private void OnDisable(){
+    private void OnDisable()
+    {
         _inputReader.MenuCloseEvent -= ClosePanel;
     }
-    public void ClosePanel(){
+    public void ClosePanel()
+    {
         Closed.Invoke();
     }
     public void SetMusicVolume()
@@ -43,5 +52,12 @@ public class UISettingsController : MonoBehaviour
     {
         float value = masterSlider.value;
         AudioManager.Instance.SetMaster(value);
+    }
+    //
+    public void SetBrightness()
+    {
+        brightnessValue = brightSlider.value;
+        RenderSettings.ambientLight = new Color(brightnessValue, brightnessValue, brightnessValue, 1);
+        Debug.Log(brightnessValue);
     }
 }

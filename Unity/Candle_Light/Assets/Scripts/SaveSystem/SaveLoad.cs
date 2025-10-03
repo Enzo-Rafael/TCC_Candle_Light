@@ -305,11 +305,11 @@ public class SaveLoad : MonoBehaviour
     public void NewSave()
     {
         File.Delete(path);
-        SceneData data = new SceneData();
+        /*SceneData data = new SceneData();
         string s = JsonUtility.ToJson(data, true);
         onLoad = true;
         Debug.Log("NewSave");
-        File.WriteAllText(path, s);
+        File.WriteAllText(path, s);*/
     }
     //Identificar qual spawn point esta sendo chamado
     public void CallSave(int index)

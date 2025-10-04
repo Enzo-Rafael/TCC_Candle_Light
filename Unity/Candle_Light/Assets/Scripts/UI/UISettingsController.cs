@@ -25,7 +25,7 @@ public class UISettingsController : MonoBehaviour
         //sfxSlider.value = AudioManager.Instance.sfxVolume * 5;
         //musicSlider.value = AudioManager.Instance.musicVolume * 5;
         brightSlider.value = 0.5f;
-        senceSlider.value = SaveLoad.Instance.sence;
+        senceSlider.value = SaveLoad.Instance.senceRef;
     }
     void OnEnable()
     {
@@ -62,13 +62,15 @@ public class UISettingsController : MonoBehaviour
     public void SetBrightness()
     {
         brightnessValue = brightSlider.value;
+        SaveLoad.Instance.brightRef = brightnessValue;
         RenderSettings.ambientLight = new Color(brightnessValue, brightnessValue, brightnessValue, 1);
+        
         Debug.Log(brightnessValue);
     }
     public void SetSence()
     {
         senceValue = (int)senceSlider.value;
-        SaveLoad.Instance.sence = senceValue;
+        SaveLoad.Instance.senceRef = senceValue;
         _inputReader.ChangeScale(senceValue);
     }
 }

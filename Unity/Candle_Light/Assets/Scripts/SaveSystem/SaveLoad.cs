@@ -8,6 +8,7 @@ using Unity.Cinemachine;
 
 class SceneData
 {
+    public ConfigData configData;
     public MediumData mediumData;
     public MediumCamData[] mediumCamData;
     public GhostData ghostData;
@@ -25,20 +26,24 @@ public class SaveLoad : MonoBehaviour
     public CinemachineCamera[] p1Cams;//Cameras da Medium
     public GameObject[] objHolds; //Objetos que podem ser segurados 
     [SerializeField] private GameObject btnContinue;//Btn para liberar a tela de load
-    [SerializeField] private AudioListener aListener; //audilistener
+    [SerializeField] private AudioManager audioManager; //audilistener
     [SerializeField] private Animator notification;
     [SerializeField] private InputReader inputReader = default;
     //Variaveis
     [Header("Variaveis")]
     public string sceneName = "Mansion";// public Scene scene;
     public bool onLoad = false;
-    public int sence;
+    public int senceRef;
+    public float brightRef;
     //private bool isLoaded = false;
     [NonSerialized] public int priVez = 0;
     [NonSerialized] public int spawnIndex = 0;
     private string path;
     //Variaveis de apoio
     private CinemachineCamera[] p1CamsSet;
+    private int audioMas;
+    private int audioSfx;
+    private int audioMus;
 
     //Metodos
     void Awake()
@@ -370,20 +375,19 @@ public class SaveLoad : MonoBehaviour
     private void LocateGO()//Serve para localizar alguns GameObjects em cena
     {
         btnContinue = GameObject.Find("ButtonContinue");
-        aListener = GameObject.Find("P1 Cam").GetComponent<AudioListener>();//Colocar o GameObject onde fica o Audio listener
     }
 
     private void TurnOff()
     {
         inputReader.DisableAllInput();
         //btnContinue?.SetActive(false);
-        aListener?.gameObject.SetActive(false);
+        audioManager.masterVolume = 0;
     }
 
     private void TurnOn()
     {
         inputReader.EnableAllInput();
         //btnContinue?.SetActive(true);
-        aListener?.gameObject.SetActive(true);
+        audioManager.masterVolume = audioMas;
     }
 }

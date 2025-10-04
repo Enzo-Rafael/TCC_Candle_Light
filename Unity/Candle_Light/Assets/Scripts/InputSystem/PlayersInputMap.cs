@@ -352,7 +352,7 @@ public partial class @PlayersInputMap: IInputActionCollection2, IDisposable
                     ""id"": ""2d750bc5-d125-4d04-b5ae-79525352ea1b"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2"",
                     ""groups"": """",
                     ""action"": ""Mouse"",
                     ""isComposite"": false,

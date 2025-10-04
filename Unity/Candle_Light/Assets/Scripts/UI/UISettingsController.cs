@@ -3,8 +3,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+
 public class UISettingsController : MonoBehaviour
 {
+    
 
     [SerializeField] InputReader _inputReader;
     public Slider masterSlider;
@@ -12,15 +14,18 @@ public class UISettingsController : MonoBehaviour
     public Slider sfxSlider;
     public UnityAction Closed;
     public Slider brightSlider;
+    public Slider senceSlider;
     //---------BackGroundVariables------
-    [NonSerialized] public float brightnessValue = 1.0f;
+    [NonSerialized] public float brightnessValue;
+    [NonSerialized] public int senceValue;
 
     void Start()
     {
         //masterSlider.value = AudioManager.Instance.masterVolume * 5;
         //sfxSlider.value = AudioManager.Instance.sfxVolume * 5;
         //musicSlider.value = AudioManager.Instance.musicVolume * 5;
-        brightSlider.value = 1;
+        brightSlider.value = 0.5f;
+        senceSlider.value = SaveLoad.Instance.sence;
     }
     void OnEnable()
     {
@@ -59,5 +64,11 @@ public class UISettingsController : MonoBehaviour
         brightnessValue = brightSlider.value;
         RenderSettings.ambientLight = new Color(brightnessValue, brightnessValue, brightnessValue, 1);
         Debug.Log(brightnessValue);
+    }
+    public void SetSence()
+    {
+        senceValue = (int)senceSlider.value;
+        SaveLoad.Instance.sence = senceValue;
+        _inputReader.ChangeScale(senceValue);
     }
 }

@@ -34,16 +34,16 @@ public class SaveLoad : MonoBehaviour
     public string sceneName = "Mansion";// public Scene scene;
     public bool onLoad = false;
     public int senceRef;
-    public float brightRef;
+    public int brightRef;
     //private bool isLoaded = false;
     [NonSerialized] public int priVez = 0;
     [NonSerialized] public int spawnIndex = 0;
     private string path;
     //Variaveis de apoio
     private CinemachineCamera[] p1CamsSet;
-    private int audioMas;
+    private int audioMaster;
     private int audioSfx;
-    private int audioMus;
+    private int audioMusic;
 
     //Metodos
     void Awake()
@@ -58,9 +58,9 @@ public class SaveLoad : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
     }
-    
+
 
     void Update()
     {
@@ -101,6 +101,12 @@ public class SaveLoad : MonoBehaviour
         GameObject p1 = GameObject.FindWithTag("Player1");
         int p1camIndex = p1.GetComponent<ChangeCam>().currentCamIndex;
         int p1camLast = p1.GetComponent<ChangeCam>().camRef.Length;
+        //---------------------Config------------------------------------------------
+        data.configData.audioMaster = audioMaster;
+        data.configData.audioSfx = audioSfx;
+        data.configData.audioMusic = audioMusic;
+        data.configData.senceRef = senceRef;
+        data.configData.brightRef = brightRef;
         //Medium (Obs: "spawnIndex" vai definir qual spawn esta chamand, tomar cuidado)
         data.mediumData = new MediumAdapter(p1, p1camIndex, p1camLast);
         if (objHolds != null)
@@ -371,23 +377,36 @@ public class SaveLoad : MonoBehaviour
         }
         objHolds.OrderBy(go => go.name).ToArray();
     }
-
     private void LocateGO()//Serve para localizar alguns GameObjects em cena
     {
         btnContinue = GameObject.Find("ButtonContinue");
     }
-
     private void TurnOff()
     {
         inputReader.DisableAllInput();
         //btnContinue?.SetActive(false);
         audioManager.masterVolume = 0;
     }
-
     private void TurnOn()
     {
         inputReader.EnableAllInput();
         //btnContinue?.SetActive(true);
-        audioManager.masterVolume = audioMas;
+        audioManager.masterVolume = audioMaster;
+    }
+    public void SetAudioMaster(int volume)
+    {
+        audioMaster = volume;
+    }
+    public void SetAudioSfx(int volume)
+    {
+        audioSfx = volume;
+    }
+    public void SetAudioMusic(int volume)
+    {
+        audioMusic = volume;
+    }
+    public void LoadConfig()
+    {
+        
     }
 }

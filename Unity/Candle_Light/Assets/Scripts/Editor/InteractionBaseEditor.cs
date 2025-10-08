@@ -11,7 +11,8 @@ using System;
 [CanEditMultipleObjects]
 public class InteractableEditor : Editor {
     
-    private SerializedProperty _observerEventProp;
+    private SerializedProperty _observerEventListenProp;
+        private SerializedProperty _observerEventSpeakProp;     
     private SerializedProperty _actionTypeProp;
     private SerializedProperty _animatorProp;
     private SerializedProperty _parameterNameProp;
@@ -22,8 +23,8 @@ public class InteractableEditor : Editor {
         var ux = new VisualElement();
         
         FindAllProperties();
-
-        ux.Add(new PropertyField(_observerEventProp));
+        ObserverSpeakList(ux);
+        ux.Add(new PropertyField(_observerEventSpeakProp));
         BuildAnimationSettings(ux);
         AddInspectorProperties(ux);
         BaseActionExecute(ux);
@@ -33,7 +34,8 @@ public class InteractableEditor : Editor {
     }
 
     private void FindAllProperties() {
-        _observerEventProp = serializedObject.FindProperty("_observerEvent");
+        _observerEventListenProp = serializedObject.FindProperty("_observerEventListening");
+        _observerEventSpeakProp = serializedObject.FindProperty("_observerEventSpeak");
         _actionTypeProp = serializedObject.FindProperty("_actionType");
         _animatorProp = serializedObject.FindProperty("animator");
         _parameterNameProp = serializedObject.FindProperty("parameterName");
@@ -86,15 +88,23 @@ public class InteractableEditor : Editor {
         });
         UpdateVisibility();
     }
-    private void BaseActionExecute(VisualElement parent){
-        if (target is IInteractable targetAsInteractable){
+    private void ObserverSpeakList(VisualElement parent){
+        if(target is IObserver){
+            parent.Add(new PropertyField(_observerEventListenProp));
+        }
+    }
+    private void BaseActionExecute(VisualElement parent)
+    {
+        if (target is IInteractable targetAsInteractable)
+        {
             EditorUIUtils.AddSpace(parent);
             var addActionRow = new EditorUIUtils.LabeledRow("Test Interactable");
             parent.Add(addActionRow);
-            var useButton = new Button(() => {
+            var useButton = new Button(() =>
+            {
                 targetAsInteractable?.BaseAction();
             });
-            useButton.style.flexGrow = 1; 
+            useButton.style.flexGrow = 1;
             useButton.style.unityTextAlign = TextAnchor.MiddleLeft;
             useButton.style.unityFontStyleAndWeight = FontStyle.Bold;
             useButton.style.paddingTop = 6;
@@ -107,77 +117,22 @@ public class InteractableEditor : Editor {
 
             parent.ContinuousUpdate(() =>
             {
-                if (!Application.isPlaying){
+                if (!Application.isPlaying)
+                {
                     addActionRow.SetVisible(false);
                 }
-                else{
-                    addActionRow.SetVisible(true);  
+                else
+                {
+                    addActionRow.SetVisible(true);
                 }
             });
         }
     }
 
-    private void BuildCustomScriptSection(VisualElement parent)
-    {
-        
+    private void BuildCustomScriptSection(VisualElement parent){
         EditorUIUtils.AddSpace(parent);
         EditorUIUtils.AddHeader(parent, "Scripts Custom");
         parent.Add(new PropertyField(_customScriptsProp));
-        //     var targetInteractable = target as Interactable;
-        //     var targetGameObject = targetInteractable.gameObject;
-        //     EditorUIUtils.AddSpace(parent);
-        //     EditorUIUtils.AddHeader(parent, "Scripts Custom");
-        //     var addActionRow = new EditorUIUtils.LabeledRow("Add Script Custom", "Clique para adicionar um novo componente de script customizado.");
-        //     parent.Add(addActionRow);
-        //     var addButton = new Button { text = "(Select)" };
-        //     addButton.style.flexGrow = 1; 
-        //     addButton.style.unityTextAlign = TextAnchor.MiddleLeft;
-        //     addActionRow.Contents.Add(addButton);
-
-        //     List<Type> validTypes = ComponentFinder.GetTypes(typeof(ICodeCustom));
-        //     var contextMenu = new ContextualMenuManipulator(evt => {
-        //         foreach (var scriptType in validTypes){
-        //             evt.menu.AppendAction(
-        //                 ObjectNames.NicifyVariableName(scriptType.Name),
-        //                 action => {
-        //                     var newComponent = Undo.AddComponent(targetGameObject, scriptType);
-        //                     _customScriptsProp.InsertArrayElementAtIndex(_customScriptsProp.arraySize);
-        //                     _customScriptsProp.GetArrayElementAtIndex(_customScriptsProp.arraySize - 1).objectReferenceValue = newComponent;
-        //                     serializedObject.ApplyModifiedProperties();
-        //                 },
-        //                 action => DropdownMenuAction.Status.Normal
-        //             );
-        //         }
-        //     });
-        //     contextMenu.activators.Clear();
-        //     contextMenu.activators.Add(new ManipulatorActivationFilter { button = MouseButton.LeftMouse });
-        //     addButton.AddManipulator(contextMenu);
-
-        // parent.ContinuousUpdate(() => {
-        //     if (targetInteractable == null) return;
-
-        //     var actualComponents = targetInteractable.GetComponents<MonoBehaviour>().Where(s => s is ICodeCustom).ToList();
-        //     bool needsResync = false;
-        //     if (actualComponents.Count != _customScriptsProp.arraySize){
-        //         needsResync = true;
-        //     }else{
-        //         for (int i = 0; i < actualComponents.Count; i++){
-        //             var savedRef = _customScriptsProp.GetArrayElementAtIndex(i).objectReferenceValue;
-        //             if (savedRef != actualComponents[i]){
-        //                 needsResync = true;
-        //                 break;
-        //             }
-        //         }
-        //     }
-        //     if (needsResync){
-        //         _customScriptsProp.ClearArray();
-        //         for (int i = 0; i < actualComponents.Count; i++){
-        //             _customScriptsProp.InsertArrayElementAtIndex(i);
-        //             _customScriptsProp.GetArrayElementAtIndex(i).objectReferenceValue = actualComponents[i];
-        //         }
-        //         serializedObject.ApplyModifiedProperties();
-        //     }
-        // });
     }
 
     protected virtual void AddInspectorProperties(VisualElement ux){

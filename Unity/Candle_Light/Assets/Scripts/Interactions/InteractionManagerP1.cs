@@ -28,16 +28,6 @@ public class InteractionManagerP1 : MonoBehaviour
     [Tooltip("Tamanho da distância que o raycast irá verificar para verificar se há chão")]
     [SerializeField]
     private float deploymentHeight;
-
-    [Tooltip("Referência para o Transform de Origem do RayCast para verificar se há um local dropavel")]
-    [SerializeField]
-    private Transform rayLeft = null;
-
-    [Tooltip("Referência para o Transform de Origem do RayCast para verificar se há um local dropavel")]
-    [SerializeField]
-    private Transform rayRight = null;
-
-
     
     //null quando não há item equipado
     [SerializeField]

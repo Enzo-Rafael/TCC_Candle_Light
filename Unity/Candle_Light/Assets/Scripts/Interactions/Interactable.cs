@@ -11,9 +11,13 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     protected ItemActionType _actionType;
     
-    [Tooltip("Referência para o evento sendo escutado.")]
+    [Tooltip("Referência para os eventos que você está ouvindo.")]
     [SerializeField]
-    protected List<ObserverEventChannel> _observerEvent = default;
+    protected List<ObserverEventChannel> _observerEventListening = default;
+
+    [Tooltip("Referência para os eventos que você está avisando sobre algo (Executado antes do Custom Script).")]
+    [SerializeField]
+    protected List<ObserverEventChannel> _observerEventSpeak = default;
 
     [Tooltip("Se marcado, permite configurar uma animação para a ação selecionada.")]
     [SerializeField]

@@ -46,8 +46,8 @@ public class UseRotateInteractable : Interactable, IInteractable
             yield return new WaitForFixedUpdate();
         }
         transform.localRotation = Quaternion.AngleAxis(90 * rotState, Vector3.forward);
-        if (_observerEvent != null){
-            foreach (var channel in _observerEvent){
+        if (_observerEventSpeak != null){
+            foreach (var channel in _observerEventSpeak){
                 if (channel != null){
                     channel.NotifyObservers(1, CheckCorrect());
                 }

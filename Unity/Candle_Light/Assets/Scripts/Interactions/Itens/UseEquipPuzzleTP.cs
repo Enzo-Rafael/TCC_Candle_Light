@@ -14,9 +14,9 @@ public class UseEquipPuzzleTP : Interactable, IUseEquip
     {
         action = !action;
         message = action ? 1 : 0;
-        if (_observerEvent != null)
+        if (_observerEventSpeak != null)
         {
-            foreach (var channel in _observerEvent)
+            foreach (var channel in _observerEventSpeak)
             {
                 if (channel != null)
                 {

@@ -38,8 +38,6 @@ public class UsePuzzleGhostPart : Interactable, IInteractable
     private void Start(){
         startEuler = transform.localEulerAngles;
         directionVector = directionVectors[_directionType];
-        Debug.Log(gameObject.name + " Enviou a direção " + directionVector[0] + " " + directionVector[1]);
-        Debug.Log((int)_directionType);
         if (_observerEventSpeak != null)
         {
             foreach (var channel in _observerEventSpeak)
@@ -68,7 +66,6 @@ public class UsePuzzleGhostPart : Interactable, IInteractable
         if (_observerEventSpeak != null){
             foreach (var channel in _observerEventSpeak){
                 if (channel != null){
-                    Debug.Log(gameObject.name + " Enviou a direção " + directionVector[0] + " " + directionVector[1]);
                     channel.NotifyObservers(0, directionVector);
                 }
             }

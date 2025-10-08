@@ -40,6 +40,7 @@ public class Interactable : MonoBehaviour
     protected List<MonoBehaviour> _customScripts;
 
     protected bool consumeBool = false;
+    
 
     /*------------------------------------------------------------------------------
     Função:     ExecuteOrder
@@ -56,7 +57,7 @@ public class Interactable : MonoBehaviour
                 if (animator != null) animator.SetTrigger(parameterName);
                 break;
             case ItemActionType.Toggle:
-                if (animator != null) animator.SetBool(parameterName, message != 0);
+                if (animator != null) animator.SetBool(parameterName, (message != 0) != _invertParameter );
                 CustomScript((message != 0) != _invertParameter);
                 return;
             case ItemActionType.Consume:
@@ -84,5 +85,7 @@ public class Interactable : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     protected virtual void UnregisterEvent() { }
-
+    public void SetInvertParameter(bool setBool){
+        _invertParameter = setBool;
+    }
 }

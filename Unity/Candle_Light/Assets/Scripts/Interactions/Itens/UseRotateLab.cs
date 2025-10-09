@@ -32,9 +32,7 @@ public class UseRotateLab : Interactable, IInteractable
 
     public void BaseAction()
     {
-        if (!isRotating && !isPlayerPresent)
-        {
-            Debug.Log("UseRotateLab BaseAction rotState: " + rotState);
+        if (!isRotating && !isPlayerPresent){
             StartCoroutine(RotCoroutine());
         }
     }

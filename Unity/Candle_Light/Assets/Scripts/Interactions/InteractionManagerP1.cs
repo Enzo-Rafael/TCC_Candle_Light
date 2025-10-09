@@ -181,7 +181,7 @@ public class InteractionManagerP1 : MonoBehaviour
         {
             return;
         }
-        iController.canvasCloseSprite();
+        //iController.canvasCloseSprite();
         switch (potentialInteractions.First.Value.layer)
         {
             case EquipLayer:
@@ -207,12 +207,14 @@ public class InteractionManagerP1 : MonoBehaviour
                     }
                     else
                     {
+                        
                         iController.canvasCloseText();
                         iController.canvasCloseSprite();
                         _inputReader.EnablePlayerInput(1);
                         indexText = 1;
                         foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
                         {
+                            iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                             interactable.BaseAction();
                         }
                     }

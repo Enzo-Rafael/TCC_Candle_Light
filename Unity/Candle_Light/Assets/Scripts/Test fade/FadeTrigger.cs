@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class FadeTrigger : MonoBehaviour
 {
-    public static FadeTrigger instance;
+    
     public CanvasGroup canvasGroup;
 
     private bool fadeIn = false;
@@ -11,11 +11,6 @@ public class FadeTrigger : MonoBehaviour
     public float timeToFade;
 
     private int fadeInControl = 0;
-
-    void Awake()
-    {
-        instance = this;
-    }
 
     void Update()
     {
@@ -42,9 +37,9 @@ public class FadeTrigger : MonoBehaviour
         }
     }
 
-    public void FadeIn(int NewGame)
+    public void FadeIn(int newGame)
     {
-
         fadeIn = true;
+        fadeInControl = newGame;
     }
 }

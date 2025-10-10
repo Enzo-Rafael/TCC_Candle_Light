@@ -5,21 +5,15 @@ using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
 using Unity.Cinemachine;
-using System.Collections.Generic;
-//using UnityEngine.Rendering;
-//using UnityEngine.UIElements;
-using Unity.VisualScripting;
-using UnityEditor;
-using System.Collections;
 
 class SceneData
 {
+    public ConfigData configData;
     public MediumData mediumData;
     public MediumCamData[] mediumCamData;
     public GhostData ghostData;
     public CastesalData[] castesalData;
     public PuzzleData[] puzzleData;
-    //public GameObject casticalExpecifico;
 }
 public class SaveLoad : MonoBehaviour
 {
@@ -31,21 +25,25 @@ public class SaveLoad : MonoBehaviour
     public GameObject[] puzzles;//GameObjects de Puzzle
     public CinemachineCamera[] p1Cams;//Cameras da Medium
     public GameObject[] objHolds; //Objetos que podem ser segurados 
-    public GameObject btnLoad;
     [SerializeField] private GameObject btnContinue;//Btn para liberar a tela de load
-    [SerializeField] private GameObject[] objStopped;//Objetos a serem travados durante o load
-    [SerializeField] private AudioListener aListener; //audilistener
-    [SerializeField] Animator notification;
+    [SerializeField] private AudioManager audioManager; //audilistener
+    [SerializeField] private Animator notification;
+    [SerializeField] private InputReader inputReader = default;
     //Variaveis
     [Header("Variaveis")]
     public string sceneName = "Mansion";// public Scene scene;
     public bool onLoad = false;
+    public int senceRef;
+    public int brightRef;
     //private bool isLoaded = false;
     [NonSerialized] public int priVez = 0;
     [NonSerialized] public int spawnIndex = 0;
-    string path;
-    //Variabeis de apoio
+    private string path;
+    //Variaveis de apoio
     private CinemachineCamera[] p1CamsSet;
+    private int audioMaster;
+    private int audioSfx;
+    private int audioMusic;
 
     //Metodos
     void Awake()
@@ -60,18 +58,20 @@ public class SaveLoad : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        btnLoad = GameObject.Find("ButtonContinue");
+
     }
+
 
     void Update()
     {
+        if (btnContinue == null) btnContinue = GameObject.Find("ButtonContinue");//Encontra o botão de continuar
         if (File.Exists(path))
         {
-            if (btnLoad != null) btnLoad.SetActive(true);
+            if (btnContinue != null) btnContinue.SetActive(true);
         }
         else
         {
-            if (btnLoad != null) btnLoad.SetActive(false);
+            if (btnContinue != null) btnContinue.SetActive(false);
         }
         /*if (Input.GetKeyDown(KeyCode.CapsLock))
         {
@@ -101,6 +101,12 @@ public class SaveLoad : MonoBehaviour
         GameObject p1 = GameObject.FindWithTag("Player1");
         int p1camIndex = p1.GetComponent<ChangeCam>().currentCamIndex;
         int p1camLast = p1.GetComponent<ChangeCam>().camRef.Length;
+        //---------------------Config------------------------------------------------
+        data.configData.audioMaster = audioMaster;
+        data.configData.audioSfx = audioSfx;
+        data.configData.audioMusic = audioMusic;
+        data.configData.senceRef = senceRef;
+        data.configData.brightRef = brightRef;
         //Medium (Obs: "spawnIndex" vai definir qual spawn esta chamand, tomar cuidado)
         data.mediumData = new MediumAdapter(p1, p1camIndex, p1camLast);
         if (objHolds != null)
@@ -311,6 +317,11 @@ public class SaveLoad : MonoBehaviour
     public void NewSave()
     {
         File.Delete(path);
+        /*SceneData data = new SceneData();
+        string s = JsonUtility.ToJson(data, true);
+        onLoad = true;
+        Debug.Log("NewSave");
+        File.WriteAllText(path, s);*/
     }
     //Identificar qual spawn point esta sendo chamado
     public void CallSave(int index)
@@ -366,29 +377,36 @@ public class SaveLoad : MonoBehaviour
         }
         objHolds.OrderBy(go => go.name).ToArray();
     }
-
     private void LocateGO()//Serve para localizar alguns GameObjects em cena
     {
-        objStopped = new GameObject[2];
-        objStopped[0] = GameObject.Find("Player1");
-        objStopped[1] = GameObject.Find("Player2");
         btnContinue = GameObject.Find("ButtonContinue");
-        aListener = GameObject.Find("P1 Cam").GetComponent<AudioListener>();//Colocar o GameObject onde fica o Audio listener
     }
-
     private void TurnOff()
     {
-        objStopped[0].GetComponent<PlayerOneScript>().enabled = false;
-        objStopped[1].GetComponent<PlayerTwoScript>().enabled = false;
-        btnContinue.SetActive(false);
-        aListener.gameObject.SetActive(false);
+        inputReader.DisableAllInput();
+        //btnContinue?.SetActive(false);
+        audioManager.masterVolume = 0;
     }
-
     private void TurnOn()
     {
-        objStopped[0].GetComponent<PlayerOneScript>().enabled = true;
-        objStopped[1].GetComponent<PlayerTwoScript>().enabled = true;
-        btnContinue.SetActive(true);
-        aListener.gameObject.SetActive(true);
+        inputReader.EnableAllInput();
+        //btnContinue?.SetActive(true);
+        audioManager.masterVolume = audioMaster;
+    }
+    public void SetAudioMaster(int volume)
+    {
+        audioMaster = volume;
+    }
+    public void SetAudioSfx(int volume)
+    {
+        audioSfx = volume;
+    }
+    public void SetAudioMusic(int volume)
+    {
+        audioMusic = volume;
+    }
+    public void LoadConfig()
+    {
+        
     }
 }

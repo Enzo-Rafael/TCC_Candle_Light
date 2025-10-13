@@ -126,8 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent:
-  - {fileID: 2606129429223176038}
+  _observerEventListening: []
+  _observerEventSpeak: []
   _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
@@ -253,14 +253,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960313371838224613}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.6481282, z: -0, w: 0.7615313}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 4.7694664, y: 0.2991433, z: 11.159073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2965118349150565031}
   m_Father: {fileID: 7880222172648752927}
-  m_LocalEulerAnglesHint: {x: 0, y: -80.801, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
 --- !u!114 &8913986937654764231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,7 +274,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent:
+  _observerEventListening: []
+  _observerEventSpeak:
   - {fileID: 4715649032672791681}
   _useAnimation: 0
   animator: {fileID: 0}
@@ -629,14 +630,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5278224540974829338}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 4.6351776, y: 0.2991433, z: -0.64092684}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8361301836693112580}
   m_Father: {fileID: 7880222172648752927}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!114 &5164082485852136281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,7 +651,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent:
+  _observerEventListening: []
+  _observerEventSpeak:
   - {fileID: 2606129429223176038}
   _useAnimation: 0
   animator: {fileID: 0}
@@ -728,8 +730,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6290181405644028933}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.47822952, y: -0.3699751, z: 9.392178}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.4782257, y: -0.3699751, z: 9.392178}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -834,8 +836,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent:
+  _observerEventListening:
   - {fileID: 4715649032672791681}
+  _observerEventSpeak: []
   _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 

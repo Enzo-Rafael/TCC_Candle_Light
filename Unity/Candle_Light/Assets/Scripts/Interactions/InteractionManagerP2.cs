@@ -139,8 +139,8 @@ public class InteractionManagerP2 : MonoBehaviour
             }
             else
             {
-                iController.canvasCloseSprite();
-                iController.canvasCloseText();
+                //iController.canvasCloseSprite();
+                //iController.canvasCloseText();
                 _inputReader.EnablePlayerInput(2);
                 indexText = 0;
             }

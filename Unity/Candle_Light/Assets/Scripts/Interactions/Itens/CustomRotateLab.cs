@@ -1,51 +1,49 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class CustomRotateLab : MonoBehaviour, ICodeCustom
 {
     [SerializeField]
-    private int rotState;
+    int rotState;
 
     [SerializeField]
     private bool isRotating;
-
-    private BoxCollider boxCollider;
-    
     [SerializeField]
-    [Range(0,1)]
+    [Range(0, 1)]
     private int axisX;
 
     [SerializeField]
-    [Range(0,1)]
+    [Range(0, 1)]
     private int axisY;
 
     [SerializeField]
-    [Range(0,1)]
+    [Range(0, 1)]
     private int axisZ;
+    Vector3 startEuler;
+    private bool isPlayerPresent = false;
     private void Start()
     {
-        boxCollider = GetComponent<BoxCollider>();
+        startEuler = transform.localEulerAngles;
+        if (axisX == 1) { rotState = (4 - (int)(Math.Abs(transform.eulerAngles.x) / 90)) % 4; }
+        else if (axisY == 1) { rotState = (4 - (int)(Math.Abs(transform.eulerAngles.y) / 90)) % 4; }
+        else if (axisZ == 1) { rotState = (4 - (int)(Math.Abs(transform.eulerAngles.z) / 90)) % 4; }
     }
+
     public void CustomBaseAction(object additionalInformation){
-        //boxCollider.enabled = false;
         StartCoroutine(RotCoroutine());
     }
     private IEnumerator RotCoroutine(){
         rotState = (rotState + 1) % 4;
-        Vector3 startEuler = transform.localEulerAngles;
-        Vector3 targetEuler = startEuler;
-
-        if (axisX == 1) targetEuler.x = 90 * rotState;
-        if (axisY == 1) targetEuler.y = 90 * rotState;
-        if (axisZ == 1) targetEuler.z = 90 * rotState;
-
-        Quaternion targetRot = Quaternion.Euler(targetEuler);
-        while (Quaternion.Angle(transform.localRotation, targetRot) > 1f){
-            transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRot, 0.1f);
+        if (axisX == 1) startEuler.x = startEuler.x ==  360 ? 0 : +90 * rotState;
+        if (axisY == 1) startEuler.y = startEuler.y ==  360 ? 0 : +90 * rotState;
+        if (axisZ == 1) startEuler.z = startEuler.z == -360 ? 0 : -90 * rotState;
+        Quaternion targetRot = Quaternion.Euler(startEuler);
+        while (Quaternion.Angle(transform.rotation, targetRot) > 1f)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, 0.1f);
             yield return new WaitForFixedUpdate();
         }
-        transform.localRotation = targetRot;
-        //boxCollider.enabled = true;
-
+        transform.rotation = targetRot;
     }
 }

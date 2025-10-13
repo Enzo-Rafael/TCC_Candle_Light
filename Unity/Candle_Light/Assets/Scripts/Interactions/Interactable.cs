@@ -11,9 +11,13 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     protected ItemActionType _actionType;
     
-    [Tooltip("Referência para o evento sendo escutado.")]
+    [Tooltip("Referência para os eventos que você está ouvindo.")]
     [SerializeField]
-    protected List<ObserverEventChannel> _observerEvent = default;
+    protected List<ObserverEventChannel> _observerEventListening = default;
+
+    [Tooltip("Referência para os eventos que você está avisando sobre algo (Executado antes do Custom Script).")]
+    [SerializeField]
+    protected List<ObserverEventChannel> _observerEventSpeak = default;
 
     [Tooltip("Se marcado, permite configurar uma animação para a ação selecionada.")]
     [SerializeField]
@@ -36,6 +40,7 @@ public class Interactable : MonoBehaviour
     protected List<MonoBehaviour> _customScripts;
 
     protected bool consumeBool = false;
+    
 
     /*------------------------------------------------------------------------------
     Função:     ExecuteOrder
@@ -52,7 +57,7 @@ public class Interactable : MonoBehaviour
                 if (animator != null) animator.SetTrigger(parameterName);
                 break;
             case ItemActionType.Toggle:
-                if (animator != null) animator.SetBool(parameterName, message != 0);
+                if (animator != null) animator.SetBool(parameterName, (message != 0) != _invertParameter );
                 CustomScript((message != 0) != _invertParameter);
                 return;
             case ItemActionType.Consume:
@@ -80,5 +85,7 @@ public class Interactable : MonoBehaviour
     Saída:      -
     ------------------------------------------------------------------------------*/
     protected virtual void UnregisterEvent() { }
-
+    public void SetInvertParameter(bool setBool){
+        _invertParameter = setBool;
+    }
 }

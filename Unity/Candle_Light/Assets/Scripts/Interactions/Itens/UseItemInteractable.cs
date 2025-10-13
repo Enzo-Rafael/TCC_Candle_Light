@@ -22,8 +22,8 @@ public class UseItemInteractable : Interactable, IInteractable
   public void BaseAction(){
     action = !action;
     message = action ? 1 : 0;
-    if (_observerEvent != null){
-      foreach (var channel in _observerEvent){
+    if (_observerEventSpeak != null){
+      foreach (var channel in _observerEventSpeak){
         if (channel != null){
           channel.NotifyObservers(message);
         }

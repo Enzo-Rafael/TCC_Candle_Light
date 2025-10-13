@@ -59,7 +59,6 @@ public class ExecuteItemCommand : Interactable, IObserver
         if (_multipleCode != null && !_multiple.Validator(additionalInformation)) return;
         ExecuteOrder(message);
         completed = true;
-        //if (canSave == true) SaveLoad.Instance.CallSave(spawnProx);
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent
@@ -78,8 +77,8 @@ public class ExecuteItemCommand : Interactable, IObserver
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void RegisterEvent(){
-        if (_observerEvent != null){
-            foreach (var channel in _observerEvent){
+        if (_observerEventListening != null){
+            foreach (var channel in _observerEventListening ){
                 if (channel != null){
                     channel.RegisterObserver(this);
                 }
@@ -93,8 +92,8 @@ public class ExecuteItemCommand : Interactable, IObserver
     Saída:      -
     ------------------------------------------------------------------------------*/
     public void UnregisterEventPublic(){
-        if (_observerEvent != null){
-            foreach (var channel in _observerEvent){
+        if (_observerEventListening  != null){
+            foreach (var channel in _observerEventListening ){
                 if (channel != null){
                     channel.UnregisterObserver(this);
                 }

@@ -19,6 +19,7 @@ public class FadeOutcontroller : MonoBehaviour
     {
        //canvasGroup.alpha = 1;
        
+        playersImput.DisableAllInput();
         FadeOut();
     }
 
@@ -26,7 +27,6 @@ public class FadeOutcontroller : MonoBehaviour
     {
         if (fadeOut)
         {
-            playersImput.DisableAllInput();
             if (canvasGroup.alpha >= 0)
             {
                 canvasGroup.alpha -= timeToFade * Time.deltaTime;

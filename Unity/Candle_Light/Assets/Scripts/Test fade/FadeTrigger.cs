@@ -25,7 +25,7 @@ public class FadeTrigger : MonoBehaviour
                     if (fadeInControl == 0)
                     {
                         SaveLoad.Instance.NewSave();
-                        SceneManager.LoadScene("Mansion");
+                        SceneManager.LoadScene("IntroCutscene");
                     }
                     else
                     {

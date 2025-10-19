@@ -1,5 +1,6 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FadeOutcontroller : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class FadeOutcontroller : MonoBehaviour
        //canvasGroup.alpha = 1;
        
         playersImput.DisableAllInput();
-        FadeOut();
+        SceneManager.sceneLoaded += FadeOut;
     }
 
     void Update()
@@ -40,7 +41,7 @@ public class FadeOutcontroller : MonoBehaviour
         }
     }
 
-    public void FadeOut()
+    public void FadeOut(Scene scene, LoadSceneMode mode)
     {
         fadeOut = true;
     }

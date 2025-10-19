@@ -16,6 +16,9 @@ public class RitualVFXController : MonoBehaviour
     [SerializeField] private float maxSize;
     [SerializeField] private float maxHeight;
 
+    [SerializeField] private Animator animator;
+    [SerializeField] private string paramName;
+
     private float timeInCircle;
     private bool isActivated;
 
@@ -66,6 +69,8 @@ public class RitualVFXController : MonoBehaviour
         PlayerOneScript.Instance.controller.enabled = false;
         PlayerOneScript.Instance.transform.position = targetPos.position;
         PlayerOneScript.Instance.controller.enabled = true;
+
+        animator.SetBool(paramName, true);
     }
     
 }

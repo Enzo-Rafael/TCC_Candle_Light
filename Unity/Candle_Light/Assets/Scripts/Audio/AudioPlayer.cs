@@ -13,6 +13,7 @@ public class AudioPlayer : MonoBehaviour
     public bool isHeardByGhost;
     public bool isHeardByGirl;
     public bool isAudioLocal;
+    public bool canHaveMultipleInstances;
     private float localVolume;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

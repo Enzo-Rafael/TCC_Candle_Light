@@ -7,6 +7,8 @@ public class AudioManager : Singleton<AudioManager>
     public float sfxVolume = 1.0f;
     public float musicVolume = 1.0f;
     public Dictionary<string, AudioPlayer> playersList = new Dictionary<string, AudioPlayer>();
+    public Dictionary<string, int> playerInstanceCounter = new Dictionary<string, int>();
+
 
 
     #region volume setup 
@@ -36,7 +38,23 @@ public class AudioManager : Singleton<AudioManager>
     {
         if (playersList.ContainsKey(playerName))
         {
-            playersList[playerName] = player;
+            if (player.canHaveMultipleInstances)
+            {
+                if (playerInstanceCounter.ContainsKey(playerName))
+                {
+                    playerInstanceCounter[playerName]++;
+                    playersList[playerName + playerInstanceCounter[playerName]] = player;
+                }
+                else
+                {
+                    playerInstanceCounter.Add(playerName, 0);
+                    playersList[playerName + playerInstanceCounter[playerName]] = player;
+                }
+            }
+            else
+            {
+                playersList[playerName] = player;
+            }
         }
         else
         {

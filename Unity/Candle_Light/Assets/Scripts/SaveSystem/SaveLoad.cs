@@ -393,6 +393,10 @@ public class SaveLoad : MonoBehaviour
         //btnContinue?.SetActive(true);
         audioManager.masterVolume = audioMaster;
     }
+    public int GetAudioMaster()
+    {
+        return audioMaster;
+    }
     public void SetAudioMaster(int volume)
     {
         audioMaster = volume;

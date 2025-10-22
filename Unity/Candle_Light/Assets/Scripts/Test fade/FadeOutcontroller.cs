@@ -18,10 +18,10 @@ public class FadeOutcontroller : MonoBehaviour
     }
     void Start()
     {
-       //canvasGroup.alpha = 1;
-       
+        //canvasGroup.alpha = 1;
         playersImput.DisableAllInput();
         SceneManager.sceneLoaded += FadeOut;
+        AudioManager.Instance.SetMaster(0);
     }
 
     void Update()
@@ -34,6 +34,7 @@ public class FadeOutcontroller : MonoBehaviour
                 if (canvasGroup.alpha <= 0.0f)
                 {
                     Debug.Log("etrou fadeOut");
+                    AudioManager.Instance.SetMaster(SaveLoad.Instance.GetAudioMaster());
                     //playersImput.EnableAllInput();
                     fadeOut = false;
                 }

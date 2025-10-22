@@ -32,6 +32,7 @@ public class UIMenuManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     void Start(){
         _inputReader.EnableMenuInput();
+        SaveLoad.Instance.SetAudioMaster((int)_settingPanel.masterSlider.value);
         SetMenu();       
     }
     /*------------------------------------------------------------------------------

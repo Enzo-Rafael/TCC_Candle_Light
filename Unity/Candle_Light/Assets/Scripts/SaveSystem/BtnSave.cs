@@ -21,10 +21,8 @@ public class BtnSave : MonoBehaviour
     }
     public void BtnNewSave()
     {
-        fade.FadeIn(0);   
+        fade.FadeIn(0);
+        SaveLoad.Instance.SetFinal(Random.Range(1, 4));  // 1 a 3 
     }
 
 }
-/* SaveLoad.Instance.NewSave();
-   SceneManager.LoadScene("Mansion");
-   SaveLoad.Instance.StartLoad();*/

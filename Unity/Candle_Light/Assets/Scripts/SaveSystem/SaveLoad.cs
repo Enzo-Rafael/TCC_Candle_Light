@@ -35,6 +35,8 @@ public class SaveLoad : MonoBehaviour
     public bool onLoad = false;
     public int senceRef;
     public int brightRef;
+
+    public int finalsScene = 1;
     //private bool isLoaded = false;
     [NonSerialized] public int priVez = 0;
     [NonSerialized] public int spawnIndex = 0;
@@ -393,6 +395,7 @@ public class SaveLoad : MonoBehaviour
         //btnContinue?.SetActive(true);
         audioManager.masterVolume = audioMaster;
     }
+
     public void SetAudioMaster(int volume)
     {
         audioMaster = volume;
@@ -405,8 +408,17 @@ public class SaveLoad : MonoBehaviour
     {
         audioMusic = volume;
     }
+    public int GetFinal()
+    {
+        return finalsScene;
+    }
+    public void SetFinal(int final)
+    {
+        finalsScene = final;
+    }
     public void LoadConfig()
     {
-        
+
     }
+    
 }

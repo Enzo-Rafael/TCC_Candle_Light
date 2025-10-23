@@ -521,6 +521,7 @@ MonoBehaviour:
   showDecay: 1
   showTimerMax: 2
   showTimer: 1
+  showEffectAudio: {fileID: 122066069181485528}
 --- !u!114 &5970005580199222380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,6 +551,7 @@ MonoBehaviour:
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
   iController: {fileID: 5676224265979371617}
   indexText: 0
+  interactAudio: {fileID: 8221926511932065992}
 --- !u!114 &5053948638938402427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,8 +689,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5acc201c2c6854c4c8374b9e0cb6e9ee, type: 3}
+--- !u!82 &122066069181485528 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9155109701689623263, guid: 5acc201c2c6854c4c8374b9e0cb6e9ee, type: 3}
+  m_PrefabInstance: {fileID: 9132404723549311751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7690052045247339237 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1442379084070537698, guid: 5acc201c2c6854c4c8374b9e0cb6e9ee, type: 3}
+  m_PrefabInstance: {fileID: 9132404723549311751}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &8221926511932065992 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 911687743968533455, guid: 5acc201c2c6854c4c8374b9e0cb6e9ee, type: 3}
   m_PrefabInstance: {fileID: 9132404723549311751}
   m_PrefabAsset: {fileID: 0}

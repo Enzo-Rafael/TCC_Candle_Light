@@ -50,7 +50,7 @@ public class UIMainMenu : MonoBehaviour
     public IEnumerator StartGameRoutine()
     {
         AudioManager.Instance.PlaySound("UI_GameStart");
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSecondsRealtime(5);
         NewGameButtonAction.Invoke();
 
     }

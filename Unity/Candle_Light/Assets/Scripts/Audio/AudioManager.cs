@@ -18,14 +18,14 @@ public class AudioManager : Singleton<AudioManager>
         masterVolume = value / 5;
         UpdateAudioListVolume();
     }
-    public void SetSfx(float value) 
-    { 
-        sfxVolume = value / 5; 
+    public void SetSfx(float value)
+    {
+        sfxVolume = value / 5;
         UpdateAudioListVolume();
     }
-    public void SetMusic(float value) 
-    { 
-        musicVolume = value / 5; 
+    public void SetMusic(float value)
+    {
+        musicVolume = value / 5;
         UpdateAudioListVolume();
     }
 
@@ -61,7 +61,7 @@ public class AudioManager : Singleton<AudioManager>
             playersList.Add(playerName, player);
         }
         UpdatePlayerVolume(player);
-        
+
     }
 
     public void RemovePlayerFromList(string playerName)
@@ -73,9 +73,9 @@ public class AudioManager : Singleton<AudioManager>
     {
         foreach (var player in playersList.Values)
         {
-            if(player == null) continue;
-            UpdatePlayerVolume(player); 
-        } 
+            if (player == null) continue;
+            UpdatePlayerVolume(player);
+        }
     }
 
     private void UpdatePlayerVolume(AudioPlayer player)
@@ -84,7 +84,7 @@ public class AudioManager : Singleton<AudioManager>
         {
             player.SetVolume(sfxVolume * masterVolume);
         }
-        else if(player.channel == AudioPlayer.SoundChannel.MUSIC)
+        else if (player.channel == AudioPlayer.SoundChannel.MUSIC)
         {
             player.SetVolume(musicVolume * masterVolume);
         }
@@ -102,8 +102,8 @@ public class AudioManager : Singleton<AudioManager>
         {
             playersList[soundName].PlaySound();
         }
-        else if (playersList.ContainsKey(soundName) && playersList[soundName] == null) 
-        { 
+        else if (playersList.ContainsKey(soundName) && playersList[soundName] == null)
+        {
             playersList.Remove(soundName);
         }
 
@@ -113,14 +113,14 @@ public class AudioManager : Singleton<AudioManager>
     {
         if (playersList.ContainsKey(soundName) && playersList[soundName] != null)
         {
-           playersList[soundName].PlaySound(position);
+            playersList[soundName].PlaySound(position);
         }
         else if (playersList.ContainsKey(soundName) && playersList[soundName] == null)
         {
             playersList.Remove(soundName);
         }
     }
-    
+
     public void StopSound(string soundName)
     {
         if (playersList.ContainsKey(soundName) && playersList[soundName] != null)
@@ -132,7 +132,7 @@ public class AudioManager : Singleton<AudioManager>
             playersList.Remove(soundName);
         }
     }
-    
+
     #endregion
 
 }

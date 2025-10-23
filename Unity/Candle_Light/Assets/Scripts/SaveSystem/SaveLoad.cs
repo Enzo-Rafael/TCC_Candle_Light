@@ -109,6 +109,7 @@ public class SaveLoad : MonoBehaviour
         data.configData.audioMusic = audioMusic;
         data.configData.senceRef = senceRef;
         data.configData.brightRef = brightRef;
+        data.configData.final = finalsScene;
         //Medium (Obs: "spawnIndex" vai definir qual spawn esta chamand, tomar cuidado)
         data.mediumData = new MediumAdapter(p1, p1camIndex, p1camLast);
         if (objHolds != null)
@@ -183,6 +184,7 @@ public class SaveLoad : MonoBehaviour
         LocateGO();
         TurnOff();
         //---------------------------------------------------
+        finalsScene = data.configData.final;
         //Pos Medium e Ghost
         GameObject p1 = GameObject.Find("Player1");
         GameObject p2 = GameObject.Find("Player2");

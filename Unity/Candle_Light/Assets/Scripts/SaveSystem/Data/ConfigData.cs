@@ -10,4 +10,6 @@ public class ConfigData
     public int audioMaster;
     public int audioSfx;
     public int audioMusic;
+
+    public int final;
 }

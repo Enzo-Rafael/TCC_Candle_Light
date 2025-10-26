@@ -8,12 +8,15 @@ using Unity.Cinemachine;
 
 class SceneData
 {
-    public ConfigData configData;
     public MediumData mediumData;
     public MediumCamData[] mediumCamData;
     public GhostData ghostData;
     public CastesalData[] castesalData;
     public PuzzleData[] puzzleData;
+}
+class SceneConfigData
+{
+    public ConfigData configData;
 }
 public class SaveLoad : MonoBehaviour
 {
@@ -33,22 +36,24 @@ public class SaveLoad : MonoBehaviour
     [Header("Variaveis")]
     public string sceneName = "Mansion";// public Scene scene;
     public bool onLoad = false;
-    public int senceRef;
-    public int brightRef;
+    public int senceRef = 0;
+    public int brightRef = 0;
     //private bool isLoaded = false;
     [NonSerialized] public int priVez = 0;
     [NonSerialized] public int spawnIndex = 0;
     private string path;
+    private string pathConfig;
     //Variaveis de apoio
     private CinemachineCamera[] p1CamsSet;
-    private int audioMaster;
-    private int audioSfx;
-    private int audioMusic;
+    private int audioMaster = 0;
+    private int audioSfx = 0;
+    private int audioMusic = 0;
 
     //Metodos
     void Awake()
     {
         path = Application.dataPath + "/save.txt";
+        pathConfig = Application.dataPath + "/saveConfig.txt";
         if (Instance == null)
         {
             Instance = this;
@@ -101,12 +106,6 @@ public class SaveLoad : MonoBehaviour
         GameObject p1 = GameObject.FindWithTag("Player1");
         int p1camIndex = p1.GetComponent<ChangeCam>().currentCamIndex;
         int p1camLast = p1.GetComponent<ChangeCam>().camRef.Length;
-        //---------------------Config------------------------------------------------
-        data.configData.audioMaster = audioMaster;
-        data.configData.audioSfx = audioSfx;
-        data.configData.audioMusic = audioMusic;
-        data.configData.senceRef = senceRef;
-        data.configData.brightRef = brightRef;
         //Medium (Obs: "spawnIndex" vai definir qual spawn esta chamand, tomar cuidado)
         data.mediumData = new MediumAdapter(p1, p1camIndex, p1camLast);
         if (objHolds != null)
@@ -396,6 +395,7 @@ public class SaveLoad : MonoBehaviour
     public void SetAudioMaster(int volume)
     {
         audioMaster = volume;
+         Debug.Log("AudioMaster "+ volume);
     }
     public void SetAudioSfx(int volume)
     {
@@ -405,8 +405,12 @@ public class SaveLoad : MonoBehaviour
     {
         audioMusic = volume;
     }
-    public void LoadConfig()
-    {
-        
+    public void SaveConfig(){
+        //---------------------Config------------------------------------------------
+        SceneConfigData data = new SceneConfigData();
+        data.configData = new ConfigData(senceRef,brightRef,audioMaster,audioSfx,audioMusic);
+        string s = JsonUtility.ToJson(data, true);
+        Debug.Log("S");
+        File.WriteAllText(pathConfig, s);
     }
 }

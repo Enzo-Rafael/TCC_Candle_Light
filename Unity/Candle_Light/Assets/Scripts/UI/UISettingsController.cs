@@ -43,6 +43,7 @@ public class UISettingsController : MonoBehaviour
     }
     public void ClosePanel()
     {
+        SaveLoad.Instance.SaveConfig();
         Closed.Invoke();
     }
     public void SetMusicVolume()
@@ -57,6 +58,7 @@ public class UISettingsController : MonoBehaviour
         AudioManager.Instance.SetSfx(value);
         AudioManager.Instance.PlaySound("UI_Confirm");
         SaveLoad.Instance.SetAudioSfx((int)value);
+       
     }
     public void SetMasterVolume()
     {
@@ -80,21 +82,43 @@ public class UISettingsController : MonoBehaviour
     }
     public void SenceLoad(int x)
     {
+        senceValue = x;
         SaveLoad.Instance.senceRef = senceValue;
         _inputReader.ChangeScale(senceValue);
     }
-    
+
     public void LoadConfig()
     {
-        path = Application.dataPath + "/save.txt";
+        path = Application.dataPath + "/saveConfig.txt";
         if (File.Exists(path))
         {
             string s = File.ReadAllText(path);
-            SceneData data = JsonUtility.FromJson<SceneData>(s);
-            AudioManager.Instance.SetMaster(data.configData.audioMaster);
-            AudioManager.Instance.SetSfx(data.configData.audioSfx);
-            AudioManager.Instance.SetMusic(data.configData.audioMusic);
+            SceneConfigData data = JsonUtility.FromJson<SceneConfigData>(s);
+            //Sliders
+            musicSlider.value = data.configData.audioMusic;
+            sfxSlider.value = data.configData.audioSfx;
+            masterSlider.value = data.configData.audioMaster;
+            senceSlider.value = data.configData.senceRef;
+            brightSlider.value = data.configData.brightRef;
+            //AudioManager
+            AudioManager.Instance.SetMaster((float)data.configData.audioMaster * 5);
+            AudioManager.Instance.SetSfx((float)data.configData.audioSfx * 5);
+            AudioManager.Instance.SetMusic((float)data.configData.audioMusic * 5);
             SenceLoad(data.configData.senceRef);
+            
+            Debug.Log("Load Config");
         }
+    }
+    
+    public void SaveConfig()
+    {
+        float musicSliderValue = musicSlider.value;
+        float sfxSliderValue = sfxSlider.value;
+        float masterSliderValue = masterSlider.value;
+        SaveLoad.Instance.SetAudioMusic((int)musicSliderValue);
+        SaveLoad.Instance.SetAudioSfx((int)sfxSliderValue);
+        SaveLoad.Instance.SetAudioMaster((int)masterSliderValue);
+        SaveLoad.Instance.senceRef = senceValue;
+        Debug.Log("Save Config");
     }
 }

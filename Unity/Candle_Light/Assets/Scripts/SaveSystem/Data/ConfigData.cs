@@ -10,4 +10,13 @@ public class ConfigData
     public int audioMaster;
     public int audioSfx;
     public int audioMusic;
+
+    public ConfigData(int sR, int bR, int aM, int aSfx, int aMu)
+    {
+        senceRef = sR;
+        brightRef = bR;
+        audioMaster = aM;
+        audioSfx = aSfx;
+        audioMusic = aMu;
+    }
 }

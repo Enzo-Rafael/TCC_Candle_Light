@@ -15,6 +15,7 @@ public class UISettingsController : MonoBehaviour
     public Slider sfxSlider;
     public UnityAction Closed;
     public Slider brightSlider;
+    [SerializeField] SetExposureToSettings exposureSetter;
     public Slider senceSlider;
     private string path;
     //---------BackGroundVariables------
@@ -71,9 +72,10 @@ public class UISettingsController : MonoBehaviour
     {
         brightnessValue = brightSlider.value;
         SaveLoad.Instance.brightRef = (int)brightnessValue;
-        RenderSettings.ambientLight = new Color(brightnessValue, brightnessValue, brightnessValue, 1);
-
-        Debug.Log(brightnessValue);
+        exposureSetter.UpdateBrightness();
+        
+        //RenderSettings.ambientLight = new Color(brightnessValue, brightnessValue, brightnessValue, 1);
+        //Debug.Log(brightnessValue);
     }
     public void SetSence()
     {

@@ -1581,15 +1581,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1295155349077687602, guid: e4f0fa94d405076438205583e799df14, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.058
+      value: 2.27
       objectReference: {fileID: 0}
     - target: {fileID: 1295155349077687602, guid: e4f0fa94d405076438205583e799df14, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.683
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1295155349077687602, guid: e4f0fa94d405076438205583e799df14, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.571
+      value: -12.48
       objectReference: {fileID: 0}
     - target: {fileID: 1295155349077687602, guid: e4f0fa94d405076438205583e799df14, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7756,7 +7756,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: -2.4405384e-30, y: 9.188e-41, z: 1.744874e-39, w: 1.5985219e-32}
+  m_BoundingSphereOverride: {x: 5.142788e-39, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -9816,19 +9816,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 37041712226623163, guid: 66be7d5f0ffcabe4d88bb8a3f86e6647, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 1.2980422e+10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 37041712226623163, guid: 66be7d5f0ffcabe4d88bb8a3f86e6647, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 7.397723e+31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 37041712226623163, guid: 66be7d5f0ffcabe4d88bb8a3f86e6647, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 1.5565667e+28
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 37041712226623163, guid: 66be7d5f0ffcabe4d88bb8a3f86e6647, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 1.8754505e+28
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 226472607816061081, guid: 66be7d5f0ffcabe4d88bb8a3f86e6647, type: 3}
       propertyPath: animator
@@ -10178,6 +10178,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6627171106750934080, guid: 66be7d5f0ffcabe4d88bb8a3f86e6647, type: 3}
+      propertyPath: indexPuzzle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6796513163756295224, guid: 66be7d5f0ffcabe4d88bb8a3f86e6647, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -10203,8 +10207,28 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1903937592278872071, guid: 66be7d5f0ffcabe4d88bb8a3f86e6647, type: 3}
       insertIndex: 8
       addedObject: {fileID: 8912171990417563588}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6893637093876965138, guid: 66be7d5f0ffcabe4d88bb8a3f86e6647, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5896577046439787794}
   m_SourcePrefab: {fileID: 100100000, guid: 66be7d5f0ffcabe4d88bb8a3f86e6647, type: 3}
+--- !u!1 &5896577046439787793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6893637093876965138, guid: 66be7d5f0ffcabe4d88bb8a3f86e6647, type: 3}
+  m_PrefabInstance: {fileID: 5896577046439787792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5896577046439787794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5896577046439787793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435f85f67c4bc4648a172ba00e06a082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6277694722116732354
 Transform:
   m_ObjectHideFlags: 0
@@ -10469,6 +10493,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5926913350140649515, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
+      propertyPath: indexPuzzle
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6670959195376212345, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
       propertyPath: m_Name
       value: LabirintoPuzzle
@@ -10476,8 +10504,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6932784256174708051, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6941093163013942061}
   m_SourcePrefab: {fileID: 100100000, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
+--- !u!1 &6941093163013942060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6932784256174708051, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
+  m_PrefabInstance: {fileID: 6941093163013942059}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6941093163013942061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6941093163013942060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435f85f67c4bc4648a172ba00e06a082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7465234706840732928
 Transform:
   m_ObjectHideFlags: 0

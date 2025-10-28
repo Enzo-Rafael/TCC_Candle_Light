@@ -7,7 +7,7 @@ public class CustomFinal : MonoBehaviour
 
     private void Start()
     {
-        switch (SaveLoad.Instance.finalsScene)
+        switch (SaveLoad.Instance.GetFinal())
         {
             case 1:
                 finals[0].SetActive(true);

@@ -84,7 +84,7 @@ public class UISettingsController : MonoBehaviour
     {
         senceValue = x;
         SaveLoad.Instance.senceRef = senceValue;
-        _inputReader.ChangeScale(senceValue);
+        //_inputReader.ChangeScale(senceValue);
     }
 
     public void LoadConfig()
@@ -119,6 +119,7 @@ public class UISettingsController : MonoBehaviour
         SaveLoad.Instance.SetAudioSfx((int)sfxSliderValue);
         SaveLoad.Instance.SetAudioMaster((int)masterSliderValue);
         SaveLoad.Instance.senceRef = senceValue;
+        SaveLoad.Instance.SaveConfig();
         Debug.Log("Save Config");
     }
 }

@@ -32,7 +32,8 @@ public class UIMenuManager : MonoBehaviour
     ------------------------------------------------------------------------------*/
     void Start(){
         _inputReader.EnableMenuInput();
-        SetMenu();       
+        SetMenu();
+               
     }
     /*------------------------------------------------------------------------------
     Função:     SetMenu

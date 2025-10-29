@@ -36,7 +36,7 @@ public class SaveLoad : MonoBehaviour
     public int senceRef;
     public int brightRef;
 
-    public int finalsScene = 1;
+    int finalsScene = 1;
     //private bool isLoaded = false;
     [NonSerialized] public int priVez = 0;
     [NonSerialized] public int spawnIndex = 0;

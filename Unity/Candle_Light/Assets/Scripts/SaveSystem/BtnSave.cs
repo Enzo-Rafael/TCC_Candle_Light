@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class BtnSave : MonoBehaviour
 {
+    int finalEscolhido;
     public FadeTrigger fade;
     //dentro da cena de jogo
     public void OnBtnSave()
@@ -19,10 +20,15 @@ public class BtnSave : MonoBehaviour
         fade.FadeIn(1);
         
     }
-    public void BtnNewSave()
-    {
+    public void BtnNewSave(){
         fade.FadeIn(0);
-        SaveLoad.Instance.SetFinal(Random.Range(1, 4));  // 1 a 3 
+        int finalEscolhido = Random.Range(1, 101); // 1 a 100
+        int final = finalEscolhido switch{
+            <= 85 => 1,
+            <= 95 => 2,
+            _ => 3
+        };
+        Debug.Log("Final escolhido: " + final);
+        SaveLoad.Instance.SetFinal(final);
     }
-
 }

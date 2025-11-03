@@ -29,6 +29,10 @@ public class LightDetector : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    [Tooltip("Offset de posicao do cheque de iluminacao. É em coordenada de mundo.")]
+    [SerializeField]
+    private Vector3 offset;
+
     void Awake()
     {
         lightChangeEvent = (x) => { };
@@ -40,14 +44,14 @@ public class LightDetector : MonoBehaviour
 
     void FixedUpdate()
     {
-        LightSystem.Instance.UpdateDetectorPos(GetInstanceID(), transform.position);
+        LightSystem.Instance.UpdateDetectorPos(GetInstanceID(), transform.position + offset);
     }
 
 
     void OnEnable()
     {
         LightSystem.Instance.AddDetector(
-                transform.position,
+                transform.position + offset,
                 (lit)=>
                 {
                     if(_isLit != lit)

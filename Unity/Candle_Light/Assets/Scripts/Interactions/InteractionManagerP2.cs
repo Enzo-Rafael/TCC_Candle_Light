@@ -31,6 +31,9 @@ public class InteractionManagerP2 : MonoBehaviour
     [SerializeField]
     private int indexText = 0;
 
+    [SerializeField]
+    private AudioSource interactAudio;
+
 
     //------------------------- Variaveis Globais privadas -------------------------------
 
@@ -124,6 +127,7 @@ public class InteractionManagerP2 : MonoBehaviour
         foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
         {
             interactable.BaseAction();
+            interactAudio.Play();
         }
 
         InteractableInfos infos = potentialInteractions.First.Value.GetComponent<InteractableInfos>();

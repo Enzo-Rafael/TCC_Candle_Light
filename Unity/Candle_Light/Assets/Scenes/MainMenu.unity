@@ -2245,10 +2245,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 202655823}
   m_HandleRect: {fileID: 271813575}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 0.5
+  m_MinValue: 1
+  m_MaxValue: 5
+  m_WholeNumbers: 1
+  m_Value: 3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3147,6 +3147,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1906807808}
         m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
         m_MethodName: SettingsButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1712878240}
+        m_TargetAssemblyTypeName: UISettingsController, Assembly-CSharp
+        m_MethodName: SaveConfig
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6895,6 +6907,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 795605536}
+        m_TargetAssemblyTypeName: SaveLoad, Assembly-CSharp
+        m_MethodName: SaveConfig
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1712878240}
         m_TargetAssemblyTypeName: UISettingsController, Assembly-CSharp
         m_MethodName: ClosePanel
@@ -10867,6 +10891,7 @@ MonoBehaviour:
   isHeardByGhost: 1
   isHeardByGirl: 1
   isAudioLocal: 0
+  canHaveMultipleInstances: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

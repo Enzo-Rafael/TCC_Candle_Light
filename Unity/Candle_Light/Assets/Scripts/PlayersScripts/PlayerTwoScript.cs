@@ -36,6 +36,8 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
     public float ShowTimerMax(){ return showTimerMax; }
     public float showTimer = 1;
 
+    [SerializeField] private AudioSource showEffectAudio;
+
     //test
     private Vector3 forward;
     private Vector3 strafe;
@@ -81,8 +83,9 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
 
     private void Show(float ammount)
     {
-        if(showTimer <=0)
+        if (showTimer <= 0)
             showTimer = Mathf.Min(showTimer + ammount, showTimerMax);
+        showEffectAudio.Play();
     }
 
     void Update()

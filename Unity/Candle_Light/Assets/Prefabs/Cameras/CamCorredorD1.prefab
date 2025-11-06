@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5791557519593490227}
   - component: {fileID: 6761756904627391875}
-  - component: {fileID: 8708089688135679000}
   - component: {fileID: 8979876978322113741}
   m_Layer: 7
   m_Name: P1 Follow Cam CorredorE(2)
@@ -27,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655086710055320175}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0053489297, y: 0.994449, z: -0.06357157, w: -0.08367321}
+  m_LocalRotation: {x: -0.0011059531, y: 0.99871826, z: -0.04390513, w: -0.025157304}
   m_LocalPosition: {x: 5.458, y: 3.7593176, z: 17.474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4809222295737684947}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.034, y: -177.114, z: 0}
 --- !u!114 &6761756904627391875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +60,7 @@ MonoBehaviour:
     FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.1
-    FarClipPlane: 1000
+    FarClipPlane: 150
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -77,35 +76,6 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!114 &8708089688135679000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1655086710055320175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Composition:
-    ScreenPosition: {x: 0, y: 0}
-    DeadZone:
-      Enabled: 0
-      Size: {x: 0.4, y: 0.2}
-    HardLimits:
-      Enabled: 0
-      Size: {x: 0.8, y: 0.8}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0.5, y: 0.5}
-  Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
-    IgnoreY: 0
 --- !u!114 &8979876978322113741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +202,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3196165600844778045}
   - component: {fileID: 1960196225084736310}
-  - component: {fileID: 3670013821569440418}
   - component: {fileID: 8089629860378540850}
   m_Layer: 7
   m_Name: P1 Follow Cam CorredorE(1)
@@ -249,13 +218,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5920833846724241861}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.02214302, y: 0.97115445, z: -0.09982783, w: -0.2154138}
-  m_LocalPosition: {x: 8.559, y: 3.86, z: 4.737}
+  m_LocalRotation: {x: -0.113399066, y: 0.1498987, z: -0.017309537, w: -0.98202413}
+  m_LocalPosition: {x: 8.721, y: 3.86, z: 4.278}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4809222295737684947}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 13.174, y: -17.358, z: 0}
 --- !u!114 &1960196225084736310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +252,7 @@ MonoBehaviour:
     FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.1
-    FarClipPlane: 1000
+    FarClipPlane: 150
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -299,35 +268,6 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!114 &3670013821569440418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5920833846724241861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Composition:
-    ScreenPosition: {x: 0, y: 0}
-    DeadZone:
-      Enabled: 0
-      Size: {x: 0.4, y: 0.2}
-    HardLimits:
-      Enabled: 0
-      Size: {x: 0.8, y: 0.8}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0.5, y: 0.5}
-  Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
-    IgnoreY: 0
 --- !u!114 &8089629860378540850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,5 +347,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextRoomsCams:
-  - {fileID: 1960196225084736310}
   - {fileID: 6761756904627391875}
+  - {fileID: 1960196225084736310}

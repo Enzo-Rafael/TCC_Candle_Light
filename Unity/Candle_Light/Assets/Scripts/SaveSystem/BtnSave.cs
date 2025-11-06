@@ -16,11 +16,13 @@ public class BtnSave : MonoBehaviour
     //UI do menu inicial do jogo
     public void BtnContinue()
     {
+        AudioManager.Instance.PlaySound("UI_GameStart");
         fade.FadeIn(1);
         
     }
     public void BtnNewSave()
     {
+        AudioManager.Instance.PlaySound("UI_GameStart");
         fade.FadeIn(0);   
     }
 

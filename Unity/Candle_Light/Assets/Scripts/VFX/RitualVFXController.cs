@@ -3,10 +3,10 @@ using UnityEngine.VFX;
 
 public class RitualVFXController : MonoBehaviour
 {
+    [SerializeField] private InputReader _inputReader = default;
     [SerializeField] private VisualEffect ritualVFX;
     [SerializeField] private VisualEffect teleVFX;
     [SerializeField] private float range;
-
     [SerializeField] private Transform targetPos;
 
     [Header("spinny parametros")]
@@ -56,6 +56,7 @@ public class RitualVFXController : MonoBehaviour
             isActivated = true;
             PlayerOneScript.Instance.SetVisible(false);
             this.CallWithDelay(Teleport, 2);
+            _inputReader.DisablePlayerInput(0);
             teleVFX.Play();
         }
 
@@ -69,7 +70,7 @@ public class RitualVFXController : MonoBehaviour
         PlayerOneScript.Instance.controller.enabled = false;
         PlayerOneScript.Instance.transform.position = targetPos.position;
         PlayerOneScript.Instance.controller.enabled = true;
-
+        _inputReader.EnablePlayerInput(0);
         animator.SetBool(paramName, true);
     }
     

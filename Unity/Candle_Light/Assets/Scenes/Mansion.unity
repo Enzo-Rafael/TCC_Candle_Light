@@ -3439,6 +3439,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1807267067}
     - target: {fileID: 5061557446704673241, guid: 4e435c14f900a18439cfb84317a4a339, type: 3}
+      propertyPath: vitCamP2
+      value: 
+      objectReference: {fileID: 792917526}
+    - target: {fileID: 5061557446704673241, guid: 4e435c14f900a18439cfb84317a4a339, type: 3}
       propertyPath: camPlayerTwo
       value: 
       objectReference: {fileID: 985309519}
@@ -3515,6 +3519,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e435c14f900a18439cfb84317a4a339, type: 3}
+--- !u!114 &792917526 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7125607950009247573, guid: 4e435c14f900a18439cfb84317a4a339, type: 3}
+  m_PrefabInstance: {fileID: 792917525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &805248506
 GameObject:
   m_ObjectHideFlags: 0
@@ -10501,7 +10516,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: LabirintoPuzzle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2047313234138672523, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
+    - {fileID: 5926913350140649515, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

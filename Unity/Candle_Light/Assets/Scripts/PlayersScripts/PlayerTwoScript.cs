@@ -1,6 +1,7 @@
 using System;
 using Unity.Cinemachine;
 using UnityEngine;
+using System.IO;
 
 //Player 2: Move setas direcionais e num1 e num2
 public class PlayerTwoScript : Singleton<PlayerTwoScript>
@@ -10,6 +11,7 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
     private Vector3 _inputVector;
 
     [SerializeField] private GameObject camPlayerTwo;
+    [SerializeField] private CinemachineCamera vitCamP2;
 
     private Vector3 playerMove;
 
@@ -87,6 +89,27 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
             showTimer = Mathf.Min(showTimer + ammount, showTimerMax);
         showEffectAudio.Play();
     }
+    void Start()
+    {
+        string path = Application.dataPath + "/saveConfig.txt";
+        if (File.Exists(path))
+        {
+            var axisController = vitCamP2.GetComponent<CinemachineInputAxisController>();
+            foreach (var c in axisController.Controllers)
+            {
+                if (c.Name == "Look X (Pan)")
+                {
+                    c.Input.Gain = SaveLoad.Instance.senceRef * 10;
+
+                }
+                if (c.Name == "Look Y (Tilt)")
+                {
+                    c.Input.Gain = SaveLoad.Instance.senceRef * 10 * -1;
+                }
+            }
+            Debug.Log("Sence loaded");
+        }
+    }
 
     void Update()
     {
@@ -129,7 +152,10 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
     /// </summary>
     public float GetVelocity(){ return velocity; }
 
-    public void SetDiePosition(Transform spawn){
+    public void SetDiePosition(Transform spawn)
+    {
         respawnPoint.position = spawn.position;
     }
+
+    
 }

@@ -249,9 +249,9 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer1MoveActions
     //Teste
     public void ChangeScale(int i)
     {
-        var action = _playersInput.FindAction("Mouse");
+        var action = _playersInput.Player2Move.Mouse;
 
-        SetScale(action, "<Mouse/VirualMouse>", new Vector2(i, i));
+        SetScale(action, "<Mouse>", new Vector2(i, i));
 
     }
     private static void SetScale(InputAction action, string bindingPathStart, Vector2 scale)
@@ -262,9 +262,10 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer1MoveActions
             if (bindings[i].isPartOfComposite || !bindings[i].path.StartsWith(bindingPathStart)) continue;
             action.ApplyBindingOverride(i,
                 new InputBinding { overrideProcessors = $"ScaleVector2(x={scale.x},y={scale.y})" });
+                Debug.Log(scale);
             return;
         }
-        Debug.Log(scale);
+        
     }
 
 }

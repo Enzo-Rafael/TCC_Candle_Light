@@ -2246,9 +2246,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 271813575}
   m_Direction: 0
   m_MinValue: 1
-  m_MaxValue: 5
+  m_MaxValue: 7
   m_WholeNumbers: 1
-  m_Value: 3
+  m_Value: 4
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -6808,7 +6808,7 @@ MonoBehaviour:
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
-  m_Dithering: 1
+  m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
   m_AllowHDROutput: 1
@@ -8535,6 +8535,7 @@ GameObject:
   - component: {fileID: 1712878239}
   - component: {fileID: 1712878238}
   - component: {fileID: 1712878240}
+  - component: {fileID: 1712878241}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -8618,7 +8619,27 @@ MonoBehaviour:
   musicSlider: {fileID: 906153894}
   sfxSlider: {fileID: 1721741454}
   brightSlider: {fileID: 352164558}
+  exposureSetter: {fileID: 1712878241}
   senceSlider: {fileID: 338453827}
+--- !u!114 &1712878241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712878236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1740d2d5ee9af8640bb73c76b812f91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profiles:
+  - {fileID: 11400000, guid: d65865f5ebb268b4e890df25373cde9a, type: 2}
+  - {fileID: 11400000, guid: 2ddaebb429d130748a4907c1f1a4bc7a, type: 2}
+  - {fileID: 11400000, guid: 112b5e238ea8e4945ba55cf8a09a4088, type: 2}
+  settingsController: {fileID: 1712878240}
+  min: -1
+  max: 1
 --- !u!1 &1718425691
 GameObject:
   m_ObjectHideFlags: 0

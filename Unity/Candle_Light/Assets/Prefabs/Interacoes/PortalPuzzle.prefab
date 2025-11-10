@@ -1570,6 +1570,7 @@ GameObject:
   - component: {fileID: 1135548745154887598}
   - component: {fileID: 2712684615273971609}
   - component: {fileID: 2433932343359583721}
+  - component: {fileID: 3433022387741517074}
   m_Layer: 0
   m_Name: PortalPuzzle
   m_TagString: Untagged
@@ -1642,7 +1643,7 @@ MonoBehaviour:
   - {fileID: 2712684615273971609}
   - {fileID: 2433932343359583721}
   _multipleCode: {fileID: 1135548745154887598}
-  indexPuzzle: 0
+  indexPuzzle: 1
   spawnProx: 0
   completed: 0
   canSave: 0
@@ -1687,6 +1688,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectReference: {fileID: 3594261250196469799}
   onOff: 0
+--- !u!114 &3433022387741517074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8849709740115723112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435f85f67c4bc4648a172ba00e06a082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8866685961559004573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,6 +2033,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PortaAnim
       objectReference: {fileID: 0}
+    - target: {fileID: 9067386640526826944, guid: 3fdec9083ed63a84f80f8cc995bf5542, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9067386640526826944, guid: 3fdec9083ed63a84f80f8cc995bf5542, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2215,7 +2236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1467345805934519188, guid: 3fdec9083ed63a84f80f8cc995bf5542, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.405
+      value: 15.406
       objectReference: {fileID: 0}
     - target: {fileID: 1467345805934519188, guid: 3fdec9083ed63a84f80f8cc995bf5542, type: 3}
       propertyPath: m_LocalRotation.w

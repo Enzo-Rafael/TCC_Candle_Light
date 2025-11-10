@@ -3405,8 +3405,8 @@ GameObject:
   - component: {fileID: 4135097544244111326}
   - component: {fileID: 4959883652877780032}
   - component: {fileID: 8523984296232252366}
-  - component: {fileID: 4830339193448164802}
   - component: {fileID: 6254562246142247469}
+  - component: {fileID: 4806100325176792447}
   m_Layer: 8
   m_Name: P1 Cam
   m_TagString: MainCamera
@@ -3422,8 +3422,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6272373655261356910}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.004976774, y: 0.8157976, z: 0.00702097, w: 0.5782734}
-  m_LocalPosition: {x: -14.648143, y: 0.9647406, z: 5.1861267}
+  m_LocalRotation: {x: 0.22820736, y: 0.64084536, z: -0.2080878, w: 0.7028073}
+  m_LocalPosition: {x: -5.381, y: 5.1549997, z: -0.45200062}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3512,14 +3512,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4830339193448164802
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6272373655261356910}
-  m_Enabled: 0
 --- !u!114 &6254562246142247469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3564,6 +3556,14 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!81 &4806100325176792447
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6272373655261356910}
+  m_Enabled: 1
 --- !u!1 &6361989460858426181
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,7 +37,7 @@ public class LightDetector : MonoBehaviour
     {
         lightChangeEvent = (x) => { };
         if (_observerEvent != null)
-            lightChangeEvent += (x) => _observerEvent.NotifyObservers(x ? 1 : 0);
+            lightChangeEvent += (x) => _observerEvent.NotifyObservers(x ? 1 : 0, x ? true : false);
         if (animator != null)
             lightChangeEvent += (x) => animator.SetBool("IsLit", x);
     }

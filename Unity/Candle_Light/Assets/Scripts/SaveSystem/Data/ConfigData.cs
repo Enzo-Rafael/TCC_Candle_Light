@@ -11,6 +11,8 @@ public class ConfigData
     public int audioSfx;
     public int audioMusic;
 
+    public int final;
+
     public ConfigData(int sR, int bR, int aM, int aSfx, int aMu)
     {
         senceRef = sR;

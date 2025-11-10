@@ -36,8 +36,10 @@ public class SaveLoad : MonoBehaviour
     [Header("Variaveis")]
     public string sceneName = "Mansion";// public Scene scene;
     public bool onLoad = false;
-    public int senceRef = 0;
-    public int brightRef = 0;
+    public int senceRef;
+    public int brightRef;
+
+    int finalsScene = 1;
     //private bool isLoaded = false;
     [NonSerialized] public int priVez = 0;
     [NonSerialized] public int spawnIndex = 0;
@@ -106,6 +108,13 @@ public class SaveLoad : MonoBehaviour
         GameObject p1 = GameObject.FindWithTag("Player1");
         int p1camIndex = p1.GetComponent<ChangeCam>().currentCamIndex;
         int p1camLast = p1.GetComponent<ChangeCam>().camRef.Length;
+        //---------------------Config------------------------------------------------
+        data.configData.audioMaster = audioMaster;
+        data.configData.audioSfx = audioSfx;
+        data.configData.audioMusic = audioMusic;
+        data.configData.senceRef = senceRef;
+        data.configData.brightRef = brightRef;
+        data.configData.final = finalsScene;
         //Medium (Obs: "spawnIndex" vai definir qual spawn esta chamand, tomar cuidado)
         data.mediumData = new MediumAdapter(p1, p1camIndex, p1camLast);
         if (objHolds != null)
@@ -180,6 +189,7 @@ public class SaveLoad : MonoBehaviour
         LocateGO();
         TurnOff();
         //---------------------------------------------------
+        finalsScene = data.configData.final;
         //Pos Medium e Ghost
         GameObject p1 = GameObject.Find("Player1");
         GameObject p2 = GameObject.Find("Player2");
@@ -392,6 +402,7 @@ public class SaveLoad : MonoBehaviour
         //btnContinue?.SetActive(true);
         audioManager.masterVolume = audioMaster;
     }
+
     public void SetAudioMaster(int volume)
     {
         audioMaster = volume;
@@ -405,6 +416,17 @@ public class SaveLoad : MonoBehaviour
     {
         audioMusic = volume;
     }
+    public int GetFinal()
+    {
+        return finalsScene;
+    }
+    public void SetFinal(int final)
+    {
+        finalsScene = final;
+    }
+    public void LoadConfig()
+    {
+
     public void SaveConfig(){
         //---------------------Config------------------------------------------------
         SceneConfigData data = new SceneConfigData();
@@ -413,4 +435,5 @@ public class SaveLoad : MonoBehaviour
         Debug.Log("S");
         File.WriteAllText(pathConfig, s);
     }
+    
 }

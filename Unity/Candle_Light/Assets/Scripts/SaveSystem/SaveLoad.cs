@@ -99,7 +99,6 @@ public class SaveLoad : Singleton<SaveLoad>
     {
         notification = GameObject.Find("NotificationSave").GetComponent<Animator>();
         SceneData data = new SceneData();
-        SceneConfigData configData = new SceneConfigData();
         //Seta-as-Referencias-------------------------------------------------------------
         SetMediumCams();
         SetSpawn();
@@ -109,13 +108,6 @@ public class SaveLoad : Singleton<SaveLoad>
         GameObject p1 = GameObject.FindWithTag("Player1");
         int p1camIndex = p1.GetComponent<ChangeCam>().currentCamIndex;
         int p1camLast = p1.GetComponent<ChangeCam>().camRef.Length;
-        //---------------------Config------------------------------------------------
-        configData.configData.audioMaster = audioMaster;
-        configData.configData.audioSfx = audioSfx;
-        configData.configData.audioMusic = audioMusic;
-        configData.configData.senceRef = senceRef;
-        configData.configData.brightRef = brightRef;
-        configData.configData.final = finalsScene;
         //Medium (Obs: "spawnIndex" vai definir qual spawn esta chamand, tomar cuidado)
         data.mediumData = new MediumAdapter(p1, p1camIndex, p1camLast);
         if (objHolds != null)
@@ -425,10 +417,6 @@ public class SaveLoad : Singleton<SaveLoad>
     {
         finalsScene = final;
     }
-    public void LoadConfig()
-    {
-        
-    }
 
     public void SaveConfig(){
         //---------------------Config------------------------------------------------
@@ -437,6 +425,7 @@ public class SaveLoad : Singleton<SaveLoad>
         string s = JsonUtility.ToJson(data, true);
         Debug.Log("S");
         File.WriteAllText(pathConfig, s);
+        //---------------------Config------------------------------------------------
     }
     
 }

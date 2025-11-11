@@ -59,6 +59,13 @@ public class ExecuteItemCommand : Interactable, IObserver
         if (_multipleCode != null && !_multiple.Validator(additionalInformation)) return;
         ExecuteOrder(message);
         completed = true;
+        foreach(ObserverEventChannel channel in _observerEventSpeak)
+        {
+            if(channel != null)
+            {
+                channel.NotifyObservers(1, 1);
+            }
+        }
     }
     /*------------------------------------------------------------------------------
     Função:     UnregisterEvent

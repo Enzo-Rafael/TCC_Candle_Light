@@ -18,10 +18,9 @@ class SceneConfigData
 {
     public ConfigData configData;
 }
-public class SaveLoad : MonoBehaviour
+public class SaveLoad : Singleton<SaveLoad>
 {
-    //Instancia
-    public static SaveLoad Instance;
+    
     //Referencias
     [Header("Referencias")]
     public GameObject[] spawnPoints;//GameObjects de Spawn
@@ -36,7 +35,7 @@ public class SaveLoad : MonoBehaviour
     [Header("Variaveis")]
     public string sceneName = "Mansion";// public Scene scene;
     public bool onLoad = false;
-    public int senceRef;
+    public int senceRef = 1;
     public int brightRef;
 
     int finalsScene = 1;
@@ -56,6 +55,7 @@ public class SaveLoad : MonoBehaviour
     {
         path = Application.dataPath + "/save.txt";
         pathConfig = Application.dataPath + "/saveConfig.txt";
+        /*
         if (Instance == null)
         {
             Instance = this;
@@ -65,7 +65,7 @@ public class SaveLoad : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        */
     }
 
 

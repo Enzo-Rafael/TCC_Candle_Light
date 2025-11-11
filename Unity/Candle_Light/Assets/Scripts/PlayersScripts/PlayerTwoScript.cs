@@ -104,7 +104,7 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
                 }
                 if (c.Name == "Look Y (Tilt)")
                 {
-                    c.Input.Gain = SaveLoad.Instance.senceRef * 10 * -1;
+                    c.Input.Gain = SaveLoad.Instance.senceRef * -10;
                 }
             }
             Debug.Log("Sence loaded");

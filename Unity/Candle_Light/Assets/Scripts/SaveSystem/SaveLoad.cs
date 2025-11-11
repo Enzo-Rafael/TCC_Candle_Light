@@ -99,6 +99,7 @@ public class SaveLoad : MonoBehaviour
     {
         notification = GameObject.Find("NotificationSave").GetComponent<Animator>();
         SceneData data = new SceneData();
+        SceneConfigData configData = new SceneConfigData();
         //Seta-as-Referencias-------------------------------------------------------------
         SetMediumCams();
         SetSpawn();
@@ -109,12 +110,12 @@ public class SaveLoad : MonoBehaviour
         int p1camIndex = p1.GetComponent<ChangeCam>().currentCamIndex;
         int p1camLast = p1.GetComponent<ChangeCam>().camRef.Length;
         //---------------------Config------------------------------------------------
-        data.configData.audioMaster = audioMaster;
-        data.configData.audioSfx = audioSfx;
-        data.configData.audioMusic = audioMusic;
-        data.configData.senceRef = senceRef;
-        data.configData.brightRef = brightRef;
-        data.configData.final = finalsScene;
+        configData.configData.audioMaster = audioMaster;
+        configData.configData.audioSfx = audioSfx;
+        configData.configData.audioMusic = audioMusic;
+        configData.configData.senceRef = senceRef;
+        configData.configData.brightRef = brightRef;
+        configData.configData.final = finalsScene;
         //Medium (Obs: "spawnIndex" vai definir qual spawn esta chamand, tomar cuidado)
         data.mediumData = new MediumAdapter(p1, p1camIndex, p1camLast);
         if (objHolds != null)
@@ -189,7 +190,7 @@ public class SaveLoad : MonoBehaviour
         LocateGO();
         TurnOff();
         //---------------------------------------------------
-        finalsScene = data.configData.final;
+        //finalsScene = data.configData.final;
         //Pos Medium e Ghost
         GameObject p1 = GameObject.Find("Player1");
         GameObject p2 = GameObject.Find("Player2");
@@ -426,6 +427,8 @@ public class SaveLoad : MonoBehaviour
     }
     public void LoadConfig()
     {
+        
+    }
 
     public void SaveConfig(){
         //---------------------Config------------------------------------------------

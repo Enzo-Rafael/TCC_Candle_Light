@@ -395,7 +395,10 @@ public class SaveLoad : Singleton<SaveLoad>
         //btnContinue?.SetActive(true);
         audioManager.masterVolume = audioMaster;
     }
-
+    public int GetAudioMaster()
+    {
+        return audioMaster;
+    }
     public void SetAudioMaster(int volume)
     {
         audioMaster = volume;

@@ -25,9 +25,9 @@ public class CustomRotateLab : MonoBehaviour, ICodeCustom
     private void Start()
     {
         startEuler = transform.localEulerAngles;
-        if (axisX == 1) { rotState = (4 - (int)(Math.Abs(transform.eulerAngles.x) / 90)) % 4; }
-        else if (axisY == 1) { rotState = (4 - (int)(Math.Abs(transform.eulerAngles.y) / 90)) % 4; }
-        else if (axisZ == 1) { rotState = (4 - (int)(Math.Abs(transform.eulerAngles.z) / 90)) % 4; }
+        if (axisX == 1) { rotState = (4 - (int)(Math.Abs(startEuler.x) / 90)) % 4; }
+        else if (axisY == 1) { rotState = (4 - (int)(Math.Abs(startEuler.y) / 90)) % 4; }
+        else if (axisZ == 1) { rotState = (4 - (int)(Math.Abs(startEuler.z) / 90)) % 4; }
     }
 
     public void CustomBaseAction(object additionalInformation){

@@ -44,7 +44,7 @@ public class UISettingsController : MonoBehaviour
     }
     public void ClosePanel()
     {
-        SaveLoad.Instance.SaveConfig();
+        SaveConfig();
         Closed.Invoke();
     }
     public void SetMusicVolume()
@@ -103,9 +103,9 @@ public class UISettingsController : MonoBehaviour
             senceSlider.value = data.configData.senceRef;
             brightSlider.value = data.configData.brightRef;
             //AudioManager
-            AudioManager.Instance.SetMaster((float)data.configData.audioMaster * 5);
-            AudioManager.Instance.SetSfx((float)data.configData.audioSfx * 5);
-            AudioManager.Instance.SetMusic((float)data.configData.audioMusic * 5);
+            AudioManager.Instance.SetMaster((float)data.configData.audioMaster);
+            AudioManager.Instance.SetSfx((float)data.configData.audioSfx);
+            AudioManager.Instance.SetMusic((float)data.configData.audioMusic);
             SenceLoad(data.configData.senceRef);
             
             Debug.Log("Load Config");

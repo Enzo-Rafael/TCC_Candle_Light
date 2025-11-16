@@ -11,6 +11,7 @@ public class LoadOnVideoEnd : MonoBehaviour
     void Start()
     {
         vp = GetComponent<VideoPlayer>();
+        vp.SetDirectAudioVolume(0, AudioManager.Instance.musicVolume*AudioManager.Instance.masterVolume);
 
         vp.loopPointReached += (vp) => { SceneManager.LoadScene(sceneName); };
     }

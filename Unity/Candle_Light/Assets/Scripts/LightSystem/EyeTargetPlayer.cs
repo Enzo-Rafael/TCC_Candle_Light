@@ -20,7 +20,7 @@ public class EyeTargetPlayer : MonoBehaviour
         if (playerOne != null && lightDetector.IsLit == false)
         {
 
-            innerEye.LookAt(new Vector3(playerOne.position.x, playerOne.position.y+2, playerOne.position.z), Vector3.up);
+            //innerEye.LookAt(new Vector3(playerOne.position.x, playerOne.position.y+2, playerOne.position.z), Vector3.up);
             //outerEye.LookAt(new Vector3(playerOne.position.x/1, playerOne.position.y+2, playerOne.position.z/1), Vector3.up);
             //outerEye.LookAt(new Vector3(playerOne.position.x/2, playerOne.position.y/2, playerOne.position.z/2));
         }

@@ -189,6 +189,77 @@ MonoBehaviour:
   - {fileID: 6459332578030483506}
   - {fileID: 8227364320984648271}
   - {fileID: 1176792347743650059}
+--- !u!1 &3652482566521061561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4784898995276658133}
+  - component: {fileID: 5825894594997264558}
+  - component: {fileID: 1203139444536528685}
+  m_Layer: 0
+  m_Name: TriggerChangeCam (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4784898995276658133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652482566521061561}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 5.91, y: 5.989, z: 2.939}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8374748653093571793}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!65 &5825894594997264558
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652482566521061561}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.97, y: 0.41712317, z: 2}
+  m_Center: {x: 0, y: 0.041438438, z: -1.4478652e-16}
+--- !u!114 &1203139444536528685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652482566521061561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685edf2f3f17b9644a5fa63d774bfd88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextRoomsCams:
+  - {fileID: 1460088805675577258}
+  - {fileID: 6459332578030483506}
+  - {fileID: 8227364320984648271}
+  - {fileID: 1176792347743650059}
 --- !u!1 &3697344452909383192
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,6 +818,7 @@ Transform:
   - {fileID: 6196055578181827480}
   - {fileID: 3701130702679560937}
   - {fileID: 8605678188736220648}
+  - {fileID: 4784898995276658133}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8868785411101157036

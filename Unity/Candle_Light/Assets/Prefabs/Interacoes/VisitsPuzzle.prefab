@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 8797484504311244684}
   - component: {fileID: 8512585706333315914}
   - component: {fileID: 452659011796098653}
+  - component: {fileID: 8191867802363036707}
   m_Layer: 6
   m_Name: CasticaoComVelaPuzzleDad (3)
   m_TagString: Untagged
@@ -252,6 +253,19 @@ MonoBehaviour:
   _invertParameter: 0
   _customScripts: []
   cordMap: {x: 1, y: 0}
+--- !u!114 &8191867802363036707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856685277552228150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 11400000, guid: 60ac803b522f07141baa8f8dd89ed99f, type: 2}
 --- !u!1 &2156693435336538747
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +751,7 @@ GameObject:
   - component: {fileID: 6110074696042574133}
   - component: {fileID: 6362977354043600423}
   - component: {fileID: 761629574192940439}
+  - component: {fileID: 7103268822659506618}
   m_Layer: 6
   m_Name: CasticaoComVelaPuzzleDad (1)
   m_TagString: Untagged
@@ -803,6 +818,19 @@ MonoBehaviour:
   _invertParameter: 0
   _customScripts: []
   cordMap: {x: 0, y: 1}
+--- !u!114 &7103268822659506618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3573891433535579943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 11400000, guid: 60ac803b522f07141baa8f8dd89ed99f, type: 2}
 --- !u!1 &3718027588908873428
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,6 +2529,7 @@ GameObject:
   - component: {fileID: 7368682956642033132}
   - component: {fileID: 7218062436488609968}
   - component: {fileID: 1464769241019457120}
+  - component: {fileID: 8904077197995302197}
   m_Layer: 6
   m_Name: CasticaoComVelaPuzzleDad
   m_TagString: Untagged
@@ -2567,6 +2596,19 @@ MonoBehaviour:
   _invertParameter: 0
   _customScripts: []
   cordMap: {x: 1, y: 1}
+--- !u!114 &8904077197995302197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8186173060435787414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 11400000, guid: 60ac803b522f07141baa8f8dd89ed99f, type: 2}
 --- !u!1 &8356004220103974842
 GameObject:
   m_ObjectHideFlags: 0
@@ -2936,6 +2978,7 @@ GameObject:
   - component: {fileID: 8084784178153001858}
   - component: {fileID: 6004430062614080352}
   - component: {fileID: 5075804333965967951}
+  - component: {fileID: 4156490045127906697}
   m_Layer: 6
   m_Name: CasticaoComVelaPuzzleDad (2)
   m_TagString: Untagged
@@ -3002,6 +3045,19 @@ MonoBehaviour:
   _invertParameter: 0
   _customScripts: []
   cordMap: {x: 0, y: 0}
+--- !u!114 &4156490045127906697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9023518584166670609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 11400000, guid: 60ac803b522f07141baa8f8dd89ed99f, type: 2}
 --- !u!1 &9141174161740418126
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,9 +3250,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 983637420010381005}
     m_Modifications:
+    - target: {fileID: 1617518867615338427, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377409578632961692, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_Size.x
+      value: 0.62775624
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377409578632961692, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_Size.y
+      value: 0.8059818
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377409578632961692, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_Center.y
+      value: -0.20299092
+      objectReference: {fileID: 0}
     - target: {fileID: 2402034341196821567, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402034341196821567, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402034341196821567, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402034341196821567, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.363
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402034341196821567, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.70703965
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402034341196821567, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.009743148
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402034341196821567, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.009743148
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402034341196821567, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402034341196821567, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 1.579
       objectReference: {fileID: 0}
     - target: {fileID: 5234573490069284922, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3243,8 +3347,28 @@ PrefabInstance:
       value: GhostDoors
       objectReference: {fileID: 0}
     - target: {fileID: 6336595261322840840, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.241
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336595261322840840, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616816198820631621, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.058
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727467486943895853, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727467486943895853, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727467486943895853, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.57
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

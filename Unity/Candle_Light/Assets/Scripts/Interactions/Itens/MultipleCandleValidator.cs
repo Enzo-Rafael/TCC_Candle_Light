@@ -28,10 +28,10 @@ public class MultipleCandleValidator : MonoBehaviour, IMultiple
         {
             if (!light.IsFullyLit) return false;
         }
-        foreach (UsePuzzleDad light in lights)
-        {
-            light.gameObject.layer = default;
-        }
+        // foreach (UsePuzzleDad light in lights)
+        // {
+        //     light.gameObject.layer = default;
+        // }
         if(AlertThisObservers != null){
             foreach (ObserverEventChannel observers in AlertThisObservers)
             {

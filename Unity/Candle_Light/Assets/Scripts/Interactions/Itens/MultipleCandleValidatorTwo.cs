@@ -19,9 +19,9 @@ public class MultipleCandleValidatorTwo : MonoBehaviour, IMultiple
         foreach (UsePuzzleMediumPart light in lights){
             if (!light.IsFullyLit) return false;
         }
-        foreach (UsePuzzleMediumPart light in lights){
-            light.gameObject.layer = default;
-        }
+        // foreach (UsePuzzleMediumPart light in lights){
+        //     light.gameObject.layer = default;
+        // }
         return true;
     }
 }

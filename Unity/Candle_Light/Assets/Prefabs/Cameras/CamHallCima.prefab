@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233649974174401755}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11618368, y: 0.8837727, z: -0.31579527, w: 0.3251472}
+  m_LocalRotation: {x: 0.11121246, y: 0.88878673, z: -0.31504086, w: 0.3137503}
   m_LocalPosition: {x: -6.297, y: 9.117, z: -5.286}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
     FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.1
-    FarClipPlane: 1000
+    FarClipPlane: 150
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -189,6 +189,77 @@ MonoBehaviour:
   - {fileID: 6459332578030483506}
   - {fileID: 8227364320984648271}
   - {fileID: 1176792347743650059}
+--- !u!1 &3652482566521061561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4784898995276658133}
+  - component: {fileID: 5825894594997264558}
+  - component: {fileID: 1203139444536528685}
+  m_Layer: 0
+  m_Name: TriggerChangeCam (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4784898995276658133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652482566521061561}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 5.91, y: 5.989, z: 2.939}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8374748653093571793}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!65 &5825894594997264558
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652482566521061561}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.97, y: 0.41712317, z: 2}
+  m_Center: {x: 0, y: 0.041438438, z: -1.4478652e-16}
+--- !u!114 &1203139444536528685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652482566521061561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685edf2f3f17b9644a5fa63d774bfd88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextRoomsCams:
+  - {fileID: 1460088805675577258}
+  - {fileID: 6459332578030483506}
+  - {fileID: 8227364320984648271}
+  - {fileID: 1176792347743650059}
 --- !u!1 &3697344452909383192
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4737930449379147334}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2836807, y: -0.6516316, z: 0.28801095, w: 0.6418343}
+  m_LocalRotation: {x: 0.26894093, y: -0.6589953, z: 0.27402636, w: 0.6467656}
   m_LocalPosition: {x: 6.301, y: 7.397, z: -12.934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -321,7 +392,7 @@ MonoBehaviour:
     FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.1
-    FarClipPlane: 1000
+    FarClipPlane: 150
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -405,7 +476,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5379565947970217106}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.05056675, y: 0.948799, z: -0.20195507, w: 0.23756617}
+  m_LocalRotation: {x: 0.051124696, y: 0.9485166, z: -0.20722517, w: 0.23400931}
   m_LocalPosition: {x: -8.153, y: 9.18, z: 2.776}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -439,7 +510,7 @@ MonoBehaviour:
     FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.1
-    FarClipPlane: 1000
+    FarClipPlane: 150
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -747,6 +818,7 @@ Transform:
   - {fileID: 6196055578181827480}
   - {fileID: 3701130702679560937}
   - {fileID: 8605678188736220648}
+  - {fileID: 4784898995276658133}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8868785411101157036
@@ -776,7 +848,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8868785411101157036}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.02071331, y: 0.9532587, z: -0.29386085, w: -0.06719216}
+  m_LocalRotation: {x: -0.023858517, y: 0.95466936, z: -0.285808, w: -0.07969334}
   m_LocalPosition: {x: 1.989, y: 9.048, z: -1.026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -810,7 +882,7 @@ MonoBehaviour:
     FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.1
-    FarClipPlane: 1000
+    FarClipPlane: 150
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:

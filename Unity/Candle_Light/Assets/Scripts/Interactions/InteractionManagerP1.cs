@@ -46,7 +46,7 @@ public class InteractionManagerP1 : MonoBehaviour
     private const string defaultTag = "Untagged";
 
 
-    private LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
+    public LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
 
     /*------------------------------------------------------------------------------
     Função:     OnEnable
@@ -207,10 +207,9 @@ public class InteractionManagerP1 : MonoBehaviour
                     }
                     else
                     {
-                        
+                        _inputReader.EnablePlayerInput(1);
                         iController.canvasCloseText();
                         iController.canvasCloseSprite();
-                        _inputReader.EnablePlayerInput(1);
                         indexText = 1;
                         foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
                         {

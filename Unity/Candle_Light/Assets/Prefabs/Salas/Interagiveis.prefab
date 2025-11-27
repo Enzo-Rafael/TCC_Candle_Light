@@ -927,6 +927,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6399805930472567149, guid: efc4eb8c1d5811544888cddeb01bbb7b, type: 3}
+      propertyPath: indexPuzzle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399805930472567149, guid: efc4eb8c1d5811544888cddeb01bbb7b, type: 3}
       propertyPath: 'interactions.Array.data[0]'
       value: 
       objectReference: {fileID: 8805615598939706837}
@@ -1054,16 +1058,64 @@ PrefabInstance:
       propertyPath: m_Name
       value: PortalPuzzle
       objectReference: {fileID: 0}
+    - target: {fileID: 9116151464992485434, guid: 54d66057ac9cb094cb0a1714768a4299, type: 3}
+      propertyPath: canSave
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116151464992485434, guid: 54d66057ac9cb094cb0a1714768a4299, type: 3}
+      propertyPath: indexPuzzle
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4415049017910695298, guid: 54d66057ac9cb094cb0a1714768a4299, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4667914736356655036}
+    - targetCorrespondingSourceObject: {fileID: 8942418249152208690, guid: 54d66057ac9cb094cb0a1714768a4299, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7186123519136087701}
   m_SourcePrefab: {fileID: 100100000, guid: 54d66057ac9cb094cb0a1714768a4299, type: 3}
+--- !u!1 &1746840061021161976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4415049017910695298, guid: 54d66057ac9cb094cb0a1714768a4299, type: 3}
+  m_PrefabInstance: {fileID: 2700860666357980282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4667914736356655036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746840061021161976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4bf8dcd8529f304792aeb9a0940e3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3527881740427512899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1553442490845188153, guid: 54d66057ac9cb094cb0a1714768a4299, type: 3}
   m_PrefabInstance: {fileID: 2700860666357980282}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6440913223765427016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8942418249152208690, guid: 54d66057ac9cb094cb0a1714768a4299, type: 3}
+  m_PrefabInstance: {fileID: 2700860666357980282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7186123519136087701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6440913223765427016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4bf8dcd8529f304792aeb9a0940e3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4105960337431215368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1254,19 +1306,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5112375157775719838, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 4.1326e-40
+      value: 9.011431
       objectReference: {fileID: 0}
     - target: {fileID: 5112375157775719838, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 9.1835e-41
+      value: 7.58e-43
       objectReference: {fileID: 0}
     - target: {fileID: 5112375157775719838, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 2.0387484e-38
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 5112375157775719838, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 4.5697343e-37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5973922315954919590, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1686,6 +1738,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1445510170027696819, guid: 3a4ab00522e0d0046ae1597f8951f66b, type: 3}
+      propertyPath: spawnProx
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445510170027696819, guid: 3a4ab00522e0d0046ae1597f8951f66b, type: 3}
+      propertyPath: indexPuzzle
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4152117666977699054, guid: 3a4ab00522e0d0046ae1597f8951f66b, type: 3}
       propertyPath: m_Name
       value: VisitsPuzzle
@@ -1747,6 +1807,10 @@ PrefabInstance:
     - target: {fileID: 3398783085857731048, guid: 9ced8dbf7cfa0a94ba6d63e6af3aac87, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5274912004868449164, guid: 9ced8dbf7cfa0a94ba6d63e6af3aac87, type: 3}
+      propertyPath: canSave
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5453266273562478750, guid: 9ced8dbf7cfa0a94ba6d63e6af3aac87, type: 3}
       propertyPath: m_Name
@@ -2344,19 +2408,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5112375157775719838, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 0
+      value: -0.73212695
       objectReference: {fileID: 0}
     - target: {fileID: 5112375157775719838, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 3.673418e-39
+      value: 11.107747
       objectReference: {fileID: 0}
     - target: {fileID: 5112375157775719838, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5112375157775719838, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 0
+      value: 0.6811682
       objectReference: {fileID: 0}
     - target: {fileID: 5973922315954919590, guid: 713981de89e8785428d620dff6f3f77e, type: 3}
       propertyPath: m_LocalPosition.x

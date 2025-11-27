@@ -13,6 +13,7 @@ class SceneData
     public GhostData ghostData;
     public CastesalData[] castesalData;
     public PuzzleData[] puzzleData;
+    public DropLocationData[] dropLocationData;
 }
 class SceneConfigData
 {
@@ -23,10 +24,11 @@ public class SaveLoad : Singleton<SaveLoad>
     
     //Referencias
     [Header("Referencias")]
-    public GameObject[] spawnPoints;//GameObjects de Spawn
-    public GameObject[] puzzles;//GameObjects de Puzzle
-    public CinemachineCamera[] p1Cams;//Cameras da Medium
-    public GameObject[] objHolds; //Objetos que podem ser segurados 
+    private GameObject[] spawnPoints;//GameObjects de Spawn
+    private GameObject[] puzzles;//GameObjects de Puzzle
+    private CinemachineCamera[] p1Cams;//Cameras da Medium
+    private GameObject[] objHolds; //Objetos que podem ser segurados 
+    private GameObject[] dropLocations;//Objetos onde se pode ter coisas para colocar;
     [SerializeField] private GameObject btnContinue;//Btn para liberar a tela de load
     [SerializeField] private AudioManager audioManager; //audilistener
     [SerializeField] private Animator notification;
@@ -55,17 +57,16 @@ public class SaveLoad : Singleton<SaveLoad>
     {
         path = Application.dataPath + "/save.txt";
         pathConfig = Application.dataPath + "/saveConfig.txt";
-        /*
-        if (Instance == null)
+        
+        if (Instance != null)
         {
-            Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-        */
+        
     }
 
 
@@ -104,6 +105,7 @@ public class SaveLoad : Singleton<SaveLoad>
         SetSpawn();
         SetPuzzle();
         SetHoldObjs();
+        SetDropLocations();
         //---------------------------------------------------------------------------
         GameObject p1 = GameObject.FindWithTag("Player1");
         int p1camIndex = p1.GetComponent<ChangeCam>().currentCamIndex;
@@ -153,6 +155,14 @@ public class SaveLoad : Singleton<SaveLoad>
                 data.puzzleData[i] = new PuzzleData(puzzles[i].GetComponent<ExecuteItemCommand>());
             }
         }
+        if(dropLocations != null)
+        {
+            data.dropLocationData = new DropLocationData[dropLocations.Length];
+            for (int i = 0; i < dropLocations.Length; i++)
+            {
+                data.dropLocationData[i].hasItem = dropLocations[i].GetComponent<UseEquipDropGeneric>().itemOnTop;
+            }
+        }
         //Gera o arquivo de save-----------------------------------------------------
         string s = JsonUtility.ToJson(data, true);
         onLoad = true;
@@ -178,6 +188,7 @@ public class SaveLoad : Singleton<SaveLoad>
         SetSpawn();
         SetPuzzle();
         SetHoldObjs();
+        SetDropLocations();
         //Test
         LocateGO();
         TurnOff();
@@ -267,6 +278,15 @@ public class SaveLoad : Singleton<SaveLoad>
                         puzzles[i].GetComponent<ExecuteItemCommand>().LoadCompletePuzzle();
                     }
                 }
+            }
+        }
+        //DropLocations
+        if(dropLocations != null)
+        {
+            //data.dropLocationData = new DropLocationData[dropLocations.Length];
+            for (int i = 0; i < dropLocations.Length; i++)
+            {
+                dropLocations[i].GetComponent<UseEquipDropGeneric>().itemOnTop = data.dropLocationData[i].hasItem ;
             }
         }
         //----------------------------------------------------------------------
@@ -372,6 +392,16 @@ public class SaveLoad : Singleton<SaveLoad>
     public void SetHoldObjs()//Puxa os objs que podem ser carregados da cena de jogo
     {
         HoldBeacom[] b = FindObjectsByType<HoldBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+        objHolds = new GameObject[b.Length];
+        for (int cine = 0; cine < b.Length; cine++)
+        {
+            objHolds[cine] = b[cine].gameObject;
+        }
+        objHolds.OrderBy(go => go.name).ToArray();
+    }
+    public void SetDropLocations()//Puxa os objs que podem ser carregados da cena de jogo
+    {
+        DropLocationBeacom[] b = FindObjectsByType<DropLocationBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
         objHolds = new GameObject[b.Length];
         for (int cine = 0; cine < b.Length; cine++)
         {

@@ -160,7 +160,7 @@ public class SaveLoad : Singleton<SaveLoad>
             data.dropLocationData = new DropLocationData[dropLocations.Length];
             for (int i = 0; i < dropLocations.Length; i++)
             {
-                data.dropLocationData[i].hasItem = dropLocations[i].GetComponent<UseEquipDropGeneric>().itemOnTop;
+               // data.dropLocationData[i].hasItem = dropLocations[i].GetComponent<UseEquipDropGeneric>().itemOnTop;
             }
         }
         //Gera o arquivo de save-----------------------------------------------------
@@ -286,7 +286,7 @@ public class SaveLoad : Singleton<SaveLoad>
             //data.dropLocationData = new DropLocationData[dropLocations.Length];
             for (int i = 0; i < dropLocations.Length; i++)
             {
-                dropLocations[i].GetComponent<UseEquipDropGeneric>().itemOnTop = data.dropLocationData[i].hasItem ;
+               // dropLocations[i].GetComponent<UseEquipDropGeneric>().itemOnTop = data.dropLocationData[i].hasItem ;
             }
         }
         //----------------------------------------------------------------------

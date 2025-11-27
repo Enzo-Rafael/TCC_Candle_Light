@@ -14,7 +14,6 @@ using UnityEngine;
 
 public class UseEquipDropGeneric : Interactable, IUseEquip
 {
-    public bool itemOnTop = false;
     private int message = 0;
     public void BaseAction(GameObject itemUse)
     {
@@ -23,8 +22,5 @@ public class UseEquipDropGeneric : Interactable, IUseEquip
         message = itemOnTop ? 1 : 0;
         ExecuteOrder(message);
     }
-    public bool GetAction(){
-        Debug.Log("Get Action " + itemOnTop);
-        return itemOnTop;
-    }
+
 }

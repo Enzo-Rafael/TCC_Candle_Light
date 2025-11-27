@@ -122,6 +122,9 @@ public class ExecuteItemCommand : Interactable, IObserver
             i.BaseAction();
             Debug.Log(i);
         }
-        
+        foreach(IUseEquip u in interactions)
+        {
+            u.GetAction();
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -20,7 +21,12 @@ public class UseEquipPuzzleTP : Interactable, IUseEquip
             {
                 if (channel != null)
                 {
-                    channel.NotifyObservers(message, action == (itemUse.GetComponent<EquipItemInteractable>().ItemID == correspondingID));
+                    if(itemUse == null)
+                    {
+                        channel.NotifyObservers(message, true);
+                    }else{
+                        channel.NotifyObservers(message, action == (itemUse.GetComponent<EquipItemInteractable>().ItemID == correspondingID));
+                    }
                 }
             }
         }

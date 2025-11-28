@@ -5,6 +5,7 @@ using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 
 class SceneData
 {
@@ -58,14 +59,7 @@ public class SaveLoad : Singleton<SaveLoad>
         path = Application.dataPath + "/save.txt";
         pathConfig = Application.dataPath + "/saveConfig.txt";
         
-        if (Instance != null)
-        {
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+       
         
     }
 
@@ -157,13 +151,21 @@ public class SaveLoad : Singleton<SaveLoad>
         }
         if(dropLocations != null)
         {
-            data.dropLocationData = new DropLocationData[dropLocations.Length];
+            /*data.dropLocationData = new DropLocationData[dropLocations.Length];
             for (int i = 0; i < dropLocations.Length; i++)
             {
                 
-                data.dropLocationData[i].hasItem = dropLocations[i].GetComponent<Interactable>().GetAction();
+                data.dropLocationData[i].hasItem = new DropLocationData(dropLocations[i].GetComponent<Interactable>().GetAction());
                 
-            }
+            }*/
+            data.dropLocationData = new DropLocationData[dropLocations.Length];
+            for (int i = 0; i < dropLocations.Length; i++)
+            {
+
+            data.dropLocationData[i] = new DropLocationData(); 
+
+            data.dropLocationData[i].hasItem = dropLocations[i].GetComponent<Interactable>().GetAction();
+             }
         }
         //Gera o arquivo de save-----------------------------------------------------
         string s = JsonUtility.ToJson(data, true);

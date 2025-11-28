@@ -15,7 +15,7 @@ using UnityEngine;
 public class UseEquipDropGeneric : Interactable, IUseEquip
 {
     private int message = 0;
-    public bool itemOnTopTeste = true;
+    
     public void BaseAction(GameObject itemUse)
     {
         itemOnTop = !itemOnTop;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class UseEquipPuzzleTP : Interactable, IUseEquip
 {
     private int message = 0;
+    
 
     [Tooltip("ID que corresponde ao item aceitavel por esse local de DROP")]
     [SerializeField]

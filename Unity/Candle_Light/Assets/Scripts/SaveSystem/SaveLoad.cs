@@ -28,7 +28,7 @@ public class SaveLoad : Singleton<SaveLoad>
     private GameObject[] puzzles;//GameObjects de Puzzle
     private CinemachineCamera[] p1Cams;//Cameras da Medium
     private GameObject[] objHolds; //Objetos que podem ser segurados 
-    private GameObject[] dropLocations;//Objetos onde se pode ter coisas para colocar;
+    public GameObject[] dropLocations;//Objetos onde se pode ter coisas para colocar;
     [SerializeField] private GameObject btnContinue;//Btn para liberar a tela de load
     [SerializeField] private AudioManager audioManager; //audilistener
     [SerializeField] private Animator notification;
@@ -160,7 +160,9 @@ public class SaveLoad : Singleton<SaveLoad>
             data.dropLocationData = new DropLocationData[dropLocations.Length];
             for (int i = 0; i < dropLocations.Length; i++)
             {
-               // data.dropLocationData[i].hasItem = dropLocations[i].GetComponent<UseEquipDropGeneric>().itemOnTop;
+                
+                data.dropLocationData[i].hasItem = dropLocations[i].GetComponent<Interactable>().GetAction();
+                
             }
         }
         //Gera o arquivo de save-----------------------------------------------------
@@ -402,12 +404,12 @@ public class SaveLoad : Singleton<SaveLoad>
     public void SetDropLocations()//Puxa os objs que podem ser carregados da cena de jogo
     {
         DropLocationBeacom[] b = FindObjectsByType<DropLocationBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
-        objHolds = new GameObject[b.Length];
+        dropLocations = new GameObject[b.Length];
         for (int cine = 0; cine < b.Length; cine++)
         {
-            objHolds[cine] = b[cine].gameObject;
+            dropLocations[cine] = b[cine].gameObject;
         }
-        objHolds.OrderBy(go => go.name).ToArray();
+        dropLocations.OrderBy(go => go.name).ToArray();
     }
     private void LocateGO()//Serve para localizar alguns GameObjects em cena
     {

@@ -8248,6 +8248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: In-game UI
       objectReference: {fileID: 0}
+    - target: {fileID: 4940725848330029910, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5857514668773035385, guid: 412db8afa95e70c49b15afbacbb801da, type: 3}
       propertyPath: _playerOneCamera
       value: 
@@ -10750,7 +10754,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.29217e-40, y: 2.524355e-29, z: 0, w: 1.68e-43}
+  m_BoundingSphereOverride: {x: 1.38782e-40, y: 2.524355e-29, z: 0, w: 0.000032861717}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -13247,42 +13251,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 852941822952924543, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -28
-      objectReference: {fileID: 0}
-    - target: {fileID: 852941822952924543, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.0625
-      objectReference: {fileID: 0}
-    - target: {fileID: 852941822952924543, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 54
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265547795027919063, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8635
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265547795027919063, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.3256
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265547795027919063, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265547795027919063, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.2152
-      objectReference: {fileID: 0}
-    - target: {fileID: 2314578773941699697, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 13.72
-      objectReference: {fileID: 0}
-    - target: {fileID: 2314578773941699697, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -28.27
-      objectReference: {fileID: 0}
     - target: {fileID: 4797356057593070944, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.27
@@ -13323,37 +13291,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5560601133806101240, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5926913350140649515, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: indexPuzzle
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6670959195376212345, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
       propertyPath: m_Name
       value: LabirintoPuzzle
       objectReference: {fileID: 0}
-    - target: {fileID: 6919876922130474865, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967997324692741990, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: canSave
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967997324692741990, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: spawnProx
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967997324692741990, guid: f47fa5856f59efe41ac827a16e4c4f3a, type: 3}
-      propertyPath: indexPuzzle
-      value: 6
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
-    - {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13655,26 +13597,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CamsLabirinto
       objectReference: {fileID: 0}
-    - target: {fileID: 4671083877805639753, guid: 84a266bae9e428c4cb302514d092d38f, type: 3}
-      propertyPath: Target.TrackingTarget
-      value: 
-      objectReference: {fileID: 87783440}
-    - target: {fileID: 4734781438411517792, guid: 84a266bae9e428c4cb302514d092d38f, type: 3}
-      propertyPath: Target.TrackingTarget
-      value: 
-      objectReference: {fileID: 87783440}
-    - target: {fileID: 4957436795083758026, guid: 84a266bae9e428c4cb302514d092d38f, type: 3}
-      propertyPath: Target.TrackingTarget
-      value: 
-      objectReference: {fileID: 87783440}
-    - target: {fileID: 6397038872414620470, guid: 84a266bae9e428c4cb302514d092d38f, type: 3}
-      propertyPath: Target.TrackingTarget
-      value: 
-      objectReference: {fileID: 87783440}
-    - target: {fileID: 7579459711887371976, guid: 84a266bae9e428c4cb302514d092d38f, type: 3}
-      propertyPath: Target.TrackingTarget
-      value: 
-      objectReference: {fileID: 87783440}
     - target: {fileID: 8035299390251117738, guid: 84a266bae9e428c4cb302514d092d38f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -13715,10 +13637,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8565535921323399615, guid: 84a266bae9e428c4cb302514d092d38f, type: 3}
-      propertyPath: Target.TrackingTarget
-      value: 
-      objectReference: {fileID: 87783440}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

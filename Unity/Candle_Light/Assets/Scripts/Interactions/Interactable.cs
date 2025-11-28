@@ -35,7 +35,7 @@ public class Interactable : MonoBehaviour
     protected bool _invertParameter;
 
     [SerializeField]
-    protected bool itemOnTop;
+    public bool itemOnTop;
 
     [Tooltip("Lista de scripts customizados que serão executados quando interagir com o item")]
     [SerializeField]

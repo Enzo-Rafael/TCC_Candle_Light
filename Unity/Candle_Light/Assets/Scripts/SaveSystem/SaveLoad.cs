@@ -291,12 +291,12 @@ public class SaveLoad : Singleton<SaveLoad>
             }
             else
             {
-                if (objHolds[obj].name == data.castesalData[obj].name)
+                /*if (objHolds[obj].name == data.castesalData[obj].name)
                 {
+                    
+                }*/
                     objHolds[obj].transform.position = data.castesalData[obj].position;
                     objHolds[obj].transform.eulerAngles = data.castesalData[obj].rotation;
-                }
-                
             }
         }
 

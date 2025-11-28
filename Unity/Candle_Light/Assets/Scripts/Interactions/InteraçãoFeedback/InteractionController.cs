@@ -30,7 +30,7 @@ public class InteractionController : MonoBehaviour
         //    return;
         //}
         spriteCanvas.SetActive(true);
-        if(interactText) interactText.text = infos.text.textString[0];
+        if(interactText != null) interactText.text = infos.text.textString[0];
         //interactionSprite.sprite = infos.interactSprite;
     }
 

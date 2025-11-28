@@ -5,6 +5,7 @@ using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 
 class SceneData
 {
@@ -13,6 +14,7 @@ class SceneData
     public GhostData ghostData;
     public CastesalData[] castesalData;
     public PuzzleData[] puzzleData;
+    public DropLocationData[] dropLocationData;
 }
 class SceneConfigData
 {
@@ -20,13 +22,14 @@ class SceneConfigData
 }
 public class SaveLoad : Singleton<SaveLoad>
 {
-    
+    #region Variables
     //Referencias
     [Header("Referencias")]
-    public GameObject[] spawnPoints;//GameObjects de Spawn
-    public GameObject[] puzzles;//GameObjects de Puzzle
-    public CinemachineCamera[] p1Cams;//Cameras da Medium
-    public GameObject[] objHolds; //Objetos que podem ser segurados 
+    private GameObject[] spawnPoints;//GameObjects de Spawn
+    private GameObject[] puzzles;//GameObjects de Puzzle
+    private CinemachineCamera[] p1Cams;//Cameras da Medium
+    private GameObject[] objHolds; //Objetos que podem ser segurados 
+    public GameObject[] dropLocations;//Objetos onde se pode ter coisas para colocar;
     [SerializeField] private GameObject btnContinue;//Btn para liberar a tela de load
     [SerializeField] private AudioManager audioManager; //audilistener
     [SerializeField] private Animator notification;
@@ -49,23 +52,17 @@ public class SaveLoad : Singleton<SaveLoad>
     private int audioMaster = 0;
     private int audioSfx = 0;
     private int audioMusic = 0;
+    #endregion
 
     //Metodos
+    #region Awake&Update
     void Awake()
     {
         path = Application.dataPath + "/save.txt";
         pathConfig = Application.dataPath + "/saveConfig.txt";
-        /*
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        */
+        
+       
+        
     }
 
 
@@ -89,6 +86,9 @@ public class SaveLoad : Singleton<SaveLoad>
             StartLoad();
         }*/
     }
+    #endregion 
+
+    #region Save
     /*------------------------------------------------------------------------------
     Função:     Save
     Descrição:  Salva as informações do jogo
@@ -104,6 +104,7 @@ public class SaveLoad : Singleton<SaveLoad>
         SetSpawn();
         SetPuzzle();
         SetHoldObjs();
+        SetDropLocations();
         //---------------------------------------------------------------------------
         GameObject p1 = GameObject.FindWithTag("Player1");
         int p1camIndex = p1.GetComponent<ChangeCam>().currentCamIndex;
@@ -153,6 +154,24 @@ public class SaveLoad : Singleton<SaveLoad>
                 data.puzzleData[i] = new PuzzleData(puzzles[i].GetComponent<ExecuteItemCommand>());
             }
         }
+        if(dropLocations != null)
+        {
+            /*data.dropLocationData = new DropLocationData[dropLocations.Length];
+            for (int i = 0; i < dropLocations.Length; i++)
+            {
+                
+                data.dropLocationData[i].hasItem = new DropLocationData(dropLocations[i].GetComponent<Interactable>().GetAction());
+                
+            }*/
+            data.dropLocationData = new DropLocationData[dropLocations.Length];
+            for (int i = 0; i < dropLocations.Length; i++)
+            {
+
+            data.dropLocationData[i] = new DropLocationData(); 
+
+            data.dropLocationData[i].hasItem = dropLocations[i].GetComponent<Interactable>().GetAction();
+             }
+        }
         //Gera o arquivo de save-----------------------------------------------------
         string s = JsonUtility.ToJson(data, true);
         onLoad = true;
@@ -162,6 +181,35 @@ public class SaveLoad : Singleton<SaveLoad>
         notification.SetTrigger("Notification");
     }
 
+    public void NewSave()
+    {
+        File.Delete(path);
+        /*SceneData data = new SceneData();
+        string s = JsonUtility.ToJson(data, true);
+        onLoad = true;
+        Debug.Log("NewSave");
+        File.WriteAllText(path, s);*/
+    }
+
+    //Identificar qual spawn point esta sendo chamado
+    public void CallSave(int index)
+    {
+        spawnIndex = index;
+        Save();
+    }
+
+    public void SaveConfig(){
+        //---------------------Config------------------------------------------------
+        SceneConfigData data = new SceneConfigData();
+        data.configData = new ConfigData(senceRef,brightRef,audioMaster,audioSfx,audioMusic);
+        string s = JsonUtility.ToJson(data, true);
+        Debug.Log("S");
+        File.WriteAllText(pathConfig, s);
+        //---------------------Config------------------------------------------------
+    }
+    #endregion
+
+    #region Load
     /*------------------------------------------------------------------------------
     Função:     Load
     Descrição:  Carrega as informações do jogo quando a cena já esta carregada
@@ -178,6 +226,7 @@ public class SaveLoad : Singleton<SaveLoad>
         SetSpawn();
         SetPuzzle();
         SetHoldObjs();
+        SetDropLocations();
         //Test
         LocateGO();
         TurnOff();
@@ -210,7 +259,7 @@ public class SaveLoad : Singleton<SaveLoad>
                     //p1CamsSet[i] = p1Cams[j];
                     p1.GetComponent<ChangeCam>().camRef[i] = p1Cams[j];
                 }
-                p1Cams[j].gameObject.SetActive(true);
+                //p1Cams[j].gameObject.SetActive(true);
             }
             //Debug.Log(p1CamsSet[i]);
         }
@@ -242,8 +291,12 @@ public class SaveLoad : Singleton<SaveLoad>
             }
             else
             {
-                objHolds[obj].transform.position = data.castesalData[obj].position;
-                objHolds[obj].transform.eulerAngles = data.castesalData[obj].rotation;
+                if (objHolds[obj].name == data.castesalData[obj].name)
+                {
+                    objHolds[obj].transform.position = data.castesalData[obj].position;
+                    objHolds[obj].transform.eulerAngles = data.castesalData[obj].rotation;
+                }
+                
             }
         }
 
@@ -267,6 +320,15 @@ public class SaveLoad : Singleton<SaveLoad>
                         puzzles[i].GetComponent<ExecuteItemCommand>().LoadCompletePuzzle();
                     }
                 }
+            }
+        }
+        //DropLocations
+        if(dropLocations != null)
+        {
+            //data.dropLocationData = new DropLocationData[dropLocations.Length];
+            for (int i = 0; i < dropLocations.Length; i++)
+            {
+                dropLocations[i].GetComponent<Interactable>().itemOnTop = data.dropLocationData[i].hasItem ;
             }
         }
         //----------------------------------------------------------------------
@@ -315,23 +377,9 @@ public class SaveLoad : Singleton<SaveLoad>
 
         return true;
     }
+    #endregion
 
-    public void NewSave()
-    {
-        File.Delete(path);
-        /*SceneData data = new SceneData();
-        string s = JsonUtility.ToJson(data, true);
-        onLoad = true;
-        Debug.Log("NewSave");
-        File.WriteAllText(path, s);*/
-    }
-    //Identificar qual spawn point esta sendo chamado
-    public void CallSave(int index)
-    {
-        spawnIndex = index;
-        Save();
-    }
-
+    #region Trakers
     public void SetMediumCams()//Puxa as cameras na cena de jogo
     {
         CamsBeacom[] b = FindObjectsByType<CamsBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
@@ -379,56 +427,68 @@ public class SaveLoad : Singleton<SaveLoad>
         }
         objHolds.OrderBy(go => go.name).ToArray();
     }
-    private void LocateGO()//Serve para localizar alguns GameObjects em cena
+
+    public void SetDropLocations()//Puxa os objs que podem ser carregados da cena de jogo
     {
-        btnContinue = GameObject.Find("ButtonContinue");
+        DropLocationBeacom[] b = FindObjectsByType<DropLocationBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+        dropLocations = new GameObject[b.Length];
+        for (int cine = 0; cine < b.Length; cine++)
+        {
+            dropLocations[cine] = b[cine].gameObject;
+        }
+        dropLocations.OrderBy(go => go.name).ToArray();
     }
-    private void TurnOff()
-    {
-        inputReader.DisableAllInput();
-        //btnContinue?.SetActive(false);
-        audioManager.masterVolume = 0;
-    }
-    private void TurnOn()
-    {
-        inputReader.EnableAllInput();
-        //btnContinue?.SetActive(true);
-        audioManager.masterVolume = audioMaster;
-    }
+
     public int GetAudioMaster()
     {
         return audioMaster;
     }
+
     public void SetAudioMaster(int volume)
     {
         audioMaster = volume;
          Debug.Log("AudioMaster "+ volume);
     }
+
     public void SetAudioSfx(int volume)
     {
         audioSfx = volume;
     }
+
     public void SetAudioMusic(int volume)
     {
         audioMusic = volume;
     }
+
+    private void LocateGO()//Serve para localizar alguns GameObjects em cena
+    {
+        btnContinue = GameObject.Find("ButtonContinue");
+    }
+    #endregion
+
+    #region Final
+    private void TurnOff()
+    {
+        inputReader.DisableAllInput();
+        //btnContinue?.SetActive(false);
+        if(audioManager != null)audioManager.masterVolume = 0;
+    }
+    private void TurnOn()
+    {
+        inputReader.EnableAllInput();
+        //btnContinue?.SetActive(true);
+        if(audioManager != null)audioManager.masterVolume = audioMaster;
+    }
+    
     public int GetFinal()
     {
         return finalsScene;
     }
+
     public void SetFinal(int final)
     {
         finalsScene = final;
     }
-
-    public void SaveConfig(){
-        //---------------------Config------------------------------------------------
-        SceneConfigData data = new SceneConfigData();
-        data.configData = new ConfigData(senceRef,brightRef,audioMaster,audioSfx,audioMusic);
-        string s = JsonUtility.ToJson(data, true);
-        Debug.Log("S");
-        File.WriteAllText(pathConfig, s);
-        //---------------------Config------------------------------------------------
-    }
+    #endregion
     
 }

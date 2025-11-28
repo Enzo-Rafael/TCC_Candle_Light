@@ -19,6 +19,8 @@ public class InteractableEditor : Editor {
     private SerializedProperty _invertParameterProp;
     private SerializedProperty _customScriptsProp;
 
+    private SerializedProperty _itemOnTopProp;
+
     public override VisualElement CreateInspectorGUI() {
         var ux = new VisualElement();
         
@@ -27,9 +29,9 @@ public class InteractableEditor : Editor {
         ux.Add(new PropertyField(_observerEventSpeakProp));
         BuildAnimationSettings(ux);
         AddInspectorProperties(ux);
+        UseEquip(ux);
         BaseActionExecute(ux);
         BuildCustomScriptSection(ux);
-
         return ux;
     }
 
@@ -41,6 +43,7 @@ public class InteractableEditor : Editor {
         _parameterNameProp = serializedObject.FindProperty("parameterName");
         _invertParameterProp = serializedObject.FindProperty("_invertParameter");
         _customScriptsProp = serializedObject.FindProperty("_customScripts");
+        _itemOnTopProp = serializedObject.FindProperty("itemOnTop");
     }
 
     private void BuildAnimationSettings(VisualElement parent) {
@@ -91,6 +94,11 @@ public class InteractableEditor : Editor {
     private void ObserverSpeakList(VisualElement parent){
         if(target is IObserver){
             parent.Add(new PropertyField(_observerEventListenProp));
+        }
+    }
+    private void UseEquip(VisualElement parent){
+        if(target is IUseEquip){
+            parent.Add(new PropertyField(_itemOnTopProp));
         }
     }
     private void BaseActionExecute(VisualElement parent)

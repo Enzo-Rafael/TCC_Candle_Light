@@ -116,12 +116,15 @@ public class ExecuteItemCommand : Interactable, IObserver
     public void LoadCompletePuzzle()
     {
         if(interactions == null){ return; }
-        canSave = false;
+        canSave = false; 
         foreach (IInteractable i in interactions)
         {
             i.BaseAction();
             Debug.Log(i);
         }
-        
+        foreach(IUseEquip u in interactions)
+        {
+            u.BaseAction(null);
+        }
     }
 }

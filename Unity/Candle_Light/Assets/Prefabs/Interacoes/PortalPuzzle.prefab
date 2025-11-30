@@ -75,6 +75,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts: []
   correspondingID: 3
 --- !u!114 &7088108681072980399
@@ -338,6 +339,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts: []
   correspondingID: 2
 --- !u!114 &4596963312303059466
@@ -687,8 +689,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _customScripts: []
   itemOnTop: 1
+  _customScripts: []
 --- !u!114 &285929482827286895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -862,8 +864,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _customScripts: []
   itemOnTop: 1
+  _customScripts: []
 --- !u!114 &6123479741750746574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1083,6 +1085,7 @@ GameObject:
   - component: {fileID: 5775658642283339599}
   - component: {fileID: 3105279384262217886}
   - component: {fileID: 6220101692023204564}
+  - component: {fileID: 2578597566054750047}
   m_Layer: 6
   m_Name: Circle1
   m_TagString: DropTP
@@ -1147,6 +1150,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts: []
   correspondingID: 1
 --- !u!114 &6220101692023204564
@@ -1162,6 +1166,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textScriptable: {fileID: 11400000, guid: 9533af178c5bb174d8cfc91ca591871f, type: 2}
+--- !u!114 &2578597566054750047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256683328011036629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7374347634dba43934f2c1fbbb3352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6193142314824354431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,8 +1252,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _customScripts: []
   itemOnTop: 1
+  _customScripts: []
 --- !u!114 &6228161079444690182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1518,6 +1534,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   parameterName: IsOpen
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts:
   - {fileID: 2712684615273971609}
   - {fileID: 2433932343359583721}

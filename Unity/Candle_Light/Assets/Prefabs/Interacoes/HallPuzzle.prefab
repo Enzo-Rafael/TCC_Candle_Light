@@ -75,6 +75,7 @@ MonoBehaviour:
   animator: {fileID: 480358578352116699}
   parameterName: IsOpen
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts:
   - {fileID: 7263351182818588946}
   _multipleCode: {fileID: 953090495338597747}
@@ -82,7 +83,8 @@ MonoBehaviour:
   spawnProx: 0
   completed: 0
   canSave: 0
-  interactions: []
+  interactions:
+  - {fileID: 130628121523010271}
 --- !u!114 &953090495338597747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +188,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9e7553ab3edd6c4cbe15b799583ee3f, type: 3}
+--- !u!114 &130628121523010271 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 892180592513329676, guid: c9e7553ab3edd6c4cbe15b799583ee3f, type: 3}
+  m_PrefabInstance: {fileID: 986776570298306771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a4a2fd4aa63a7246b7612704bf78581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8696616101744658446 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8431066520181922013, guid: c9e7553ab3edd6c4cbe15b799583ee3f, type: 3}

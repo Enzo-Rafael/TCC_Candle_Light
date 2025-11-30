@@ -19,7 +19,7 @@ public class UseSpawnpointInteractable : Interactable, IInteractable
     }
     public void BaseAction()
     {
-        if (action) return;
+        //if (action) return;
         SaveLoad.Instance.CallSave(spawnIndex);//Save
         if (_observerEventSpeak != null){
             foreach (var channel in _observerEventSpeak){
@@ -52,7 +52,7 @@ public class UseSpawnpointInteractable : Interactable, IInteractable
     
     public void LoadAction()
     {
-        if (action) return;
+        //if (action) return;
         if (_observerEventListening != null){
             foreach (var channel in _observerEventListening){
                 if (channel != null){

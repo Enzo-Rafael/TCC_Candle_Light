@@ -172,11 +172,7 @@ public class SaveLoad : Singleton<SaveLoad>
              }
         }
         //Gera o arquivo de save-----------------------------------------------------
-        /*Array.Clear(spawnPoints, 0, spawnPoints.Length);
-        Array.Clear(puzzles, 0, puzzles.Length);
-        Array.Clear(p1Cams, 0, p1Cams.Length);
-        Array.Clear(objHolds, 0, objHolds.Length);
-        Array.Clear(dropLocations, 0, dropLocations.Length);*/
+        ClearTrakers();
 
         string s = JsonUtility.ToJson(data, true);
         onLoad = true;
@@ -363,12 +359,8 @@ public class SaveLoad : Singleton<SaveLoad>
 
         }
         //----------------------------------------------------------------------
+        ClearTrakers();
         Debug.Log("L");
-        Array.Clear(spawnPoints, 0, spawnPoints.Length);
-        Array.Clear(puzzles, 0, puzzles.Length);
-        Array.Clear(p1Cams, 0, p1Cams.Length);
-        Array.Clear(objHolds, 0, objHolds.Length);
-        Array.Clear(dropLocations, 0, dropLocations.Length);
         //---------------------------------------------------------------------
     }
 
@@ -430,7 +422,7 @@ public class SaveLoad : Singleton<SaveLoad>
 
     public void SetPuzzle()//Puxa os puzzles na cena de jogo
     {
-        PuzzleBeacom[] b = FindObjectsByType<PuzzleBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+        PuzzleBeacom[] b = FindObjectsByType<PuzzleBeacom>(FindObjectsInactive.Exclude, FindObjectsSortMode.InstanceID);
         puzzles = new GameObject[b.Length];
         for (int cine = 0; cine < b.Length; cine++)
         {
@@ -460,7 +452,7 @@ public class SaveLoad : Singleton<SaveLoad>
 
     public void SetHoldObjs()//Puxa os objs que podem ser carregados da cena de jogo
     {
-        HoldBeacom[] b = FindObjectsByType<HoldBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+        HoldBeacom[] b = FindObjectsByType<HoldBeacom>(FindObjectsInactive.Exclude, FindObjectsSortMode.InstanceID);
         objHolds = new GameObject[b.Length];
         for (int cine = 0; cine < b.Length; cine++)
         {
@@ -474,7 +466,7 @@ public class SaveLoad : Singleton<SaveLoad>
 
     public void SetDropLocations()//Puxa os objs que podem ser carregados da cena de jogo
     {
-        DropLocationBeacom[] b = FindObjectsByType<DropLocationBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+        DropLocationBeacom[] b = FindObjectsByType<DropLocationBeacom>(FindObjectsInactive.Exclude, FindObjectsSortMode.InstanceID);
         dropLocations = new GameObject[b.Length];
         for (int cine = 0; cine < b.Length; cine++)
         {
@@ -513,7 +505,7 @@ public class SaveLoad : Singleton<SaveLoad>
         btnContinue = GameObject.Find("ButtonContinue");
     }
 
-    private void ClearTrakers(Array array)
+    private void ClearTrakers()
     {
         Array.Clear(spawnPoints, 0, spawnPoints.Length);
         Array.Clear(puzzles, 0, puzzles.Length);

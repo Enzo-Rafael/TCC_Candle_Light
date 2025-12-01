@@ -100,5 +100,6 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     public void LoadAction()
     {
         PickUpItem();
+        DefineLayer(default);
     }
 }

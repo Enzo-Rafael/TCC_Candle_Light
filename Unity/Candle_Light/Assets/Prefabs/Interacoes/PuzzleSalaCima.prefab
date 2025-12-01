@@ -716,6 +716,7 @@ MonoBehaviour:
   animator: {fileID: 7830249506498524326}
   parameterName: IsOpen
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts: []
   _multipleCode: {fileID: 0}
   indexPuzzle: 0
@@ -765,6 +766,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3398783085857731048}
     m_Modifications:
+    - target: {fileID: 59384891623309259, guid: a9a6d826f98f71a42a546ebba367c2e4, type: 3}
+      propertyPath: interactions.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 59384891623309259, guid: a9a6d826f98f71a42a546ebba367c2e4, type: 3}
+      propertyPath: 'interactions.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6914849777546997388}
+    - target: {fileID: 59384891623309259, guid: a9a6d826f98f71a42a546ebba367c2e4, type: 3}
+      propertyPath: 'interactions.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1021661909892849161}
+    - target: {fileID: 59384891623309259, guid: a9a6d826f98f71a42a546ebba367c2e4, type: 3}
+      propertyPath: 'interactions.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2250310088127016500}
+    - target: {fileID: 59384891623309259, guid: a9a6d826f98f71a42a546ebba367c2e4, type: 3}
+      propertyPath: 'interactions.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2095204010060116226}
     - target: {fileID: 59384891623309259, guid: a9a6d826f98f71a42a546ebba367c2e4, type: 3}
       propertyPath: '_observerEventSpeak.Array.data[0]'
       value: 
@@ -818,11 +839,55 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9a6d826f98f71a42a546ebba367c2e4, type: 3}
+--- !u!114 &1021661909892849161 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5173253489893966414, guid: a9a6d826f98f71a42a546ebba367c2e4, type: 3}
+  m_PrefabInstance: {fileID: 5325148925049166919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d3c2dba7508f649801e98665e76f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2095204010060116226 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6121819377416318277, guid: a9a6d826f98f71a42a546ebba367c2e4, type: 3}
+  m_PrefabInstance: {fileID: 5325148925049166919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d3c2dba7508f649801e98665e76f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2250310088127016500 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6258894770476823155, guid: a9a6d826f98f71a42a546ebba367c2e4, type: 3}
+  m_PrefabInstance: {fileID: 5325148925049166919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d3c2dba7508f649801e98665e76f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4535631595780469326 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8581457752874003977, guid: a9a6d826f98f71a42a546ebba367c2e4, type: 3}
   m_PrefabInstance: {fileID: 5325148925049166919}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6914849777546997388 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1589983457188737739, guid: a9a6d826f98f71a42a546ebba367c2e4, type: 3}
+  m_PrefabInstance: {fileID: 5325148925049166919}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d3c2dba7508f649801e98665e76f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6082343536146117899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -916,6 +981,7 @@ MonoBehaviour:
   animator: {fileID: 2067214554102076837}
   parameterName: IsOpen
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts: []
   _multipleCode: {fileID: 0}
   indexPuzzle: 0
@@ -1039,6 +1105,7 @@ MonoBehaviour:
   animator: {fileID: 2885164163514897847}
   parameterName: IsOpen
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts: []
   _multipleCode: {fileID: 0}
   indexPuzzle: 0

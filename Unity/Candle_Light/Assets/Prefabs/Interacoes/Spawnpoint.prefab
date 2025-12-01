@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 8363702766041564858}
   - component: {fileID: 6032459653298123454}
   - component: {fileID: 4959365834076701387}
+  - component: {fileID: 4752344747473439636}
   m_Layer: 6
   m_Name: Spawnpoint
   m_TagString: Untagged
@@ -411,12 +412,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 0
-  _observerEvent: {fileID: 0}
+  _observerEventListening: []
+  _observerEventSpeak: []
+  _useAnimation: 0
   animator: {fileID: 6032459653298123454}
   parameterName: Set
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  itemOnTop: 0
+  _customScripts: []
   spawnIndex: 0
   spawnPosition: {fileID: 6807919735709500605}
   pointLight: {fileID: 753559424536087800}
@@ -433,13 +436,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 1
-  _observerEvent: {fileID: 0}
+  _observerEventListening: []
+  _observerEventSpeak: []
+  _useAnimation: 0
   animator: {fileID: 6032459653298123454}
   parameterName: Set
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 8363702766041564858}
-  _itemType: 0
+  itemOnTop: 0
+  _customScripts: []
   _multipleCode: {fileID: 0}
   indexPuzzle: 0
   spawnProx: 0
@@ -492,6 +496,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5116cc2ea34cc324da7733eab790376c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4752344747473439636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4076410998504949711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 11400000, guid: 8b3258eedcd0b444eb564ad5a61154f5, type: 2}
 --- !u!1 &4260423952541229174
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,11 +25,11 @@ public class SaveLoad : Singleton<SaveLoad>
     #region Variables
     //Referencias
     [Header("Referencias")]
-    private GameObject[] spawnPoints;//GameObjects de Spawn
-    private GameObject[] puzzles;//GameObjects de Puzzle
-    private CinemachineCamera[] p1Cams;//Cameras da Medium
-    private GameObject[] objHolds; //Objetos que podem ser segurados 
-    public GameObject[] dropLocations;//Objetos onde se pode ter coisas para colocar;
+    [SerializeField] private GameObject[] spawnPoints;//GameObjects de Spawn
+    [SerializeField] private GameObject[] puzzles;//GameObjects de Puzzle
+    [SerializeField] private CinemachineCamera[] p1Cams;//Cameras da Medium
+    [SerializeField] private GameObject[] objHolds; //Objetos que podem ser segurados 
+    [SerializeField] private GameObject[] dropLocations;//Objetos onde se pode ter coisas para colocar;
     [SerializeField] private GameObject btnContinue;//Btn para liberar a tela de load
     [SerializeField] private AudioManager audioManager; //audilistener
     [SerializeField] private Animator notification;
@@ -168,17 +168,19 @@ public class SaveLoad : Singleton<SaveLoad>
             {
 
             data.dropLocationData[i] = new DropLocationData(); 
-
             data.dropLocationData[i].hasItem = dropLocations[i].GetComponent<Interactable>().GetAction();
              }
         }
         //Gera o arquivo de save-----------------------------------------------------
+        ClearTrakers();
+
         string s = JsonUtility.ToJson(data, true);
         onLoad = true;
         Debug.Log("S");
         File.WriteAllText(path, s);
-
+        
         notification.SetTrigger("Notification");
+
     }
 
     public void NewSave()
@@ -282,24 +284,42 @@ public class SaveLoad : Singleton<SaveLoad>
         p2.GetComponent<PlayerTwoScript>().respawnPoint.rotation = GameObject.Find(data.ghostData.spawn).GetComponent<Transform>().rotation;
         //Castisal
 
-        for (int obj = 0; obj < objHolds.Length; obj++)
+        /*for (int obj = 0; obj < objHolds.Length; obj++)
         {
-            if (data.castesalData[obj].isHold == true)
+            if (objHolds[obj].name == data.castesalData[obj].name)
             {
-                GameObject c = GameObject.Find(data.castesalData[obj].name);
-                c.GetComponent<EquipItemInteractable>().LoadAction();
-            }
-            else
-            {
-                if (objHolds[obj].name == data.castesalData[obj].name)
+                if (data.castesalData[obj].isHold == true)
+                {
+                    GameObject c = GameObject.Find(data.castesalData[obj].name);
+                    c.GetComponent<EquipItemInteractable>().LoadAction();
+                }else
                 {
                     objHolds[obj].transform.position = data.castesalData[obj].position;
                     objHolds[obj].transform.eulerAngles = data.castesalData[obj].rotation;
                 }
-                
+            }
+        }*/
+
+        for (int objX = 0; objX < objHolds.Length; objX++)
+        {
+            for (int objY = 0; objY < data.castesalData.Length; objY++)
+            {
+                if (objHolds[objY].name == data.castesalData[objX].name)
+                {
+                    if (data.castesalData[objX].isHold == true)
+                    {
+                        GameObject c = GameObject.Find(data.castesalData[objX].name);
+                        c.GetComponent<EquipItemInteractable>().LoadAction();
+                        p1.GetComponent<InteractionManagerP1>().equipItem = c.GetComponent<EquipItemInteractable>();
+                    }else
+                    {
+                        objHolds[objY].transform.position = data.castesalData[objX].position;
+                        objHolds[objY].transform.eulerAngles = data.castesalData[objX].rotation;
+                    }
+                }
             }
         }
-
+        
         /*
         00 01 02 03 04
         10 11 12 13 14
@@ -323,18 +343,24 @@ public class SaveLoad : Singleton<SaveLoad>
             }
         }
         //DropLocations
-        if(dropLocations != null)
+        
+        //data.dropLocationData = new DropLocationData[dropLocations.Length];
+        for (int i = 0; i < dropLocations.Length; i++)
         {
-            //data.dropLocationData = new DropLocationData[dropLocations.Length];
-            for (int i = 0; i < dropLocations.Length; i++)
+            if (data.dropLocationData[i].hasItem == true)
             {
-                dropLocations[i].GetComponent<Interactable>().itemOnTop = data.dropLocationData[i].hasItem ;
+                dropLocations[i].GetComponent<Interactable>().SetTrue();
             }
+            else
+            {
+                dropLocations[i].GetComponent<Interactable>().SetFalse();
+            }
+              
+
         }
         //----------------------------------------------------------------------
+        ClearTrakers();
         Debug.Log("L");
-        //ArrayUtility.Clear(ref p1CamsSet);
-        Array.Clear(p1CamsSet, 0, p1CamsSet.Length);
         //---------------------------------------------------------------------
     }
 
@@ -384,24 +410,28 @@ public class SaveLoad : Singleton<SaveLoad>
     {
         CamsBeacom[] b = FindObjectsByType<CamsBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
         p1Cams = new CinemachineCamera[b.Length];
-        Debug.Log(b.Length);
         for (int cine = 0; cine < b.Length; cine++)
         {
             p1Cams[cine] = b[cine].gameObject.GetComponent<CinemachineCamera>();
         }
-        p1Cams.OrderBy(x => x.name);
-
+        p1Cams = p1Cams
+        .OrderBy(go => go.transform.position.x)
+        .ThenBy(go => go.transform.position.z)
+        .ToArray();
     }
 
     public void SetPuzzle()//Puxa os puzzles na cena de jogo
     {
-        PuzzleBeacom[] b = FindObjectsByType<PuzzleBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+        PuzzleBeacom[] b = FindObjectsByType<PuzzleBeacom>(FindObjectsInactive.Exclude, FindObjectsSortMode.InstanceID);
         puzzles = new GameObject[b.Length];
         for (int cine = 0; cine < b.Length; cine++)
         {
             puzzles[cine] = b[cine].gameObject;
         }
-        puzzles.OrderBy(x => x.name);
+        puzzles = puzzles
+        .OrderBy(go => go.transform.position.x)
+        .ThenBy(go => go.transform.position.z)
+        .ToArray();
 
     }
 
@@ -413,30 +443,40 @@ public class SaveLoad : Singleton<SaveLoad>
         {
             spawnPoints[cine] = b[cine].gameObject;
         }
-        spawnPoints.OrderBy(go => go.name).ToArray();
+        spawnPoints = spawnPoints
+        .OrderBy(go => go.transform.position.x)
+        .ThenBy(go => go.transform.position.z)
+        .ToArray();
         //if(spawnPoints != null)Array.Sort(spawnPoints);
     }
 
     public void SetHoldObjs()//Puxa os objs que podem ser carregados da cena de jogo
     {
-        HoldBeacom[] b = FindObjectsByType<HoldBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+        HoldBeacom[] b = FindObjectsByType<HoldBeacom>(FindObjectsInactive.Exclude, FindObjectsSortMode.InstanceID);
         objHolds = new GameObject[b.Length];
         for (int cine = 0; cine < b.Length; cine++)
         {
             objHolds[cine] = b[cine].gameObject;
         }
-        objHolds.OrderBy(go => go.name).ToArray();
+        objHolds = objHolds
+        .OrderBy(go => go.transform.position.x)
+        .ThenBy(go => go.transform.position.z)
+        .ToArray();
     }
 
     public void SetDropLocations()//Puxa os objs que podem ser carregados da cena de jogo
     {
-        DropLocationBeacom[] b = FindObjectsByType<DropLocationBeacom>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+        DropLocationBeacom[] b = FindObjectsByType<DropLocationBeacom>(FindObjectsInactive.Exclude, FindObjectsSortMode.InstanceID);
         dropLocations = new GameObject[b.Length];
         for (int cine = 0; cine < b.Length; cine++)
         {
             dropLocations[cine] = b[cine].gameObject;
         }
-        dropLocations.OrderBy(go => go.name).ToArray();
+        //dropLocations = dropLocations.OrderBy(go => go.name).ToArray();
+        dropLocations = dropLocations
+        .OrderBy(go => go.transform.position.x)
+        .ThenBy(go => go.transform.position.z)
+        .ToArray();
     }
 
     public int GetAudioMaster()
@@ -463,6 +503,15 @@ public class SaveLoad : Singleton<SaveLoad>
     private void LocateGO()//Serve para localizar alguns GameObjects em cena
     {
         btnContinue = GameObject.Find("ButtonContinue");
+    }
+
+    private void ClearTrakers()
+    {
+        Array.Clear(spawnPoints, 0, spawnPoints.Length);
+        Array.Clear(puzzles, 0, puzzles.Length);
+        Array.Clear(p1Cams, 0, p1Cams.Length);
+        Array.Clear(objHolds, 0, objHolds.Length);
+        Array.Clear(dropLocations, 0, dropLocations.Length);
     }
     #endregion
 

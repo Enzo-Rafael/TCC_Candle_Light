@@ -117,14 +117,20 @@ public class ExecuteItemCommand : Interactable, IObserver
     {
         if(interactions == null){ return; }
         canSave = false; 
-        foreach (IInteractable i in interactions)
+        foreach (var item in interactions)
         {
-            i.BaseAction();
-            Debug.Log(i);
+            // Tenta tratar como IInteractable
+            if (item is IInteractable i)
+            {
+                i.BaseAction();
+                Debug.Log(i);
+            }
+            // Tenta tratar como IUseEquip (pode ser o mesmo objeto ou outro)
+            if (item is IUseEquip u)
+            {
+                u.BaseAction(null);
+            }
         }
-        foreach(IUseEquip u in interactions)
-        {
-            u.BaseAction(null);
-        }
+        Debug.Log("Passou");
     }
 }

@@ -3,7 +3,9 @@ Shader "Custom/Custom_Transparent"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _Tint ("Shadow Tint", Color) = (0.5,0.5,0.5)
+        [HDR]_MainTint ("Main Tint", Color) = (1,1,1)
+        [HDR]_ShadowTint ("Shadow Tint", Color) = (0.5,0.5,0.5)
+        [HDR]_LightTint ("Light Tint", Color) = (1, 1, 1)
         _Alpha ("Alpha", Float) = 0.5
         _FadeStrength ("Fade by Proximity", Float) = 10
         [Enum(UnityEngine.Rendering.CullMode)] _Cull ("Cull", Float) = 0
@@ -67,7 +69,9 @@ Shader "Custom/Custom_Transparent"
             
             CBUFFER_START(UnityPerMaterial)
             float4 _MainTex_ST;
-            half3 _Tint;
+            half3 _MainTint;
+            half3 _ShadowTint;
+            half3 _LightTint;
             float _Alpha;
             float _FadeStrength;
             float _ShadowHardness;
@@ -151,7 +155,7 @@ Shader "Custom/Custom_Transparent"
                 lightVal = saturate(lightVal);
                 col = tex2D(_MainTex, IN.uv);
 
-                col.rgb = (col * lightVal) + (col * _Tint * (1-lightVal));
+                col.rgb = _MainTint * ((col * _LightTint * lightVal) + (col * _ShadowTint * (1-lightVal)));
                 
                 clip(col.a-0.5);
 

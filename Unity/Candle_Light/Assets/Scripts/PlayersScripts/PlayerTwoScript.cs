@@ -44,6 +44,7 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
     private Vector3 forward;
     private Vector3 strafe;
     private Vector3 vetical;
+    private InteractionManagerP2 player2InteractionManager;
 
     //Metodos
 
@@ -54,7 +55,7 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
         _inputReader.VooEvent += OnVoo;
         _inputReader.GhostShowEvent += Show;
         _disabled = false;
-
+        player2InteractionManager = GetComponent<InteractionManagerP2>();
         showTimer = 0;
 	}
 
@@ -156,6 +157,9 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
     {
         respawnPoint.position = spawn.position;
     }
-
+    public InteractionManagerP2 GetInteractionManager()
+    {
+       return player2InteractionManager;
+    }
     
 }

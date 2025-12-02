@@ -3,12 +3,17 @@ using UnityEngine;
 public class MultipleCandleValidatorTwo : MonoBehaviour, IMultiple
 {
     private UsePuzzleMediumPart[] lights;
+    private  UsePuzzleGhostPart[] ghosty;
+
     private Vector2[] activeLight;
     private InteractionManagerP1 player1;
+    private InteractionManagerP2 player2;
 
     void Start(){
         lights = GetComponentsInChildren<UsePuzzleMediumPart>();
+        ghosty = GetComponentsInChildren<UsePuzzleGhostPart>();
         player1 = PlayerOneScript.Instance.GetInteractionManager();
+        player2 = PlayerTwoScript.Instance.GetInteractionManager();
 
     }
     public bool Validator(object additionalInformation){
@@ -26,6 +31,10 @@ public class MultipleCandleValidatorTwo : MonoBehaviour, IMultiple
         foreach (UsePuzzleMediumPart light in lights){
             light.gameObject.layer = default;
         }
+        foreach (UsePuzzleGhostPart ghost in ghosty){
+            ghost.gameObject.layer = default;
+        }
+        player2.OnTriggerDetected(false, player2.potentialInteractions.First.Value);
         player1.OnTriggerDetected(false, player1.potentialInteractions.First.Value);
         return true;
     }

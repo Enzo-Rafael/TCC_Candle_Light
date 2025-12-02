@@ -37,7 +37,7 @@ public class InteractionManagerP2 : MonoBehaviour
 
     //------------------------- Variaveis Globais privadas -------------------------------
 
-    private LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
+    public LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
 
     /*------------------------------------------------------------------------------
     Função:     OnEnable

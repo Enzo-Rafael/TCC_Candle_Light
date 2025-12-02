@@ -114,6 +114,7 @@ MonoBehaviour:
   - {fileID: -3380580533166010850}
   - {fileID: 4061987096091960366}
   - {fileID: 444284505465720652}
+  - {fileID: 4010896091874762721}
 --- !u!114 &444284505465720652
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -142,6 +143,28 @@ MonoBehaviour:
   saturation:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &4010896091874762721
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547cca3b5de29b24b9f0c1dc310724cc, type: 3}
+  m_Name: DarknessEffectVolumeComponent
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.01
+  distance:
+    m_OverrideState: 1
+    m_Value: 10.84
+  showFeedback:
+    m_OverrideState: 1
+    m_Value: 1
 --- !u!114 &4061987096091960366
 MonoBehaviour:
   m_ObjectHideFlags: 3

@@ -1,13 +1,13 @@
 {
     "mediumData": {
         "position": {
-            "x": 2.041513681411743,
-            "y": -0.17664998769760133,
-            "z": -11.514592170715332
+            "x": 1.2870495319366456,
+            "y": -0.1766500622034073,
+            "z": -12.459790229797364
         },
         "rotation": {
             "x": 0.0,
-            "y": 161.8135223388672,
+            "y": 88.04185485839844,
             "z": 0.0
         },
         "currentCamIndex": 0,
@@ -43,31 +43,31 @@
     "castesalData": [
         {
             "parent": {
-                "instanceID": 5843050
-            },
-            "isHold": false,
-            "name": "Item2",
-            "position": {
-                "x": -13.847999572753907,
-                "y": 5.206029891967773,
-                "z": -3.8299999237060549
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        {
-            "parent": {
-                "instanceID": 5843050
+                "instanceID": -982184
             },
             "isHold": false,
             "name": "Item3",
             "position": {
-                "x": -13.329999923706055,
-                "y": 6.185009002685547,
-                "z": -0.24833393096923829
+                "x": -19.268999099731447,
+                "y": 5.953000068664551,
+                "z": -5.224000453948975
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            }
+        },
+        {
+            "parent": {
+                "instanceID": -982184
+            },
+            "isHold": false,
+            "name": "Item2",
+            "position": {
+                "x": -17.399999618530275,
+                "y": 5.708000183105469,
+                "z": -0.32799986004829409
             },
             "rotation": {
                 "x": 0.0,
@@ -77,7 +77,24 @@
         },
         {
             "parent": {
-                "instanceID": 5843050
+                "instanceID": -982184
+            },
+            "isHold": false,
+            "name": "Item1",
+            "position": {
+                "x": -13.3149995803833,
+                "y": 6.125999927520752,
+                "z": -0.26600000262260439
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            }
+        },
+        {
+            "parent": {
+                "instanceID": -982184
             },
             "isHold": false,
             "name": "EstatuaCobra",
@@ -94,24 +111,7 @@
         },
         {
             "parent": {
-                "instanceID": 5843050
-            },
-            "isHold": false,
-            "name": "Item1",
-            "position": {
-                "x": -12.526999473571778,
-                "y": 5.149211883544922,
-                "z": -6.090000152587891
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        {
-            "parent": {
-                "instanceID": 5843050
+                "instanceID": -982184
             },
             "isHold": false,
             "name": "CasticaoComVelaPuzzle (4)",
@@ -128,7 +128,7 @@
         },
         {
             "parent": {
-                "instanceID": 5843050
+                "instanceID": -982184
             },
             "isHold": false,
             "name": "CasticaoComVelaPuzzle (2)",
@@ -145,7 +145,7 @@
         },
         {
             "parent": {
-                "instanceID": 5843050
+                "instanceID": -982184
             },
             "isHold": false,
             "name": "CasticaoComVelaPuzzle (1)",
@@ -162,7 +162,7 @@
         },
         {
             "parent": {
-                "instanceID": 5843050
+                "instanceID": -982184
             },
             "isHold": false,
             "name": "CasticaoComVelaPuzzle (3)",
@@ -179,24 +179,7 @@
         },
         {
             "parent": {
-                "instanceID": 5843050
-            },
-            "isHold": false,
-            "name": "CasticaoComVela (TESTE)",
-            "position": {
-                "x": 5.639999866485596,
-                "y": 1.0089999437332154,
-                "z": -9.510000228881836
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            }
-        },
-        {
-            "parent": {
-                "instanceID": 5843050
+                "instanceID": -982184
             },
             "isHold": false,
             "name": "CasticaoComVela (1)",
@@ -213,7 +196,7 @@
         },
         {
             "parent": {
-                "instanceID": 5843050
+                "instanceID": -982184
             },
             "isHold": false,
             "name": "CasticaoComVela",
@@ -232,36 +215,27 @@
     "puzzleData": [
         {
             "indice": 1,
-            "completed": true
+            "completed": false
         },
         {
             "indice": 3,
-            "completed": true
-        },
-        {
-            "indice": 2,
-            "completed": true
+            "completed": false
         },
         {
             "indice": 4,
-            "completed": true
+            "completed": false
+        },
+        {
+            "indice": 2,
+            "completed": false
         },
         {
             "indice": 5,
-            "completed": true
+            "completed": false
         }
     ],
     "dropLocationData": [
         {
-            "hasItem": false
-        },
-        {
-            "hasItem": false
-        },
-        {
-            "hasItem": true
-        },
-        {
             "hasItem": true
         },
         {
@@ -271,16 +245,25 @@
             "hasItem": false
         },
         {
-            "hasItem": false
-        },
-        {
-            "hasItem": false
-        },
-        {
-            "hasItem": false
-        },
-        {
             "hasItem": true
+        },
+        {
+            "hasItem": false
+        },
+        {
+            "hasItem": false
+        },
+        {
+            "hasItem": false
+        },
+        {
+            "hasItem": false
+        },
+        {
+            "hasItem": false
+        },
+        {
+            "hasItem": false
         },
         {
             "hasItem": true

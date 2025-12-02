@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2479464577624394449}
   - component: {fileID: 5392464634665399021}
   - component: {fileID: 2379420476701704546}
+  - component: {fileID: 8731872233959385434}
   m_Layer: 0
   m_Name: Lampada
   m_TagString: Untagged
@@ -86,6 +87,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &8731872233959385434
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3232465547738467825}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Height: 2.18
+  m_Direction: 2
+  m_Center: {x: -0.0000001937151, y: 0, z: 0.07548495}
 --- !u!1 &4991226963925662780
 GameObject:
   m_ObjectHideFlags: 0

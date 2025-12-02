@@ -4,8 +4,12 @@ public class MultipleCandleValidatorTwo : MonoBehaviour, IMultiple
 {
     private UsePuzzleMediumPart[] lights;
     private Vector2[] activeLight;
+    private InteractionManagerP1 player1;
+
     void Start(){
         lights = GetComponentsInChildren<UsePuzzleMediumPart>();
+        player1 = PlayerOneScript.Instance.GetInteractionManager();
+
     }
     public bool Validator(object additionalInformation){
         activeLight = (Vector2[])additionalInformation;
@@ -19,9 +23,10 @@ public class MultipleCandleValidatorTwo : MonoBehaviour, IMultiple
         foreach (UsePuzzleMediumPart light in lights){
             if (!light.IsFullyLit) return false;
         }
-        // foreach (UsePuzzleMediumPart light in lights){
-        //     light.gameObject.layer = default;
-        // }
+        foreach (UsePuzzleMediumPart light in lights){
+            light.gameObject.layer = default;
+        }
+        player1.OnTriggerDetected(false, player1.potentialInteractions.First.Value);
         return true;
     }
 }

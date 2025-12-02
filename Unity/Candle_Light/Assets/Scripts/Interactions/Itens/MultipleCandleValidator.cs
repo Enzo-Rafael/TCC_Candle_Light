@@ -7,8 +7,12 @@ public class MultipleCandleValidator : MonoBehaviour, IMultiple
     //avisa o breu que o puzzle terminou, medida temporaria depois colocarei em todo execute comand par que eles tambem posssam avisar um obsevador.
     [SerializeField] private ObserverEventChannel[] AlertThisObservers;
     private Vector2 activeLight;
+    private InteractionManagerP1 player1;
+
     void Start(){
         lights = GetComponentsInChildren<UsePuzzleDad>();
+        player1 = PlayerOneScript.Instance.GetInteractionManager();
+
     }
     public bool Validator(object additionalInformation)
     {
@@ -28,10 +32,11 @@ public class MultipleCandleValidator : MonoBehaviour, IMultiple
         {
             if (!light.IsFullyLit) return false;
         }
-        // foreach (UsePuzzleDad light in lights)
-        // {
-        //     light.gameObject.layer = default;
-        // }
+        foreach (UsePuzzleDad light in lights)
+        {
+            light.gameObject.layer = default;
+        }
+        player1.OnTriggerDetected(false, player1.potentialInteractions.First.Value);
         if(AlertThisObservers != null){
             foreach (ObserverEventChannel observers in AlertThisObservers)
             {

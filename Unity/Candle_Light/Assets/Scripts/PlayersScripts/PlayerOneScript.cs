@@ -38,12 +38,14 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
     //private AudioSource stepsSound;
     public AudioPlayer stepsSoundPlayer;
 
+    private InteractionManagerP1 Player1InteractionManager;
 
     //Metodos
 
     private void OnEnable()
     {
         _inputReader.MoveEventOne += OnMove;
+        Player1InteractionManager = GetComponent<InteractionManagerP1>();
     }
     private void OnDisable()
     {
@@ -115,6 +117,11 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
     public void SetVisible(bool value)
     {
         foreach (Renderer r in gameObject.GetComponentsInChildren<Renderer>()){ r.enabled = value; }
+    }
+
+    public InteractionManagerP1 GetInteractionManager()
+    {
+       return Player1InteractionManager;
     }
 
 }

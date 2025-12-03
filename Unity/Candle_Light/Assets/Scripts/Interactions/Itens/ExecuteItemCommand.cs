@@ -26,9 +26,7 @@ public class ExecuteItemCommand : Interactable, IObserver
     public bool canSave;
     [SerializeField] protected List<MonoBehaviour> interactions = new List<MonoBehaviour>();
 
-    private void Start(){
-        if (animator == null) animator = GetComponentInParent<Animator>();
-    }
+    
     /*------------------------------------------------------------------------------
     Função:     OnEnable
     Descrição:  Registra o Objeto na lista de Observadores do item especifico.

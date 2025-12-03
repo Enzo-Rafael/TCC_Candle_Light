@@ -43,6 +43,22 @@ public class Interactable : MonoBehaviour
 
     protected bool consumeBool = false;
     
+    private void Start(){
+        if (animator == null) animator = GetComponentInParent<Animator>();
+        switch (_actionType)
+        {
+            case ItemActionType.Trigger:
+                
+                break;
+            case ItemActionType.Toggle:
+                if (animator != null) animator.SetBool(parameterName, _invertParameter);
+                
+                return;
+            case ItemActionType.Consume:
+                
+                break;
+        }
+    }
 
     /*------------------------------------------------------------------------------
     Função:     ExecuteOrder

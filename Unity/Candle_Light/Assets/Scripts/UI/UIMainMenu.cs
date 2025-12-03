@@ -18,6 +18,24 @@ public class UIMainMenu : MonoBehaviour
     public Button CreditsButtonRef;
     public Button ExitButtonRef;
     public Button FeatureButtonRef;
+    public GameObject animationContainer;
+    
+
+    public void AnimateMenuShow(bool value)
+    {
+        if (value)
+        {
+            LeanTween.moveX(animationContainer.GetComponent<RectTransform>(), 0, 0.15f);
+            LeanTween.moveY(FeatureButtonRef.gameObject.GetComponent<RectTransform>(), 30, 0.5f).setDelay(0.15f);
+            LeanTween.moveY(ExitButtonRef.gameObject.GetComponent<RectTransform>(), 30, 0.5f).setDelay(0.15f);
+        }
+        else
+        {
+            LeanTween.moveY(FeatureButtonRef.gameObject.GetComponent<RectTransform>(), -110, 0.15f);
+            LeanTween.moveY(ExitButtonRef.gameObject.GetComponent<RectTransform>(), -120, 0.15f);
+            LeanTween.moveX(animationContainer.GetComponent<RectTransform>(), -900, 0.5f).setDelay(0.15f);
+        }
+    }
 
     public void ContinueButton()
     {
@@ -27,15 +45,13 @@ public class UIMainMenu : MonoBehaviour
         CreditsButtonRef.interactable = false;
         ExitButtonRef.interactable = false;
         FeatureButtonRef.interactable = false;
-        StartCoroutine("ContinueRoutine");
-
+        ContinueButtonAction.Invoke();
     }
     public IEnumerator ContinueRoutine()
     {
 
         AudioManager.Instance.PlaySound("UI_Confirm");
         yield return new WaitForSeconds(1.5f);
-        ContinueButtonAction.Invoke();
     }
     public void NewGameButton()
     {
@@ -45,15 +61,9 @@ public class UIMainMenu : MonoBehaviour
         CreditsButtonRef.interactable = false;
         ExitButtonRef.interactable = false;
         FeatureButtonRef.interactable = false;
-        StartCoroutine("StartGameRoutine");
-    }
-    public IEnumerator StartGameRoutine()
-    {
-        AudioManager.Instance.PlaySound("UI_GameStart");
-        yield return new WaitForSecondsRealtime(5);
         NewGameButtonAction.Invoke();
-
     }
+
     public void SettingsButton()
     {
         AudioManager.Instance.PlaySound("UI_ChangeScreen");

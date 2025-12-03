@@ -17,7 +17,7 @@ public class BtnSave : MonoBehaviour
     //UI do menu inicial do jogo
     public void BtnContinue()
     {
-        AudioManager.Instance.PlaySound("UI_GameStart");
+        //AudioManager.Instance.PlaySound("UI_GameStart");
         fade.FadeIn(1);
         
     }
@@ -31,6 +31,6 @@ public class BtnSave : MonoBehaviour
         };
         Debug.Log("Final escolhido: " + final);
         SaveLoad.Instance.SetFinal(final);
-        AudioManager.Instance.PlaySound("UI_GameStart");
+        //AudioManager.Instance.PlaySound("UI_GameStart");
     }
 }

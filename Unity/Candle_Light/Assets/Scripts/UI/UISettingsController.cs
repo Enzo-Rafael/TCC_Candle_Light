@@ -21,6 +21,8 @@ public class UISettingsController : MonoBehaviour
     //---------BackGroundVariables------
     [NonSerialized] public float brightnessValue;
     [NonSerialized] public int senceValue;
+    public RawImage bgImage;
+    public GameObject menuObject;
 
     void Start()
     {
@@ -42,6 +44,18 @@ public class UISettingsController : MonoBehaviour
     {
         _inputReader.MenuCloseEvent -= ClosePanel;
     }
+    public void SettingsScreenAnimate(bool value)
+    {
+        if (value)
+        {
+            LeanTween.moveX(menuObject.GetComponent<RectTransform>(), -80, 0.15f);
+        }
+        else
+        {
+            LeanTween.moveX(menuObject.GetComponent<RectTransform>(), 1080, 0.15f);
+        }
+    }
+
     public void ClosePanel()
     {
         SaveConfig();

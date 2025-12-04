@@ -39,11 +39,11 @@ public class CustomRotateLab : MonoBehaviour, ICodeCustom
         if (axisY == 1) startEuler.y = startEuler.y ==  360 ? 0 : +90 * rotState;
         if (axisZ == 1) startEuler.z = startEuler.z == -360 ? 0 : -90 * rotState;
         Quaternion targetRot = Quaternion.Euler(startEuler);
-        while (Quaternion.Angle(transform.rotation, targetRot) > 1f)
+        while (Quaternion.Angle(transform.localRotation, targetRot) > 1f)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, 0.1f);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRot, 0.1f);
             yield return new WaitForFixedUpdate();
         }
-        transform.rotation = targetRot;
+        transform.localRotation = targetRot;
     }
 }

@@ -20,7 +20,7 @@ public class UISettingsController : MonoBehaviour
     private string path;
     //---------BackGroundVariables------
     [NonSerialized] public float brightnessValue;
-    [NonSerialized] public int senceValue;
+    [NonSerialized] public int senceValue = 1;
     public RawImage bgImage;
     public GameObject menuObject;
 
@@ -121,7 +121,7 @@ public class UISettingsController : MonoBehaviour
             AudioManager.Instance.SetSfx((float)data.configData.audioSfx);
             AudioManager.Instance.SetMusic((float)data.configData.audioMusic);
             SenceLoad(data.configData.senceRef);
-            
+
             Debug.Log("Load Config");
         }
     }

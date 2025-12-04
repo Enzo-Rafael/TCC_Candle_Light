@@ -146,14 +146,5 @@ public class UIMenuManager : MonoBehaviour
     {
         _popupPanel.ConfirmationResponseAction -= HideExitConfirmationPopup;
         _popupPanel.gameObject.SetActive(false);
-        if (quitConfirmed)
-        {
-            Application.Quit();
-            AudioManager.Instance.PlaySound("UI_Cancel");
-        }
-        else
-        {
-            AudioManager.Instance.PlaySound("UI_Cancel");
-        }
 	}
 }

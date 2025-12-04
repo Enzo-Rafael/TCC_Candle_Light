@@ -10,17 +10,17 @@ public class MultiplePortalValidator : MonoBehaviour, IMultiple
     private InteractionManagerP1 player1;
 
     void Start(){
-        player1 = PlayerOneScript.Instance.GetInteractionManager();
         items = GetComponentsInChildren<EquipItemInteractable>();
     }
     public bool Validator(object additionalInformation)
     {        
+        player1 = PlayerOneScript.Instance.GetInteractionManager();
         confirmation += (bool)additionalInformation ? 1 : -1;
         if (confirmation == 3){
             foreach(EquipItemInteractable item in items){
                 item.gameObject.layer = default;
             }
-            player1.OnTriggerDetected(false, player1.potentialInteractions.First.Value);
+            player1.OnTriggerDetected(false, player1.potentialInteractions.First?.Value);
         }
         return confirmation == 3;
     }

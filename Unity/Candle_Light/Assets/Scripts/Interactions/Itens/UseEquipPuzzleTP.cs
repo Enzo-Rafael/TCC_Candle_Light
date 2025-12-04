@@ -23,6 +23,7 @@ public class UseEquipPuzzleTP : Interactable, IUseEquip
                 {
                     if(itemUse == null)
                     {
+                        Debug.Log("aaaaaaaaaaaaaaaaaa");
                         channel.NotifyObservers(message, true);
                     }else{
                         channel.NotifyObservers(message, itemOnTop == (itemUse.GetComponent<EquipItemInteractable>().ItemID == correspondingID));

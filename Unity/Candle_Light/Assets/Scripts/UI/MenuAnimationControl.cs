@@ -55,6 +55,7 @@ public class MenuAnimationControl : MonoBehaviour
 
     public void CallExitGame()
     {
+        AudioManager.Instance.PlaySound("UI_Cancel");
         currentMenu = CurrentMenu.CHANGE_GAME_STATE;
         mainMenu.AnimateMenuShow(false);
         menuAnimator.SetTrigger("GoToExit");
@@ -63,7 +64,8 @@ public class MenuAnimationControl : MonoBehaviour
     public void ExitGame()
     {
         Debug.Log("Goodbye!");
-        exitPopup.ConfirmButton();
+        Application.Quit();
+
     }
     public void CallNewGame()
     {

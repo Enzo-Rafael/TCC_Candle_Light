@@ -36,7 +36,7 @@ public class MultipleCandleValidator : MonoBehaviour, IMultiple
         {
             light.gameObject.layer = default;
         }
-        player1.OnTriggerDetected(false, player1.potentialInteractions.First.Value);
+        player1.OnTriggerDetected(false, player1.potentialInteractions?.First?.Value);
         if(AlertThisObservers != null){
             foreach (ObserverEventChannel observers in AlertThisObservers)
             {

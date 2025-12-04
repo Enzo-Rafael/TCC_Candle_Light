@@ -47,7 +47,10 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
     private InteractionManagerP2 player2InteractionManager;
 
     //Metodos
-
+    private void Awake()
+    {
+        player2InteractionManager = GetComponent<InteractionManagerP2>();
+    }
     private void OnEnable()
     {
         _inputReader.MoveEventTwo += OnMove;
@@ -55,7 +58,6 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
         _inputReader.VooEvent += OnVoo;
         _inputReader.GhostShowEvent += Show;
         _disabled = false;
-        player2InteractionManager = GetComponent<InteractionManagerP2>();
         showTimer = 0;
 	}
 

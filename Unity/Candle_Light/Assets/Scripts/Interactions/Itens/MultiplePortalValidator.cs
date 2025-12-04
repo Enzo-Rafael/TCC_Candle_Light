@@ -20,7 +20,7 @@ public class MultiplePortalValidator : MonoBehaviour, IMultiple
             foreach(EquipItemInteractable item in items){
                 item.gameObject.layer = default;
             }
-            player1.OnTriggerDetected(false, player1.potentialInteractions.First.Value);
+            player1.OnTriggerDetected(false, player1.potentialInteractions?.First?.Value);
         }
         return confirmation == 3;
     }

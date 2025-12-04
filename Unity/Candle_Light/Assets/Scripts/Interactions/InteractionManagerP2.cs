@@ -98,13 +98,11 @@ public class InteractionManagerP2 : MonoBehaviour
     ------------------------------------------------------------------------------*/
 	private void RemovePotentialInteraction(GameObject itemInteractable)
     {
-        foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>())
-        {
-            renderer.material.SetFloat("_Highlight", 0);
-        }
-
 		LinkedListNode<GameObject> currentNode = potentialInteractions.First;
 		while (currentNode != null){
+            foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>()){
+                renderer.material.SetFloat("_Highlight", 0);
+            }
 			if (currentNode.Value == itemInteractable){
 				potentialInteractions.Remove(currentNode);
                 iController.canvasCloseSprite();

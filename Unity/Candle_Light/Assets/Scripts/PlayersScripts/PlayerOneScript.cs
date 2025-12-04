@@ -40,12 +40,13 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
 
     private InteractionManagerP1 player1InteractionManager;
 
-    //Metodos
-
+    private void Awake()
+    {
+        player1InteractionManager = GetComponent<InteractionManagerP1>();
+    }
     private void OnEnable()
     {
         _inputReader.MoveEventOne += OnMove;
-        player1InteractionManager = GetComponent<InteractionManagerP1>();
     }
     private void OnDisable()
     {

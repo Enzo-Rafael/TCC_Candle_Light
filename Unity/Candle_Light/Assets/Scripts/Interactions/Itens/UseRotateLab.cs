@@ -87,7 +87,7 @@ public class UseRotateLab : Interactable, IInteractable{
         //adicionei isso para remover e interação da rud do fantasma quando a medium estiver em cima e voltar quando ela sair da pra adicionar ai a mudança de cor tambem.
         if (entered){
             this.gameObject.layer = default;
-            player2.OnTriggerDetected(false, player2.potentialInteractions?.First?.Value);
+            player2.OnTriggerDetected(false, this.gameObject);
         }
         else{
             this.gameObject.layer = UseGhost;

@@ -44,7 +44,7 @@ VFXRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230205568269854901}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -178,7 +178,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2864596355448705373}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.9396926, z: 0, w: 0.34202015}
+  m_LocalRotation: {x: 0, y: -0.6755902, z: 0, w: 0.7372774}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
   ReferenceFrame: 1
   RecenterTarget: 0
   PanAxis:
-    Value: 140
+    Value: -85
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
   camPlayerTwo: {fileID: 0}
-  vitCamP2: {fileID: 0}
+  vitCamP2: {fileID: 7125607950009247573}
   vooSpeed: 4.5
   velocity: 2.3
   controller: {fileID: 2439669967701740958}
@@ -580,7 +580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
   postProcessingVolume: {fileID: 0}
-  darkTime: 4
+  darkTime: 1.5
   lightTime: 2
 --- !u!114 &5676224265979371617
 MonoBehaviour:

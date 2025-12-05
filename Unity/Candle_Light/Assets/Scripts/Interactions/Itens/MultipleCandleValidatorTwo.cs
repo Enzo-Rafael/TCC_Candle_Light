@@ -34,8 +34,8 @@ public class MultipleCandleValidatorTwo : MonoBehaviour, IMultiple
         foreach (UsePuzzleGhostPart ghost in ghosty){
             ghost.gameObject.layer = default;
         }
-        player2.OnTriggerDetected(false, player2.potentialInteractions.First?.Value);
-        player1.OnTriggerDetected(false, player1.potentialInteractions.First?.Value);
+        player2.OnTriggerDetected(false, player2.potentialInteractions?.First?.Value);
+        player1.OnTriggerDetected(false, player1.potentialInteractions?.First?.Value);
         return true;
     }
 }

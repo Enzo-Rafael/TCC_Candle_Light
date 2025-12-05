@@ -2395,6 +2395,7 @@ GameObject:
   - component: {fileID: 3559650300621552102}
   - component: {fileID: 4739841217503659173}
   - component: {fileID: 8529233351961132835}
+  - component: {fileID: 4191149665101539726}
   m_Layer: 16
   m_Name: LabirintoCentroMeio
   m_TagString: Untagged
@@ -2471,11 +2472,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd84c70d2803741419ce17e9fc39fd6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationDuration: 0.5
+  clockwise: 1
   rotState: 0
-  isRotating: 0
   axisX: 0
   axisY: 1
   axisZ: 0
+  isInitialized: 0
 --- !u!65 &3559650300621552102
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2554,6 +2557,18 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &4191149665101539726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3064511761224355839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4bf8dcd8529f304792aeb9a0940e3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3107764157405302726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2635,6 +2650,7 @@ GameObject:
   - component: {fileID: 231936374890637623}
   - component: {fileID: 6991137767737434606}
   - component: {fileID: 2295761355433074651}
+  - component: {fileID: 3897973786276282309}
   m_Layer: 16
   m_Name: LabirintoCentroEsquerda
   m_TagString: Untagged
@@ -2711,11 +2727,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd84c70d2803741419ce17e9fc39fd6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationDuration: 0.5
+  clockwise: 1
   rotState: 0
-  isRotating: 0
   axisX: 0
   axisY: 1
   axisZ: 0
+  isInitialized: 0
 --- !u!65 &231936374890637623
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2794,6 +2812,18 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &3897973786276282309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3237321225854478776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4bf8dcd8529f304792aeb9a0940e3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3239315586720928035
 GameObject:
   m_ObjectHideFlags: 0
@@ -6553,6 +6583,7 @@ GameObject:
   - component: {fileID: 3023110369167962574}
   - component: {fileID: 8831089902284172059}
   - component: {fileID: 2038933227920510973}
+  - component: {fileID: 109049321202198432}
   m_Layer: 16
   m_Name: LabirintoCentroDireita
   m_TagString: Untagged
@@ -6629,11 +6660,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd84c70d2803741419ce17e9fc39fd6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationDuration: 0.5
+  clockwise: 1
   rotState: 0
-  isRotating: 0
   axisX: 0
   axisY: 1
   axisZ: 0
+  isInitialized: 0
 --- !u!65 &3023110369167962574
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6712,6 +6745,18 @@ MonoBehaviour:
   _layers:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &109049321202198432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8368051502511386020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4bf8dcd8529f304792aeb9a0940e3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8436049133765576008
 GameObject:
   m_ObjectHideFlags: 0

@@ -67,6 +67,7 @@ public class InteractionManagerP2 : MonoBehaviour
     ------------------------------------------------------------------------------*/
     public void OnTriggerDetected(bool entered, GameObject itemInteractable){
         if(entered){
+            Debug.Log("entrou");
             AddPotentialInteraction(itemInteractable);
         }else{
             RemovePotentialInteraction(itemInteractable);

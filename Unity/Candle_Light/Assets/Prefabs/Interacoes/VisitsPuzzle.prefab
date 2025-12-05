@@ -251,6 +251,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts: []
   cordMap: {x: 1, y: 0}
 --- !u!114 &8191867802363036707
@@ -406,7 +407,7 @@ Transform:
   m_GameObject: {fileID: 2265341311936450540}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.158}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -436,11 +437,12 @@ MonoBehaviour:
   animator: {fileID: 7598133008961142707}
   parameterName: On
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts:
   - {fileID: 2073967318713638463}
   _multipleCode: {fileID: 329027042588032241}
-  indexPuzzle: 2
-  spawnProx: 1
+  indexPuzzle: 4
+  spawnProx: 0
   completed: 0
   canSave: 1
   interactions:
@@ -816,6 +818,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts: []
   cordMap: {x: 0, y: 1}
 --- !u!114 &7103268822659506618
@@ -2594,6 +2597,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts: []
   cordMap: {x: 1, y: 1}
 --- !u!114 &8904077197995302197
@@ -3043,6 +3047,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts: []
   cordMap: {x: 0, y: 0}
 --- !u!114 &4156490045127906697
@@ -3354,6 +3359,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7332674095918666628, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.301001
+      objectReference: {fileID: 0}
     - target: {fileID: 7616816198820631621, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.058
@@ -3368,7 +3377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7727467486943895853, guid: 20b0131bf0047554a8c23f5553d55dac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.57
+      value: 14.377
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

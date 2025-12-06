@@ -232,7 +232,7 @@ Transform:
   m_GameObject: {fileID: 1461677304315073206}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.761, y: 0.953, z: 3.279}
+  m_LocalPosition: {x: -5.805, y: 0.953, z: 3.279}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -785,10 +785,82 @@ Transform:
   - {fileID: 8576917132030567986}
   - {fileID: 482737181768915083}
   - {fileID: 8284534785765509747}
+  - {fileID: 597728909533506635}
   - {fileID: 6528445008757562297}
   - {fileID: 5711724930074920791}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6963473768446018412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 597728909533506635}
+  - component: {fileID: 5021594268046594072}
+  - component: {fileID: 5614737217265331074}
+  m_Layer: 0
+  m_Name: TriggerChangeCam (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &597728909533506635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963473768446018412}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.761, y: 0.953, z: 3.279}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 45755478838173127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5021594268046594072
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963473768446018412}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.97, y: 1.4601862, z: 0.38296652}
+  m_Center: {x: 0, y: -0.15960589, z: -0.20162082}
+--- !u!114 &5614737217265331074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963473768446018412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685edf2f3f17b9644a5fa63d774bfd88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextRoomsCams:
+  - {fileID: 3207905052644355477}
+  - {fileID: 7817600523127460478}
+  - {fileID: 2859878293703651620}
+  - {fileID: 4333003624422094004}
 --- !u!1 &7378352806173456804
 GameObject:
   m_ObjectHideFlags: 0

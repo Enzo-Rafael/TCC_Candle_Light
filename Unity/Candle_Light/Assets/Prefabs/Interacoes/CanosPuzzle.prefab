@@ -87,6 +87,92 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1254035885565416983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6132587320036018968}
+  - component: {fileID: 6113547115659068054}
+  - component: {fileID: 9038910574530214651}
+  m_Layer: 0
+  m_Name: Tobias Indicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6132587320036018968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254035885565416983}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.018883906, y: -0.46126872, z: 0.036284987, w: 0.88631713}
+  m_LocalPosition: {x: -1.65, y: -1.458, z: -1.442}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4387496684340236433}
+  m_LocalEulerAnglesHint: {x: 0, y: -54.988, z: 4.689}
+--- !u!33 &6113547115659068054
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254035885565416983}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &9038910574530214651
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254035885565416983}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 499587c34ebdec04d904ab3c3ff06f37, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2005729934815706823
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,6 +184,7 @@ GameObject:
   - component: {fileID: 6040678724545014465}
   - component: {fileID: 4568439023979410107}
   - component: {fileID: 547212847815876863}
+  - component: {fileID: 9157026897177528733}
   m_Layer: 14
   m_Name: Cano (5)
   m_TagString: Untagged
@@ -134,12 +221,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 2
-  _observerEvent: {fileID: 4509245474669904148}
+  _observerEventListening: []
+  _observerEventSpeak: []
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  itemOnTop: 0
+  _customScripts: []
   rotState: 0
   correctRots: 00000000
 --- !u!65 &547212847815876863
@@ -163,6 +252,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.4, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9157026897177528733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005729934815706823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 0}
 --- !u!1 &2060274731657862411
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +363,7 @@ GameObject:
   - component: {fileID: 5296271206668379697}
   - component: {fileID: 5433025549997592541}
   - component: {fileID: 280965706491897393}
+  - component: {fileID: 3099833116355676380}
   m_Layer: 14
   m_Name: Cano (1)
   m_TagString: Untagged
@@ -297,12 +400,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 2
-  _observerEvent: {fileID: 4509245474669904148}
+  _observerEventListening: []
+  _observerEventSpeak: []
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  itemOnTop: 0
+  _customScripts: []
   rotState: 0
   correctRots: 00000000
 --- !u!65 &280965706491897393
@@ -326,6 +431,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.4, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3099833116355676380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2160225720545993248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 0}
 --- !u!1 &2252403313690931826
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4387496684340236433
 Transform:
   m_ObjectHideFlags: 0
@@ -532,6 +650,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5504143171818064322}
+  - {fileID: 6132587320036018968}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7886844620614074722
@@ -578,6 +697,8 @@ GameObject:
   - component: {fileID: 5504143171818064322}
   - component: {fileID: 3966223875031273128}
   - component: {fileID: 6958170223217394086}
+  - component: {fileID: 3975385760567199151}
+  - component: {fileID: 4597016769293066024}
   m_Layer: 0
   m_Name: TintChanger
   m_TagString: Untagged
@@ -635,19 +756,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 1
-  _observerEvent: {fileID: 4509245474669904148}
+  _observerEventListening: []
+  _observerEventSpeak: []
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 3966223875031273128}
-  _itemType: 1
+  itemOnTop: 0
+  _customScripts: []
   _multipleCode: {fileID: 7886844620614074722}
   indexPuzzle: 0
   spawnProx: 0
   completed: 0
   canSave: 0
   interactions: []
+--- !u!114 &3975385760567199151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3131984839111764001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6205c0372cd4348a5b488fffee29eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionType: 1
+  _observerEventListening: []
+  _observerEventSpeak: []
+  _useAnimation: 0
+  animator: {fileID: 0}
+  parameterName: 
+  _invertParameter: 0
+  itemOnTop: 0
+  _customScripts: []
+  _multipleCode: {fileID: 7886844620614074722}
+  indexPuzzle: 0
+  spawnProx: 0
+  completed: 0
+  canSave: 0
+  interactions: []
+--- !u!114 &4597016769293066024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3131984839111764001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76af15168aa878d4a93b6ffa411ef7da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectReference: {fileID: 1254035885565416983}
+  onOff: 1
 --- !u!1 &3268195583114285120
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,6 +909,7 @@ GameObject:
   - component: {fileID: 7997961065707421812}
   - component: {fileID: 571978069374074067}
   - component: {fileID: 1261146062137354509}
+  - component: {fileID: 7873546273734084599}
   m_Layer: 14
   m_Name: Cano (2)
   m_TagString: Untagged
@@ -782,12 +946,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 2
-  _observerEvent: {fileID: 4509245474669904148}
+  _observerEventListening: []
+  _observerEventSpeak: []
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  itemOnTop: 0
+  _customScripts: []
   rotState: 0
   correctRots: 00000000010000000200000003000000
 --- !u!65 &1261146062137354509
@@ -811,6 +977,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.4, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7873546273734084599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3521219989473486437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 0}
 --- !u!1 &4082301391964684240
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +1001,7 @@ GameObject:
   - component: {fileID: 2511297295827198585}
   - component: {fileID: 5363919920031204254}
   - component: {fileID: 1221261562663722150}
+  - component: {fileID: 5549099556833260657}
   m_Layer: 14
   m_Name: Cano (3)
   m_TagString: Untagged
@@ -858,12 +1038,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 2
-  _observerEvent: {fileID: 4509245474669904148}
+  _observerEventListening: []
+  _observerEventSpeak: []
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  itemOnTop: 0
+  _customScripts: []
   rotState: 0
   correctRots: 00000000
 --- !u!65 &1221261562663722150
@@ -887,6 +1069,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.4, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5549099556833260657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4082301391964684240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 0}
 --- !u!1 &4150117162029628430
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,6 +1093,7 @@ GameObject:
   - component: {fileID: 8172245199550496461}
   - component: {fileID: 1194978860435293089}
   - component: {fileID: 477536946645541917}
+  - component: {fileID: 6349356074952437752}
   m_Layer: 14
   m_Name: Cano (8)
   m_TagString: Untagged
@@ -934,12 +1130,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 2
-  _observerEvent: {fileID: 4509245474669904148}
+  _observerEventListening: []
+  _observerEventSpeak: []
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  itemOnTop: 0
+  _customScripts: []
   rotState: 0
   correctRots: 00000000
 --- !u!65 &477536946645541917
@@ -963,6 +1161,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.4, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6349356074952437752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150117162029628430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 0}
 --- !u!1 &4864328103838651984
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +1185,7 @@ GameObject:
   - component: {fileID: 8998000654211902547}
   - component: {fileID: 3732396259200939060}
   - component: {fileID: 9073105603948653099}
+  - component: {fileID: 2647939863579253251}
   m_Layer: 14
   m_Name: Cano
   m_TagString: Untagged
@@ -1010,12 +1222,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 2
-  _observerEvent: {fileID: 4509245474669904148}
+  _observerEventListening: []
+  _observerEventSpeak: []
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  itemOnTop: 0
+  _customScripts: []
   rotState: 0
   correctRots: 00000000
 --- !u!65 &9073105603948653099
@@ -1039,6 +1253,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.4, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2647939863579253251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864328103838651984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 0}
 --- !u!1 &5142710834915776672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,6 +1364,7 @@ GameObject:
   - component: {fileID: 3337705853428896937}
   - component: {fileID: 1809337146971214079}
   - component: {fileID: 2710575476869514318}
+  - component: {fileID: 4765713759172598388}
   m_Layer: 14
   m_Name: Cano (6)
   m_TagString: Untagged
@@ -1173,12 +1401,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 2
-  _observerEvent: {fileID: 4509245474669904148}
+  _observerEventListening: []
+  _observerEventSpeak: []
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  itemOnTop: 0
+  _customScripts: []
   rotState: 0
   correctRots: 00000000
 --- !u!65 &2710575476869514318
@@ -1202,6 +1432,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.4, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4765713759172598388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903307641066329919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 0}
 --- !u!1 &6703042775126421502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,6 +1456,7 @@ GameObject:
   - component: {fileID: 2576264855701513432}
   - component: {fileID: 7021527107530849596}
   - component: {fileID: 5123305817496244448}
+  - component: {fileID: 6430593020388609747}
   m_Layer: 14
   m_Name: Cano (7)
   m_TagString: Untagged
@@ -1249,12 +1493,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 2
-  _observerEvent: {fileID: 4509245474669904148}
+  _observerEventListening: []
+  _observerEventSpeak: []
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  itemOnTop: 0
+  _customScripts: []
   rotState: 0
   correctRots: 00000000
 --- !u!65 &5123305817496244448
@@ -1278,6 +1524,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.4, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6430593020388609747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703042775126421502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 0}
 --- !u!1 &6990277458037973472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,6 +1548,7 @@ GameObject:
   - component: {fileID: 748147705083276203}
   - component: {fileID: 5427278217402020195}
   - component: {fileID: 2355570200701473616}
+  - component: {fileID: 5367306562462076070}
   m_Layer: 14
   m_Name: Cano (4)
   m_TagString: Untagged
@@ -1325,12 +1585,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionType: 2
-  _observerEvent: {fileID: 4509245474669904148}
+  _observerEventListening: []
+  _observerEventSpeak: []
+  _useAnimation: 0
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
-  _enableCustomScript: 0
-  _customScript: {fileID: 0}
+  itemOnTop: 0
+  _customScripts: []
   rotState: 0
   correctRots: 00000000
 --- !u!65 &2355570200701473616
@@ -1354,6 +1616,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.4, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5367306562462076070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6990277458037973472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26cbdf65ab0ce8468a0b12a6b3527f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textScriptable: {fileID: 0}
 --- !u!1 &7240431791068998242
 GameObject:
   m_ObjectHideFlags: 0

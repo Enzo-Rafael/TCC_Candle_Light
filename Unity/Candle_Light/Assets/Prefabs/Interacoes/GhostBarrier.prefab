@@ -78,6 +78,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 4380290596313122667}
     m_Modifications:
     - target: {fileID: 2481922016268478703, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
+      propertyPath: offset.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481922016268478703, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
+      propertyPath: offset.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481922016268478703, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
       propertyPath: _observerEvent
       value: 
       objectReference: {fileID: 8106186665921529781}
@@ -95,11 +103,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6475358358416882288, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.258
       objectReference: {fileID: 0}
     - target: {fileID: 6475358358416882288, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6475358358416882288, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -107,7 +115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6475358358416882288, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6475358358416882288, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -119,7 +127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6475358358416882288, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6475358358416882288, guid: bce96519a124db24d8065db3d91b8c6c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -157,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _observerEvent: {fileID: 8106186665921529781}
   animator: {fileID: 7124953286456914841}
+  offset: {x: 0, y: 0, z: 1}
 --- !u!1001 &3777586543899460403
 PrefabInstance:
   m_ObjectHideFlags: 0

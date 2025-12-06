@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -47,6 +48,11 @@ public class LightDetector : MonoBehaviour
         LightSystem.Instance.UpdateDetectorPos(GetInstanceID(), transform.position + offset);
     }
 
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + offset, 0.2f);
+    }
 
     void OnEnable()
     {

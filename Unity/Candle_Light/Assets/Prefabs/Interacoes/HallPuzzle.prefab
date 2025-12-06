@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8014101422593065722}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -83,8 +83,7 @@ MonoBehaviour:
   spawnProx: 0
   completed: 0
   canSave: 0
-  interactions:
-  - {fileID: 130628121523010271}
+  interactions: []
 --- !u!114 &7263351182818588946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OlhoRotInteraction (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6619217102464056389, guid: c9e7553ab3edd6c4cbe15b799583ee3f, type: 3}
+      propertyPath: m_Name
+      value: Collider (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 8431066520181922013, guid: c9e7553ab3edd6c4cbe15b799583ee3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.5
@@ -192,17 +195,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 477685415726663625}
   m_SourcePrefab: {fileID: 100100000, guid: c9e7553ab3edd6c4cbe15b799583ee3f, type: 3}
---- !u!114 &130628121523010271 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 892180592513329676, guid: c9e7553ab3edd6c4cbe15b799583ee3f, type: 3}
-  m_PrefabInstance: {fileID: 986776570298306771}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a4a2fd4aa63a7246b7612704bf78581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4517089948566128499 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3683471087444334496, guid: c9e7553ab3edd6c4cbe15b799583ee3f, type: 3}
@@ -398,6 +390,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OlhoRotInteraction (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6619217102464056389, guid: c9e7553ab3edd6c4cbe15b799583ee3f, type: 3}
+      propertyPath: m_Name
+      value: Collider (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 8431066520181922013, guid: c9e7553ab3edd6c4cbe15b799583ee3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.5
@@ -432,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8431066520181922013, guid: c9e7553ab3edd6c4cbe15b799583ee3f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -270
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8431066520181922013, guid: c9e7553ab3edd6c4cbe15b799583ee3f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -478,7 +474,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3021623752717064582, guid: a5355b62680da21429c1339e1f194dd2, type: 3}
       propertyPath: m_Name
-      value: MesinhaEscritorio (2)
+      value: MesinhaEscritorio (4)
       objectReference: {fileID: 0}
     - target: {fileID: 3556884940240796532, guid: a5355b62680da21429c1339e1f194dd2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -520,11 +516,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8328216521199382257, guid: a5355b62680da21429c1339e1f194dd2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8493638373408118908, guid: a5355b62680da21429c1339e1f194dd2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4540369874183196424}
   m_SourcePrefab: {fileID: 100100000, guid: a5355b62680da21429c1339e1f194dd2, type: 3}
+--- !u!1 &4488120038343028151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8493638373408118908, guid: a5355b62680da21429c1339e1f194dd2, type: 3}
+  m_PrefabInstance: {fileID: 5446671074888627659}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4540369874183196424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4488120038343028151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7374347634dba43934f2c1fbbb3352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8848146643575148223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3556884940240796532, guid: a5355b62680da21429c1339e1f194dd2, type: 3}
@@ -607,7 +624,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3021623752717064582, guid: a5355b62680da21429c1339e1f194dd2, type: 3}
       propertyPath: m_Name
-      value: MesinhaEscritorio (1)
+      value: MesinhaEscritorio (2)
       objectReference: {fileID: 0}
     - target: {fileID: 3556884940240796532, guid: a5355b62680da21429c1339e1f194dd2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -649,11 +666,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8328216521199382257, guid: a5355b62680da21429c1339e1f194dd2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8493638373408118908, guid: a5355b62680da21429c1339e1f194dd2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3231429555073110499}
   m_SourcePrefab: {fileID: 100100000, guid: a5355b62680da21429c1339e1f194dd2, type: 3}
+--- !u!1 &1552521831813555556 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8493638373408118908, guid: a5355b62680da21429c1339e1f194dd2, type: 3}
+  m_PrefabInstance: {fileID: 6941416433466686744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3231429555073110499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552521831813555556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7374347634dba43934f2c1fbbb3352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5838993307629913708 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3556884940240796532, guid: a5355b62680da21429c1339e1f194dd2, type: 3}

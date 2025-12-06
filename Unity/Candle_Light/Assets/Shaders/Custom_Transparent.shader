@@ -9,13 +9,14 @@ Shader "Custom/Custom_Transparent"
         _Alpha ("Alpha", Float) = 0.5
         _FadeStrength ("Fade by Proximity", Float) = 10
         [Enum(UnityEngine.Rendering.CullMode)] _Cull ("Cull", Float) = 0
+        [MaterialToggle] _Gambiarra ("Gambiarra", Float) = 0
     }
     SubShader
     {
         Pass
         {
             Name "ForwardPass"
-            ZWrite OFF
+            ZWrite ON
             Cull [_Cull]
             Blend SrcAlpha OneMinusSrcAlpha
 
@@ -75,6 +76,7 @@ Shader "Custom/Custom_Transparent"
             float _Alpha;
             float _FadeStrength;
             float _ShadowHardness;
+            float _Gambiarra;
             CBUFFER_END
             
 
@@ -161,7 +163,12 @@ Shader "Custom/Custom_Transparent"
 
                 //col.rgb = col * _Tint;
                 
-                col.a = _Alpha - IN.vertex.z * _FadeStrength;
+                if(!_Gambiarra)
+                {
+                    col.a = _Alpha - IN.vertex.z * _FadeStrength;
+                }else{
+                    col.a += _Alpha;
+                }
                 
 
                 return col;

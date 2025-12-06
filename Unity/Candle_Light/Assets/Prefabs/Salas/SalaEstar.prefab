@@ -1951,6 +1951,7 @@ GameObject:
   - component: {fileID: 7147056525401743250}
   - component: {fileID: 8289916343055518570}
   - component: {fileID: 2953531998036035692}
+  - component: {fileID: 1302655627526038059}
   m_Layer: 0
   m_Name: Piano
   m_TagString: Untagged
@@ -2026,6 +2027,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1302655627526038059
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2688146930249643716}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.1349905, y: 1.6553196, z: 2.0678446}
+  m_Center: {x: -0.018134207, y: -0.009571848, z: 1.008381}
 --- !u!1 &2716711768892605468
 GameObject:
   m_ObjectHideFlags: 0
@@ -2500,6 +2522,7 @@ GameObject:
   - component: {fileID: 1250445315937952823}
   - component: {fileID: 4739768883178178817}
   - component: {fileID: 5349095906803336680}
+  - component: {fileID: 9061551816113078051}
   m_Layer: 0
   m_Name: MesaPiano
   m_TagString: Untagged
@@ -2516,7 +2539,7 @@ Transform:
   m_GameObject: {fileID: 3303752098040934497}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -1.611, y: 0, z: 0}
+  m_LocalPosition: {x: -1.106, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2575,6 +2598,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9061551816113078051
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303752098040934497}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.43010372, y: 0.74939877, z: 1.0260582}
+  m_Center: {x: 0.0047436957, y: -0.0000020507325, z: 0.5130296}
 --- !u!1 &3349917464049711379
 GameObject:
   m_ObjectHideFlags: 0

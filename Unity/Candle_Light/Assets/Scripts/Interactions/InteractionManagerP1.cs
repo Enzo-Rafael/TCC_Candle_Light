@@ -93,13 +93,14 @@ public class InteractionManagerP1 : MonoBehaviour
     Entrada:    GameObject - Objeto que contem qual item é e quem está na lista de observadores
     Saída:      -
     ------------------------------------------------------------------------------*/
-    private void AddPotentialInteraction(GameObject itemInteractable)
-    {
+    private void AddPotentialInteraction(GameObject itemInteractable){
         potentialInteractions.AddFirst(itemInteractable);
 
-        foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>())
-        {
-            renderer.material.SetFloat("_Highlight", 1);
+        if(equipItem != null && itemInteractable.layer == EquipLayer){
+            HighlightItem(itemInteractable, false);
+        }
+        else{
+            HighlightItem(itemInteractable, true);
         }
         switch (potentialInteractions.First.Value.layer)
         {
@@ -112,13 +113,22 @@ public class InteractionManagerP1 : MonoBehaviour
             case UseLayer:
                 if (equipItem != null && potentialInteractions.First.Value.tag == equipItem.tag && (potentialInteractions.First.Value.GetComponent<IUseEquip>()?.GetAction() == false))
                 {
+                    Debug.Log("Atualizou sprite de interação");
                     iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                 }
                 else if (potentialInteractions.First.Value.tag == defaultTag)
                 {
+                    Debug.Log("Atualizou sprite de interaçãoaaaaaaaaaaa");
                     iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                 }
                 break;
+        }
+    }
+    private void HighlightItem(GameObject itemInteractable, bool highlight)
+    {
+        foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>())
+        {
+            renderer.material.SetFloat("_Highlight", highlight ? 1 : 0);
         }
     }
     /*------------------------------------------------------------------------------
@@ -137,15 +147,14 @@ public class InteractionManagerP1 : MonoBehaviour
                 potentialInteractions.Remove(currentNode);
                 iController.canvasCloseSprite();
                 iController.canvasCloseText();
-                foreach (Renderer renderer in itemInteractable.GetComponentsInChildren<Renderer>())
-                {
-                    renderer.material.SetFloat("_Highlight", 0);
-                }
+                HighlightItem(itemInteractable, false);
                 if (potentialInteractions.Count != 0)
                 {
                     if (equipItem?.tag == potentialInteractions.First.Value.tag)
                     {
                         iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+                        iController.canvasCloseText();
+                        iController.canvasCloseSprite();
                     }
                 }
                 break;
@@ -213,13 +222,16 @@ public class InteractionManagerP1 : MonoBehaviour
                         indexText = 1;
                         foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
                         {
+                        _inputReader.EnablePlayerInput(1);
                             iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                             interactable.BaseAction();
                         }
                     }
+                    _inputReader.EnablePlayerInput(1);
                 }
                 else
                 {
+                    _inputReader.EnablePlayerInput(1);
                     foreach (IInteractable interactable in potentialInteractions.First.Value.GetComponents<IInteractable>())
                     {
                         interactable.BaseAction();

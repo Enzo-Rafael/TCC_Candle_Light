@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class HideWhileInState : StateMachineBehaviour
 {
+    Transform childTransform;
     Vector3 origScale;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        origScale = animator.transform.localScale;
+        childTransform = animator.transform.GetChild(0);
+        origScale = childTransform.localScale;
     }
 
 
@@ -16,11 +18,11 @@ public class HideWhileInState : StateMachineBehaviour
     {
         if(!animator.IsInTransition(0))
         {
-            animator.transform.localScale = Vector3.one * 0.001f;
+            childTransform.localScale = Vector3.one * 0.001f;
         }
         else
         {
-            animator.transform.localScale = origScale;
+            childTransform.localScale = origScale;
         }
     }
 

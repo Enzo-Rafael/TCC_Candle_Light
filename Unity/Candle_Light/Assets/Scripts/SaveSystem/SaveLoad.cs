@@ -15,6 +15,7 @@ class SceneData
     public CastesalData[] castesalData;
     public PuzzleData[] puzzleData;
     public DropLocationData[] dropLocationData;
+    public FinalData finalData;
 }
 class SceneConfigData
 {
@@ -171,6 +172,7 @@ public class SaveLoad : Singleton<SaveLoad>
             data.dropLocationData[i].hasItem = dropLocations[i].GetComponent<Interactable>().GetAction();
              }
         }
+        data.finalData = new FinalData(finalsScene);
         //Gera o arquivo de save-----------------------------------------------------
         ClearTrakers();
 
@@ -358,6 +360,7 @@ public class SaveLoad : Singleton<SaveLoad>
               
 
         }
+        finalsScene = data.finalData.finalChoice;
         //----------------------------------------------------------------------
         ClearTrakers();
         Debug.Log("L");

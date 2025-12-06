@@ -16,7 +16,7 @@ public class HideWhileInState : StateMachineBehaviour
     {
         if(!animator.IsInTransition(0))
         {
-            animator.transform.localScale = Vector3.zero;
+            animator.transform.localScale = Vector3.one * 0.001f;
         }
         else
         {

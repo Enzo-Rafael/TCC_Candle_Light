@@ -67,14 +67,16 @@ MonoBehaviour:
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts:
   - {fileID: 7003759058151102523}
   _multipleCode: {fileID: 0}
-  indexPuzzle: 0
+  indexPuzzle: 6
   spawnProx: 0
   completed: 0
-  canSave: 0
-  interactions: []
+  canSave: 1
+  interactions:
+  - {fileID: 7684192093529760009}
 --- !u!114 &7003759058151102523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +165,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   parameterName: 
   _invertParameter: 0
+  itemOnTop: 0
   _customScripts: []
 --- !u!1 &9040785744137831963
 GameObject:

@@ -64,11 +64,11 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     public void DropItem(Vector3 position)
     {
         boxcolider.enabled = false;
+        DefineLayer();
         transform.SetParent(null);
         transform.position = position;
         transform.rotation = Quaternion.Euler(0, 0, 0);
         boxcolider.enabled = true;
-        DefineLayer();
         PlayerOneScript.Instance.Drop(this);
     }
     /*------------------------------------------------------------------------------

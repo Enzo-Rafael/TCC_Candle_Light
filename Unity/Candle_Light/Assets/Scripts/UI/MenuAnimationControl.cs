@@ -36,12 +36,29 @@ public class MenuAnimationControl : MonoBehaviour
 
 #region Base Functions
 
+    private void Start()
+    {
+        if(UISplashControl.Instance.currentState == SplashState.EXIT)
+        {
+            menuAnimator.SetTrigger("GoToMenu");
+            CloseIntro();
+        }
+        if (UISplashControl.Instance.currentState == SplashState.END)
+        {
+            menuAnimator.SetTrigger("GoToMenu");
+            CloseIntro();
+            mainMenu.StopTween();
+            CreditsTransition();
+        }
+    }
     public void CloseIntro()
     {
         introHolder.SetActive(false);
         mainMenu.AnimateMenuShow(true);
         canSkipIntro = false;
         currentMenu = CurrentMenu.MAIN;
+        UISplashControl.Instance.SetState();
+        
     }
 
     public void Update()
@@ -160,7 +177,8 @@ public class MenuAnimationControl : MonoBehaviour
     }
 
     public IEnumerator CreditsAnimationRoutine() 
-    { 
+    {
+        
         if(currentMenu == CurrentMenu.MAIN)
         {
             //AudioManager.Instance.PlaySound("UI_ChangeScreen");

@@ -843,6 +843,96 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &669095666671107226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4882059488538536604}
+  - component: {fileID: 6049773101095035293}
+  - component: {fileID: 5838209967730479998}
+  - component: {fileID: 1161754639830437629}
+  m_Layer: 5
+  m_Name: CreditsPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4882059488538536604
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669095666671107226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9184431867088201878}
+  m_Father: {fileID: 3253760771317948570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 57, y: 60}
+  m_SizeDelta: {x: 1748, y: 492.6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6049773101095035293
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669095666671107226}
+  m_CullTransparentMesh: 0
+--- !u!114 &5838209967730479998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669095666671107226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.01886791, g: 0.01886791, b: 0.01886791, a: 0.003921569}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1161754639830437629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669095666671107226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &735063727434355884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,7 +2602,7 @@ MonoBehaviour:
   m_text: Return
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52c7fa5ae6db4ab47aca1104783a5e33, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2945534128294654565, guid: 52c7fa5ae6db4ab47aca1104783a5e33, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2536,7 +2626,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64.3
+  m_fontSize: 100
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2577,7 +2667,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2475759297785016542
@@ -4064,6 +4154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fader: {fileID: 1813244288368062325}
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
+  creditsText: {fileID: 9184431867088201878}
+  creditsDuration: 55
+  creditsStartStopPosition: {x: 0, y: 2700}
 --- !u!1 &3914653796941167781
 GameObject:
   m_ObjectHideFlags: 0
@@ -4375,17 +4468,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4153345165974077449}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3253760771317948570}
+  m_Children:
+  - {fileID: 3251901849432409814}
+  m_Father: {fileID: 4882059488538536604}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030518, y: 231}
-  m_SizeDelta: {x: 616.126, y: 202.183}
+  m_AnchoredPosition: {x: -57.00009, y: 0}
+  m_SizeDelta: {x: 616.126, y: 201.58298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1278357695670124923
 CanvasRenderer:
@@ -4415,12 +4509,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Arthur Motta: Graphics Programming, Game Design\nArthur Oliveira: Environment
-    Art, Texturing\nCl\xE1udio Vin\xEDcius Soares: Environment Art, Level Design\nDenys
-    Gabriel Grossi Pereira: Music, SFX \nEnzo Rafael Ricarte: Gameplay Programming\nGuilherme
-    Dias: Character Art\nGabriel de Castro: 3D Modelling\nItalo Eduardo Alves: Gameplay
-    Programming\nOt\xE1vio Oliveira: Project Management, User Interface\n\nInstructor:
-    Lu\xEDs Felipe Matsya De Aruanda Ramos Garrocho"
+  m_text: "Candlelight\r\n\r\n\r\nGAME TEAM:\r\n\r\nArthur Motta\r\nGraphics Engineer,
+    Game Designer\r\n\r\nArthur Oliveira\r\nEnvironment Artist, Texture artist\r\n\r\nCl\xE1udio
+    Vin\xEDcius Soares\r\nEnvironment Artist, Level Designer\r\n\r\nDenys Gabriel
+    Grossi Pereira\r\nMusic and Sound Effects Designer\r\n\r\nEnzo Rafael Ricarte\r\nGameplay
+    Engineer\r\n\r\nGuilherme Dias\r\nCharacter Artist, Environment Artist\r\n\r\nGabriel
+    de Castro\r\nGeneralist Artist\r\n\r\nItalo Eduardo Alves\r\nGameplay Engineer\r\n\r\nOt\xE1vio
+    Oliveira\r\nProject Manager, User Interface Designer and Engineer\r\n\r\n\r\nPUC
+    MINAS:\r\nOrientador e Coordenador de Trabalho de Conclus\xE3o de Curso, Projeto
+    Aplicado I e Projeto Aplicado II:\r\nLu\xEDs Felipe Matsya De Aruanda Ramos Garrocho\r\n\r\nProfesors/Support:\r\nRoque
+    Anderson\r\nDaniel Pinheiro Lima\r\nMarcelo LaCarreta\r\nMarcos Arrais\r\nArtur
+    Martins Mol\r\nDiego Antunes\r\nAlexandre Teixera\r\nSinaide Bezerra\r\nMichelle
+    Nery\r\n\r\n\n\n\n\n\n\n\n\n\nSpecial Thanks:\r\n\rour friends and family\n...
+    and you, who played our game!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4485,7 +4586,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -332.5058, y: 31.816475, z: -295.81964, w: -377.9816}
+  m_margin: {x: -332.5058, y: 31.816475, z: -295.81964, w: -342.37457}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4633,7 +4734,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7600003809449909420}
-  - {fileID: 9184431867088201878}
+  - {fileID: 4882059488538536604}
   - {fileID: 7432377192609980204}
   m_Father: {fileID: 6448259499180610645}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9846,6 +9947,81 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 777a02471f9eb4c41bd058a334b3b1ac, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8109849131866319044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3251901849432409814}
+  - component: {fileID: 2069664668420511383}
+  - component: {fileID: 4681813594377070103}
+  m_Layer: 5
+  m_Name: PucMinas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3251901849432409814
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8109849131866319044}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9184431867088201878}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -2124}
+  m_SizeDelta: {x: 512, y: 230}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2069664668420511383
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8109849131866319044}
+  m_CullTransparentMesh: 1
+--- !u!114 &4681813594377070103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8109849131866319044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.92941177, g: 0, b: 0.53333336, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 7821cd3f28d2f5c45979fa800a560908, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

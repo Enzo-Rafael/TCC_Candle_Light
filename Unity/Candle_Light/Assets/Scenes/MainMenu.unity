@@ -986,6 +986,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fader: {fileID: 0}
   _inputReader: {fileID: 11400000, guid: 0defd77effbf61543a106c81266ef3bd, type: 2}
+  creditsText: {fileID: 0}
+  creditsDuration: 0
+  creditsStartStopPosition: {x: 0, y: 0}
 --- !u!1 &173234425
 GameObject:
   m_ObjectHideFlags: 0
@@ -3076,6 +3079,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535533499}
   m_CullTransparentMesh: 1
+--- !u!1 &542390335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 542390337}
+  - component: {fileID: 542390336}
+  m_Layer: 0
+  m_Name: UISplashState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &542390336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542390335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d60a78fc1b76141a5b6af2191605e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 2
+--- !u!4 &542390337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542390335}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 483.35144, y: 361.63058, z: -106.736336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &577975323
 GameObject:
   m_ObjectHideFlags: 0
@@ -6191,6 +6239,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1184987930554437358, guid: 0c012947333d90c48baa5268738436a8, type: 3}
+      propertyPath: creditsStartStopPosition.y
+      value: 2800
+      objectReference: {fileID: 0}
     - target: {fileID: 1196225414989006268, guid: 0c012947333d90c48baa5268738436a8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6247,6 +6299,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3243173931415571429, guid: 0c012947333d90c48baa5268738436a8, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3743693825133226878, guid: 0c012947333d90c48baa5268738436a8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6254,6 +6310,10 @@ PrefabInstance:
     - target: {fileID: 3743693825133226878, guid: 0c012947333d90c48baa5268738436a8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5096194059818298507, guid: 0c012947333d90c48baa5268738436a8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 5747987663503529808, guid: 0c012947333d90c48baa5268738436a8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6281,6 +6341,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6886861330297545200, guid: 0c012947333d90c48baa5268738436a8, type: 3}
       propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416436989951456012, guid: 0c012947333d90c48baa5268738436a8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416436989951456012, guid: 0c012947333d90c48baa5268738436a8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416436989951456012, guid: 0c012947333d90c48baa5268738436a8, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7654842348142170075, guid: 0c012947333d90c48baa5268738436a8, type: 3}
@@ -13060,3 +13132,4 @@ SceneRoots:
   - {fileID: 8950077007506371367}
   - {fileID: 4844739517548305078}
   - {fileID: 1085233401}
+  - {fileID: 542390337}

@@ -36,6 +36,12 @@ public class UIMainMenu : MonoBehaviour
             LeanTween.moveX(animationContainer.GetComponent<RectTransform>(), -900, 0.5f).setDelay(0.15f);
         }
     }
+    public void StopTween()
+    {
+        LeanTween.cancel(animationContainer.GetComponent<RectTransform>());
+        LeanTween.cancel(ExitButtonRef.GetComponent<RectTransform>());
+        LeanTween.cancel(FeatureButtonRef.GetComponent<RectTransform>());
+    }
 
     public void ContinueButton()
     {

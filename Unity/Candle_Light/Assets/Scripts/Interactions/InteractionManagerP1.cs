@@ -42,12 +42,11 @@ public class InteractionManagerP1 : MonoBehaviour
 
     private const int EquipLayer = 12;
     private const int UseLayer = 6;
-
+    
     private const string defaultTag = "Untagged";
 
-
     public LinkedList<GameObject> potentialInteractions = new LinkedList<GameObject>();
-
+    private bool isUsingItem = false;
     /*------------------------------------------------------------------------------
     Função:     OnEnable
     Descrição:  Associa todas as funções utilizadas ao canal de comunicação para que
@@ -95,7 +94,7 @@ public class InteractionManagerP1 : MonoBehaviour
     ------------------------------------------------------------------------------*/
     private void AddPotentialInteraction(GameObject itemInteractable){
         potentialInteractions.AddFirst(itemInteractable);
-
+    Debug.Log("Adicionando item: " + itemInteractable.name);
         if(equipItem != null && itemInteractable.layer == EquipLayer){
             HighlightItem(itemInteractable, false);
         }
@@ -113,12 +112,10 @@ public class InteractionManagerP1 : MonoBehaviour
             case UseLayer:
                 if (equipItem != null && potentialInteractions.First.Value.tag == equipItem.tag && (potentialInteractions.First.Value.GetComponent<IUseEquip>()?.GetAction() == false))
                 {
-                    Debug.Log("Atualizou sprite de interação");
                     iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                 }
                 else if (potentialInteractions.First.Value.tag == defaultTag)
                 {
-                    Debug.Log("Atualizou sprite de interaçãoaaaaaaaaaaa");
                     iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
                 }
                 break;
@@ -140,21 +137,21 @@ public class InteractionManagerP1 : MonoBehaviour
     private void RemovePotentialInteraction(GameObject itemInteractable)
     {
         LinkedListNode<GameObject> currentNode = potentialInteractions.First;
-        while (currentNode != null)
-        {
-            if (currentNode.Value == itemInteractable)
-            {
+        while (currentNode != null){
+            if (currentNode.Value == itemInteractable){
                 potentialInteractions.Remove(currentNode);
                 iController.canvasCloseSprite();
                 iController.canvasCloseText();
                 HighlightItem(itemInteractable, false);
-                if (potentialInteractions.Count != 0)
-                {
-                    if (equipItem?.tag == potentialInteractions.First.Value.tag)
-                    {
-                        iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
-                        iController.canvasCloseText();
-                        iController.canvasCloseSprite();
+                if (potentialInteractions.Count != 0){
+                    if (equipItem?.tag == potentialInteractions.First.Value.tag){
+                        if(isUsingItem == true){
+                            isUsingItem = false;
+                            iController?.UpdateIteractableSprite(potentialInteractions.First.Value.GetComponent<InteractableInfos>());
+                        }else{
+                            iController.canvasCloseSprite();
+                            iController.canvasCloseText();  
+                        }
                     }
                 }
                 break;
@@ -179,8 +176,6 @@ public class InteractionManagerP1 : MonoBehaviour
                     BoxCollider collider = potentialInteractions.First.Value.GetComponent<BoxCollider>();
                     equipItem.DropItem(collider.bounds.center + new Vector3(0, collider.bounds.extents.y, 0));
                     potentialInteractions.First.Value.GetComponent<IUseEquip>()?.BaseAction(equipItem.gameObject);
-                    iController.canvasCloseSprite();
-                    iController.canvasCloseText();
                     equipItem = null;
                 }
                 return;
@@ -196,11 +191,13 @@ public class InteractionManagerP1 : MonoBehaviour
             case EquipLayer:
                 if (equipItem == null)
                 {
+                    isUsingItem = true;
                     potentialInteractions.First.Value.GetComponent<IInteractable>()?.BaseAction();
                     equipItem = potentialInteractions.First.Value.GetComponent<EquipItemInteractable>();
                     equipItem.DefineLayer(default);
                     RemovePotentialInteraction(potentialInteractions.First.Value);
-                    potentialInteractions.First?.Value.GetComponent<IUseEquip>()?.BaseAction(equipItem.gameObject);                            
+                    potentialInteractions.First?.Value.GetComponent<IUseEquip>()?.BaseAction(equipItem.gameObject);    
+                                            
                 }
                 break;
             case UseLayer:

@@ -176,7 +176,7 @@ public class InteractionManagerP1 : MonoBehaviour
                     BoxCollider collider = potentialInteractions.First.Value.GetComponent<BoxCollider>();
                     equipItem.DropItem(collider.bounds.center + new Vector3(0, collider.bounds.extents.y, 0));
                     potentialInteractions.First.Value.GetComponent<IUseEquip>()?.BaseAction(equipItem.gameObject);
-                    equipItem.DefineParent(potentialInteractions.First.Value.transform);
+                    equipItem.DefineParent(potentialInteractions.First?.Value.transform);
                     equipItem = null;
                 }
                 return;

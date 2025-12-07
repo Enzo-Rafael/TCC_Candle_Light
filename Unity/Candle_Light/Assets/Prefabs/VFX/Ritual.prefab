@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5717014198381592885}
   - component: {fileID: 1328387512517749386}
+  - component: {fileID: 5964965285512147344}
+  - component: {fileID: 5297683663670154765}
   m_Layer: 0
   m_Name: Ritual
   m_TagString: Untagged
@@ -60,8 +62,47 @@ MonoBehaviour:
   wobble: 0.15
   maxSize: 1
   maxHeight: 0.3
+  OnTpInteractable: {fileID: 5964965285512147344}
+--- !u!114 &5964965285512147344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584854186165828232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6205c0372cd4348a5b488fffee29eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionType: 2
+  _observerEventListening: []
+  _observerEventSpeak: []
+  _useAnimation: 1
   animator: {fileID: 0}
-  paramName: IsOpen
+  parameterName: IsOpen
+  _invertParameter: 0
+  itemOnTop: 0
+  _customScripts: []
+  _multipleCode: {fileID: 0}
+  indexPuzzle: 0
+  spawnProx: 0
+  completed: 0
+  canSave: 1
+  interactions:
+  - {fileID: 5964965285512147344}
+--- !u!114 &5297683663670154765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584854186165828232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435f85f67c4bc4648a172ba00e06a082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2785107872884459413
 GameObject:
   m_ObjectHideFlags: 0

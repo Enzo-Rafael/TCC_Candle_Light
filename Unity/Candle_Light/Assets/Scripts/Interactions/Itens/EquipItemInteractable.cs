@@ -81,6 +81,10 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
     {
         gameObject.layer = layer;
     }
+    public void DefineParent(Transform parent)
+    {
+        transform.SetParent(parent);
+    }
     /*------------------------------------------------------------------------------
     Função:     BaseAction
     Descrição:  Ação executada ao interagir com o item

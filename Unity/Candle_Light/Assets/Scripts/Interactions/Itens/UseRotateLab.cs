@@ -22,9 +22,14 @@ public class UseRotateLab : Interactable, IInteractable{
     
     private BoxCollider boxCollider;
 
+    [SerializeField] private Renderer renderer;
+    private Color originalColor;
+
     private void Start(){
         player2 = PlayerTwoScript.Instance.GetInteractionManager();
         boxCollider = GetComponent<BoxCollider>();
+        if(renderer)
+            originalColor = renderer.material.GetColor("_MainTint");
     }
 
     public void BaseAction(){
@@ -88,11 +93,17 @@ public class UseRotateLab : Interactable, IInteractable{
         if (entered){
             this.gameObject.layer = default;
             player2.OnTriggerDetected(false, this.gameObject);
+
+            if(renderer)
+                renderer.material.SetColor("_MainTint", new Color(0.7f,0.1f,0.75f));
         }
         else{
             this.gameObject.layer = UseGhost;
             boxCollider.enabled = false;
             boxCollider.enabled = true;
+            
+            if(renderer)
+                renderer.material.SetColor("_MainTint", originalColor);
         }
     }
 }

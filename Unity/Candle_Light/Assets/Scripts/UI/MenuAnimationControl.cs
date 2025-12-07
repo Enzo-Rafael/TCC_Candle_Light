@@ -104,7 +104,7 @@ public class MenuAnimationControl : MonoBehaviour
     {
         if (currentMenu == CurrentMenu.MAIN)
         {
-            AudioManager.Instance.PlaySound("UI_ChangeScreen");
+            //AudioManager.Instance.PlaySound("UI_ChangeScreen");
             currentMenu = CurrentMenu.TRANSITION;
             mainMenu.AnimateMenuShow(false);
             yield return new WaitForSeconds(0.2f);
@@ -114,7 +114,7 @@ public class MenuAnimationControl : MonoBehaviour
         }
         else if (currentMenu == CurrentMenu.EXIT_MENU) 
         {
-            AudioManager.Instance.PlaySound("UI_ChangeScreen");
+           // AudioManager.Instance.PlaySound("UI_ChangeScreen");
             currentMenu = CurrentMenu.TRANSITION;
             exitPopup.AnimateShow(false);
             yield return new WaitForSeconds(0.2f);
@@ -132,7 +132,7 @@ public class MenuAnimationControl : MonoBehaviour
     {
         if(currentMenu == CurrentMenu.MAIN)
         {
-            AudioManager.Instance.PlaySound("UI_ChangeScreen");
+           // AudioManager.Instance.PlaySound("UI_ChangeScreen");
             currentMenu = CurrentMenu.TRANSITION;
             menuAnimator.SetTrigger("GoToSettings");
             mainMenu.AnimateMenuShow(false);
@@ -143,7 +143,7 @@ public class MenuAnimationControl : MonoBehaviour
         }
         else if (currentMenu == CurrentMenu.SETTINGS)
         {
-            AudioManager.Instance.PlaySound("UI_ChangeScreen");
+          //  AudioManager.Instance.PlaySound("UI_ChangeScreen");
             currentMenu = CurrentMenu.TRANSITION;
             menuAnimator.SetTrigger("GoToMenu");
             settingsScreen.SettingsScreenAnimate(false);
@@ -163,7 +163,7 @@ public class MenuAnimationControl : MonoBehaviour
     { 
         if(currentMenu == CurrentMenu.MAIN)
         {
-            AudioManager.Instance.PlaySound("UI_ChangeScreen");
+            //AudioManager.Instance.PlaySound("UI_ChangeScreen");
             currentMenu = CurrentMenu.TRANSITION;
             menuAnimator.SetTrigger("GoToCredits");
             mainMenu.AnimateMenuShow(false);
@@ -175,7 +175,7 @@ public class MenuAnimationControl : MonoBehaviour
         }
         else if (currentMenu == CurrentMenu.CREDITS)
         {
-            AudioManager.Instance.PlaySound("UI_ChangeScreen");
+           // AudioManager.Instance.PlaySound("UI_ChangeScreen");
             currentMenu = CurrentMenu.TRANSITION;
             creditsScreen.AnimateShow(false);
             yield return new WaitForSeconds(0.15f);

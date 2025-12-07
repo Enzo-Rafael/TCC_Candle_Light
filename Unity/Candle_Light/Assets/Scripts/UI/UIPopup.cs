@@ -15,6 +15,7 @@ public class UIPopup : MonoBehaviour
         _inputReader.MenuCloseEvent -= CancelButton;
     }
     public void CancelButton(){
+        AudioManager.Instance.PlaySound("UI_Confirm");
         ConfirmationResponseAction.Invoke(false);
     }
     public void ConfirmButton(){

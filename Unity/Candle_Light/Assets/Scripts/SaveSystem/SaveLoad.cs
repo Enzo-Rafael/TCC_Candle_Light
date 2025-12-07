@@ -304,19 +304,21 @@ public class SaveLoad : Singleton<SaveLoad>
 
         for (int objX = 0; objX < objHolds.Length; objX++)
         {
-            for (int objY = 0; objY < data.castesalData.Length; objY++)
-            {
-                if (objHolds[objY].name == data.castesalData[objX].name)
-                {
-                    if (data.castesalData[objX].isHold == true)
-                    {
-                        GameObject c = GameObject.Find(data.castesalData[objX].name);
-                        c.GetComponent<EquipItemInteractable>().LoadAction();
-                        p1.GetComponent<InteractionManagerP1>().equipItem = c.GetComponent<EquipItemInteractable>();
-                    }else
-                    {
-                        objHolds[objY].transform.position = data.castesalData[objX].position;
-                        objHolds[objY].transform.eulerAngles = data.castesalData[objX].rotation;
+
+            if (data.castesalData != null) {
+                for (int objY = 0; objY < data.castesalData.Length; objY++){
+                    if (objHolds[objX].name == data.castesalData[objY].name){
+                
+                        if (data.castesalData[objY].isHold == true){
+                            GameObject c = objHolds[objX]; 
+                            c.GetComponent<EquipItemInteractable>().LoadAction();
+                            p1.GetComponent<InteractionManagerP1>().equipItem = c.GetComponent<EquipItemInteractable>();
+                        }else{
+                        objHolds[objX].transform.position = data.castesalData[objY].position;
+                        objHolds[objX].transform.eulerAngles = data.castesalData[objY].rotation;
+                        }
+
+                        break; 
                     }
                 }
             }
@@ -345,21 +347,20 @@ public class SaveLoad : Singleton<SaveLoad>
             }
         }
         //DropLocations
-        
-        //data.dropLocationData = new DropLocationData[dropLocations.Length];
-        for (int i = 0; i < dropLocations.Length; i++)
-        {
-            if (data.dropLocationData[i].hasItem == true)
-            {
-                dropLocations[i].GetComponent<Interactable>().SetTrue();
-            }
-            else
-            {
-                dropLocations[i].GetComponent<Interactable>().SetFalse();
-            }
-              
+    
+        if (data.dropLocationData != null){
+            for (int i = 0; i < dropLocations.Length; i++){
 
+                if (i < data.dropLocationData.Length){
+                    if (data.dropLocationData[i].hasItem == true){
+                        dropLocations[i].GetComponent<Interactable>().SetTrue();
+                    }else{
+                        dropLocations[i].GetComponent<Interactable>().SetFalse();
+                    }
+                }
+            }
         }
+        
         finalsScene = data.finalData.finalChoice;
         //----------------------------------------------------------------------
         ClearTrakers();

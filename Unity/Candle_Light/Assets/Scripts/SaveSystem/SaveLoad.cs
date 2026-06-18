@@ -61,9 +61,6 @@ public class SaveLoad : Singleton<SaveLoad>
     {
         path = Application.dataPath + "/save.txt";
         pathConfig = Application.dataPath + "/saveConfig.txt";
-        
-       
-        
     }
 
 

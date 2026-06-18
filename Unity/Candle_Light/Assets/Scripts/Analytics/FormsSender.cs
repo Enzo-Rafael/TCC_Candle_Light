@@ -1,23 +1,21 @@
 using UnityEngine;
-
 using System.Collections;
-using UnityEngine;
 using UnityEngine.Networking;
-public class FormsSender: MonoBehaviour {
+public class FormsSender: Singleton<FormsSender> {
     private string url = "https://docs.google.com/forms/d/e/1FAIpQLSdOXdYJIDZKtmSe6L7-A-__f8aQhfnQwMgyS3Igoq8I0TYKaQ/formResponse";
      
-    /*void Start() {
-            StartCoroutine(EnviarDados("Resposta 1", "Resposta 2"));
-        }*/
+    public void Enviar(float idlep1, float idlep2, float timeToBib, float timeToQuadicima, float completionTime, int buttonsPressed, int itemsPickedUp) {
+            StartCoroutine(EnviarDados(idlep1,  idlep2,  timeToBib, timeToQuadicima,  completionTime,  buttonsPressed,  itemsPickedUp));
+        }
 
-    IEnumerator EnviarDados(float idlep1, float idlep2, float timeToBib, float timeToQuadicima, float completionTime, int buttonsPressed, int candlesticksPickedUp) {
+    IEnumerator EnviarDados(float idlep1, float idlep2, float timeToBib, float timeToQuadicima, float completionTime, int buttonsPressed, int itemsPickedUp) {
         WWWForm form = new WWWForm();
         form.AddField("entry.1284154007", idlep1.ToString("n2"));
         form.AddField("entry.359526272", idlep2.ToString("n2")); 
         form.AddField("entry.1888689852", timeToBib.ToString("n2")); 
         form.AddField("entry.314524288", timeToQuadicima.ToString("n2")); 
         form.AddField("entry.248695441", buttonsPressed); 
-        form.AddField("entry.415317895", candlesticksPickedUp); 
+        form.AddField("entry.415317895", itemsPickedUp); 
         form.AddField("entry.1397965023", completionTime.ToString("n2")); 
         
         UnityWebRequest www = UnityWebRequest.Post(url, form);

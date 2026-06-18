@@ -54,6 +54,10 @@ public class EquipItemInteractable : MonoBehaviour, IInteractable
         transform.localPosition = pickUpOffSet;
         transform.localRotation = Quaternion.Euler(pickUpRotation);
         PlayerOneScript.Instance.Pickup(this);
+
+
+        Analytics.Instance.data.itemsPickedUp++;
+
     }
     /*------------------------------------------------------------------------------
     Função:     DropItem

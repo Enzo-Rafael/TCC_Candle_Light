@@ -22,5 +22,7 @@ public class ChangeTintExecute : MonoBehaviour, ICodeCustom
             else
                 rend.material.SetColor("_MainTint", originalTint);
         }
+
+        Analytics.Instance.data.buttonsPressed++;
     }
 }

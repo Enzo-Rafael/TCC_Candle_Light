@@ -18,6 +18,10 @@ public class Analytics : Singleton<Analytics>
         timerP1 = 5;
         timerP2 = 5;
 
+        
+    }
+    public void ResetData()
+    {
         data.idlep1=0;
         data.idlep2=0;
         data.timeToBib=0;

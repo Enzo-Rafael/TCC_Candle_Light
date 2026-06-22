@@ -91,6 +91,7 @@ public class MenuAnimationControl : MonoBehaviour
         AudioManager.Instance.StopSound("Music_MenuMusic");
         AudioManager.Instance.PlaySound("UI_GameStart");
         menuAnimator.SetTrigger("GoToNew");
+        Analytics.Instance.ResetData();
     }
     public void CallContinueGame()
     {

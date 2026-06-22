@@ -7,8 +7,8 @@ public class FinalsScenes : MonoBehaviour
     private string finalSceneName;
     public void OnTriggerDetected(bool entered, GameObject gameObject){
         if (entered){
-            Analytics.Instance.Enviar();
             SceneManager.LoadScene(finalSceneName);
+            Analytics.Instance.Enviar();
         }
     }
 }

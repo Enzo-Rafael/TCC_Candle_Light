@@ -167,6 +167,7 @@ public class InteractionManagerP1 : MonoBehaviour
     ------------------------------------------------------------------------------*/
     public void UseInteractionType()
     {
+        Analytics.Instance.ResetTimerP1();
         if (potentialInteractions.Count != 0)
         {
             if (potentialInteractions.First.Value.tag != defaultTag && potentialInteractions.First.Value.layer == UseLayer)

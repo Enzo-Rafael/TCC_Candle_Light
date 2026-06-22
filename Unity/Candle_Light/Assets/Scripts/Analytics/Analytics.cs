@@ -8,9 +8,15 @@ public class Analytics : Singleton<Analytics>
     public float currentTime;
     private string path;
 
+    private float timerP1, timerP2;
+    public void ResetTimerP1() { timerP1 = 5;}
+    public void ResetTimerP2() { timerP2 = 5;}
     void Start()
     {
         path = Application.persistentDataPath+"/analytics.txt";
+
+        timerP1 = 5;
+        timerP2 = 5;
 
         data.idlep1=0;
         data.idlep2=0;
@@ -22,6 +28,18 @@ public class Analytics : Singleton<Analytics>
     void Update()
     {
         currentTime += Time.deltaTime;
+
+        timerP1-= Time.deltaTime;
+        timerP2-= Time.deltaTime;
+
+        if (timerP1 < 0)
+        {
+            data.idlep1+= Time.deltaTime;
+        }
+        if (timerP2 < 0)
+        {
+            data.idlep2+= Time.deltaTime;
+        }
     }
     public void Enviar()
     {

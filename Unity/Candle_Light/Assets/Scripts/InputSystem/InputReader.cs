@@ -34,6 +34,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer1MoveActions
     public event UnityAction ChangeCamRightEvent = delegate { };
 
     public event UnityAction MenuCloseEvent = delegate { };
+
     /*------------------------------------------------------------------------------
     Função:     OnEnable
     Descrição:  Assosia os inputs a o controlador desse script permitindo que
@@ -186,6 +187,7 @@ public class InputReader : ScriptableObject, PlayersInputMap.IPlayer1MoveActions
     public void OnMoveInputOne(InputAction.CallbackContext context)
     {
         MoveEventOne.Invoke(context.ReadValue<Vector3>());
+        
     }
     public void OnMoveInputTwo(InputAction.CallbackContext context)
     {

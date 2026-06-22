@@ -51,6 +51,7 @@ public class ChangeCam : MonoBehaviour
         }
         currentCam = camRef[currentCamIndex];
         currentCam.Priority = 1;
+        Analytics.Instance.ResetTimerP1();
         CamEffects();
     }
     public void OnChangeCamRight()
@@ -59,6 +60,7 @@ public class ChangeCam : MonoBehaviour
         currentCamIndex = (currentCamIndex + 1) % camRef.Length;
         currentCam = camRef[currentCamIndex];
         currentCam.Priority = 1;
+        Analytics.Instance.ResetTimerP1();
         CamEffects();
     }
     public CinemachineCamera GetCam()

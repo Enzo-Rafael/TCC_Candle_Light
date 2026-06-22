@@ -73,10 +73,12 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
 
     private void OnMove(Vector3 movement){
         _inputVector = movement;
+        if(movement!=Vector3.zero){Analytics.Instance.ResetTimerP2();}
     }
 
     private void OnMouse(Vector2 movement){
         _mouseVector = movement;
+        if(movement!=Vector2.zero){Analytics.Instance.ResetTimerP2();}
     }
 
     private void OnVoo(Vector2 movement)
@@ -84,6 +86,7 @@ public class PlayerTwoScript : Singleton<PlayerTwoScript>
         _vooDirection = movement;
         //Debug.Log(_vooDirection);
         
+        if(movement!=Vector2.zero){Analytics.Instance.ResetTimerP2();}
     }
 
     private void Show(float ammount)

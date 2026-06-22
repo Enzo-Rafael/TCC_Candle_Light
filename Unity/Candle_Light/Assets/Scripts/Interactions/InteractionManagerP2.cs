@@ -148,5 +148,8 @@ public class InteractionManagerP2 : MonoBehaviour
                 indexText = 0;
             }
         }
+
+        
+        Analytics.Instance.ResetTimerP2();
     }
 }

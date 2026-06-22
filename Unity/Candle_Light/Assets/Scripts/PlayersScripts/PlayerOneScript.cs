@@ -60,6 +60,7 @@ public class PlayerOneScript : Singleton<PlayerOneScript>
             CinemachineCamera mainCam = GetComponent<ChangeCam>().GetCam();
             camForwardOnInput = Vector3.Scale(mainCam.transform.forward, new Vector3(1, 0, 1)).normalized;
             camStrafeOnInput = Vector3.Scale(mainCam.transform.right, new Vector3(1, 0, 1)).normalized;
+            Analytics.Instance.ResetTimerP1();
         }
     }
     void Update()
